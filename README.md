@@ -15,7 +15,7 @@
 
 [convention](https://lab.ssafy.com/s07-bigdata-recom-sub2/S07P22A303/-/wikis/home)
 
-[기술스택](https://lab.ssafy.com/s07-bigdata-recom-sub1/S07P21A303/-/wikis/Tech-Stack)
+[기술스택](https://lab.ssafy.com/s07-bigdata-recom-sub2/S07P22A303/-/wikis/Tech-Stack)
 
 
 
