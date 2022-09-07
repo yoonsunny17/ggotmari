@@ -21,6 +21,8 @@
 
 ## 💐FE
 > [FE]()
+>
+> [화면 정의서](https://lab.ssafy.com/s07-bigdata-recom-sub2/S07P22A303/-/wikis/Story-Board)
 
 
 ## 🌷BE
