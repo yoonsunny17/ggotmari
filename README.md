@@ -3,7 +3,7 @@
 > 판매량과 사용자 취향 기반 빅데이터 꽃 추천 플랫폼
 
 
-<img src="/uploads/773992ef00bf40e43d9c77290b22c9b0/image.png" width="60%">
+<img src="README.assets/image-20220913084131335.png" alt="image-20220913084131335" style="zoom:67%;" />
 
 
 
