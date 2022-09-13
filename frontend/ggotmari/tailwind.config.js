@@ -18,6 +18,10 @@ module.exports = {
         extra2: "#A0C1B8",
         extra3: "#FFE194",
       },
+      fontFamily: {
+        maru: ["MaruBuri"],
+        sans: ["sans-serif"],
+      },
     },
   },
   plugins: [require("daisyui")],
