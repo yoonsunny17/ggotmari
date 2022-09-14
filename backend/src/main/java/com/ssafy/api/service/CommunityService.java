@@ -14,6 +14,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -41,6 +43,7 @@ public class CommunityService {
         article.setTitle(articleInfo.getTitle());
         article.setContent(articleInfo.getContent());
         article.setImage(articleInfo.getImage());
+        article.setDate(LocalDateTime.now());
 
         articleRepository.save(article);
 
@@ -117,5 +120,9 @@ public class CommunityService {
             articleRepository.delete(article);
             return true;
         }
+    }
+
+    public List<Article> getArticles(){
+        return articleRepository.findAll();
     }
 }

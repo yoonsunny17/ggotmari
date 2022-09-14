@@ -58,4 +58,7 @@ public class User {
     @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
     private List<FlowerLike> flowers = new ArrayList<>();
 
+    @JsonBackReference
+    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
+    private List<ArticleLike> likes = new ArrayList<>();
 }

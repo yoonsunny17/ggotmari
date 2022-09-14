@@ -7,6 +7,7 @@ import org.hibernate.annotations.DynamicUpdate;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -32,7 +33,7 @@ public class Article {
 
     private String image;
 
-    private LocalDate date;
+    private LocalDateTime date;
 
     @JsonBackReference
     @ManyToOne(fetch = FetchType.LAZY)
@@ -46,4 +47,8 @@ public class Article {
     @JsonBackReference
     @OneToMany(mappedBy = "article", fetch = FetchType.LAZY)
     private List<Comment> comments = new ArrayList<>();
+
+    @JsonBackReference
+    @OneToMany(mappedBy = "article", fetch = FetchType.LAZY)
+    private List<ArticleLike> likes = new ArrayList<>();
 }
