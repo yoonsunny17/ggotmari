@@ -1,11 +1,14 @@
 package com.ssafy.api.service;
 
 import com.ssafy.api.request.ArticleCreatePostReq;
+import com.ssafy.api.response.SubjectRes;
 import com.ssafy.db.entity.Article;
 import com.ssafy.db.entity.Hashtag;
+import com.ssafy.db.entity.Subject;
 import com.ssafy.db.entity.User;
 import com.ssafy.db.repository.ArticleRepository;
 import com.ssafy.db.repository.HashtagRepository;
+import com.ssafy.db.repository.SubjectRepository;
 import com.ssafy.db.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -24,6 +27,8 @@ public class CommunityService {
     HashtagRepository hashtagRepository;
     @Autowired
     UserRepository userRepository;
+    @Autowired
+    SubjectRepository subjectRepository;
 
     @Transactional
     public Article createArticle(Long userId, ArticleCreatePostReq articleInfo){
@@ -49,5 +54,13 @@ public class CommunityService {
         articleRepository.save(article);
 
         return article;
+    }
+
+    public List<Subject> getSubjects(){
+//        List<Subject> subjects = new ArrayList<>();
+
+        return subjectRepository.findAll();
+
+//        return subjects;
     }
 }
