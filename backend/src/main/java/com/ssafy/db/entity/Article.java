@@ -40,7 +40,7 @@ public class Article {
     private User user;
 
     @JsonBackReference
-    @OneToMany(mappedBy = "article", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "article", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<Hashtag> hashtags = new ArrayList<>();
 
     @JsonBackReference

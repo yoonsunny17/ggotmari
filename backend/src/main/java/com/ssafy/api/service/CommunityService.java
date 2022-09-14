@@ -104,4 +104,18 @@ public class CommunityService {
 
         return article;
     }
+
+    @Transactional
+    public boolean deleteArticle(Long userId, Long articleId){
+
+        User user = userRepository.findById(userId).get();
+        Article article = articleRepository.findById(articleId).get();
+
+        if(article.getUser() != user){
+            return false;
+        }else{
+            articleRepository.delete(article);
+            return true;
+        }
+    }
 }

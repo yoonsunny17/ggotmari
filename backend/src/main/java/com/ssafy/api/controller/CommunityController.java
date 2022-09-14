@@ -1,6 +1,7 @@
 package com.ssafy.api.controller;
 
 import com.ssafy.api.request.ArticleCreatePostReq;
+import com.ssafy.api.response.ArticleDelRes;
 import com.ssafy.api.response.ArticlePostRes;
 import com.ssafy.api.response.SubjectGetRes;
 import com.ssafy.api.response.SubjectRes;
@@ -66,5 +67,20 @@ public class CommunityController {
         Article article = communityService.updateArticle(userId, articleId, articleInfo);
 
         return ResponseEntity.status(201).body(ArticlePostRes.of(201, "정상적으로 수정되었습니다", article.getId()));
+    }
+
+    @DeleteMapping("/article/{articleId}")
+    @ApiOperation(value = "게시글 삭제", notes = "삭제된 게시글 id 값을 응답한다.")
+    @ApiResponses({
+            @ApiResponse(code = 201, message = "게시글 삭제 성공"),
+            @ApiResponse(code = 500, message = "게시글 삭제 실패")
+    })
+    public ResponseEntity<? extends ArticleDelRes> deleteArticle(@PathVariable("articleId") Long articleId){
+
+        Long userId = 1L;
+
+        boolean isSuccess = communityService.deleteArticle(userId, articleId);
+
+        return ResponseEntity.status(201).body(ArticleDelRes.of(201, "정상적으로 삭제되었습니다", isSuccess));
     }
 }
