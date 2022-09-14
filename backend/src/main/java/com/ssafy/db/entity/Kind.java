@@ -1,5 +1,6 @@
 package com.ssafy.db.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.*;
 import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
@@ -20,4 +21,13 @@ public class Kind {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "kind_id", nullable = false, updatable = false, columnDefinition = "BIGINT")
     private Long id;
+
+    @JsonBackReference
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "subject_id")
+    private Subject subject;
+
+    private String kindName;
+
+    private String flowerImage;
 }
