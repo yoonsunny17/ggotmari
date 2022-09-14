@@ -81,11 +81,30 @@ public class CommunityController {
         return ResponseEntity.status(201).body(ArticleDelRes.of(201, "정상적으로 삭제되었습니다", isSuccess));
     }
 
+    @GetMapping("/article/{articleId}")
+    @ApiOperation(value = "게시글 상세 조회", notes = "게시글 상세 내용을 반환한다.")
+    @ApiResponses({
+            @ApiResponse(code = 201, message = "게시글 상세 조회 성공"),
+            @ApiResponse(code = 500, message = "게시글 상세 조회 실패")
+    })
+    public ResponseEntity<? extends ArticleGetRes> getArticleDetail(@PathVariable("articleId") Long articleId){
+
+        Long userId = 1L;
+        Article article = communityService.getArticle(articleId);
+
+        //TODO : userService 연결 후 수정
+        boolean isFollow = false;
+
+        boolean isLike = communityService.checkLike(userId, articleId);
+
+        return ResponseEntity.status(201).body(ArticleGetRes.of(201, "정상적으로 조회되었습니다", article, isFollow, isLike));
+    }
+
     @GetMapping("/article/list")
     @ApiOperation(value = "게시글 목록 조회", notes = "게시글 목록를 반환한다.")
     @ApiResponses({
             @ApiResponse(code = 201, message = "게시글 목록 조회 성공"),
-            @ApiResponse(code = 500, message = "게시글 목록조회 실패")
+            @ApiResponse(code = 500, message = "게시글 목록 조회 실패")
     })
     public ResponseEntity<? extends ArticlesGetRes> getArticleList(){
 

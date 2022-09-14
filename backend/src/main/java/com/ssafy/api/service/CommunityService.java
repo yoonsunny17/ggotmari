@@ -2,14 +2,8 @@ package com.ssafy.api.service;
 
 import com.ssafy.api.request.ArticleCreatePostReq;
 import com.ssafy.api.response.SubjectRes;
-import com.ssafy.db.entity.Article;
-import com.ssafy.db.entity.Hashtag;
-import com.ssafy.db.entity.Subject;
-import com.ssafy.db.entity.User;
-import com.ssafy.db.repository.ArticleRepository;
-import com.ssafy.db.repository.HashtagRepository;
-import com.ssafy.db.repository.SubjectRepository;
-import com.ssafy.db.repository.UserRepository;
+import com.ssafy.db.entity.*;
+import com.ssafy.db.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -31,6 +25,8 @@ public class CommunityService {
     UserRepository userRepository;
     @Autowired
     SubjectRepository subjectRepository;
+    @Autowired
+    ArticleLikeRepository articleLikeRepository;
 
     @Transactional
     public Article createArticle(Long userId, ArticleCreatePostReq articleInfo){
@@ -124,5 +120,23 @@ public class CommunityService {
 
     public List<Article> getArticles(){
         return articleRepository.findAll();
+    }
+
+    public Article getArticle(Long articleId){
+        return articleRepository.findById(articleId).get();
+    }
+
+    public boolean checkLike(Long userId, Long articleId){
+
+        User user = userRepository.findById(userId).get();
+        Article article = articleRepository.findById(articleId).get();
+
+        List<ArticleLike> likes = article.getLikes();
+        ArticleLike like = articleLikeRepository.findArticleLikeByArticleAndUser(article, user);
+        if(likes.contains(like)){
+            return true;
+        }else{
+            return false;
+        }
     }
 }
