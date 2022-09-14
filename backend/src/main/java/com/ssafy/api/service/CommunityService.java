@@ -42,25 +42,66 @@ public class CommunityService {
         article.setContent(articleInfo.getContent());
         article.setImage(articleInfo.getImage());
 
-        List<Hashtag> hashtags = new ArrayList<>();
-
-        //TODO : 해시태그 후 주석 풀기
-//        for(int subjectId : articleInfo.getSubjects()){
-//            Hashtag hashtag = hashtagRepository.findById(subjectId).get();
-//            hashtags.add(hashtag);
-//        }
-        article.setHashtags(hashtags);
-
         articleRepository.save(article);
+
+        List<Hashtag> hashtags = new ArrayList<>();
+        for(Long subjectId : articleInfo.getSubjects()){
+            Subject subject = subjectRepository.findById(subjectId).get();
+
+            Hashtag hashtag = new Hashtag();
+            hashtag.setArticle(article);
+            hashtag.setSubject(subject);
+
+            hashtagRepository.save(hashtag);
+
+            hashtags.add(hashtag);
+        }
+        article.setHashtags(hashtags);
 
         return article;
     }
 
     public List<Subject> getSubjects(){
-//        List<Subject> subjects = new ArrayList<>();
-
         return subjectRepository.findAll();
+    }
 
-//        return subjects;
+    @Transactional
+    public Article updateArticle(Long userId, Long articleId, ArticleCreatePostReq articleInfo){
+
+        User user = userRepository.findById(userId).get();
+
+        Article article = articleRepository.findById(articleId).get();
+
+        if(article.getUser() != user){
+            return null;
+        }
+
+        article.setUser(user);
+        article.setTitle(articleInfo.getTitle());
+        article.setContent(articleInfo.getContent());
+        article.setImage(articleInfo.getImage());
+
+        //이전 해시태그 전부 삭제
+        List<Hashtag> hashtags = article.getHashtags();
+        for(Hashtag hashtag : hashtags){
+            hashtagRepository.delete(hashtag);
+        }
+
+        List<Hashtag> newHashtags = new ArrayList<>();
+
+        for(Long subjectId : articleInfo.getSubjects()){
+            Subject subject = subjectRepository.findById(subjectId).get();
+
+            Hashtag hashtag = new Hashtag();
+            hashtag.setArticle(article);
+            hashtag.setSubject(subject);
+
+            hashtagRepository.save(hashtag);
+
+            newHashtags.add(hashtag);
+        }
+        article.setHashtags(newHashtags);
+
+        return article;
     }
 }

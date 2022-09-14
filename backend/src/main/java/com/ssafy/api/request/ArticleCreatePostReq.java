@@ -11,7 +11,6 @@ import java.util.List;
 public class ArticleCreatePostReq {
     @ApiModelProperty(name = "게시글 제목")
     String title;
-
     @ApiModelProperty(name = "게시글 내용")
     String content;
 
@@ -19,5 +18,5 @@ public class ArticleCreatePostReq {
     String image;
 
     @ApiModelProperty(name = "해시태그(꽃 품목)", example = "1")
-    List<Integer> subjects;
+    List<Long> subjects;
 }

@@ -35,7 +35,7 @@ public class CommunityController {
         //TODO : userId 받아오기
         Long userId = 1L;
 
-        Article article  = communityService.createArticle(userId, articleInfo);
+        Article article = communityService.createArticle(userId, articleInfo);
 
         return ResponseEntity.status(201).body(ArticlePostRes.of(201, "정상적으로 작성되었습니다", article.getId()));
     }
@@ -51,5 +51,20 @@ public class CommunityController {
         List<Subject> subjects = communityService.getSubjects();
 
         return ResponseEntity.status(201).body(SubjectGetRes.of(201, "정상적으로 작성되었습니다", subjects));
+    }
+
+    @PutMapping("/article/{articleId}")
+    @ApiOperation(value = "게시글 수정", notes = "수정된 게시글 id 값을 응답한다.")
+    @ApiResponses({
+            @ApiResponse(code = 201, message = "게시글 수정 성공"),
+            @ApiResponse(code = 500, message = "게시글 수정 실패")
+    })
+    public ResponseEntity<? extends ArticlePostRes> updateArticle(@PathVariable("articleId") Long articleId, @RequestBody ArticleCreatePostReq articleInfo){
+
+        Long userId = 1L;
+
+        Article article = communityService.updateArticle(userId, articleId, articleInfo);
+
+        return ResponseEntity.status(201).body(ArticlePostRes.of(201, "정상적으로 수정되었습니다", article.getId()));
     }
 }
