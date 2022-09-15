@@ -3,7 +3,7 @@ import SearchBar from "../components/atoms/common/SearchBar";
 import CommunityCard from "../components/atoms/index/CommunityCard";
 import { BsPeople } from "react-icons/bs";
 import { FaRegPaperPlane } from "react-icons/fa";
-import { info } from "daisyui/src/colors";
+import { IoIosArrowForward } from "react-icons/io";
 
 function Home() {
   const username = "sangchuman";
@@ -55,7 +55,7 @@ function Home() {
         <hr />
 
         {/* 추천 이야기 */}
-        <div className="mt-6 font-sans">
+        <div className="mt-6 font-sans mb-4">
           <div className="mb-3">
             <div>{username} 님을 위한 추천 이야기</div>
             <div className="text-xs">요즘 이런 꽃다발 좋아하시더라구요 :)</div>
@@ -66,9 +66,19 @@ function Home() {
             })}
           </div>
         </div>
+        <hr />
+        {/* 인기 이야기 TOP10 */}
+        <div className="font-sans mt-6">
+          <div className="mb-3">
+            <div className="flex justify-between">
+              <p>인기 이야기 TOP10</p>
+              <p className="flex items-center">
+                <IoIosArrowForward />
+              </p>
+            </div>
+          </div>
+        </div>
       </div>
-
-      <div></div>
     </div>
   );
 }
