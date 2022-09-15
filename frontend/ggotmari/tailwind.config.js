@@ -22,6 +22,9 @@ module.exports = {
       fontFamily: {
         maru: ["MaruBuri"],
         sans: ["NanumBarunGothic", "sans-serif"],
+        sansbold: ["NanumBarunGothicBold", "sans-serif"],
+        sanslight: ["NanumBareunGothicLight", "sans-serif"],
+        sansultralight: ["NanumBareunGothicUltraLight", "sans-serif"],
       },
     },
   },
