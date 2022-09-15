@@ -3,7 +3,7 @@ import { IoMdHeart } from "react-icons/io";
 function CommunityCard({ info: { username, imgUrl, likeNumbs } }) {
   return (
     <div className="">
-      <div className="cursor-pointer rounded-2xl aspect-square shadow overflow-hidden relative">
+      <div className="cursor-pointer rounded-lg aspect-square shadow overflow-hidden relative">
         <img
           src={imgUrl}
           alt="communityCard"
