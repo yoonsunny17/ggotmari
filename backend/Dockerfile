@@ -2,6 +2,8 @@ FROM ubuntu:20.04
 
 RUN apt-get -y update && apt-get -y upgrade
 RUN apt-get install dos2unix
+WORKDIR /var/jenkins_home/workspace/ggotmari/backend
+RUN dos2unix ./gradlew
 
 FROM openjdk:8-jdk-oracle as builder
 # COPY gradlew .
@@ -9,8 +11,7 @@ FROM openjdk:8-jdk-oracle as builder
 # COPY build.gradle .
 # COPY settings.gradle .
 # COPY src src
-WORKDIR /var/jenkins_home/workspace/ggotmari/backend
-RUN dos2unix ./gradlew
+
 RUN chmod +x ./gradlew
 RUN ./gradlew build
 
