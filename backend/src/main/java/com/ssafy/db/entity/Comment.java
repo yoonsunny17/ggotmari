@@ -6,7 +6,7 @@ import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
 
 import javax.persistence.*;
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Entity
 @Getter
@@ -26,7 +26,7 @@ public class Comment {
     @Column(columnDefinition = "TEXT")
     private String content;
 
-    private LocalDate date;
+    private LocalDateTime date;
 
     @JsonBackReference
     @ManyToOne(fetch = FetchType.LAZY)

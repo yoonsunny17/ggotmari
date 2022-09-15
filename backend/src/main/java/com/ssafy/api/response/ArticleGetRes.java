@@ -40,13 +40,13 @@ public class ArticleGetRes extends BaseResponseBody {
     List<CommentRes> comments = new ArrayList<>();
 
 
-    public static ArticleGetRes of(Integer statusCode, String message, Article article, boolean isFollow, boolean isLike, boolean isMe) {
+    public static ArticleGetRes of(Integer statusCode, String message, Article article, boolean isFollow, boolean isLike, User loginUser) {
         ArticleGetRes res = new ArticleGetRes();
 
         res.setStatusCode(statusCode);
         res.setMessage(message);
 
-        res.setUser(article.getUser(), isFollow, isMe);
+        res.setUser(article.getUser(), isFollow, loginUser);
         res.setArticleImage(article.getImage());
         res.setArticleTitle(article.getTitle());
         res.setArticleContent(article.getContent());
@@ -55,12 +55,12 @@ public class ArticleGetRes extends BaseResponseBody {
         res.setLike(isLike);
         res.setLikeCount(article.getLikes().size());
         res.setCommentCount(article.getComments().size());
-        res.setComments(article.getComments());
+        res.setComments(article.getComments(), loginUser);
 
         return res;
     }
 
-    public void setUser(User user, boolean isFollow, boolean isMe){
+    public void setUser(User user, boolean isFollow, User loginUser){
             UserRes userRes = new UserRes();
 
             userRes.setUserId(user.getId());
@@ -69,7 +69,12 @@ public class ArticleGetRes extends BaseResponseBody {
             userRes.setFollower(user.getFollowers().size());
             userRes.setFollowing(user.getFollowings().size());
             userRes.setFollow(isFollow);
-            userRes.setMe(isMe);
+
+            if(loginUser == user){
+                userRes.setMe(true);
+            }else{
+                userRes.setMe(false);
+            }
 
             this.user = userRes;
     }
@@ -82,10 +87,10 @@ public class ArticleGetRes extends BaseResponseBody {
         }
     }
 
-    public void setComments(List<Comment> comments){
+    public void setComments(List<Comment> comments, User loginUser){
         if(comments.size() != 0){
             for(Comment comment : comments){
-                this.comments.add(CommentRes.of(comment));
+                this.comments.add(CommentRes.of(comment, loginUser));
             }
         }
     }

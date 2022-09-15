@@ -97,9 +97,11 @@ public class CommunityController {
         boolean isFollow = false;
 
         boolean isLike = communityService.checkLike(userId, articleId);
-        boolean isMe = article.getUser().getId() == userId ? true : false;
 
-        return ResponseEntity.status(201).body(ArticleGetRes.of(201, "정상적으로 조회되었습니다", article, isFollow, isLike, isMe));
+        //TODO : userService 연결 후 수정
+        User user = new User();
+
+        return ResponseEntity.status(201).body(ArticleGetRes.of(201, "정상적으로 조회되었습니다", article, isFollow, isLike, user));
     }
 
     @GetMapping("/article/list")
