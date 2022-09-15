@@ -87,6 +87,10 @@ function Home() {
             </div>
           </div>
         </div>
+        <hr />
+        <div className="font-sans mt-6">
+          <p>특별한 날 선물하기 좋은 꽃</p>
+        </div>
       </div>
     </div>
   );
