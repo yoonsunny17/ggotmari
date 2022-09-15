@@ -1,6 +1,7 @@
 package com.ssafy.api.service;
 
 import com.ssafy.api.request.ArticleCreatePostReq;
+import com.ssafy.api.request.CommentCreatePostReq;
 import com.ssafy.api.response.SubjectRes;
 import com.ssafy.db.entity.*;
 import com.ssafy.db.repository.*;
@@ -29,6 +30,8 @@ public class CommunityService {
     ArticleLikeRepository articleLikeRepository;
     @Autowired
     PictureRepository pictureRepository;
+    @Autowired
+    CommentRepository commentRepository;
 
     @Transactional
     public Article createArticle(Long userId, ArticleCreatePostReq articleInfo){
@@ -171,5 +174,24 @@ public class CommunityService {
         }else{
             return false;
         }
+    }
+
+    @Transactional
+    public Comment createComment(Long userId, Long articleId, CommentCreatePostReq commentInfo){
+
+        User user = userRepository.findById(userId).get();
+        Article article = articleRepository.findById(articleId).get();
+
+        Comment comment = new Comment();
+        comment.setArticle(article);
+        comment.setDate(LocalDateTime.now());
+        comment.setUser(user);
+        comment.setContent(commentInfo.getCommentContent());
+
+        commentRepository.save(comment);
+
+        article.getComments().add(comment);
+
+        return comment;
     }
 }

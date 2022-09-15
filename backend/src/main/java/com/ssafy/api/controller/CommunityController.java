@@ -1,9 +1,11 @@
 package com.ssafy.api.controller;
 
 import com.ssafy.api.request.ArticleCreatePostReq;
+import com.ssafy.api.request.CommentCreatePostReq;
 import com.ssafy.api.response.*;
 import com.ssafy.api.service.CommunityService;
 import com.ssafy.db.entity.Article;
+import com.ssafy.db.entity.Comment;
 import com.ssafy.db.entity.Subject;
 import com.ssafy.db.entity.User;
 import io.swagger.annotations.Api;
@@ -121,4 +123,33 @@ public class CommunityController {
 
         return ResponseEntity.status(201).body(ArticlesGetRes.of(201, "정상적으로 작성되었습니다", articles, user));
     }
+
+    //TODO : 좋아요 추가/삭제
+
+
+    //TODO : 댓글 작성
+    @GetMapping("/article/{articleId}/comment")
+    @ApiOperation(value = "댓글 작성", notes = "작성된 댓글 id를 반환한다.")
+    @ApiResponses({
+            @ApiResponse(code = 201, message = "댓글 작성 성공"),
+            @ApiResponse(code = 500, message = "댓글 작성 실패")
+    })
+    public ResponseEntity<? extends CommentPostRes> createComment(@PathVariable("articleId") Long articleId, @RequestBody CommentCreatePostReq commentInfo){
+
+        //TODO : userId 받아오기
+        Long userId = 1L;
+
+        Comment comment = communityService.createComment(userId, articleId, commentInfo);
+
+
+        return ResponseEntity.status(201).body(CommentPostRes.of(201, "정상적으로 작성되었습니다", comment.getId()));
+    }
+
+    //TODO : 댓글 수정
+
+
+    //TODO : 댓글 삭제
+
+
+    //TODO : 인기글
 }
