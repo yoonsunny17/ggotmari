@@ -1,5 +1,5 @@
-import Header from "../UI/atoms/common/Header";
-import SearchBar from "../UI/molecules/common/SearchBar";
+import Header from "../components/atoms/common/Header";
+import SearchBar from "../components/molecules/common/SearchBar";
 
 export default function Home() {
   return (
