@@ -2,6 +2,7 @@ package com.ssafy.api.service;
 
 import com.ssafy.api.request.ArticleCreatePostReq;
 import com.ssafy.api.request.CommentCreatePostReq;
+import com.ssafy.api.request.CommentPutReq;
 import com.ssafy.api.response.SubjectRes;
 import com.ssafy.db.entity.*;
 import com.ssafy.db.repository.*;
@@ -191,6 +192,24 @@ public class CommunityService {
         commentRepository.save(comment);
 
         article.getComments().add(comment);
+
+        return comment;
+    }
+
+    @Transactional
+    public Comment updateComment(Long userId, Long articleId, CommentPutReq commentInfo){
+
+        User user = userRepository.findById(userId).get();
+        Article article = articleRepository.findById(articleId).get();
+
+        Comment comment = commentRepository.findById(commentInfo.getCommentId()).get();
+
+        if(comment.getUser() == user && comment.getArticle() == article) {
+            comment.setDate(LocalDateTime.now());
+            comment.setContent(commentInfo.getCommentContent());
+        }else{
+            comment = null;
+        }
 
         return comment;
     }

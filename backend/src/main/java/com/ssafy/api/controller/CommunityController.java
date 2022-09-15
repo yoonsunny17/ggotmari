@@ -2,6 +2,7 @@ package com.ssafy.api.controller;
 
 import com.ssafy.api.request.ArticleCreatePostReq;
 import com.ssafy.api.request.CommentCreatePostReq;
+import com.ssafy.api.request.CommentPutReq;
 import com.ssafy.api.response.*;
 import com.ssafy.api.service.CommunityService;
 import com.ssafy.db.entity.Article;
@@ -66,7 +67,11 @@ public class CommunityController {
 
         Article article = communityService.updateArticle(userId, articleId, articleInfo);
 
-        return ResponseEntity.status(201).body(ArticlePostRes.of(201, "정상적으로 수정되었습니다", article.getId()));
+        if(article == null){
+            return ResponseEntity.status(403).body(ArticlePostRes.of(403, "수정할 수 없습니다.", article.getId()));
+        }else{
+            return ResponseEntity.status(201).body(ArticlePostRes.of(201, "정상적으로 수정되었습니다", article.getId()));
+        }
     }
 
     @DeleteMapping("/article/{articleId}")
@@ -127,8 +132,7 @@ public class CommunityController {
     //TODO : 좋아요 추가/삭제
 
 
-    //TODO : 댓글 작성
-    @GetMapping("/article/{articleId}/comment")
+    @PostMapping("/article/{articleId}/comment")
     @ApiOperation(value = "댓글 작성", notes = "작성된 댓글 id를 반환한다.")
     @ApiResponses({
             @ApiResponse(code = 201, message = "댓글 작성 성공"),
@@ -145,8 +149,25 @@ public class CommunityController {
         return ResponseEntity.status(201).body(CommentPostRes.of(201, "정상적으로 작성되었습니다", comment.getId()));
     }
 
-    //TODO : 댓글 수정
+    @PutMapping("/article/{articleId}/comment")
+    @ApiOperation(value = "댓글 수정", notes = "수정된 댓글 id 값을 응답한다.")
+    @ApiResponses({
+            @ApiResponse(code = 201, message = "댓글 수정 성공"),
+            @ApiResponse(code = 500, message = "댓글 수정 실패")
+    })
+    public ResponseEntity<? extends CommentPostRes> updateComment(@PathVariable("articleId") Long articleId, @RequestBody CommentPutReq commentInfo){
 
+        //TODO : userId 받아오기
+        Long userId = 1L;
+
+        Comment comment = communityService.updateComment(userId, articleId, commentInfo);
+
+        if(comment == null){
+            return ResponseEntity.status(403).body(CommentPostRes.of(403, "수정이 불가능합니다.", comment.getId()));
+        }else{
+            return ResponseEntity.status(201).body(CommentPostRes.of(201, "정상적으로 수정되었습니다", comment.getId()));
+        }
+    }
 
     //TODO : 댓글 삭제
 
