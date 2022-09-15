@@ -11,7 +11,7 @@ function CommunityCard({ info: { username, imgUrl, likeNumbs } }) {
         />
       </div>
       <div className="flex justify-between mt-1 text-xs">
-        <p className="text-font2">@ {username}</p>
+        <p className="text-font2">@{username}</p>
         <p className="flex">
           <IoMdHeart size={15} color="red" />{" "}
           {likeNumbs >= 100 ? (
