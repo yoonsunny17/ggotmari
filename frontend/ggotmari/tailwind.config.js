@@ -10,6 +10,7 @@ module.exports = {
         font1: "#333333",
         font2: "#84898C",
         font3: "#F3F3F3",
+        font4: "#868B8E",
         main: "#6E85B7",
         sub1: "#B2C8DF",
         sub2: "#709FB0",
@@ -20,7 +21,7 @@ module.exports = {
       },
       fontFamily: {
         maru: ["MaruBuri"],
-        sans: ["sans-serif"],
+        sans: ["NanumBarunGothic", "sans-serif"],
       },
     },
   },
