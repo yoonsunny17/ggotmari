@@ -1,9 +1,6 @@
 package com.ssafy.api.controller;
 
-import com.ssafy.api.request.ArticleCreatePostReq;
-import com.ssafy.api.request.CommentCreatePostReq;
-import com.ssafy.api.request.CommentDelReq;
-import com.ssafy.api.request.CommentPutReq;
+import com.ssafy.api.request.*;
 import com.ssafy.api.response.*;
 import com.ssafy.api.service.CommunityService;
 import com.ssafy.db.entity.Article;
@@ -130,8 +127,22 @@ public class CommunityController {
         return ResponseEntity.status(201).body(ArticlesGetRes.of(201, "정상적으로 작성되었습니다", articles, user));
     }
 
-    //TODO : 좋아요 추가/삭제
+    @PostMapping("/article/{articleId}/like")
+    @ApiOperation(value = "댓글 작성", notes = "작성된 댓글 id를 반환한다.")
+    @ApiResponses({
+            @ApiResponse(code = 201, message = "댓글 작성 성공"),
+            @ApiResponse(code = 500, message = "댓글 작성 실패")
+    })
+    public ResponseEntity<? extends LikePostRes> reverseLike(@PathVariable("articleId") Long articleId, @RequestBody LikePostReq likeInfo){
 
+        //TODO : userId 받아오기
+        Long userId = 1L;
+
+        boolean isSuccess = communityService.reverseArticleLike(userId, articleId, likeInfo);
+
+
+        return ResponseEntity.status(201).body(LikePostRes.of(201, "정상적으로 작성되었습니다", isSuccess));
+    }
 
     @PostMapping("/article/{articleId}/comment")
     @ApiOperation(value = "댓글 작성", notes = "작성된 댓글 id를 반환한다.")
@@ -170,7 +181,6 @@ public class CommunityController {
         }
     }
 
-    //TODO : 댓글 삭제
     @DeleteMapping("/article/{articleId}/comment")
     @ApiOperation(value = "댓글 삭제", notes = "삭제된 댓글 id 값을 응답한다.")
     @ApiResponses({

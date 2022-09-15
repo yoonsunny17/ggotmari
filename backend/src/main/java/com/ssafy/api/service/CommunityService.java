@@ -1,9 +1,6 @@
 package com.ssafy.api.service;
 
-import com.ssafy.api.request.ArticleCreatePostReq;
-import com.ssafy.api.request.CommentCreatePostReq;
-import com.ssafy.api.request.CommentDelReq;
-import com.ssafy.api.request.CommentPutReq;
+import com.ssafy.api.request.*;
 import com.ssafy.api.response.SubjectRes;
 import com.ssafy.db.entity.*;
 import com.ssafy.db.repository.*;
@@ -36,7 +33,7 @@ public class CommunityService {
     CommentRepository commentRepository;
 
     @Transactional
-    public Article createArticle(Long userId, ArticleCreatePostReq articleInfo){
+    public Article createArticle(Long userId, ArticleCreatePostReq articleInfo) {
 
         User user = userRepository.findById(userId).get();
 
@@ -52,7 +49,7 @@ public class CommunityService {
         articleRepository.save(article);
 
         List<Hashtag> hashtags = new ArrayList<>();
-        for(Long subjectId : articleInfo.getSubjects()){
+        for (Long subjectId : articleInfo.getSubjects()) {
             Subject subject = subjectRepository.findById(subjectId).get();
 
             Hashtag hashtag = new Hashtag();
@@ -67,7 +64,7 @@ public class CommunityService {
 
         //TODO : S3 연결 후, uuid 파일명 변경 필요
         List<Picture> pictures = new ArrayList<>();
-        for(String image : articleInfo.getImages()){
+        for (String image : articleInfo.getImages()) {
             Picture picture = new Picture();
             picture.setArticle(article);
             picture.setImage(image);
@@ -81,18 +78,18 @@ public class CommunityService {
         return article;
     }
 
-    public List<Subject> getSubjects(){
+    public List<Subject> getSubjects() {
         return subjectRepository.findAll();
     }
 
     @Transactional
-    public Article updateArticle(Long userId, Long articleId, ArticleCreatePostReq articleInfo){
+    public Article updateArticle(Long userId, Long articleId, ArticleCreatePostReq articleInfo) {
 
         User user = userRepository.findById(userId).get();
 
         Article article = articleRepository.findById(articleId).get();
 
-        if(article.getUser() != user){
+        if (article.getUser() != user) {
             return null;
         }
 
@@ -102,12 +99,12 @@ public class CommunityService {
 
         //이전 사진 전부 삭제
         List<Picture> pictures = article.getPictures();
-        for(Picture picture : pictures){
+        for (Picture picture : pictures) {
             pictureRepository.delete(picture);
         }
 
         List<Picture> newPictures = new ArrayList<>();
-        for(String image : articleInfo.getImages()){
+        for (String image : articleInfo.getImages()) {
             Picture picture = new Picture();
             picture.setArticle(article);
             picture.setImage(image);
@@ -120,13 +117,13 @@ public class CommunityService {
 
         //이전 해시태그 전부 삭제
         List<Hashtag> hashtags = article.getHashtags();
-        for(Hashtag hashtag : hashtags){
+        for (Hashtag hashtag : hashtags) {
             hashtagRepository.delete(hashtag);
         }
 
         List<Hashtag> newHashtags = new ArrayList<>();
 
-        for(Long subjectId : articleInfo.getSubjects()){
+        for (Long subjectId : articleInfo.getSubjects()) {
             Subject subject = subjectRepository.findById(subjectId).get();
 
             Hashtag hashtag = new Hashtag();
@@ -143,43 +140,43 @@ public class CommunityService {
     }
 
     @Transactional
-    public boolean deleteArticle(Long userId, Long articleId){
+    public boolean deleteArticle(Long userId, Long articleId) {
 
         User user = userRepository.findById(userId).get();
         Article article = articleRepository.findById(articleId).get();
 
-        if(article.getUser() != user){
+        if (article.getUser() != user) {
             return false;
-        }else{
+        } else {
             articleRepository.delete(article);
             return true;
         }
     }
 
-    public List<Article> getArticles(){
+    public List<Article> getArticles() {
         return articleRepository.findAll();
     }
 
-    public Article getArticle(Long articleId){
+    public Article getArticle(Long articleId) {
         return articleRepository.findById(articleId).get();
     }
 
-    public boolean checkLike(Long userId, Long articleId){
+    public boolean checkLike(Long userId, Long articleId) {
 
         User user = userRepository.findById(userId).get();
         Article article = articleRepository.findById(articleId).get();
 
         List<ArticleLike> likes = article.getLikes();
         ArticleLike like = articleLikeRepository.findArticleLikeByArticleAndUser(article, user);
-        if(likes.contains(like)){
+        if (likes.contains(like)) {
             return true;
-        }else{
+        } else {
             return false;
         }
     }
 
     @Transactional
-    public Comment createComment(Long userId, Long articleId, CommentCreatePostReq commentInfo){
+    public Comment createComment(Long userId, Long articleId, CommentCreatePostReq commentInfo) {
 
         User user = userRepository.findById(userId).get();
         Article article = articleRepository.findById(articleId).get();
@@ -198,17 +195,17 @@ public class CommunityService {
     }
 
     @Transactional
-    public Comment updateComment(Long userId, Long articleId, CommentPutReq commentInfo){
+    public Comment updateComment(Long userId, Long articleId, CommentPutReq commentInfo) {
 
         User user = userRepository.findById(userId).get();
         Article article = articleRepository.findById(articleId).get();
 
         Comment comment = commentRepository.findById(commentInfo.getCommentId()).get();
 
-        if(comment.getUser() == user && comment.getArticle() == article) {
+        if (comment.getUser() == user && comment.getArticle() == article) {
             comment.setDate(LocalDateTime.now());
             comment.setContent(commentInfo.getCommentContent());
-        }else{
+        } else {
             comment = null;
         }
 
@@ -216,16 +213,51 @@ public class CommunityService {
     }
 
     @Transactional
-    public boolean deleteComment(Long userId, CommentDelReq commentInfo){
+    public boolean deleteComment(Long userId, CommentDelReq commentInfo) {
 
         User user = userRepository.findById(userId).get();
         Comment comment = commentRepository.findById(commentInfo.getCommentId()).get();
 
-        if(comment.getUser() != user){
+        if (comment.getUser() != user) {
             return false;
-        }else{
+        } else {
             commentRepository.delete(comment);
             return true;
         }
+    }
+
+    @Transactional
+    public boolean reverseArticleLike(Long userId, Long articleId, LikePostReq likeInfo) {
+
+        User user = userRepository.findById(userId).get();
+        Article article = articleRepository.findById(articleId).get();
+
+        if (likeInfo.isLike()) {
+
+            if(articleLikeRepository.findArticleLikeByArticleAndUser(article, user) != null){
+                return false;
+            }
+
+            ArticleLike articleLike = new ArticleLike();
+            articleLike.setArticle(article);
+            articleLike.setUser(user);
+
+            articleLikeRepository.save(articleLike);
+
+            user.getLikes().add(articleLike);
+            article.getLikes().add(articleLike);
+
+        } else {
+            ArticleLike articleLike = articleLikeRepository.findArticleLikeByArticleAndUser(article, user);
+
+            if (articleLike == null) {
+                return false;
+            }
+
+            System.out.println("==============" + articleLike.getId());
+
+            articleLikeRepository.delete(articleLike);
+        }
+        return true;
     }
 }
