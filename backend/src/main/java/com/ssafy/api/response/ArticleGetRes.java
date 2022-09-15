@@ -1,5 +1,6 @@
 package com.ssafy.api.response;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.ssafy.common.model.response.BaseResponseBody;
 import com.ssafy.db.entity.Article;
 import com.ssafy.db.entity.Comment;
@@ -27,6 +28,8 @@ public class ArticleGetRes extends BaseResponseBody {
     String articleDate;
     @ApiModelProperty(name = "태그")
     List<SubjectRes> tags = new ArrayList<>();
+
+    @JsonProperty("isLike")
     @ApiModelProperty(name = "좋아요 여부")
     boolean isLike;
     @ApiModelProperty(name = "좋아요 수")
@@ -37,13 +40,13 @@ public class ArticleGetRes extends BaseResponseBody {
     List<CommentRes> comments = new ArrayList<>();
 
 
-    public static ArticleGetRes of(Integer statusCode, String message, Article article, boolean isFollow, boolean isLike) {
+    public static ArticleGetRes of(Integer statusCode, String message, Article article, boolean isFollow, boolean isLike, boolean isMe) {
         ArticleGetRes res = new ArticleGetRes();
 
         res.setStatusCode(statusCode);
         res.setMessage(message);
 
-        res.setUser(article.getUser(), isFollow);
+        res.setUser(article.getUser(), isFollow, isMe);
         res.setArticleImage(article.getImage());
         res.setArticleTitle(article.getTitle());
         res.setArticleContent(article.getContent());
@@ -57,7 +60,7 @@ public class ArticleGetRes extends BaseResponseBody {
         return res;
     }
 
-    public void setUser(User user, boolean isFollow){
+    public void setUser(User user, boolean isFollow, boolean isMe){
             UserRes userRes = new UserRes();
 
             userRes.setUserId(user.getId());
@@ -66,6 +69,7 @@ public class ArticleGetRes extends BaseResponseBody {
             userRes.setFollower(user.getFollowers().size());
             userRes.setFollowing(user.getFollowings().size());
             userRes.setFollow(isFollow);
+            userRes.setMe(isMe);
 
             this.user = userRes;
     }

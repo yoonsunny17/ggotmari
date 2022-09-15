@@ -1,8 +1,7 @@
 package com.ssafy.api.response;
 
-import com.ssafy.db.entity.Article;
-import com.ssafy.db.entity.Hashtag;
-import com.ssafy.db.entity.Subject;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.ssafy.db.entity.*;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
@@ -17,8 +16,8 @@ public class ArticlesRes {
 
     @ApiModelProperty(name = "게시글 id", example = "1")
     Long articleId;
-    @ApiModelProperty(name = "게시글 사진")
-    String articleImage;
+    @ApiModelProperty(name = "게시글 사진 목록")
+    List<String> articleImage;
     @ApiModelProperty(name = "유저 id", example = "1")
     Long userId;
     @ApiModelProperty(name = "게시글 제목")
@@ -30,15 +29,24 @@ public class ArticlesRes {
     @ApiModelProperty(name = "태그")
     List<String> tags;
     @ApiModelProperty(name = "댓글 수")
-    int commentsCount;
+    int commentCount;
     @ApiModelProperty(name = "좋아요 수")
     int likeCount;
+    @JsonProperty("isFollow")
+    @ApiModelProperty(name = "팔로우 여부")
+    boolean isFollow;
 
-    public static ArticlesRes of(Article article) {
+    public static ArticlesRes of(Article article, User user) {
         ArticlesRes res = new ArticlesRes();
 
         res.setArticleId(article.getId());
-        res.setArticleImage(article.getImage());
+
+        List<String> pictures = new ArrayList<>();
+        for(Picture picture : article.getPictures()){
+            pictures.add(picture.getImage());
+        }
+        res.setArticleImage(pictures);
+
         res.setUserId(article.getUser().getId());
         res.setArticleTitle(article.getTitle());
         res.setArticleContent(article.getContent());
@@ -50,8 +58,15 @@ public class ArticlesRes {
         }
         res.setTags(tags);
 
-        res.setCommentsCount(article.getComments().size());
+        res.setCommentCount(article.getComments().size());
         res.setLikeCount(article.getLikes().size());
+
+
+        if(user.getFollowings().contains(article.getUser())){
+            res.setFollow(true);
+        }else{
+            res.setFollow(false);
+        }
 
         return res;
     }

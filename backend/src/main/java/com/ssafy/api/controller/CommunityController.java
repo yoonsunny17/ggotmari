@@ -5,6 +5,7 @@ import com.ssafy.api.response.*;
 import com.ssafy.api.service.CommunityService;
 import com.ssafy.db.entity.Article;
 import com.ssafy.db.entity.Subject;
+import com.ssafy.db.entity.User;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
@@ -96,8 +97,9 @@ public class CommunityController {
         boolean isFollow = false;
 
         boolean isLike = communityService.checkLike(userId, articleId);
+        boolean isMe = article.getUser().getId() == userId ? true : false;
 
-        return ResponseEntity.status(201).body(ArticleGetRes.of(201, "정상적으로 조회되었습니다", article, isFollow, isLike));
+        return ResponseEntity.status(201).body(ArticleGetRes.of(201, "정상적으로 조회되었습니다", article, isFollow, isLike, isMe));
     }
 
     @GetMapping("/article/list")
@@ -108,8 +110,13 @@ public class CommunityController {
     })
     public ResponseEntity<? extends ArticlesGetRes> getArticleList(){
 
+        Long userId = 1L;
+
+        //TODO : userService 연결 후 수정
+        User user = new User();
+
         List<Article> articles = communityService.getArticles();
 
-        return ResponseEntity.status(201).body(ArticlesGetRes.of(201, "정상적으로 작성되었습니다", articles));
+        return ResponseEntity.status(201).body(ArticlesGetRes.of(201, "정상적으로 작성되었습니다", articles, user));
     }
 }

@@ -15,7 +15,7 @@ public class ArticleCreatePostReq {
     String content;
 
     @ApiModelProperty(name = "게시글 사진")
-    String image;
+    List<String> images;
 
     @ApiModelProperty(name = "해시태그(꽃 품목)", example = "1")
     List<Long> subjects;

@@ -1,5 +1,6 @@
 package com.ssafy.api.response;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.ssafy.db.entity.Article;
 import com.ssafy.db.entity.Hashtag;
 import com.ssafy.db.entity.Subject;
@@ -26,11 +27,17 @@ public class UserRes {
     int follower;
     @ApiModelProperty(name = "팔로잉 수")
     int following;
+
+    @JsonProperty("isFollow")
     @ApiModelProperty(name = "팔로우 여부")
     boolean isFollow;
 
+    @JsonProperty("isMe")
+    @ApiModelProperty(name = "작성자 동일 여부")
+    boolean isMe;
 
-    public static UserRes of(User user, boolean isFollow) {
+
+    public static UserRes of(User user, boolean isFollow, boolean isMe) {
         UserRes res = new UserRes();
 
         res.setUserId(user.getId());
@@ -39,6 +46,7 @@ public class UserRes {
         res.setFollower(user.getFollowers().size());
         res.setFollowing(user.getFollowings().size());
         res.setFollow(isFollow);
+        res.setMe(isMe);
 
         return res;
     }

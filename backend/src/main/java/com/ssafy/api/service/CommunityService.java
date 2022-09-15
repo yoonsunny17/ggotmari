@@ -27,6 +27,8 @@ public class CommunityService {
     SubjectRepository subjectRepository;
     @Autowired
     ArticleLikeRepository articleLikeRepository;
+    @Autowired
+    PictureRepository pictureRepository;
 
     @Transactional
     public Article createArticle(Long userId, ArticleCreatePostReq articleInfo){
@@ -38,7 +40,8 @@ public class CommunityService {
         article.setUser(user);
         article.setTitle(articleInfo.getTitle());
         article.setContent(articleInfo.getContent());
-        article.setImage(articleInfo.getImage());
+
+
         article.setDate(LocalDateTime.now());
 
         articleRepository.save(article);
@@ -56,6 +59,19 @@ public class CommunityService {
             hashtags.add(hashtag);
         }
         article.setHashtags(hashtags);
+
+        //TODO : S3 연결 후, uuid 파일명 변경 필요
+        List<Picture> pictures = new ArrayList<>();
+        for(String image : articleInfo.getImages()){
+            Picture picture = new Picture();
+            picture.setArticle(article);
+            picture.setImage(image);
+
+            pictureRepository.save(picture);
+
+            pictures.add(picture);
+        }
+        article.setPictures(pictures);
 
         return article;
     }
@@ -78,7 +94,24 @@ public class CommunityService {
         article.setUser(user);
         article.setTitle(articleInfo.getTitle());
         article.setContent(articleInfo.getContent());
-        article.setImage(articleInfo.getImage());
+
+        //이전 사진 전부 삭제
+        List<Picture> pictures = article.getPictures();
+        for(Picture picture : pictures){
+            pictureRepository.delete(picture);
+        }
+
+        List<Picture> newPictures = new ArrayList<>();
+        for(String image : articleInfo.getImages()){
+            Picture picture = new Picture();
+            picture.setArticle(article);
+            picture.setImage(image);
+
+            pictureRepository.save(picture);
+
+            newPictures.add(picture);
+        }
+        article.setPictures(newPictures);
 
         //이전 해시태그 전부 삭제
         List<Hashtag> hashtags = article.getHashtags();
