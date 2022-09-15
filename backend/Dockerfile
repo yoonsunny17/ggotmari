@@ -14,7 +14,7 @@ COPY build.gradle ./
 # COPY src src
 
 RUN chmod +x ./gradlew
-RUN ./gradlew build
+RUN ./gradlew bootJar
 
 COPY --from=builder build/libs/*.jar app.jar
 EXPOSE 8080
