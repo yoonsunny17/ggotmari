@@ -1,5 +1,5 @@
-import StoryItem from "../../UI/molecules/community/storyItem";
-import { AiOutlineSearch } from "react-icons/ai";
+import StoryItem from "../../components/molecules/community/storyItem";
+import SearchBar from "../../components/atoms/common/SearchBar";
 
 export default function Community() {
   return (
@@ -8,16 +8,7 @@ export default function Community() {
         <div className="font-maru text-main text-xl my-5">
           우리들의 꽃 이야기
         </div>
-        <div className="form-control bg-font3 w-5/6 h-7 rounded-md mb-5">
-          <label className="input-group h-full items-center px-3">
-            <AiOutlineSearch />
-            <input
-              type="text"
-              placeholder="꽃 이야기 찾기"
-              className="input bg-font3 w-full h-full text-xs"
-            />
-          </label>
-        </div>
+        <SearchBar placeholder={"꽃 이야기 찾기"} />
       </div>
       <div>
         <div className="tabs">
