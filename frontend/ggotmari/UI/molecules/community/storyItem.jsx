@@ -12,7 +12,7 @@ export default function StoryItem() {
         </div>
       </div>
       <div className="basis-2/3 flex flex-col justify-center px-2">
-        <div className="h-7 text-sm text-black">여자친구한테 칭찬받았어요</div>
+        <p className="text-sm text-black">여자친구한테 칭찬받았어요</p>
         <div className="h-5">
           <div className="h-full text-xs bg-extra2 inline-block rounded-sm px-1 mx-1 text-white">
             #거베라
