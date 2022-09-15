@@ -2,6 +2,7 @@ package com.ssafy.api.controller;
 
 import com.ssafy.api.request.ArticleCreatePostReq;
 import com.ssafy.api.request.CommentCreatePostReq;
+import com.ssafy.api.request.CommentDelReq;
 import com.ssafy.api.request.CommentPutReq;
 import com.ssafy.api.response.*;
 import com.ssafy.api.service.CommunityService;
@@ -170,6 +171,21 @@ public class CommunityController {
     }
 
     //TODO : 댓글 삭제
+    @DeleteMapping("/article/{articleId}/comment")
+    @ApiOperation(value = "댓글 삭제", notes = "삭제된 댓글 id 값을 응답한다.")
+    @ApiResponses({
+            @ApiResponse(code = 201, message = "댓글 삭제 성공"),
+            @ApiResponse(code = 500, message = "댓글 삭제 실패")
+    })
+    public ResponseEntity<? extends CommentDelRes> deleteComment(@PathVariable("articleId") Long articleId, @RequestBody CommentDelReq commentInfo){
+
+        Long userId = 1L;
+
+        boolean isSuccess = communityService.deleteComment(userId, commentInfo);
+
+        return ResponseEntity.status(201).body(CommentDelRes.of(201, "정상적으로 삭제되었습니다", isSuccess));
+    }
+
 
 
     //TODO : 인기글

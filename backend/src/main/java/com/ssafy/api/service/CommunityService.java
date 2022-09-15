@@ -2,6 +2,7 @@ package com.ssafy.api.service;
 
 import com.ssafy.api.request.ArticleCreatePostReq;
 import com.ssafy.api.request.CommentCreatePostReq;
+import com.ssafy.api.request.CommentDelReq;
 import com.ssafy.api.request.CommentPutReq;
 import com.ssafy.api.response.SubjectRes;
 import com.ssafy.db.entity.*;
@@ -212,5 +213,19 @@ public class CommunityService {
         }
 
         return comment;
+    }
+
+    @Transactional
+    public boolean deleteComment(Long userId, CommentDelReq commentInfo){
+
+        User user = userRepository.findById(userId).get();
+        Comment comment = commentRepository.findById(commentInfo.getCommentId()).get();
+
+        if(comment.getUser() != user){
+            return false;
+        }else{
+            commentRepository.delete(comment);
+            return true;
+        }
     }
 }

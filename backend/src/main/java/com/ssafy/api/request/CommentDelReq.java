@@ -5,10 +5,8 @@ import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
 @Data
-@ApiModel("CommentPutRequest")
-public class CommentPutReq {
+@ApiModel("CommentDeleteRequest")
+public class CommentDelReq {
     @ApiModelProperty(name = "댓글 id")
     Long commentId;
-    @ApiModelProperty(name = "댓글 내용")
-    String commentContent;
 }
