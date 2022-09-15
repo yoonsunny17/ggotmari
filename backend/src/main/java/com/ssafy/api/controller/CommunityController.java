@@ -128,10 +128,10 @@ public class CommunityController {
     }
 
     @PostMapping("/article/{articleId}/like")
-    @ApiOperation(value = "댓글 작성", notes = "작성된 댓글 id를 반환한다.")
+    @ApiOperation(value = "좋아요", notes = "좋아여 성공 여부를 반환한다.")
     @ApiResponses({
-            @ApiResponse(code = 201, message = "댓글 작성 성공"),
-            @ApiResponse(code = 500, message = "댓글 작성 실패")
+            @ApiResponse(code = 201, message = "좋아요 전환 성공"),
+            @ApiResponse(code = 500, message = "좋아요 전환 실패")
     })
     public ResponseEntity<? extends LikePostRes> reverseLike(@PathVariable("articleId") Long articleId, @RequestBody LikePostReq likeInfo){
 
@@ -141,7 +141,11 @@ public class CommunityController {
         boolean isSuccess = communityService.reverseArticleLike(userId, articleId, likeInfo);
 
 
-        return ResponseEntity.status(201).body(LikePostRes.of(201, "정상적으로 작성되었습니다", isSuccess));
+        if(isSuccess){
+            return ResponseEntity.status(201).body(LikePostRes.of(201, "정상적으로 전환되었습니다", isSuccess));
+        }else{
+            return ResponseEntity.status(201).body(LikePostRes.of(403, "전환 실패", isSuccess));
+        }
     }
 
     @PostMapping("/article/{articleId}/comment")
@@ -193,10 +197,25 @@ public class CommunityController {
 
         boolean isSuccess = communityService.deleteComment(userId, commentInfo);
 
-        return ResponseEntity.status(201).body(CommentDelRes.of(201, "정상적으로 삭제되었습니다", isSuccess));
+        if(isSuccess){
+            return ResponseEntity.status(201).body(CommentDelRes.of(201, "정상적으로 삭제되었습니다", isSuccess));
+        }else{
+            return ResponseEntity.status(201).body(CommentDelRes.of(403, "삭제 실패", isSuccess));
+        }
     }
 
 
-
     //TODO : 인기글
+    @GetMapping("/article/popular")
+    @ApiOperation(value = "인기글 조회", notes = "인기 게시글 목록을 반환한다.")
+    @ApiResponses({
+            @ApiResponse(code = 201, message = "인기글 조회 성공"),
+            @ApiResponse(code = 500, message = "인기글 조회 실패")
+    })
+    public ResponseEntity<? extends PopularArticleGetRes> popularArticleList(){
+
+        List<Article> articles = communityService.getPopularArticles();
+
+        return ResponseEntity.status(201).body(PopularArticleGetRes.of(201, "정상적으로 작성되었습니다", articles));
+    }
 }

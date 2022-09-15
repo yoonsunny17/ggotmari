@@ -11,8 +11,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Data
-@ApiModel("SubjectResponse")
-public class ArticlesRes {
+@ApiModel("PopularArticleRes")
+public class PopularArticleRes {
 
     @ApiModelProperty(name = "게시글 id", example = "1")
     Long articleId;
@@ -32,12 +32,9 @@ public class ArticlesRes {
     int commentCount;
     @ApiModelProperty(name = "좋아요 수")
     int likeCount;
-    @JsonProperty("isFollow")
-    @ApiModelProperty(name = "팔로우 여부")
-    boolean isFollow;
 
-    public static ArticlesRes of(Article article, User user) {
-        ArticlesRes res = new ArticlesRes();
+    public static PopularArticleRes of(Article article) {
+        PopularArticleRes res = new PopularArticleRes();
 
         res.setArticleId(article.getId());
 
@@ -60,13 +57,6 @@ public class ArticlesRes {
 
         res.setCommentCount(article.getComments().size());
         res.setLikeCount(article.getLikes().size());
-
-
-        if(user.getFollowings().contains(article.getUser())){
-            res.setFollow(true);
-        }else{
-            res.setFollow(false);
-        }
 
         return res;
     }

@@ -11,6 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 @Service
@@ -259,5 +260,17 @@ public class CommunityService {
             articleLikeRepository.delete(articleLike);
         }
         return true;
+    }
+
+    @Transactional
+    public List<Article> getPopularArticles() {
+
+        LocalDateTime start = LocalDateTime.now().minusDays(7);
+        LocalDateTime end = LocalDateTime.now();
+        List<Article> articles = articleRepository.findAllByDateBetween(start, end);
+
+        Collections.sort(articles, (o1, o2) -> o2.getLikes().size() - o1.getLikes().size());
+
+        return articles;
     }
 }
