@@ -5,9 +5,9 @@ FROM openjdk:8-jdk-oracle as builder
 # COPY settings.gradle .
 # COPY src src
 WORKDIR /var/jenkins_home/workspace/ggotmari/backend
-RUN ls ./
-RUN chmod +x ./gradlew
-RUN ./gradlew bootJAR
+# RUN ls ./
+# RUN chmod +x ./gradlew
+RUN ./gradlew build
 
 COPY --from=builder build/libs/*.jar app.jar
 EXPOSE 8080
