@@ -5,6 +5,8 @@ FROM openjdk:8-jdk-oracle as builder
 # COPY settings.gradle .
 # COPY src src
 WORKDIR /var/jenkins_home/workspace/ggotmari/backend
+RUN apt-get update
+RUN apt-get install dos2unix
 RUN dos2unix ./gradlew
 RUN chmod +x ./gradlew
 RUN ./gradlew build
