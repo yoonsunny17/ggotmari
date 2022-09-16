@@ -36,15 +36,17 @@ function ArticleItem({ article }) {
         </div>
       </div>
       <div className="basis-2/3 flex flex-col justify-center px-2">
-        <p className="text-sm font-sans font-medium text-black">
-          {articleTitle}
-        </p>
-        <div>
-          {tags.map((tag) => (
-            <FlowerTag flowerName={tag} key={tag} />
-          ))}
+        <div className="h-24">
+          <p className="text-sm font-sans font-medium text-black">
+            {articleTitle}
+          </p>
+          <div>
+            {tags.map((tag) => (
+              <FlowerTag flowerName={tag} key={tag} />
+            ))}
+          </div>
+          <div className="h-1/2 text-xs text-font2">{articleContent}</div>
         </div>
-        <div className="h-12 text-xs text-font2">{articleContent}</div>
         <div className="text-xs text-font2 w-full">
           <AiFillHeart className="inline text-red-600" />{" "}
           {`${likeCount >= 100 ? "99+" : likeCount} `}
