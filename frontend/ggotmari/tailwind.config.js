@@ -18,6 +18,7 @@ module.exports = {
         extra1: "#57837B",
         extra2: "#A0C1B8",
         extra3: "#FFE194",
+        extra4: "#D9D9D9",
       },
       fontFamily: {
         maru: ["MaruBuri"],
