@@ -32,8 +32,8 @@ public class SwaggerConfig {
                 .apis(RequestHandlerSelectors.any())
                 .paths(PathSelectors.ant("/api/**"))
                 .build()
-                .securityContexts(newArrayList(securityContext()))
-                .securitySchemes(newArrayList(apiKey()))
+//                .securityContexts(newArrayList(securityContext()))
+//                .securitySchemes(newArrayList(apiKey()))
                 ;
     }
 
