@@ -34,8 +34,7 @@ function Home() {
           {/* 꽃 이야기 버튼 & 꽃에 담은 편지 버튼 */}
           <div className="flex justify-center mx-auto">
             {/* 꽃 이야기 버튼 */}
-            {/* <button className="h-12 w-36 rounded-md font-maru text-sm text-font3 bg-sub2 mr-3"> */}
-            <button className="w-1/2 h-12 rounded-md font-maru text-xs text-font3 bg-sub2 mr-3">
+            <button className="w-1/2 h-12 rounded-md font-maru text-xs text-white bg-sub2 mr-3">
               <div className="flex justify-between">
                 <p className="ml-3 pt-1">
                   <BsPeople size={25} />
@@ -44,7 +43,7 @@ function Home() {
               </div>
             </button>
             {/* 꽃에 담은 편지 버튼 */}
-            <button className="w-1/2 h-12 rounded-md font-maru text-xs text-font3 bg-sub1">
+            <button className="w-1/2 h-12 rounded-md font-maru text-xs text-white bg-sub1">
               <div className="flex justify-between">
                 <p className="ml-3 pt-1">
                   <FaRegPaperPlane size={22} />
@@ -74,7 +73,7 @@ function Home() {
           <div className="mb-3">
             <div className="flex justify-between">
               <p>인기 이야기 TOP10</p>
-              <p className="flex items-center">
+              <p className="flex items-center cursor-pointer">
                 <IoIosArrowForward />
               </p>
             </div>
@@ -88,7 +87,7 @@ function Home() {
           </div>
         </div>
         <hr />
-        <div className="font-sans mt-6 mb-3">
+        <div className="font-sans mt-6 mb-20">
           <p className="mb-3">특별한 날 선물하기 좋은 꽃</p>
           <SpecialDayRecomm />
         </div>
