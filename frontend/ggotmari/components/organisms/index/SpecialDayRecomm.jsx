@@ -1,6 +1,6 @@
 import { useState } from "react";
 import FlowerCard from "../../atoms/index/FlowerCard";
-import CollectionBtn from "../../atoms/profile/CollectionBtn";
+import NewRecommBtn from "../../atoms/index/NewRecommButton";
 
 // TODO: 가족 연인 직장동료 친구 선생님 기타
 // TODO: 다른 상품 추천하기 버튼 (pagination)
@@ -17,7 +17,7 @@ function SpecialDayRecomm() {
     <div>
       <div className="grid grid-cols-6 mb-3">
         {tabContArr.map(({ category }, idx) => (
-          <div key={category} className="col-span-1 px-1">
+          <div key={category} className="col-span-1 px-[2px]">
             <button
               key={"tab-" + idx}
               onClick={() => tabClickHandler(idx)}
@@ -50,6 +50,7 @@ function SpecialDayRecomm() {
             })}
           </div>
         )}
+        {/* 친구 */}
         {activeIndex === 2 && (
           <div className="w-full grid grid-cols-3 gap-x-3 gap-y-3">
             {recommFlowers.map((info, idx) => {
@@ -57,6 +58,7 @@ function SpecialDayRecomm() {
             })}
           </div>
         )}
+        {/* 선생님 */}
         {activeIndex === 3 && (
           <div className="w-full grid grid-cols-3 gap-x-3 gap-y-3">
             {recommFlowers.map((info, idx) => {
@@ -64,6 +66,7 @@ function SpecialDayRecomm() {
             })}
           </div>
         )}
+        {/* 직장동료 */}
         {activeIndex === 4 && (
           <div className="w-full grid grid-cols-3 gap-x-3 gap-y-3">
             {recommFlowers.map((info, idx) => {
@@ -71,6 +74,7 @@ function SpecialDayRecomm() {
             })}
           </div>
         )}
+        {/* 기타 */}
         {activeIndex === 5 && (
           <div className="w-full grid grid-cols-3 gap-x-3 gap-y-3">
             {recommFlowers.map((info, idx) => {
@@ -78,6 +82,7 @@ function SpecialDayRecomm() {
             })}
           </div>
         )}
+        <NewRecommBtn />
       </div>
     </div>
   );
