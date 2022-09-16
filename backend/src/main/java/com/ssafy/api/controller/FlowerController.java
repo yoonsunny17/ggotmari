@@ -1,8 +1,7 @@
 package com.ssafy.api.controller;
 
-import com.ssafy.api.response.DailyFlowerGetRes;
-import com.ssafy.api.response.SubjectGetRes;
-import com.ssafy.api.response.searchFlowerGetRes;
+import com.ssafy.api.request.FlowerTagPostReq;
+import com.ssafy.api.response.*;
 import com.ssafy.api.service.FlowerService;
 import com.ssafy.db.entity.DailyFlower;
 import com.ssafy.db.entity.Kind;
@@ -13,10 +12,7 @@ import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -63,6 +59,44 @@ public class FlowerController {
     }
 
     //TODO : 품목 상세 페이지 조회
+//    @GetMapping("/{subjectId}")
+//    @ApiOperation(value = "꽃 검색", notes = "searchText에 적합한 꽃을 반환한다.")
+//    @ApiResponses({
+//            @ApiResponse(code = 201, message = "꽃 검색 성공"),
+//            @ApiResponse(code = 500, message = "꽃 검색 실패")
+//    })
+//    public ResponseEntity<? extends FlowerDetailGetRes> getFlowerDetail(@PathVariable("subjectId") Long subjectId){
+//
+//        Long userId = 1L;
+//
+//        Subject subject = flowerService.getFlowerDetail(subjectId);
+//        List<KindDetailRes> kinds = flowerService.getFlowerKinds(Long userId, subjectId);
+//
+//        if(flowers == null){
+//            return ResponseEntity.status(403).body(FlowerDetailGetRes.of(403, "조회실패.", null));
+//        }else{
+//            return ResponseEntity.status(201).body(FlowerDetailGetRes.of(201, "정상적으로 조회되었습니다.", flowers));
+//        }
+//    }
 
     //TODO : 컬렉션(태그)
+    @PostMapping("/{subjectId}")
+    @ApiOperation(value = "꽃 검색", notes = "searchText에 적합한 꽃을 반환한다.")
+    @ApiResponses({
+            @ApiResponse(code = 201, message = "꽃 검색 성공"),
+            @ApiResponse(code = 500, message = "꽃 검색 실패")
+    })
+    public ResponseEntity<? extends TagPostRes> reverseTag(@PathVariable("subjectId") Long subjectId, @RequestBody FlowerTagPostReq tagInfo){
+
+
+        Long userId = 1L;
+
+        boolean isSuccess = flowerService.reverseFlowerTag(userId, tagInfo);
+
+        if(!isSuccess){
+            return ResponseEntity.status(403).body(TagPostRes.of(403, "전환 실패.", isSuccess));
+        }else{
+            return ResponseEntity.status(201).body(TagPostRes.of(201, "정상적으로 전환되었습니다.", isSuccess));
+        }
+    }
 }
