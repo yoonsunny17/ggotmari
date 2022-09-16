@@ -34,8 +34,7 @@ function Home() {
           {/* 꽃 이야기 버튼 & 꽃에 담은 편지 버튼 */}
           <div className="flex justify-center mx-auto">
             {/* 꽃 이야기 버튼 */}
-            {/* <button className="h-12 w-36 rounded-md font-maru text-sm text-font3 bg-sub2 mr-3"> */}
-            <button className="w-1/2 h-12 rounded-md font-maru text-xs text-font3 bg-sub2 mr-3">
+            <button className="w-1/2 h-12 rounded-md font-maru text-xs text-white bg-sub2 mr-3">
               <div className="flex justify-between">
                 <p className="ml-3 pt-1">
                   <BsPeople size={25} />
@@ -44,7 +43,7 @@ function Home() {
               </div>
             </button>
             {/* 꽃에 담은 편지 버튼 */}
-            <button className="w-1/2 h-12 rounded-md font-maru text-xs text-font3 bg-sub1">
+            <button className="w-1/2 h-12 rounded-md font-maru text-xs text-white bg-sub1">
               <div className="flex justify-between">
                 <p className="ml-3 pt-1">
                   <FaRegPaperPlane size={22} />
@@ -74,22 +73,21 @@ function Home() {
           <div className="mb-3">
             <div className="flex justify-between">
               <p>인기 이야기 TOP10</p>
-              <p className="flex items-center">
+              <p className="flex items-center cursor-pointer">
                 <IoIosArrowForward />
               </p>
             </div>
-            {/* carousel component 고칠 것!! */}
-            <div className="carousel">
-              <div className="carousel-item">
-                {articles.map((article) => (
+            <div className="carousel w-screen">
+              {articles.map((article) => (
+                <div className="carousel-item w-screen">
                   <ArticleItem article={article} key={article.articleId} />
-                ))}
-              </div>
+                </div>
+              ))}
             </div>
           </div>
         </div>
         <hr />
-        <div className="font-sans mt-6 mb-3">
+        <div className="font-sans mt-6 mb-14">
           <p className="mb-3">특별한 날 선물하기 좋은 꽃</p>
           <SpecialDayRecomm />
         </div>
@@ -151,6 +149,32 @@ const articles = [
     tags: ["국화"],
     commentCount: 134,
     likeCount: 178,
+  },
+  {
+    articleId: 3,
+    articleImage:
+      "https://images.unsplash.com/photo-1578863950596-a74dfe8267b5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1080&q=80",
+    userId: "hotbubbletea",
+    articleTitle: "꽃들고 피크닉 다녀왔어요",
+    articleContent:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse placerat vel quam ...",
+    articleDate: "2022.09.07 14:04",
+    tags: ["장미", "수국"],
+    commentCount: 11,
+    likeCount: 178,
+  },
+  {
+    articleId: 4,
+    articleImage:
+      "https://images.unsplash.com/photo-1487530811176-3780de880c2d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80",
+    userId: "hotbubbletea",
+    articleTitle: "나만의 꽃다발",
+    articleContent:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse placerat vel quam ...",
+    articleDate: "2022.09.07 14:04",
+    tags: ["장미"],
+    commentCount: 134,
+    likeCount: 50,
   },
 ];
 
