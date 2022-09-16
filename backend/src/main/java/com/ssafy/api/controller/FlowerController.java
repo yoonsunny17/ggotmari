@@ -23,7 +23,6 @@ public class FlowerController {
     @Autowired
     FlowerService flowerService;
 
-    //TODO : 오늘의 꽃
     @GetMapping("/daily")
     @ApiOperation(value = "오늘의 꽃 조회", notes = "오늘의 꽃 반환한다.")
     @ApiResponses({
@@ -34,8 +33,6 @@ public class FlowerController {
 
         DailyFlower dailyFlower = flowerService.getDailyFlower();
 
-        System.out.println("===========" + dailyFlower.getId());
-
         if(dailyFlower == null){
             return ResponseEntity.status(201).body(DailyFlowerGetRes.of(403, "조회실패.", null));
         }else{
@@ -43,8 +40,8 @@ public class FlowerController {
         }
     }
 
-
     //TODO : 꽃 검색
+
 
     //TODO : 품목 상세 페이지 조회
 

@@ -19,13 +19,6 @@ public class FlowerService {
     DailyFlowerRespository dailyFlowerRespository;
 
     public DailyFlower getDailyFlower() {
-
-        String date = LocalDate.now().getMonthValue() + "-" + LocalDate.now().getDayOfMonth();
-
-        System.out.println("------------ " + date);
-
-        DailyFlower dailyFlower = dailyFlowerRespository.findDailyFlowerByFlowerDate(LocalDate.now().getMonthValue() + "-" + LocalDate.now().getDayOfMonth());
-
-        return dailyFlower;
+        return dailyFlowerRespository.findDailyFlowerByFlowerDate(LocalDate.now().getMonthValue() + "-" + LocalDate.now().getDayOfMonth());
     }
 }
