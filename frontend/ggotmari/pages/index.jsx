@@ -5,6 +5,7 @@ import ArticleItem from "../components/molecules/community/ArticleItem";
 import { BsPeople } from "react-icons/bs";
 import { FaRegPaperPlane } from "react-icons/fa";
 import { IoIosArrowForward } from "react-icons/io";
+import SpecialDayRecomm from "../components/organics/index/SpecialDayRecomm";
 
 function Home() {
   const username = "sangchuman";
@@ -88,8 +89,9 @@ function Home() {
           </div>
         </div>
         <hr />
-        <div className="font-sans mt-6">
-          <p>특별한 날 선물하기 좋은 꽃</p>
+        <div className="font-sans mt-6 mb-3">
+          <p className="mb-3">특별한 날 선물하기 좋은 꽃</p>
+          <SpecialDayRecomm />
         </div>
       </div>
     </div>
