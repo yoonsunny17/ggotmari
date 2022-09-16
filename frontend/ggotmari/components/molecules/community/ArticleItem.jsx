@@ -29,7 +29,7 @@ function ArticleItem({ article }) {
 
   return (
     <div className="flex flex-row my-2 h-32" onClick={handleDetailClick}>
-      <div className="flex basis-1/3 flex-col items-end justify-center">
+      <div className="flex flex-col items-end justify-center">
         <div className="w-24">
           <ImageSquare imageSrc={articleImage} />
           <div className="text-xs text-font2 w-full">@{userId}</div>
