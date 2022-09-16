@@ -78,13 +78,12 @@ function Home() {
                 <IoIosArrowForward />
               </p>
             </div>
-            {/* carousel component 고칠 것!! */}
-            <div className="carousel">
-              <div className="carousel-item">
-                {articles.map((article) => (
+            <div className="carousel w-screen">
+              {articles.map((article) => (
+                <div className="carousel-item w-screen">
                   <ArticleItem article={article} key={article.articleId} />
-                ))}
-              </div>
+                </div>
+              ))}
             </div>
           </div>
         </div>
@@ -151,6 +150,32 @@ const articles = [
     tags: ["국화"],
     commentCount: 134,
     likeCount: 178,
+  },
+  {
+    articleId: 3,
+    articleImage:
+      "https://images.unsplash.com/photo-1578863950596-a74dfe8267b5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1080&q=80",
+    userId: "hotbubbletea",
+    articleTitle: "꽃들고 피크닉 다녀왔어요",
+    articleContent:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse placerat vel quam ...",
+    articleDate: "2022.09.07 14:04",
+    tags: ["장미", "수국"],
+    commentCount: 11,
+    likeCount: 178,
+  },
+  {
+    articleId: 4,
+    articleImage:
+      "https://images.unsplash.com/photo-1487530811176-3780de880c2d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80",
+    userId: "hotbubbletea",
+    articleTitle: "나만의 꽃다발",
+    articleContent:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse placerat vel quam ...",
+    articleDate: "2022.09.07 14:04",
+    tags: ["장미"],
+    commentCount: 134,
+    likeCount: 50,
   },
 ];
 
