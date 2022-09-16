@@ -5,7 +5,7 @@ import ArticleItem from "../components/molecules/community/ArticleItem";
 import { BsPeople } from "react-icons/bs";
 import { FaRegPaperPlane } from "react-icons/fa";
 import { IoIosArrowForward } from "react-icons/io";
-import SpecialDayRecomm from "../components/organics/index/SpecialDayRecomm";
+import SpecialDayRecomm from "../components/organisms/index/SpecialDayRecomm";
 
 function Home() {
   const username = "sangchuman";

@@ -1,7 +1,7 @@
 import { useRouter } from "next/router";
 import StoryImg from "../../components/atoms/profile/StoryImg";
-import ProfileInfo from "../../components/organics/profile/ProfileInfo";
-import ProfileNavBar from "../../components/organics/profile/ProfileNavBar";
+import ProfileInfo from "../../components/organisms/profile/ProfileInfo";
+import ProfileNavBar from "../../components/organisms/profile/ProfileNavBar";
 
 export default function Profile() {
   const router = useRouter();
