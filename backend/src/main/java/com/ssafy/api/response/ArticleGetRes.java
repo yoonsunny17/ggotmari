@@ -2,10 +2,7 @@ package com.ssafy.api.response;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.ssafy.common.model.response.BaseResponseBody;
-import com.ssafy.db.entity.Article;
-import com.ssafy.db.entity.Comment;
-import com.ssafy.db.entity.Hashtag;
-import com.ssafy.db.entity.User;
+import com.ssafy.db.entity.*;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
@@ -19,7 +16,7 @@ public class ArticleGetRes extends BaseResponseBody {
     @ApiModelProperty(name = "작성자 정보")
     UserRes user;
     @ApiModelProperty(name = "게시글 사진")
-    String articleImage;
+    List<String> articleImage = new ArrayList<>();
     @ApiModelProperty(name = "게시글 제목")
     String articleTitle;
     @ApiModelProperty(name = "게시글 내용")
@@ -47,7 +44,12 @@ public class ArticleGetRes extends BaseResponseBody {
         res.setMessage(message);
 
         res.setUser(article.getUser(), isFollow, loginUser);
-        res.setArticleImage(article.getImage());
+
+        List<Picture> pictures = article.getPictures();
+        for(Picture picture : pictures){
+            res.getArticleImage().add(picture.getImage());
+        }
+
         res.setArticleTitle(article.getTitle());
         res.setArticleContent(article.getContent());
         res.setArticleDate(article.getDate().toString());
