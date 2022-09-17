@@ -255,9 +255,9 @@ public class CommunityService {
                 return false;
             }
 
-            System.out.println("==============" + articleLike.getId());
-
             articleLikeRepository.delete(articleLike);
+
+            user.getLikes().remove(articleLike);
         }
         return true;
     }
