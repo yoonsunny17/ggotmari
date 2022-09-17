@@ -2,6 +2,8 @@ package com.ssafy.api.service;
 
 import com.ssafy.api.request.FlowerTagPostReq;
 import com.ssafy.api.response.KindDetailRes;
+import com.ssafy.api.response.SubjectArticleRes;
+import com.ssafy.api.response.TagRes;
 import com.ssafy.db.entity.*;
 import com.ssafy.db.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,6 +31,8 @@ public class FlowerService {
     TagRepository tagRepository;
     @Autowired
     FlowerLikeRepository flowerLikeRepository;
+    @Autowired
+    HashtagRepository hashtagRepository;
 
     public DailyFlower getDailyFlower() {
         return dailyFlowerRespository.findDailyFlowerByFlowerDate(LocalDate.now().getMonthValue() + "-" + LocalDate.now().getDayOfMonth());
@@ -63,10 +67,41 @@ public class FlowerService {
 
         List<KindDetailRes> flowers = new ArrayList<>();
         for(Kind kind : kinds){
+            KindDetailRes detail = new KindDetailRes();
+            detail.setKindId(kind.getId());
+            detail.setKindName(kind.getKindName());
+            detail.setKindImage(kind.getFlowerImage());
+
+            List<Tag> tags = tagRepository.findAll();
+            for(Tag tag : tags){
+                TagRes tagRes = new TagRes();
+                tagRes.setTagId(tag.getId());
+                tagRes.setTagName(tag.getDear());
+                if(flowerLikeRepository.findFlowerLikeByUserAndTagAndKind(user, tag, kind) != null){
+                    tagRes.setTagStatus(true);
+                }else{
+                    tagRes.setTagStatus(false);
+                }
+                detail.getKinds().add(tagRes);
+            }
+
+            flowers.add(detail);
         }
 
-        return null;
-//        return kindRepository.findAllBySubject(subject);
+        return flowers;
+    }
+
+    public List<Article> getSubjectArticles(Long subjectId){
+        List<Article> articles = new ArrayList<>();
+
+        Subject subject = subjectRepository.findById(subjectId).get();
+
+        List<Hashtag> hashtags = hashtagRepository.findAllBySubject(subject);
+        for(Hashtag hashtag : hashtags){
+            articles.add(hashtag.getArticle());
+        }
+
+        return articles;
     }
 
     @Transactional

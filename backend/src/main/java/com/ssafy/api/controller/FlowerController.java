@@ -3,6 +3,7 @@ package com.ssafy.api.controller;
 import com.ssafy.api.request.FlowerTagPostReq;
 import com.ssafy.api.response.*;
 import com.ssafy.api.service.FlowerService;
+import com.ssafy.db.entity.Article;
 import com.ssafy.db.entity.DailyFlower;
 import com.ssafy.db.entity.Kind;
 import com.ssafy.db.entity.Subject;
@@ -58,33 +59,33 @@ public class FlowerController {
         }
     }
 
-    //TODO : 품목 상세 페이지 조회
-//    @GetMapping("/{subjectId}")
-//    @ApiOperation(value = "꽃 검색", notes = "searchText에 적합한 꽃을 반환한다.")
-//    @ApiResponses({
-//            @ApiResponse(code = 201, message = "꽃 검색 성공"),
-//            @ApiResponse(code = 500, message = "꽃 검색 실패")
-//    })
-//    public ResponseEntity<? extends FlowerDetailGetRes> getFlowerDetail(@PathVariable("subjectId") Long subjectId){
-//
-//        Long userId = 1L;
-//
-//        Subject subject = flowerService.getFlowerDetail(subjectId);
-//        List<KindDetailRes> kinds = flowerService.getFlowerKinds(Long userId, subjectId);
-//
-//        if(flowers == null){
-//            return ResponseEntity.status(403).body(FlowerDetailGetRes.of(403, "조회실패.", null));
-//        }else{
-//            return ResponseEntity.status(201).body(FlowerDetailGetRes.of(201, "정상적으로 조회되었습니다.", flowers));
-//        }
-//    }
-
-    //TODO : 컬렉션(태그)
-    @PostMapping("/{subjectId}")
-    @ApiOperation(value = "꽃 검색", notes = "searchText에 적합한 꽃을 반환한다.")
+    @GetMapping("/{subjectId}")
+    @ApiOperation(value = "품목 상세 페이지 조회", notes = "품목 상세 내역을 반환한다.")
     @ApiResponses({
-            @ApiResponse(code = 201, message = "꽃 검색 성공"),
-            @ApiResponse(code = 500, message = "꽃 검색 실패")
+            @ApiResponse(code = 201, message = "품목 조회 성공"),
+            @ApiResponse(code = 500, message = "품목 조회 실패")
+    })
+    public ResponseEntity<? extends FlowerDetailGetRes> getFlowerDetail(@PathVariable("subjectId") Long subjectId){
+
+        Long userId = 1L;
+
+        Subject subject = flowerService.getFlowerDetail(subjectId);
+
+        if(subject == null){
+            return ResponseEntity.status(403).body(FlowerDetailGetRes.of(403, "조회실패.", null, null, null));
+        }else{
+            List<KindDetailRes> kinds = flowerService.getFlowerKinds(userId, subjectId);
+            List<Article> articles = flowerService.getSubjectArticles(subjectId);
+
+            return ResponseEntity.status(201).body(FlowerDetailGetRes.of(201, "정상적으로 조회되었습니다.", subject, kinds, articles));
+        }
+    }
+
+    @PostMapping("/{subjectId}")
+    @ApiOperation(value = "컬랙션(태그) 추가/삭제", notes = "컬렉션 전환 성공 여부를 반환한다.")
+    @ApiResponses({
+            @ApiResponse(code = 201, message = "태그 전환 성공"),
+            @ApiResponse(code = 500, message = "태그 전환 실패")
     })
     public ResponseEntity<? extends TagPostRes> reverseTag(@PathVariable("subjectId") Long subjectId, @RequestBody FlowerTagPostReq tagInfo){
 
