@@ -1,7 +1,7 @@
 import { useRouter } from "next/router";
 import { useState } from "react";
 import ProfileImg from "../../components/atoms/common/ProfileImg";
-import { AiOutlineMore } from "react-icons/ai";
+import { AiOutlineMore, AiOutlineUp } from "react-icons/ai";
 import FlowerTag from "../../components/atoms/common/FlowerTag";
 import CommentDrawer from "../../components/organisms/community/CommentDrawer";
 import { AiOutlineHeart, AiOutlineComment } from "react-icons/ai";
@@ -94,9 +94,17 @@ function ArticleDetail() {
           </div>
         </div>
         <hr />
-        <div className="p-4">{article.articleContent}</div>
-        <div className="h-14" onClick={() => setIsOpen(true)}>
-          comment
+        <div className="p-4 text-black">{article.articleContent}</div>
+        <div
+          className="h-14 p-4 hover:bg-gray-100"
+          onClick={() => setIsOpen(true)}
+        >
+          <div className="flex flex-row justify-between items-center">
+            <div>댓글 {article.commentCount}</div>
+            <AiOutlineUp className="text-xl" />
+          </div>
+
+          <div></div>
         </div>
         <CommentDrawer isOpen={isOpen} setIsOpen={setIsOpen}></CommentDrawer>
       </div>
