@@ -1,6 +1,7 @@
 import ArticleItem from "../../components/molecules/community/ArticleItem";
 import SearchBar from "../../components/atoms/common/SearchBar";
 import { useState } from "react";
+import { FaPlus } from "react-icons/fa";
 
 export default function Community() {
   const [tab, setTab] = useState("전체");
@@ -64,6 +65,9 @@ export default function Community() {
         {articles.map((article) => (
           <ArticleItem article={article} key={article.articleId} />
         ))}
+      </div>
+      <div className="fixed bottom-20 right-5 rounded-full w-12 aspect-square bg-sub1 shadow-lg flex justify-center items-center hover:scale-110 hover:bg-main duration-200">
+        <FaPlus className="text-white text-2xl" />
       </div>
     </div>
   );
