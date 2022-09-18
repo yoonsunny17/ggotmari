@@ -60,24 +60,25 @@
 
 <br/>
 <br/>
-<br/>
 
 ## 기획
 
 ![image.png](./images/image.png)
 
+<br/>
+
 
 ## 산출물
 #### FrontEnd
-* [컬러 팔레트]()
-* [목업]()
-* [화면 정의서]()
+* [컬러 팔레트](https://a303-princess.notion.site/14e449ed16df45bdb14f1fe2ada16a7f)
+* [목업](https://a303-princess.notion.site/06a4abbe99d74367a5fa378fc93141f2)
+* [화면 정의서](https://a303-princess.notion.site/398602bed88147449753419eb72f7a14)
 
 
 #### BackEnd
-* [ERD]()
-* [기능 명세서]()
-* [API 명세서]()
-* [시퀀스 다이어그램]()
-* [아키텍처]()
+* [ERD](https://a303-princess.notion.site/ERD-be88f33cce064721b42a9dd400019212)
+* [기능 명세서](https://a303-princess.notion.site/4b620507610246b2a9392f11f2f7c112)
+* [API 명세서](https://a303-princess.notion.site/API-9dbdb091f79041c69ca38d5af22e0713)
+* [시퀀스 다이어그램](https://a303-princess.notion.site/9338f8c41f744ff6b44d0b5462a2db81)
+* [아키텍처](https://a303-princess.notion.site/70356a7ef26d430ab943792b4e5d1a76)
 
