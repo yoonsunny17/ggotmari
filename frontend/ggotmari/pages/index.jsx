@@ -1,14 +1,29 @@
+import { useRouter } from "next/router";
+import Image from "next/image";
+
 import Header from "../components/atoms/common/Header";
 import SearchBar from "../components/atoms/common/SearchBar";
 import CommunityCard from "../components/atoms/index/CommunityCard";
 import ArticleItem from "../components/molecules/community/ArticleItem";
+import SpecialDayRecomm from "../components/organisms/index/SpecialDayRecomm";
+
 import { BsPeople } from "react-icons/bs";
 import { FaRegPaperPlane } from "react-icons/fa";
 import { IoIosArrowForward } from "react-icons/io";
-import SpecialDayRecomm from "../components/organisms/index/SpecialDayRecomm";
 
 function Home() {
   const username = "sangchuman";
+
+  const router = useRouter();
+  // 오늘의 꽃
+  const handleTodayFlower = () => {
+    router.push(
+      {
+        pathname: "flower/daily",
+      },
+      "flower/daily"
+    );
+  };
   return (
     <div>
       <Header text={"꽃마리"} />
@@ -19,7 +34,10 @@ function Home() {
       <div className="container mx-auto px-[30px]">
         <div className="my-6">
           {/* 오늘의 꽃 버튼 */}
-          <div className="cursor-pointer flex justify-center mb-3">
+          <div
+            onClick={handleTodayFlower}
+            className="cursor-pointer flex justify-center mb-3"
+          >
             <div className="rounded-md w-full h-32 overflow-hidden">
               <img
                 className="w-full h-full brightness-90 object-cover"
@@ -79,7 +97,7 @@ function Home() {
             </div>
             <div className="carousel w-screen">
               {articles.map((article) => (
-                <div className="carousel-item w-screen">
+                <div className="carousel-item w-screen" key={article.articleId}>
                   <ArticleItem article={article} key={article.articleId} />
                 </div>
               ))}
