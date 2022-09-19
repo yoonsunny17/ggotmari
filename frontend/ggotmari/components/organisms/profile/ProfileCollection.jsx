@@ -68,10 +68,12 @@ function ProfileCollection() {
       </div>
       {/* 사진 및 내용들 */}
       <div className="colletion-items grid grid-cols-3 mt-3 mx-3">
-        {collectionItems.map((item) => {
-          <div className="collection-item p-1.5 text-xs">
-            <CollectionImage url={item.url} title={item.title} />
-          </div>;
+        {collectionItems.map((item, index) => {
+          return (
+            <div className="collection-item p-1.5 text-xs" key={index}>
+              <CollectionImage url={item.url} title={item.title} />
+            </div>
+          );
         })}
       </div>
     </>
