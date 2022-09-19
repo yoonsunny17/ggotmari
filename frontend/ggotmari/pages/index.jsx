@@ -1,8 +1,10 @@
 import Link from "next/Link";
+import Router from "next/router";
 
 import Header from "../components/atoms/common/Header";
 import SearchBar from "../components/atoms/common/SearchBar";
 import CommunityCard from "../components/atoms/index/CommunityCard";
+import RecommItem from "../components/molecules/main/RecommItem";
 import ArticleItem from "../components/molecules/community/ArticleItem";
 import SpecialDayRecomm from "../components/organisms/index/SpecialDayRecomm";
 
@@ -20,11 +22,14 @@ function Home() {
         <SearchBar placeholder={"꽃 찾기"} />
       </div>
       <hr />
-      <div className="flex flex-col items-center w-screen px-[30px]">
+      <div className="flex flex-col items-center w-screen px-6">
         <div className="flex flex-col my-6 w-full">
           {/* 오늘의 꽃 버튼 */}
 
-          <div className="cursor-pointer flex justify-center mb-3">
+          <div
+            onClick={() => Router.push("/flower/daily")}
+            className="cursor-pointer flex justify-center mb-3"
+          >
             <div className="rounded-md w-full h-32 overflow-hidden">
               <img
                 className="w-full h-full brightness-90 object-cover"
@@ -39,7 +44,10 @@ function Home() {
           {/* 꽃 이야기 버튼 & 꽃에 담은 편지 버튼 */}
           <div className="flex justify-center">
             {/* 꽃 이야기 버튼 */}
-            <button className="w-1/2 h-12 rounded-md font-maru text-xs text-white bg-sub2 mr-3">
+            <button
+              onClick={() => Router.push("/community")}
+              className="w-1/2 h-12 rounded-md font-maru text-xs text-white bg-sub2 mr-3"
+            >
               <div className="flex justify-between">
                 <p className="ml-3 pt-1">
                   <BsPeople size={25} />
@@ -48,7 +56,10 @@ function Home() {
               </div>
             </button>
             {/* 꽃에 담은 편지 버튼 */}
-            <button className="w-1/2 h-12 rounded-md font-maru text-xs text-white bg-sub1">
+            <button
+              onClick={() => Router.push("/ocr")}
+              className="w-1/2 h-12 rounded-md font-maru text-xs text-white bg-sub1"
+            >
               <div className="flex justify-between">
                 <p className="ml-3 pt-1">
                   <FaRegPaperPlane size={22} />
@@ -61,10 +72,10 @@ function Home() {
         <hr />
 
         {/* 추천 이야기 */}
-        <div className="mt-6 font-sans mb-4">
+        <div className="mt-3 font-sans mb-4">
           <div className="mb-3">
             <div>{username} 님을 위한 추천 이야기</div>
-            <div className="text-xs">요즘 이런 꽃다발 좋아하시더라구요 :)</div>
+            <div className="text-xs">요즘 이런 꽃 좋아하시더라구요 :)</div>
           </div>
           <div className="w-full grid grid-cols-2 gap-x-3 gap-y-3">
             {recommPost.map((info, idx) => {
@@ -85,7 +96,10 @@ function Home() {
             <div className="carousel w-full">
               {articles.map((article, idx) => {
                 return (
-                  <div className="carousel-item relative w-full" key={idx}>
+                  <div
+                    className="carousel-item relative w-full px-0.5"
+                    key={idx}
+                  >
                     <ArticleItem article={article} />
                   </div>
                 );
@@ -94,7 +108,7 @@ function Home() {
           </div>
         </div>
         <hr />
-        <div className="font-sans mt-6 mb-14">
+        <div className="font-sans mt-3 mb-14">
           <p className="mb-3">특별한 날 선물하기 좋은 꽃</p>
           <SpecialDayRecomm />
         </div>
@@ -105,24 +119,31 @@ function Home() {
 
 const recommPost = [
   {
+    articleId: 100,
     username: "sangchuman",
     imgUrl:
       "https://images.unsplash.com/photo-1496483648148-47c686dc86a8?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1173&q=80",
     likeNumbs: 13,
   },
   {
+    articleId: 101,
+
     username: "hot_bubbletea",
     imgUrl:
       "https://images.unsplash.com/photo-1530092285049-1c42085fd395?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80",
     likeNumbs: 32,
   },
   {
+    articleId: 102,
+
     username: "princess_yo",
     imgUrl:
       "https://images.unsplash.com/photo-1561181286-d3fee7d55364?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80",
     likeNumbs: 6,
   },
   {
+    articleId: 103,
+
     username: "sleepy_ssuny",
     imgUrl:
       "https://images.unsplash.com/photo-1510894399130-57dfa8dcc45d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1083&q=80",
