@@ -23,7 +23,7 @@ function ArticleItem({ article }) {
       {
         pathname: `community/${articleId}`,
       },
-      `community/${articleId}`,
+      `community/${articleId}`
     );
   };
 
@@ -33,13 +33,13 @@ function ArticleItem({ article }) {
         className="flex flex-row my-2 h-32 cursor-pointer"
         onClick={handleDetailClick}
       >
-        <div className="flex basis-1/3 flex-col items-end justify-center">
+        <div className="flex flex-col items-end justify-center">
           <div className="w-24">
             <ImageSquare imageSrc={articleImage} />
             <div className="text-xs text-font2 w-full">@{userId}</div>
           </div>
         </div>
-        <div className="basis-2/3 flex flex-col justify-center px-2">
+        <div className="flex flex-col justify-center px-2">
           <div className="h-24">
             <p className="text-sm font-sans font-medium text-black">
               {articleTitle}

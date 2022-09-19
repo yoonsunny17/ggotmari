@@ -61,7 +61,7 @@ export default function Community() {
           </div>
         ))}
       </div>
-      <div className="p-4">
+      <div className="p-4 flex flex-col">
         {articles.map((article) => (
           <ArticleItem article={article} key={article.articleId} />
         ))}

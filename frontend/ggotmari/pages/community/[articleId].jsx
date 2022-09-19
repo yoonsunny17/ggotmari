@@ -167,7 +167,7 @@ function ArticleDetail() {
             <p className="text-xs font-sans text-black">
               {article.articleUser.userName}
             </p>
-            <p className="text-[4px] font-sans">
+            <p className="text-[4px] font-sans text-font2">
               팔로워 {article.articleUser.follower} 팔로잉{" "}
               {article.articleUser.following}
             </p>
@@ -191,10 +191,17 @@ function ArticleDetail() {
           </div>
           <div className="flex flex-row justify-between items-end">
             <div>
-              <AiOutlineHeart className="inline text-red-600" />{" "}
-              {article.likeCount >= 100 ? "99+" : article.likeCount}
-              <AiOutlineComment className="inline ml-2" />{" "}
-              {article.commentCount >= 100 ? "99+" : article.commentCount}
+              <div className="inline">
+                <AiOutlineHeart className="inline text-red-600" />{" "}
+                {article.likeCount >= 100 ? "99+" : article.likeCount}
+              </div>
+              <div
+                className="inline hover:text-font2"
+                onClick={() => setIsOpen(true)}
+              >
+                <AiOutlineComment className="inline ml-2" />{" "}
+                {article.commentCount >= 100 ? "99+" : article.commentCount}
+              </div>
             </div>
             <div className="text-sm">{article.articleDate}</div>
           </div>
