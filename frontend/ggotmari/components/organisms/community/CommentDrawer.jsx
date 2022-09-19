@@ -13,7 +13,7 @@ function CommentDrawer({ children, isOpen, setIsOpen, loginUserImg }) {
     >
       <div
         className={
-          "h-full bg-white bottom-0 absolute shadow-xl delay-400 duration-500 ease-in-out transition-all transform rounded-t-xl" +
+          "h-full bg-white bottom-0 absolute w-full duration-500 ease-in-out transition-all transform rounded-t-xl overflow-hidden" +
           (isOpen ? " translate-y-0 " : " translate-y-full ")
         }
       >
@@ -26,7 +26,7 @@ function CommentDrawer({ children, isOpen, setIsOpen, loginUserImg }) {
               <div className="font-bold text-lg text-black">댓글</div>
               <AiOutlineDown className="text-2xl" />
             </div>
-            <div className="flex flex-col px-5 space-y-3">{children}</div>
+            <div className="flex flex-col px-3 space-y-3">{children}</div>
             <div className="h-14"></div>
           </div>
           <div>
@@ -34,11 +34,11 @@ function CommentDrawer({ children, isOpen, setIsOpen, loginUserImg }) {
               <div className="h-9">
                 <ProfileImg imgSrc={loginUserImg} />
               </div>
-              <div className="grow">
+              <div className="grow font-sans">
                 <input
                   type="text"
                   placeholder="댓글을 입력하세요"
-                  className="input bg-white w-full max-w-xs focus:outline-none text-font2 text-base"
+                  className="input bg-white w-full focus:outline-none text-font2 text-sm px-0"
                 />
               </div>
               <p className="rounded-md bg-main px-2 py-1 text-white">등록</p>
