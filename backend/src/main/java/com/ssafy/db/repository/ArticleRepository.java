@@ -11,4 +11,5 @@ public interface ArticleRepository extends JpaRepository<Article, Long> {
 
     List<Article> findAllByDateBetween(LocalDateTime start, LocalDateTime end);
 
+
 }
