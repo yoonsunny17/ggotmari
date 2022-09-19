@@ -29,29 +29,31 @@ function ProfileInfo({
         <div className="profile-info-box">
           <div className="box-username font-sans font-bold flex flex-start my-1">
             {/* {username} */}
-            <span className="mr-3">YJBaby132</span>
+            <span className="mr-3 text-font1">YJBaby132</span>
             {/* onClick */}
             <span className="grid content-center">
-              <BsShare className="icon-share" />
+              <BsShare className="icon-share cursor-pointer" />
             </span>
           </div>
           {/* onClick */}
           {/* numFollow */}
-          <div className="box-follow-info font-sans text-xs text-font2 my-0.5">
-            팔로우 10 | 팔로워 15
+          <div className="box-follow-info font-sansultralight text-xs text-font2 my-0.5">
+            <span className="cursor-pointer">팔로우 10 | 팔로워 15</span>
           </div>
           {/* Link */}
           {isLoggedIn && username === router ? (
-            <div className="box-btns font-sans text-xs text-sub2 underline my-0.5">
-              프로필 수정
+            <div className="box-btns font-sansultralight text-xs text-sub2 underline my-0.5">
+              <span className="cursor-pointer">프로필 수정</span>
             </div>
           ) : isLoggedIn && isFollowing ? (
-            <div className="box-btns font-sans text-xs my-0.5">
-              <button>팔로잉</button>
+            <div className="box-btns font-sansultralight text-xs my-0.5 w-1/5">
+              <button className="btn-follow bg-main p-1 rounded-md text-font3 hover:bg-sub1 hover:transition-all w-full">
+                팔로잉
+              </button>
             </div>
           ) : isLoggedIn ? (
-            <div className="box-btns font-sans text-xs my-0.5">
-              <button className="btn-follow bg-sub1 p-1 rounded-md text-font3 hover:bg-main hover:transition-all">
+            <div className="box-btns font-sansultralight text-xs my-0.5 w-1/5">
+              <button className="btn-follow bg-sub1 p-1 rounded-md text-font3 hover:bg-main hover:transition-all w-full">
                 팔로우
               </button>
             </div>

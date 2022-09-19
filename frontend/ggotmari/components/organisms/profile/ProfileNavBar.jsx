@@ -18,7 +18,7 @@ function ProfileNavBar() {
             </Link>
           </div>
         ) : (
-          <div className="story w-full flex justify-center border-b border-b-font2 pb-4">
+          <div className="story w-full flex justify-center border-b border-b-[E1E1E1] pb-4">
             <Link href={`/profile/${router.query.username}`}>
               <a className="w-2/5 hover:border-b-sub1 transition-all hover:cursor-pointer flex justify-center">
                 <BsGrid3X3 className="w-full" />
@@ -36,7 +36,7 @@ function ProfileNavBar() {
             </Link>
           </div>
         ) : (
-          <div className="collection w-full flex justify-center border-b border-b-font2 pb-4">
+          <div className="collection w-full flex justify-center border-b border-b-[E1E1E1] pb-4">
             <Link href={`/profile/collection/${router.query.username}`}>
               <a className="w-2/5 hover:text-sub1 transition-all hover:cursor-pointer">
                 <BsBookmark className="w-full" />
@@ -54,7 +54,7 @@ function ProfileNavBar() {
             </Link>
           </div>
         ) : (
-          <div className="like w-full flex justify-center border-b border-b-font2 pb-4">
+          <div className="like w-full flex justify-center border-b border-b-[E1E1E1] pb-4">
             <Link href={`/profile/like/${router.query.username}`}>
               <a className="w-2/5 hover:border-b-sub1 transition-all hover:cursor-pointer">
                 <BsHeart className="w-full" />
@@ -63,7 +63,7 @@ function ProfileNavBar() {
           </div>
         )}
       </div>
-      <div className="about mt-4 mx-4 mb-2 text-lg">
+      <div className="about mt-4 mx-4 mb-2 text-lg text-font1 font-maru font-medium">
         {router.pathname === "/profile/[username]" ? (
           <p>전체 이야기</p>
         ) : router.pathname === "/profile/collection/[username]" ? (
