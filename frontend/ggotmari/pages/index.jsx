@@ -107,7 +107,7 @@ function Home() {
           </div>
         </div>
         <hr />
-        <div className="font-sans mt-3 mb-14">
+        <div className="font-sans mt-3 mb-14 w-full">
           <p className="mb-3">특별한 날 선물하기 좋은 꽃</p>
           <SpecialDayRecomm />
         </div>

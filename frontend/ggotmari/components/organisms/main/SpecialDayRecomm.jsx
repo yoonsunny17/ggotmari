@@ -56,46 +56,84 @@ function SpecialDayRecomm() {
         )}
         {/* 연인 */}
         {activeIndex === 1 && (
-          <div className="w-full grid grid-cols-3 gap-x-3 gap-y-3">
-            {/* {recommFlowers.slice(offset, offset + limit).map((info, idx) => {
-              return <FlowerCard info={info} key={idx} />;
-            })} */}
-          </div>
+          <>
+            <div className="w-full grid grid-cols-3 gap-x-3 gap-y-3">
+              {recommFlowers.slice(offset, offset + limit).map((info, idx) => {
+                return <FlowerCard info={info} key={idx} />;
+              })}
+            </div>
+            <FlowerPagination
+              total={recommFlowers.length}
+              limit={limit}
+              page={page}
+              setPage={setPage}
+            />
+          </>
         )}
         {/* 친구 */}
         {activeIndex === 2 && (
-          <div className="w-full grid grid-cols-3 gap-x-3 gap-y-3">
-            {/* {recommFlowers.slice(offset, offset + limit).map((info, idx) => {
-              return <FlowerCard info={info} key={idx} />;
-            })} */}
-          </div>
+          <>
+            <div className="w-full grid grid-cols-3 gap-x-3 gap-y-3">
+              {recommFlowers.slice(offset, offset + limit).map((info, idx) => {
+                return <FlowerCard info={info} key={idx} />;
+              })}
+            </div>
+            <FlowerPagination
+              total={recommFlowers.length}
+              limit={limit}
+              page={page}
+              setPage={setPage}
+            />
+          </>
         )}
         {/* 선생님 */}
         {activeIndex === 3 && (
-          <div className="w-full grid grid-cols-3 gap-x-3 gap-y-3">
-            {/* {recommFlowersVer2
-              .slice(offset, offset + limit)
-              .map((info, idx) => {
-                return <FlowerCard info={info} key={idx} />;
-              })} */}
-          </div>
+          <>
+            <div className="w-full grid grid-cols-3 gap-x-3 gap-y-3">
+              {recommFlowersVer2
+                .slice(offset, offset + limit)
+                .map((info, idx) => {
+                  return <FlowerCard info={info} key={idx} />;
+                })}
+            </div>
+            <FlowerPagination
+              total={recommFlowersVer2.length}
+              limit={limit}
+              page={page}
+              setPage={setPage}
+            />
+          </>
         )}
         {/* 직장동료 */}
         {activeIndex === 4 && (
-          <div className="w-full grid grid-cols-3 gap-x-3 gap-y-3">
-            {/* {recommFlowers.slice(offset, offset + limit).map((info, idx) => {
-              return <FlowerCard info={info} key={idx} />;
-            })} */}
-          </div>
+          <>
+            <div className="w-full grid grid-cols-3 gap-x-3 gap-y-3">
+              {recommFlowers.slice(offset, offset + limit).map((info, idx) => {
+                return <FlowerCard info={info} key={idx} />;
+              })}
+            </div>
+            <FlowerPagination
+              total={recommFlowers.length}
+              limit={limit}
+              page={page}
+              setPage={setPage}
+            />
+          </>
         )}
         {/* 기타 */}
         {activeIndex === 5 && (
           <>
             <div className="w-full grid grid-cols-3 gap-x-3 gap-y-3">
-              {/* {recommFlowers.slice(offset, offset + limit).map((info, idx) => {
+              {recommFlowers.slice(offset, offset + limit).map((info, idx) => {
                 return <FlowerCard info={info} key={idx} />;
-              })} */}
+              })}
             </div>
+            <FlowerPagination
+              total={recommFlowers.length}
+              limit={limit}
+              page={page}
+              setPage={setPage}
+            />
           </>
         )}
       </div>
@@ -247,6 +285,103 @@ const recommFlowers = [
     flowerName: "진분홍꽃",
     imgUrl:
       "https://images.unsplash.com/photo-1527061011665-3652c757a4d4?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=686&q=80",
+  },
+  {
+    flowerName: "핑크튤립",
+    imgUrl:
+      "https://images.unsplash.com/photo-1520763185298-1b434c919102?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1032&q=80",
+  },
+  {
+    flowerName: "파란색꽃",
+    imgUrl:
+      "https://images.unsplash.com/photo-1556647944-11bc0d4e0c4a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=688&q=80",
+  },
+  {
+    flowerName: "분홍꽃",
+    imgUrl:
+      "https://images.unsplash.com/photo-1523224042829-4731dd15a3bb?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=688&q=80",
+  },
+  {
+    flowerName: "노란꽃",
+    imgUrl:
+      "https://images.unsplash.com/photo-1601126374163-29f78d5e6d9c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=852&q=80",
+  },
+  {
+    flowerName: "체리블로썸",
+    imgUrl:
+      "https://images.unsplash.com/photo-1491866766009-1292fd127204?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80",
+  },
+  {
+    flowerName: "이쁜꽃",
+    imgUrl:
+      "https://images.unsplash.com/photo-1579900754584-0381d0a8b46d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=848&q=80",
+  },
+  {
+    flowerName: "주황색꽃",
+    imgUrl:
+      "https://images.unsplash.com/photo-1528907298109-e64971adc8e5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80",
+  },
+  {
+    flowerName: "백합",
+    imgUrl:
+      "https://images.unsplash.com/photo-1532009871151-e1958667c80d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80",
+  },
+  {
+    flowerName: "튤립",
+    imgUrl:
+      "https://images.unsplash.com/photo-1519218470957-62c7c83c36b4?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1476&q=80",
+  },
+  {
+    flowerName: "분홍꽃",
+    imgUrl:
+      "https://images.unsplash.com/photo-1523224042829-4731dd15a3bb?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=688&q=80",
+  },
+  {
+    flowerName: "진분홍꽃",
+    imgUrl:
+      "https://images.unsplash.com/photo-1527061011665-3652c757a4d4?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=686&q=80",
+  },
+  {
+    flowerName: "노란꽃",
+    imgUrl:
+      "https://images.unsplash.com/photo-1601126374163-29f78d5e6d9c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=852&q=80",
+  },
+  {
+    flowerName: "핑크튤립",
+    imgUrl:
+      "https://images.unsplash.com/photo-1520763185298-1b434c919102?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1032&q=80",
+  },
+  {
+    flowerName: "파란색꽃",
+    imgUrl:
+      "https://images.unsplash.com/photo-1556647944-11bc0d4e0c4a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=688&q=80",
+  },
+  {
+    flowerName: "체리블로썸",
+    imgUrl:
+      "https://images.unsplash.com/photo-1491866766009-1292fd127204?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80",
+  },
+  {
+    flowerName: "주황색꽃",
+    imgUrl:
+      "https://images.unsplash.com/photo-1528907298109-e64971adc8e5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80",
+  },
+  {
+    flowerName: "분홍장미",
+    imgUrl:
+      "https://images.unsplash.com/photo-1597826368522-9f4cb5a6ba48?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=689&q=80",
+  },
+  {
+    flowerName: "하얀장미",
+    imgUrl:
+      "https://images.unsplash.com/photo-1495231916356-a86217efff12?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=736&q=80",
+  },
+];
+const recommFlowersVer2 = [
+  {
+    flowerName: "주황색꽃",
+    imgUrl:
+      "https://images.unsplash.com/photo-1528907298109-e64971adc8e5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80",
   },
   {
     flowerName: "핑크튤립",
