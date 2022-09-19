@@ -34,6 +34,7 @@ export default function Like() {
               articleImage={item.articleImage}
               userName={item.userName}
               likes={item.likes}
+              key={item.articleId}
             />
           );
         })}

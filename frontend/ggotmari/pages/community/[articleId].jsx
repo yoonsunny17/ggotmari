@@ -86,7 +86,7 @@ function ArticleDetail() {
         userImage:
           "https://parsley-bucket.s3.ap-northeast-2.amazonaws.com/01a3ce7b-7e99-48cb-b38a-f8426eb821c1_%EC%95%A0%EA%B8%B0%EC%A7%B1%EA%B5%AC.jpg",
         userName: "shinjjang",
-        commentId: 1,
+        commentId: 5,
         commentContent: "꽃 너무 이쁘네요",
         isMe: false,
       },
@@ -95,7 +95,7 @@ function ArticleDetail() {
         userImage:
           "https://parsley-bucket.s3.ap-northeast-2.amazonaws.com/0ce6a718-72f7-4d0c-a203-7731e1d4df3f_%EC%95%84%EA%B8%B0%EB%9A%B1%EC%9D%B4.jpg",
         userName: "odyssey36",
-        commentId: 2,
+        commentId: 6,
         commentContent: "꽃 이름 뭔지 알 수 있을까요?",
         isMe: false,
       },
@@ -104,7 +104,7 @@ function ArticleDetail() {
         userImage:
           "https://parsley-bucket.s3.ap-northeast-2.amazonaws.com/0c7e7405-a032-4dc2-a3e6-7c7de633b383_%EC%A7%B1%EA%B5%AC%EB%BF%8C.jpg",
         userName: "sangchuman",
-        commentId: 3,
+        commentId: 7,
         commentContent: "장미랑 거베라입니다!!",
         isMe: false,
       },
@@ -113,7 +113,7 @@ function ArticleDetail() {
         userImage:
           "https://parsley-bucket.s3.ap-northeast-2.amazonaws.com/2d148ab3-d47c-4613-82f3-b76b454d0832_%EC%9D%B4%EC%83%81%ED%95%B4%EC%94%A8.png",
         userName: "sunny",
-        commentId: 4,
+        commentId: 8,
         commentContent:
           "색깔 조합 이뿌네요 긴 댓글은 어떻게 되나요? 이것보다 더 긴 댓글은 어떻게 보여지나요? 어디까지 가는지 한번 볼까? 자신있어?",
         isMe: false,
@@ -123,7 +123,7 @@ function ArticleDetail() {
         userImage:
           "https://parsley-bucket.s3.ap-northeast-2.amazonaws.com/01a3ce7b-7e99-48cb-b38a-f8426eb821c1_%EC%95%A0%EA%B8%B0%EC%A7%B1%EA%B5%AC.jpg",
         userName: "shinjjang",
-        commentId: 1,
+        commentId: 9,
         commentContent: "꽃 너무 이쁘네요",
         isMe: false,
       },
@@ -132,7 +132,7 @@ function ArticleDetail() {
         userImage:
           "https://parsley-bucket.s3.ap-northeast-2.amazonaws.com/0ce6a718-72f7-4d0c-a203-7731e1d4df3f_%EC%95%84%EA%B8%B0%EB%9A%B1%EC%9D%B4.jpg",
         userName: "odyssey36",
-        commentId: 2,
+        commentId: 10,
         commentContent: "꽃 이름 뭔지 알 수 있을까요?",
         isMe: false,
       },
@@ -141,7 +141,7 @@ function ArticleDetail() {
         userImage:
           "https://parsley-bucket.s3.ap-northeast-2.amazonaws.com/0c7e7405-a032-4dc2-a3e6-7c7de633b383_%EC%A7%B1%EA%B5%AC%EB%BF%8C.jpg",
         userName: "sangchuman",
-        commentId: 3,
+        commentId: 11,
         commentContent: "장미랑 거베라입니다!!",
         isMe: false,
       },
@@ -150,7 +150,7 @@ function ArticleDetail() {
         userImage:
           "https://parsley-bucket.s3.ap-northeast-2.amazonaws.com/2d148ab3-d47c-4613-82f3-b76b454d0832_%EC%9D%B4%EC%83%81%ED%95%B4%EC%94%A8.png",
         userName: "sunny",
-        commentId: 4,
+        commentId: 12,
         commentContent:
           "색깔 조합 이뿌네요 긴 댓글은 어떻게 되나요? 이것보다 더 긴 댓글은 어떻게 보여지나요? 어디까지 가는지 한번 볼까? 자신있어?",
         isMe: false,
