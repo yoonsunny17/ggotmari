@@ -41,7 +41,9 @@ function CommentDrawer({ children, isOpen, setIsOpen, loginUserImg }) {
                   className="input bg-white w-full focus:outline-none text-font2 text-sm px-0"
                 />
               </div>
-              <p className="rounded-md bg-main px-2 py-1 text-white">등록</p>
+              <p className="rounded-md bg-main px-2 py-1 text-white font-sans text-sm">
+                등록
+              </p>
             </div>
           </div>
         </div>

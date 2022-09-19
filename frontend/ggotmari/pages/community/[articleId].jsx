@@ -28,6 +28,9 @@ function ArticleDetail() {
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse placerat vel quam ...Suspendisse placerat vel quam ...Suspendisse placerat vel quam ...Suspendisse placerat vel quam ...Suspendisse placerat vel quam ...Suspendisse placerat vel quam ...Suspendisse Suspendisse placerat vel quam ...Suspendisse placerat vel quam ...Suspendisse placerat vel quam ...Suspendisse Suspendisse placerat vel quam ...",
     articleImages: [
       "https://parsley-bucket.s3.ap-northeast-2.amazonaws.com/00bf16c0-06d3-4a01-82f0-9f882d3333f5_%EC%8A%A4%ED%8F%B0%EC%A7%80%EB%B0%A5%EB%B0%A5.jpg",
+      "https://parsley-bucket.s3.ap-northeast-2.amazonaws.com/00bf16c0-06d3-4a01-82f0-9f882d3333f5_%EC%8A%A4%ED%8F%B0%EC%A7%80%EB%B0%A5%EB%B0%A5.jpg",
+      "https://parsley-bucket.s3.ap-northeast-2.amazonaws.com/00bf16c0-06d3-4a01-82f0-9f882d3333f5_%EC%8A%A4%ED%8F%B0%EC%A7%80%EB%B0%A5%EB%B0%A5.jpg",
+      "https://parsley-bucket.s3.ap-northeast-2.amazonaws.com/00bf16c0-06d3-4a01-82f0-9f882d3333f5_%EC%8A%A4%ED%8F%B0%EC%A7%80%EB%B0%A5%EB%B0%A5.jpg",
     ],
     articleDate: "2022.09.07 14:04",
     tags: [
@@ -173,9 +176,21 @@ function ArticleDetail() {
             </p>
           </div>
         </div>
-        <AiOutlineMore className="text-2xl text-black cursor-pointer" />
+        <div className="dropdown dropdown-end h-full flex items-center">
+          <AiOutlineMore className="text-2xl text-black cursor-pointer" />
+        </div>
       </div>
-      <div className="w-full aspect-square bg-main"></div>
+      <div className="w-full aspect-square">
+        <div className="carousel w-full h-full">
+          {article.articleImages.map((imgSrc, idx) => {
+            return (
+              <div className="carousel-item relative w-full" key={idx}>
+                <img src={imgSrc} className="object-cover" />
+              </div>
+            );
+          })}
+        </div>
+      </div>
       <div>
         <div className="flex flex-col px-4 pt-4 pb-2">
           <div className="text-black font-medium font-sans">
