@@ -22,11 +22,13 @@ public class DailyFlower {
     @Column(name = "daily_flower_id", nullable = false, updatable = false, columnDefinition = "BIGINT")
     private Long id;
 
-    private LocalDate date;
+    private String flowerDate;
+
+    private String flowerName;
 
     private String flowerLanguage;
 
-    private String content;
+    private String flowerContent;
 
     private String flowerImage;
 }

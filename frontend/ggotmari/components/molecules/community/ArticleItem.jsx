@@ -35,7 +35,7 @@ function ArticleItem({ article }) {
           <div className="text-xs text-font2 w-full">@{userId}</div>
         </div>
       </div>
-      <div className="basis-2/3 flex flex-col justify-center px-2">
+      <div className="flex flex-col justify-center px-2">
         <div className="h-24">
           <p className="text-sm font-sans font-medium text-black">
             {articleTitle}
