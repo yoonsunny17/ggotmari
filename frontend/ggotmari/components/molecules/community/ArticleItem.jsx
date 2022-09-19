@@ -28,7 +28,7 @@ function ArticleItem({ article }) {
   };
 
   return (
-    <div className="flex flex-row my-2 h-32" onClick={handleDetailClick}>
+    <div className="flex flex-row my-2 h-32 w-full" onClick={handleDetailClick}>
       <div className="flex flex-col items-end justify-center">
         <div className="w-24">
           <ImageSquare imageSrc={articleImage} />

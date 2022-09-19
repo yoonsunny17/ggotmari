@@ -2,6 +2,7 @@ import ArticleItem from "../../components/molecules/community/ArticleItem";
 import SearchBar from "../../components/atoms/common/SearchBar";
 import { useState } from "react";
 import { FaPlus } from "react-icons/fa";
+import Header from "../../components/atoms/common/Header";
 
 export default function Community() {
   const [tab, setTab] = useState("전체");
@@ -43,9 +44,7 @@ export default function Community() {
   return (
     <div className="flex flex-col">
       <div className="flex flex-col items-center mb-6">
-        <div className="font-maru text-main text-xl font-semibold my-5">
-          우리들의 꽃 이야기
-        </div>
+        <Header text={"우리들의 꽃 이야기"} />
         <SearchBar placeholder={"꽃 이야기 찾기"} />
       </div>
       <div className="flex flex-row border-b-2 border-font3">

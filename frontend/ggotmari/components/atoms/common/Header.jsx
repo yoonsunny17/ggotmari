@@ -1,6 +1,6 @@
 function Header({ text, type, onClick }) {
   return (
-    <div className="flex justify-center font-maru font-medium text-main text-2xl mt-3 mb-5">
+    <div className="flex justify-center font-maru text-main text-xl font-semibold my-5">
       {text}
     </div>
   );
