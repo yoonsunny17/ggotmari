@@ -1,8 +1,33 @@
+import { useRouter } from "next/router";
 import { IoMdHeart } from "react-icons/io";
 
-function CommunityCard({ info: { username, imgUrl, likeNumbs } }) {
+// function CommunityCard({ info: { username, imgUrl, likeNumbs } }) {
+function CommunityCard({
+  info: {
+    articleId,
+    articleImage,
+    userId,
+    username,
+    articleTitle,
+    articleContent,
+    articleDate,
+    tags,
+    commentCount,
+    likeCount,
+    imgUrl,
+  },
+}) {
+  const router = useRouter();
+  const postClickHandler = () => {
+    router.push(
+      {
+        pathname: `community/${articleId}`,
+      },
+      `community/${articleId}`
+    );
+  };
   return (
-    <div className="">
+    <div onClick={postClickHandler}>
       <div className="cursor-pointer rounded-lg aspect-square shadow overflow-hidden relative">
         <img
           src={imgUrl}
@@ -14,10 +39,10 @@ function CommunityCard({ info: { username, imgUrl, likeNumbs } }) {
         <p className="text-font2">@{username}</p>
         <p className="flex">
           <IoMdHeart size={15} color="red" />{" "}
-          {likeNumbs >= 100 ? (
+          {likeCount >= 100 ? (
             "99+"
           ) : (
-            <span className="text-font1">{likeNumbs}</span>
+            <span className="text-font1">{likeCount}</span>
           )}
         </p>
       </div>
