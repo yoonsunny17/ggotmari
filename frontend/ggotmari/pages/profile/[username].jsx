@@ -1,10 +1,22 @@
+import { itMatchesOne } from "daisyui/src/lib/postcss-prefixer/utils";
 import { useRouter } from "next/router";
-import StoryImg from "../../components/atoms/profile/StoryImg";
+import { useState } from "react";
+import StoryImage from "../../components/atoms/profile/StoryImage";
 import ProfileInfo from "../../components/organisms/profile/ProfileInfo";
 import ProfileNavBar from "../../components/organisms/profile/ProfileNavBar";
+import YJ from "../../assets/YJ.png";
 
 export default function Profile() {
   const router = useRouter();
+  const [storyItems, setStoryItems] = useState([
+    { url: YJ.src, title: "소통왕 영준" },
+    { url: YJ.src, title: "소통왕 영준" },
+    { url: YJ.src, title: "소통왕 영준" },
+    { url: YJ.src, title: "소통왕 영준" },
+    { url: YJ.src, title: "소통왕 영준" },
+    { url: YJ.src, title: "소통왕 영준" },
+    { url: YJ.src, title: "소통왕 영준" },
+  ]);
   return (
     <>
       <div className="profile">
@@ -13,28 +25,9 @@ export default function Profile() {
         {/* 하단 */}
       </div>
       <div className="content grid grid-cols-3 mx-3">
-        <StoryImg />
-        <StoryImg />
-        <StoryImg />
-        <StoryImg />
-        <StoryImg />
-        <StoryImg />
-        <StoryImg />
-        <StoryImg />
-        <StoryImg />
-        <StoryImg />
-        <StoryImg />
-        <StoryImg />
-        <StoryImg />
-        <StoryImg />
-        <StoryImg />
-        <StoryImg />
-        <StoryImg />
-        <StoryImg />
-        <StoryImg />
-        <StoryImg />
-        <StoryImg />
-        <StoryImg />
+        {storyItems.map((item) => {
+          return <StoryImage url={item.url} title={item.title} />;
+        })}
       </div>
     </>
   );

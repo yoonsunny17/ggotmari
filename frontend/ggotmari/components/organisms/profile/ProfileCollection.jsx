@@ -1,5 +1,7 @@
 import { useState } from "react";
 import CollectionBtn from "../../atoms/profile/CollectionBtn";
+import CollectionImage from "../../atoms/profile/CollectionImage";
+import YJ from "../../../assets/YJ.png";
 
 function ProfileCollection() {
   const [tabs, setTabs] = useState([
@@ -11,7 +13,16 @@ function ProfileCollection() {
     { category: "직장동료", isActive: false },
     { category: "기타", isActive: false },
   ]);
-  // console.log(tabs);
+  const [collectionItems, setCollectionItems] = useState([
+    { url: YJ.src, title: "소통왕 영준" },
+    { url: YJ.src, title: "소통왕 영준" },
+    { url: YJ.src, title: "소통왕 영준" },
+    { url: YJ.src, title: "소통왕 영준" },
+    { url: YJ.src, title: "소통왕 영준" },
+    { url: YJ.src, title: "소통왕 영준" },
+    { url: YJ.src, title: "소통왕 영준" },
+  ]);
+
   const btnClick = (category) => {
     // console.log("clicked", tabs);
     for (let i = 0; i < tabs.length; i++) {
@@ -34,14 +45,15 @@ function ProfileCollection() {
       }
     }
   };
+
   return (
     <>
       {/* 탭들 */}
-      <div className="tabs grid grid-cols-4 mx-3">
+      <div className="tabs grid grid-cols-4 mx-4">
         {tabs.map((tab) => {
           // console.log(tab);
           return (
-            <div key={tab.category} className="col-span-1 p-1">
+            <div key={tab.category} className="col-span-1 p-0.5">
               <CollectionBtn
                 category={tab.category}
                 isActive={tab.isActive}
@@ -55,6 +67,15 @@ function ProfileCollection() {
         })}
       </div>
       {/* 사진 및 내용들 */}
+      <div className="colletion-items grid grid-cols-3 mt-3 mx-3">
+        {collectionItems.map((item) => {
+          return (
+            <div className="collection-item p-1.5 text-xs">
+              <CollectionImage url={item.url} title={item.title} />
+            </div>
+          );
+        })}
+      </div>
     </>
   );
 }
