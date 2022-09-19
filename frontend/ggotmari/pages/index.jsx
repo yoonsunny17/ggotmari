@@ -1,4 +1,3 @@
-import Link from "next/Link";
 import Router from "next/router";
 
 import Header from "../components/atoms/common/Header";
@@ -6,7 +5,7 @@ import SearchBar from "../components/atoms/common/SearchBar";
 import CommunityCard from "../components/atoms/index/CommunityCard";
 import RecommItem from "../components/molecules/main/RecommItem";
 import ArticleItem from "../components/molecules/community/ArticleItem";
-import SpecialDayRecomm from "../components/organisms/index/SpecialDayRecomm";
+import SpecialDayRecomm from "../components/organisms/main/SpecialDayRecomm";
 
 import { BsPeople } from "react-icons/bs";
 import { FaRegPaperPlane } from "react-icons/fa";
