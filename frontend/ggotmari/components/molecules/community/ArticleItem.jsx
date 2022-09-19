@@ -35,7 +35,7 @@ function ArticleItem({ article }) {
           <div className="text-xs text-font2 w-full">@{userId}</div>
         </div>
       </div>
-      <div className="basis-2/3 flex flex-col justify-center px-2">
+      <div className="flex flex-col justify-center px-2">
         <div className="h-24">
           <p className="text-sm font-sans font-medium text-black">
             {articleTitle}
@@ -45,29 +45,16 @@ function ArticleItem({ article }) {
               <FlowerTag flowerName={tag} key={tag} />
             ))}
           </div>
+          <div className="h-1/2 text-xs text-font2">{articleContent}</div>
         </div>
-        <div className="flex flex-col justify-center px-2">
-          <div className="h-24">
-            <p className="text-sm font-sans font-medium text-black">
-              {articleTitle}
-            </p>
-            <div>
-              {tags.map((tag) => (
-                <FlowerTag flowerName={tag} key={tag} />
-              ))}
-            </div>
-            <div className="h-1/2 text-xs text-font2">{articleContent}</div>
-          </div>
-          <div className="text-xs text-font2 w-full">
-            <AiFillHeart className="inline text-red-600" />{" "}
-            {`${likeCount >= 100 ? "99+" : likeCount} `}
-            <AiOutlineComment className="inline ml-2" />{" "}
-            {commentCount >= 100 ? "99+" : commentCount}
-          </div>
+        <div className="text-xs text-font2 w-full">
+          <AiFillHeart className="inline text-red-600" />{" "}
+          {`${likeCount >= 100 ? "99+" : likeCount} `}
+          <AiOutlineComment className="inline ml-2" />{" "}
+          {commentCount >= 100 ? "99+" : commentCount}
         </div>
       </div>
-      <hr />
-    </>
+    </div>
   );
 }
 
