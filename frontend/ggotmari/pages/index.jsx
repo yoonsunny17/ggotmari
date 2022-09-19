@@ -1,5 +1,4 @@
-import { useRouter } from "next/router";
-import Image from "next/image";
+import Link from "next/Link";
 
 import Header from "../components/atoms/common/Header";
 import SearchBar from "../components/atoms/common/SearchBar";
@@ -14,16 +13,6 @@ import { IoIosArrowForward } from "react-icons/io";
 function Home() {
   const username = "sangchuman";
 
-  const router = useRouter();
-  // 오늘의 꽃
-  const handleTodayFlower = () => {
-    router.push(
-      {
-        pathname: "flower/daily",
-      },
-      "flower/daily"
-    );
-  };
   return (
     <div>
       <Header text={"꽃마리"} />
@@ -34,20 +23,21 @@ function Home() {
       <div className="container mx-auto px-[30px]">
         <div className="my-6">
           {/* 오늘의 꽃 버튼 */}
-          <div
-            onClick={handleTodayFlower}
-            className="cursor-pointer flex justify-center mb-3"
-          >
-            <div className="rounded-md w-full h-32 overflow-hidden">
-              <img
-                className="w-full h-full brightness-90 object-cover"
-                src="https://images.unsplash.com/photo-1490750967868-88aa4486c946?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
-              />
-              <div className="-translate-y-9 text-end mr-4 font-maru text-lg text-font3">
-                <p>오늘의 꽃</p>
+          <Link href="/flower/daily">
+            <a>
+              <div className="cursor-pointer flex justify-center mb-3">
+                <div className="rounded-md w-full h-32 overflow-hidden">
+                  <img
+                    className="w-full h-full brightness-90 object-cover"
+                    src="https://images.unsplash.com/photo-1490750967868-88aa4486c946?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
+                  />
+                  <div className="-translate-y-9 text-end mr-4 font-maru text-lg text-font3">
+                    <p>오늘의 꽃</p>
+                  </div>
+                </div>
               </div>
-            </div>
-          </div>
+            </a>
+          </Link>
 
           {/* 꽃 이야기 버튼 & 꽃에 담은 편지 버튼 */}
           <div className="flex justify-center mx-auto">
@@ -96,11 +86,13 @@ function Home() {
               </p>
             </div>
             <div className="carousel w-screen">
-              {articles.map((article) => (
-                <div className="carousel-item w-screen" key={article.articleId}>
-                  <ArticleItem article={article} key={article.articleId} />
-                </div>
-              ))}
+              {articles.map((article, idx) => {
+                return (
+                  <div className="carousel-item w-screen" key={idx}>
+                    <ArticleItem article={article} />
+                  </div>
+                );
+              })}
             </div>
           </div>
         </div>
