@@ -69,11 +69,9 @@ function ProfileCollection() {
       {/* 사진 및 내용들 */}
       <div className="colletion-items grid grid-cols-3 mt-3 mx-3">
         {collectionItems.map((item) => {
-          return (
-            <div className="collection-item p-1.5 text-xs">
-              <CollectionImage url={item.url} title={item.title} />
-            </div>
-          );
+          <div className="collection-item p-1.5 text-xs">
+            <CollectionImage url={item.url} title={item.title} />
+          </div>;
         })}
       </div>
     </>
