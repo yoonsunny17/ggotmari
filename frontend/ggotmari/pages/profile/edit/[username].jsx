@@ -1,4 +1,5 @@
 import YJ from "../../../assets/YJ.png";
+import { AiOutlineCamera } from "react-icons/ai";
 
 function Edit() {
   return (
@@ -16,7 +17,10 @@ function Edit() {
         </div>
       </div>
       <div className="image-change flex justify-center items-center my-5 text-font1 font-sanslight ">
-        <span className="mr-2 text-sm">사진변경</span>
+        <span className="mr-2 text-sm">
+          <AiOutlineCamera />
+          사진변경
+        </span>
         <span className="text-xl">|</span>
         <span className="ml-2 text-sm">초기화</span>
       </div>

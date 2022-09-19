@@ -27,9 +27,10 @@ export default function Like() {
         {/* 하단 */}
       </div>
       <div className="content grid grid-cols-3 mx-3">
-        {likeItems.map((item) => {
+        {likeItems.map((item, index) => {
           return (
             <LikeImage
+              key={index}
               articleId={item.articleId}
               articleImage={item.articleImage}
               userName={item.userName}

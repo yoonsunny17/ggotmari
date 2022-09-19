@@ -25,8 +25,8 @@ export default function Profile() {
         {/* 하단 */}
       </div>
       <div className="content grid grid-cols-3 mx-3">
-        {storyItems.map((item) => {
-          return <StoryImage url={item.url} title={item.title} />;
+        {storyItems.map((item, index) => {
+          return <StoryImage key={index} url={item.url} title={item.title} />;
         })}
       </div>
     </>
