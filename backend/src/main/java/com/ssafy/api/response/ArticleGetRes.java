@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Data
-@ApiModel("ArticleGetREs")
+@ApiModel("ArticleGetResponse")
 public class ArticleGetRes extends BaseResponseBody {
     @ApiModelProperty(name = "작성자 정보")
     UserRes user;

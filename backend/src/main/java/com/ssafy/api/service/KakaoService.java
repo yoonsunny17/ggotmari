@@ -10,11 +10,15 @@ import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.client.RestTemplate;
 
+import java.util.HashMap;
+import java.util.Map;
+
 @Service
 public class KakaoService {
-    static private final String KAKAO_CLIENT_ID = "bcf2bd5b8708530d7dc5a312ad648204";
-    static private final String KAKAO_REDIRECT_URI = "http://localhost:3000/login/kakao";
+    private final String KAKAO_CLIENT_ID = "bcf2bd5b8708530d7dc5a312ad648204";
+    private final String KAKAO_REDIRECT_URI = "http://localhost:3000/login/kakao";
 
+    private Map<String, String> kakaoTokenMap = new HashMap<>();
 
     public String getKakaoEmail(String code) {
         RestTemplate restTemplate = new RestTemplate();
@@ -69,6 +73,29 @@ public class KakaoService {
         JSONObject kakao_account = (JSONObject) jsonObject2.get("kakao_account");
         String email = kakao_account.getString("email");
 
+        //카카오 토큰 저장해주기
+        kakaoTokenMap.put(email,access_token);
         return email;
+    }
+
+    public boolean deleteUser(String email) {
+        RestTemplate restTemplate = new RestTemplate();
+
+        String access_token = kakaoTokenMap.get(email);
+
+        HttpHeaders apiRequestHeader = new HttpHeaders();
+        apiRequestHeader.add("Authorization", "Bearer " + access_token);
+        apiRequestHeader.add("Content-type", "application/x-www-form-urlencoded;charset=utf8");
+        HttpEntity<HttpHeaders> apiRequest = new HttpEntity<>(apiRequestHeader);
+
+        HttpEntity<String> apiResponse = restTemplate.exchange( // 토큰과 함께 api를 호출한다.
+                "https://kapi.kakao.com/v1/user/unlink",
+                HttpMethod.POST,
+                apiRequest,
+                String.class
+        );
+
+        System.out.println(apiResponse.toString());
+        return true;
     }
 }

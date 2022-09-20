@@ -2,10 +2,12 @@ package com.ssafy.db.entity;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.*;
+import org.hibernate.annotations.ColumnDefault;
 import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -26,9 +28,10 @@ public class Article {
     @Column(name = "article_id", nullable = false, updatable = false, columnDefinition = "BIGINT")
     private Long id;
 
+    @Column(nullable = false)
     private String title;
 
-    @Column(columnDefinition = "TEXT")
+    @Column(columnDefinition = "TEXT", nullable = false)
     private String content;
 
     private LocalDateTime date;
@@ -51,7 +54,7 @@ public class Article {
     private List<Comment> comments = new ArrayList<>();
 
     @JsonBackReference
-    @OneToMany(mappedBy = "article", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "article", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<ArticleLike> likes = new ArrayList<>();
 
 }
