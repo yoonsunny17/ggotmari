@@ -1,6 +1,20 @@
-function FlowerCard({ info: { flowerName, imgUrl } }) {
+import { useRouter } from "next/router";
+
+function FlowerCard({ info: { subjectId, kindId, flowerName, imgUrl } }) {
+  const router = useRouter();
+  const handlePostClick = () => {
+    router.push(
+      {
+        pathname: `community/${subjectId}`,
+      },
+      `community/${subjectId}`
+    );
+  };
   return (
-    <div className="cursor-pointer rounded-lg aspect-square overflow-hidden relative brightness-96">
+    <div
+      onClick={handlePostClick}
+      className="cursor-pointer rounded-lg aspect-square overflow-hidden relative brightness-96"
+    >
       <img
         className="w-full h-full object-cover"
         src={imgUrl}
