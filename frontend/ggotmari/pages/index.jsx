@@ -71,7 +71,7 @@ function Home() {
         </div>
 
         {/* 추천 이야기 */}
-        <div className="pt-3 font-sans mb-4">
+        <div className="pt-4 font-sans mb-4">
           <div className="mb-3">
             <div>{username} 님을 위한 추천 이야기</div>
             <div className="text-xs">요즘 이런 꽃 좋아하시더라구요 :)</div>
