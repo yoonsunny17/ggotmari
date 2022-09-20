@@ -21,5 +21,6 @@ public class Tag {
     @Column(name = "tag_id", nullable = false, updatable = false, columnDefinition = "BIGINT")
     private Long id;
 
+    @Column(nullable = false)
     private String dear;
 }

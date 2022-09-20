@@ -33,10 +33,13 @@ public class User {
 
     private LocalDate birthday;
 
+    @Column(nullable = false, unique = true)
     private String name;
 
+    @Column(nullable = false)
     private String email;
 
+    @Column(nullable = false)
     private String profileImage;
 
     private boolean isActive;

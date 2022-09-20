@@ -24,8 +24,10 @@ public class Subject {
     @Column(name = "subject_id", nullable = false, updatable = false, columnDefinition = "BIGINT")
     private Long id;
 
+    @Column(nullable = false, unique = true)
     private String subjectName;
 
+    @Column(nullable = false)
     private String flowerLanguage;
 
     @JsonBackReference
