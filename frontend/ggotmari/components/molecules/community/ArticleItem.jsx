@@ -23,7 +23,7 @@ function ArticleItem({ article }) {
       {
         pathname: `community/${articleId}`,
       },
-      `community/${articleId}`
+      `community/${articleId}`,
     );
   };
 
@@ -42,7 +42,7 @@ function ArticleItem({ article }) {
           </p>
           <div>
             {tags.map((tag) => (
-              <FlowerTag flowerName={tag} key={tag} />
+              <FlowerTag flowerName={tag} key={tag} isRemovable={false} />
             ))}
           </div>
           <div className="h-1/2 text-xs text-font2">{articleContent}</div>

@@ -10,6 +10,8 @@ import CommentItem from "../../components/molecules/community/CommentItem";
 function ArticleDetail() {
   const router = useRouter();
   const [isOpen, setIsOpen] = useState(false);
+  const [isClicked, setIsClicked] = useState(false);
+
   const loginUserImg =
     "https://parsley-bucket.s3.ap-northeast-2.amazonaws.com/0c7e7405-a032-4dc2-a3e6-7c7de633b383_%EC%A7%B1%EA%B5%AC%EB%BF%8C.jpg";
   const article = {
@@ -176,11 +178,23 @@ function ArticleDetail() {
             </p>
           </div>
         </div>
-        <div className="dropdown dropdown-end h-full flex items-center">
-          <AiOutlineMore className="text-2xl text-black cursor-pointer" />
+        <div
+          className="h-full flex items-center"
+          onClick={() => setIsClicked(!isClicked)}
+        >
+          <AiOutlineMore className="dropdown-toggle text-2xl text-black cursor-pointer" />
         </div>
       </div>
       <div className="w-full aspect-square">
+        <div
+          className={
+            "absolute z-10 top -6 right-0 bg-white text-black " +
+            (isClicked ? "" : "hidden")
+          }
+        >
+          <div className="px-5 py-3 pr-10 hover:bg-font3">수정하기</div>
+          <div className="px-5 py-3 pr-10 hover:bg-font3">삭제하기</div>
+        </div>
         <div className="carousel w-full h-full">
           {article.articleImages.map((imgSrc, idx) => {
             return (
