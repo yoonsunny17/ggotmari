@@ -1,4 +1,5 @@
 import Router from "next/router";
+import Link from "next/link";
 
 import Header from "../components/atoms/common/Header";
 import SearchBar from "../components/atoms/common/SearchBar";
@@ -88,9 +89,13 @@ function Home() {
           <div className="mb-3">
             <div className="flex justify-between">
               <p>인기 이야기 TOP10</p>
-              <p className="flex items-center cursor-pointer">
-                <IoIosArrowForward />
-              </p>
+              <Link href="/community/popular">
+                <a>
+                  <p className="flex items-center cursor-pointer">
+                    <IoIosArrowForward />
+                  </p>
+                </a>
+              </Link>
             </div>
             <div className="carousel w-full">
               {articles.map((article, idx) => {
