@@ -5,7 +5,7 @@ body {
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif,
     MaruBuri, NanumBarunGothic, NanumBareunGothicLight, NanumBarunGothicBold,
-    NanumBareunGothicUltraLight;
+    NanumBareunGothicUltraLight, GangwonEdu_OTFBoldA, GangwonEdu_OTFLightA;
   background: #fff;
 }
 html {
@@ -85,6 +85,68 @@ body {
     url(https://hangeul.pstatic.net/hangeul_static/webfont/NanumBarunGothicL/NanumBarunGothicWebUltraLight.woff)
       format("woff"),
     url(https://hangeul.pstatic.net/hangeul_static/webfont/NanumBarunGothicL/NanumBarunGothicWebUltraLight.ttf)
+      format("truetype");
+}
+
+/* font gangwon */
+@font-face {
+  font-family: "GangwonEdu_OTFBoldA";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2201-2@1.0/GangwonEdu_OTFBoldA.woff")
+    format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "GangwonEdu_OTFLightA";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2201-2@1.0/GangwonEdu_OTFLightA.woff")
+    format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* font nanum */
+@font-face {
+  font-family: "NanumSquare";
+  src: url(https://hangeul.pstatic.net/hangeul_static/webfont/NanumSquare/NanumSquareR.eot);
+  src: url(https://hangeul.pstatic.net/hangeul_static/webfont/NanumSquare/NanumSquareR.eot?#iefix)
+      format("embedded-opentype"),
+    url(https://hangeul.pstatic.net/hangeul_static/webfont/NanumSquare/NanumSquareR.woff)
+      format("woff"),
+    url(https://hangeul.pstatic.net/hangeul_static/webfont/NanumSquare/NanumSquareR.ttf)
+      format("truetype");
+}
+
+@font-face {
+  font-family: "NanumSquareLight";
+  src: url(https://hangeul.pstatic.net/hangeul_static/webfont/NanumSquare/NanumSquareL.eot);
+  src: url(https://hangeul.pstatic.net/hangeul_static/webfont/NanumSquare/NanumSquareL.eot?#iefix)
+      format("embedded-opentype"),
+    url(https://hangeul.pstatic.net/hangeul_static/webfont/NanumSquare/NanumSquareL.woff)
+      format("woff"),
+    url(https://hangeul.pstatic.net/hangeul_static/webfont/NanumSquare/NanumSquareL.ttf)
+      format("truetype");
+}
+
+@font-face {
+  font-family: "NanumSquareExtraBold";
+  src: url(https://hangeul.pstatic.net/hangeul_static/webfont/NanumSquare/NanumSquareEB.eot);
+  src: url(https://hangeul.pstatic.net/hangeul_static/webfont/NanumSquare/NanumSquareEB.eot?#iefix)
+      format("embedded-opentype"),
+    url(https://hangeul.pstatic.net/hangeul_static/webfont/NanumSquare/NanumSquareEB.woff)
+      format("woff"),
+    url(https://hangeul.pstatic.net/hangeul_static/webfont/NanumSquare/NanumSquareEB.ttf)
+      format("truetype");
+}
+
+@font-face {
+  font-family: "NanumSquareBold";
+  src: url(https://hangeul.pstatic.net/hangeul_static/webfont/NanumSquare/NanumSquareB.eot);
+  src: url(https://hangeul.pstatic.net/hangeul_static/webfont/NanumSquare/NanumSquareB.eot?#iefix)
+      format("embedded-opentype"),
+    url(https://hangeul.pstatic.net/hangeul_static/webfont/NanumSquare/NanumSquareB.woff)
+      format("woff"),
+    url(https://hangeul.pstatic.net/hangeul_static/webfont/NanumSquare/NanumSquareB.ttf)
       format("truetype");
 }
 

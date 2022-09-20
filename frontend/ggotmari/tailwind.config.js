@@ -26,6 +26,10 @@ module.exports = {
         sansbold: ["NanumBarunGothicBold", "sans-serif"],
         sanslight: ["NanumBareunGothicLight", "sans-serif"],
         sansultralight: ["NanumBareunGothicUltraLight", "sans-serif"],
+
+        // updated font styles
+        gangwon: ["GangwonEdu_OTFBoldA"],
+        gangwonlight: ["GangwonEdu_OTFLightA"],
       },
     },
   },
