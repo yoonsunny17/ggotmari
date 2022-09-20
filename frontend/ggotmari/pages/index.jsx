@@ -22,10 +22,10 @@ function Home() {
         <SearchBar placeholder={"꽃 찾기"} />
       </div>
       <hr />
-      <div className="flex flex-col items-center w-screen px-6">
+      <div className="flex flex-col items-center w-screen px-6 divide-y divide-sub1 divide-opacity-60">
+        {/* 오늘의 꽃, 꽃 이야기, 꽃에 담은 편지 */}
         <div className="flex flex-col my-6 w-full">
           {/* 오늘의 꽃 버튼 */}
-
           <div
             onClick={() => Router.push("/flower/daily")}
             className="cursor-pointer flex justify-center mb-3"
@@ -35,7 +35,7 @@ function Home() {
                 className="w-full h-full brightness-90 object-cover"
                 src="https://images.unsplash.com/photo-1490750967868-88aa4486c946?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
               />
-              <div className="-translate-y-9 text-end mr-4 font-maru text-lg text-font3">
+              <div className="-translate-y-9 text-end mr-4 font-gangwon text-xl text-font3">
                 <p>오늘의 꽃</p>
               </div>
             </div>
@@ -46,33 +46,32 @@ function Home() {
             {/* 꽃 이야기 버튼 */}
             <button
               onClick={() => Router.push("/community")}
-              className="w-1/2 h-12 rounded-md font-maru text-xs text-white bg-sub2 mr-3"
+              className="w-1/2 h-12 rounded-md font-gangwonlight text-sm text-white bg-sub2 mr-3"
             >
               <div className="flex justify-between">
-                <p className="ml-3 pt-1">
+                <p className="ml-3 pt-[6px]">
                   <BsPeople size={25} />
                 </p>
-                <p className="px-2 pt-4">꽃 이야기</p>
+                <p className="pr-3 pt-4">꽃 이야기</p>
               </div>
             </button>
             {/* 꽃에 담은 편지 버튼 */}
             <button
               onClick={() => Router.push("/ocr")}
-              className="w-1/2 h-12 rounded-md font-maru text-xs text-white bg-sub1"
+              className="w-1/2 h-12 rounded-md font-gangwonlight text-sm text-white bg-sub1"
             >
               <div className="flex justify-between">
-                <p className="ml-3 pt-1">
+                <p className="ml-3 pt-[6px]">
                   <FaRegPaperPlane size={22} />
                 </p>
-                <p className="pr-2 pt-4">꽃에 담은 편지</p>
+                <p className="pr-3 pt-4">꽃에 담은 편지</p>
               </div>
             </button>
           </div>
         </div>
-        <hr />
 
         {/* 추천 이야기 */}
-        <div className="mt-3 font-sans mb-4">
+        <div className="pt-3 font-sans mb-4">
           <div className="mb-3">
             <div>{username} 님을 위한 추천 이야기</div>
             <div className="text-xs">요즘 이런 꽃 좋아하시더라구요 :)</div>
@@ -83,9 +82,9 @@ function Home() {
             })}
           </div>
         </div>
-        <hr />
+
         {/* 인기 이야기 TOP10 */}
-        <div className="font-sans mt-6 w-full">
+        <div className="pt-4 font-sans w-full">
           <div className="mb-3">
             <div className="flex justify-between">
               <p>인기 이야기 TOP10</p>
@@ -111,8 +110,9 @@ function Home() {
             </div>
           </div>
         </div>
-        <hr />
-        <div className="font-sans mt-3 mb-14 w-full">
+
+        {/* 특별한 날 선물하기 좋은 꽃 */}
+        <div className="pt-4 font-sans mb-14 w-full">
           <p className="mb-3">특별한 날 선물하기 좋은 꽃</p>
           <SpecialDayRecomm />
         </div>
