@@ -27,7 +27,9 @@ public class Kind {
     @JoinColumn(name = "subject_id")
     private Subject subject;
 
+    @Column(nullable = false)
     private String kindName;
 
+    @Column(nullable = false)
     private String flowerImage;
 }

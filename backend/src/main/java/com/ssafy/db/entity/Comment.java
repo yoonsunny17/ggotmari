@@ -23,7 +23,7 @@ public class Comment {
     @Column(name = "comment_id", nullable = false, updatable = false, columnDefinition = "BIGINT")
     private Long id;
 
-    @Column(columnDefinition = "TEXT")
+    @Column(columnDefinition = "TEXT", nullable = false)
     private String content;
 
     private LocalDateTime date;
