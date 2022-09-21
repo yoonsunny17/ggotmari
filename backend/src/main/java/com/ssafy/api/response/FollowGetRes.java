@@ -19,13 +19,16 @@ import java.util.Map;
 public class FollowGetRes extends BaseResponseBody {
     @ApiModelProperty(name = "팔로워 목록")
     List<FollowGetFollowerRes> followers = new ArrayList<>();
+    @ApiModelProperty(name = "팔로잉 목록")
+    List<FollowGetFollowerRes> followings = new ArrayList<>();
 
-    public static FollowGetRes of(Integer statusCode, String message , User user, String loginUserEmail){
+    public static FollowGetRes of(Integer statusCode, String message, List<FollowGetFollowerRes> followers, List<FollowGetFollowerRes> followings){
         FollowGetRes res = new FollowGetRes();
 
         res.setStatusCode(statusCode);
         res.setMessage(message);
-
+        res.setFollowers(followers);
+        res.setFollowings(followings);
 
         return res;
     }

@@ -7,6 +7,7 @@ import com.ssafy.api.service.UserService;
 import com.ssafy.common.util.JwtTokenUtil;
 import com.ssafy.db.entity.Article;
 import com.ssafy.db.entity.Comment;
+import com.ssafy.db.entity.Follow;
 import com.ssafy.db.entity.User;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -65,11 +66,14 @@ public class UserController {
         // user email 가져오기
         String jwtToken = request.getHeader("Authorization");
         String email = jwtTokenUtil.getUserEmailFromToken(jwtToken);
-        User loginUser = userService.getUserByEmail(email);
+        User loginUser = userService.getUserByEmail(email);     //로그인한 사람
 
-        User user = userService.getUserByName(username);
+        User user = userService.getUserByName(username);        //대상
 
-        return ResponseEntity.status(200).body(FollowGetRes.of(200, "팔로우 조회 성공", user, email));
+        List<FollowGetFollowerRes> followers = userService.getFollowers(email, username);
+        List<FollowGetFollowerRes> followings = userService.getFollowings(email, username);
+
+        return ResponseEntity.status(200).body(FollowGetRes.of(200, "팔로우 조회 성공", followers, followings));
     }
 
     @PostMapping("/follow")
