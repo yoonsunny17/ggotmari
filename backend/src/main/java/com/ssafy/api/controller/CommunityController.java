@@ -14,6 +14,7 @@ import io.swagger.annotations.ApiResponses;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 
@@ -31,11 +32,12 @@ public class CommunityController {
             @ApiResponse(code = 201, message = "게시글 생성 성공"),
             @ApiResponse(code = 500, message = "게시글 생성 실패")
     })
-    public ResponseEntity<? extends ArticlePostRes> createArticle(@RequestBody ArticleCreatePostReq articleInfo){
+    public ResponseEntity<? extends ArticlePostRes> createArticle(@RequestPart ArticleCreatePostReq articleInfo,
+                                                                  @RequestPart(value = "images") List<MultipartFile> multipartFiles){
         //TODO : userId 받아오기
         Long userId = 1L;
 
-        Article article = communityService.createArticle(userId, articleInfo);
+        Article article = communityService.createArticle(userId, articleInfo, multipartFiles);
 
         return ResponseEntity.status(201).body(ArticlePostRes.of(201, "정상적으로 작성되었습니다", article.getId()));
     }
@@ -59,11 +61,12 @@ public class CommunityController {
             @ApiResponse(code = 201, message = "게시글 수정 성공"),
             @ApiResponse(code = 500, message = "게시글 수정 실패")
     })
-    public ResponseEntity<? extends ArticlePostRes> updateArticle(@PathVariable("articleId") Long articleId, @RequestBody ArticleCreatePostReq articleInfo){
+    public ResponseEntity<? extends ArticlePostRes> updateArticle(@PathVariable("articleId") Long articleId, @RequestPart ArticleCreatePostReq articleInfo,
+                                                                  @RequestPart(value = "images") List<MultipartFile> multipartFiles){
 
         Long userId = 1L;
 
-        Article article = communityService.updateArticle(userId, articleId, articleInfo);
+        Article article = communityService.updateArticle(userId, articleId, articleInfo, multipartFiles);
 
         if(article == null){
             return ResponseEntity.status(403).body(ArticlePostRes.of(403, "수정할 수 없습니다.", article.getId()));

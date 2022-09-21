@@ -4,9 +4,11 @@ import com.ssafy.api.request.*;
 import com.ssafy.api.response.SubjectRes;
 import com.ssafy.db.entity.*;
 import com.ssafy.db.repository.*;
+import com.sun.org.apache.xpath.internal.operations.Mult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -32,9 +34,11 @@ public class CommunityService {
     PictureRepository pictureRepository;
     @Autowired
     CommentRepository commentRepository;
+    @Autowired
+    FileService fileService;
 
     @Transactional
-    public Article createArticle(Long userId, ArticleCreatePostReq articleInfo) {
+    public Article createArticle(Long userId, ArticleCreatePostReq articleInfo, List<MultipartFile> multipartFiles) {
 
         User user = userRepository.findById(userId).get();
 
@@ -63,12 +67,12 @@ public class CommunityService {
         }
         article.setHashtags(hashtags);
 
-        //TODO : S3 연결 후, uuid 파일명 변경 필요
         List<Picture> pictures = new ArrayList<>();
-        for (String image : articleInfo.getImages()) {
+        for (MultipartFile image : multipartFiles) {
             Picture picture = new Picture();
             picture.setArticle(article);
-            picture.setImage(image);
+            String imageUrl = fileService.uploadFile(image);
+            picture.setImage(imageUrl);
 
             pictureRepository.save(picture);
 
@@ -84,7 +88,7 @@ public class CommunityService {
     }
 
     @Transactional
-    public Article updateArticle(Long userId, Long articleId, ArticleCreatePostReq articleInfo) {
+    public Article updateArticle(Long userId, Long articleId, ArticleCreatePostReq articleInfo, List<MultipartFile> multipartFiles) {
 
         User user = userRepository.findById(userId).get();
 
@@ -105,10 +109,11 @@ public class CommunityService {
         }
 
         List<Picture> newPictures = new ArrayList<>();
-        for (String image : articleInfo.getImages()) {
+        for (MultipartFile image : multipartFiles) {
             Picture picture = new Picture();
             picture.setArticle(article);
-            picture.setImage(image);
+            String imageUrl = fileService.uploadFile(image);
+            picture.setImage(imageUrl);
 
             pictureRepository.save(picture);
 
