@@ -4,7 +4,7 @@ function FlowerPagination({ total, limit, page, setPage }) {
   const pageNumbs = Math.ceil(total / limit);
 
   const pageNumHandler = () => {
-    if (page === pageNumbs) {
+    if (page >= pageNumbs) {
       setPage(1);
     } else {
       setPage((current) => current + 1);
