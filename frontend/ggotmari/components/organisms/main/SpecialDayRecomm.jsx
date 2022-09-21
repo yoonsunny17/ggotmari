@@ -1,7 +1,7 @@
 import { useState } from "react";
 import FlowerCard from "../../atoms/index/FlowerCard";
-import FlowerPagination from "../../atoms/index/FlowerPagination";
 import SpecialDayFlower from "../../molecules/main/SpecialDayFlower";
+import FlowerPagination from "../../molecules/main/FlowerPagination";
 
 function SpecialDayRecomm() {
   // TODO: tab index button

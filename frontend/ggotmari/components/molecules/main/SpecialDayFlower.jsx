@@ -1,6 +1,6 @@
 import { useState } from "react";
 import FlowerCard from "../../atoms/index/FlowerCard";
-import FlowerPagination from "../../atoms/index/FlowerPagination";
+import FlowerPagination from "./FlowerPagination";
 
 function SpecialDayFlower() {
   // TODO: pagination
