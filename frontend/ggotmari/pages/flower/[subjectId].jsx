@@ -1,4 +1,5 @@
 import { useRouter } from "next/router";
+import { useState, useEffect } from "react";
 
 function FlowerDetail(params) {
   const router = useRouter();
@@ -10,21 +11,54 @@ function FlowerDetail(params) {
         src={flowerInfo.kinds.kindImage}
         alt="flower image"
       />
-      <div className="px-6 pt-6">
-        <div className="font-gangwon text-2xl font-medium mb-1">
-          {/* 품종명, 품목명 */}
-          {flowerInfo.kinds.kindName}, {flowerInfo.flower.subjectName}
-        </div>
-        <div className="font-sans text-font2 mb-4">
+      <div className="px-6 pt-6 divide-y divide-sub1 divide-opacity-60">
+        {/* 품종명, 품목명, 꽃말 */}
+        <div>
+          <div className="font-gangwon text-2xl font-medium mb-1">
+            {/* 품종명, 품목명 */}
+            {flowerInfo.kinds.kindName}, {flowerInfo.flower.subjectName}
+          </div>
           {/* 꽃말 */}
-          {flowerInfo.flower.subjectName}의 꽃말은 {/* 꽃말 부분만 bold 강조 */}
-          <span className="font-bold">
-            {flowerInfo.flower.subjectLanguage}
-          </span>{" "}
-          입니다
+          <div className="font-sans text-font2 text-base mb-4">
+            {flowerInfo.flower.subjectName}의 꽃말은{" "}
+            {/* 꽃말 부분만 bold 강조 */}
+            <span className="font-bold">
+              {flowerInfo.flower.subjectLanguage}
+            </span>{" "}
+            입니다
+          </div>
         </div>
-        <hr />
-        <div className="font-gangwon text-lg mt-4">컬렉션에 담기</div>
+
+        {/* 컬렉션에 담기 */}
+        <div>
+          <div className="font-gangwon text-lg py-4">컬렉션에 담기</div>
+          <div className="font-sans text-sm grid grid-cols-6 mb-3">
+            {tabContArr.map(({ category }, idx) => (
+              <button key={idx} className="w-full rounded-md py-1">
+                <span className="text-sm">{category}</span>
+              </button>
+            ))}
+            {/* {tabContArr.map(({ category }, idx) => (
+              <div key={category} className="col-span-1 px-[2px]">
+                <button
+                  key={"tab-" + idx}
+                  className="w-full rounded-md h-full py-1 font-sans"
+                >
+                  <span className="text-white text-xs">{category}</span>
+                </button>
+              </div>
+            ))} */}
+          </div>
+        </div>
+        {/* 다른 품종 보기 */}
+        <div className="font-gangwon text-lg py-4">
+          {flowerInfo.flower.subjectName}의 다른 품종
+        </div>
+
+        {/* 연관 게시물 보기 */}
+        <div className="font-gangwon text-lg py-4">
+          {flowerInfo.flower.subjectName}를 담은 이야기
+        </div>
       </div>
     </div>
   );
@@ -43,5 +77,14 @@ const flowerInfo = {
       "https://images.unsplash.com/photo-1588140096821-99ffc14c4bc0?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80",
   },
 };
+
+const tabContArr = [
+  { category: "가족" },
+  { category: "연인" },
+  { category: "친구" },
+  { category: "선생님" },
+  { category: "직장동료" },
+  { category: "기타" },
+];
 
 export default FlowerDetail;
