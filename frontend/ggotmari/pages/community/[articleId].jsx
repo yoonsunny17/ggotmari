@@ -10,6 +10,8 @@ import CommentItem from "../../components/molecules/community/CommentItem";
 function ArticleDetail() {
   const router = useRouter();
   const [isOpen, setIsOpen] = useState(false);
+  const [isClicked, setIsClicked] = useState(false);
+
   const loginUserImg =
     "https://parsley-bucket.s3.ap-northeast-2.amazonaws.com/0c7e7405-a032-4dc2-a3e6-7c7de633b383_%EC%A7%B1%EA%B5%AC%EB%BF%8C.jpg";
   const article = {
@@ -27,6 +29,9 @@ function ArticleDetail() {
     articleContent:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse placerat vel quam ...Suspendisse placerat vel quam ...Suspendisse placerat vel quam ...Suspendisse placerat vel quam ...Suspendisse placerat vel quam ...Suspendisse placerat vel quam ...Suspendisse Suspendisse placerat vel quam ...Suspendisse placerat vel quam ...Suspendisse placerat vel quam ...Suspendisse Suspendisse placerat vel quam ...",
     articleImages: [
+      "https://parsley-bucket.s3.ap-northeast-2.amazonaws.com/00bf16c0-06d3-4a01-82f0-9f882d3333f5_%EC%8A%A4%ED%8F%B0%EC%A7%80%EB%B0%A5%EB%B0%A5.jpg",
+      "https://parsley-bucket.s3.ap-northeast-2.amazonaws.com/00bf16c0-06d3-4a01-82f0-9f882d3333f5_%EC%8A%A4%ED%8F%B0%EC%A7%80%EB%B0%A5%EB%B0%A5.jpg",
+      "https://parsley-bucket.s3.ap-northeast-2.amazonaws.com/00bf16c0-06d3-4a01-82f0-9f882d3333f5_%EC%8A%A4%ED%8F%B0%EC%A7%80%EB%B0%A5%EB%B0%A5.jpg",
       "https://parsley-bucket.s3.ap-northeast-2.amazonaws.com/00bf16c0-06d3-4a01-82f0-9f882d3333f5_%EC%8A%A4%ED%8F%B0%EC%A7%80%EB%B0%A5%EB%B0%A5.jpg",
     ],
     articleDate: "2022.09.07 14:04",
@@ -173,9 +178,33 @@ function ArticleDetail() {
             </p>
           </div>
         </div>
-        <AiOutlineMore className="text-2xl text-black cursor-pointer" />
+        <div
+          className="h-full flex items-center"
+          onClick={() => setIsClicked(!isClicked)}
+        >
+          <AiOutlineMore className="dropdown-toggle text-2xl text-black cursor-pointer" />
+        </div>
       </div>
-      <div className="w-full aspect-square bg-main"></div>
+      <div className="w-full aspect-square">
+        <div
+          className={
+            "absolute z-10 top -6 right-0 bg-white text-black " +
+            (isClicked ? "" : "hidden")
+          }
+        >
+          <div className="px-5 py-3 pr-10 hover:bg-font3">수정하기</div>
+          <div className="px-5 py-3 pr-10 hover:bg-font3">삭제하기</div>
+        </div>
+        <div className="carousel w-full h-full">
+          {article.articleImages.map((imgSrc, idx) => {
+            return (
+              <div className="carousel-item relative w-full" key={idx}>
+                <img src={imgSrc} className="object-cover" />
+              </div>
+            );
+          })}
+        </div>
+      </div>
       <div>
         <div className="flex flex-col px-4 pt-4 pb-2">
           <div className="text-black font-medium font-sans">

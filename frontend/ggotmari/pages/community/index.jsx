@@ -3,13 +3,24 @@ import SearchBar from "../../components/atoms/common/SearchBar";
 import { useState } from "react";
 import { FaPlus } from "react-icons/fa";
 import Header from "../../components/atoms/common/Header";
+import { useRouter } from "next/router";
 
 export default function Community() {
+  const router = useRouter();
   const [tab, setTab] = useState("전체");
   const tabs = ["전체", "팔로잉", "인기글"];
 
   const handleTabClick = (e) => {
     setTab(e.target.innerHTML);
+  };
+
+  const handleAddClick = () => {
+    router.push(
+      {
+        pathname: "/community/edit",
+      },
+      "/community"
+    );
   };
 
   const articles = [
@@ -195,8 +206,9 @@ export default function Community() {
           <ArticleItem article={article} key={article.articleId} />
         ))}
       </div>
+      <div className="h-14"></div>
       <div className="fixed bottom-20 right-5 rounded-full w-12 aspect-square bg-sub1 shadow-lg flex justify-center items-center hover:scale-110 hover:bg-main duration-200">
-        <FaPlus className="text-white text-2xl" />
+        <FaPlus className="text-white text-2xl" onClick={handleAddClick} />
       </div>
     </div>
   );
