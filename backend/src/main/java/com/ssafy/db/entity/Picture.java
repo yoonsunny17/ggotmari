@@ -27,6 +27,6 @@ public class Picture {
     @JoinColumn(name = "article_id")
     private Article article;
 
-    @Column(nullable = false)
+    @Column(nullable = false, columnDefinition = "TEXT")
     private String image;
 }
