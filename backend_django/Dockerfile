@@ -2,7 +2,6 @@ FROM python:3.9.14
 WORKDIR /var/jenkins_home/workspace/ggotmari/backend_django
 COPY requirements.txt ./
 
-RUN source venv/bin/activate
 RUN pip install gunicorn
 RUN pip install --upgrade pip
 RUN pip install -r requirements.txt
