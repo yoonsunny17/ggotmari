@@ -1,8 +1,29 @@
-import { useRouter } from "next/router";
 import { useState, useEffect } from "react";
 
 function FlowerDetail(params) {
-  const router = useRouter();
+  const [duplicated, setDuplicated] = useState(["없음"]);
+  useEffect(() => {
+    if (duplicated.length === 7 || duplicated.length === 0) {
+      setDuplicated(["없음"]);
+    }
+  }, [duplicated]);
+
+  const handleDuplicated = (e) => {
+    console.log(e.target.innerText);
+    const isIncludes = duplicated.find((el) => el === e.target.innerText);
+
+    if (e.target.value === "없음") {
+      setDuplicated(["없음"]);
+    } else if (isIncludes) {
+      setDuplicated(duplicated.filter((el) => el !== e.target.innerText));
+    } else if (duplicated.length > 0) {
+      setDuplicated([
+        ...duplicated.filter((el) => el !== "없음"),
+        e.target.innerText,
+      ]);
+    }
+    // console.log(duplicated);
+  };
 
   return (
     <div>
@@ -34,20 +55,20 @@ function FlowerDetail(params) {
           <div className="font-gangwon text-lg py-4">컬렉션에 담기</div>
           <div className="font-sans text-sm grid grid-cols-6 mb-3">
             {tabContArr.map(({ category }, idx) => (
-              <button key={idx} className="w-full rounded-md py-1">
-                <span className="text-sm">{category}</span>
-              </button>
-            ))}
-            {/* {tabContArr.map(({ category }, idx) => (
               <div key={category} className="col-span-1 px-[2px]">
                 <button
-                  key={"tab-" + idx}
-                  className="w-full rounded-md h-full py-1 font-sans"
+                  onClick={handleDuplicated}
+                  key={idx}
+                  className={`${
+                    duplicated.includes(`${category}`)
+                      ? "bg-main"
+                      : "bg-extra4 hover:cursor-pointer hover:bg-sub1"
+                  } w-full rounded-md h-full py-1 font-sans`}
                 >
-                  <span className="text-white text-xs">{category}</span>
+                  <span className="text-sm">{category}</span>
                 </button>
               </div>
-            ))} */}
+            ))}
           </div>
         </div>
         {/* 다른 품종 보기 */}
