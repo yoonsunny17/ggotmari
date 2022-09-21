@@ -21,21 +21,21 @@ import java.util.List;
 public class CommunityService {
 
     @Autowired
-    ArticleRepository articleRepository;
+    private ArticleRepository articleRepository;
     @Autowired
-    HashtagRepository hashtagRepository;
+    private HashtagRepository hashtagRepository;
     @Autowired
-    UserRepository userRepository;
+    private UserRepository userRepository;
     @Autowired
-    SubjectRepository subjectRepository;
+    private SubjectRepository subjectRepository;
     @Autowired
-    ArticleLikeRepository articleLikeRepository;
+    private ArticleLikeRepository articleLikeRepository;
     @Autowired
-    PictureRepository pictureRepository;
+    private PictureRepository pictureRepository;
     @Autowired
-    CommentRepository commentRepository;
+    private CommentRepository commentRepository;
     @Autowired
-    FileService fileService;
+    private FileService fileService;
 
     @Transactional
     public Article createArticle(Long userId, ArticleCreatePostReq articleInfo, List<MultipartFile> multipartFiles) {
@@ -47,7 +47,6 @@ public class CommunityService {
         article.setUser(user);
         article.setTitle(articleInfo.getTitle());
         article.setContent(articleInfo.getContent());
-
 
         article.setDate(LocalDateTime.now());
 
