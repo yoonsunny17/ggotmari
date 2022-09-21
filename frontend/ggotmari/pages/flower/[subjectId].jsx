@@ -53,7 +53,7 @@ function FlowerDetail(params) {
         {/* 컬렉션에 담기 */}
         <div>
           <div className="font-gangwon text-lg py-4">컬렉션에 담기</div>
-          <div className="font-sans text-sm grid grid-cols-6 mb-3">
+          <div className="grid grid-cols-6 mb-3">
             {tabContArr.map(({ category }, idx) => (
               <div key={category} className="col-span-1 px-[2px]">
                 <button
@@ -65,7 +65,7 @@ function FlowerDetail(params) {
                       : "bg-extra4 hover:cursor-pointer hover:bg-sub1"
                   } w-full rounded-md h-full py-1 font-sans`}
                 >
-                  <span className="text-sm">{category}</span>
+                  <span className="text-white text-xs">{category}</span>
                 </button>
               </div>
             ))}
