@@ -43,7 +43,7 @@ public class ArticlesRes {
 
         List<String> pictures = new ArrayList<>();
         for(Picture picture : article.getPictures()){
-            pictures.add(picture.getImage());
+            pictures.add("https://ggotmari.s3.ap-northeast-2.amazonaws.com/" + picture.getImage());
         }
         res.setArticleImages(pictures);
 

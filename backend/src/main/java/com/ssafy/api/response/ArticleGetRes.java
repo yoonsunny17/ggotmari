@@ -47,7 +47,7 @@ public class ArticleGetRes extends BaseResponseBody {
 
         List<Picture> pictures = article.getPictures();
         for(Picture picture : pictures){
-            res.getArticleImage().add(picture.getImage());
+            res.getArticleImage().add("https://ggotmari.s3.ap-northeast-2.amazonaws.com/" + picture.getImage());
         }
 
         res.setArticleTitle(article.getTitle());
