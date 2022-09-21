@@ -20,7 +20,7 @@ function SimilarFlowers({
         alt={`${kindName} + ${subjectName}`}
         className="cursor-pointer rounded-md w-full h-full aspect-square object-cover"
       />
-      <div className="font-sans text-font1 text-xs pt-1 pb-2">{kindName}</div>
+      <div className="font-sans text-font2 text-xs pt-1 pb-2">{kindName}</div>
     </div>
   );
 }
