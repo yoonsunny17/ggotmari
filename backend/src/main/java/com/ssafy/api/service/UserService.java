@@ -9,6 +9,7 @@ import com.ssafy.db.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.multipart.MultipartFile;
 
 @Service
 public class UserService {
@@ -16,6 +17,8 @@ public class UserService {
     private UserRepository userRepository;
     @Autowired
     private FollowRepository followRepository;
+    @Autowired
+    private FileService fileService;
 
     public boolean checkEmail(String email){
         User user = userRepository.findByEmail(email);
@@ -93,14 +96,15 @@ public class UserService {
     }
 
     @Transactional
-    public boolean updateUser(UserPutReq userPutReq, String email) {
+    public boolean updateUser(UserPutReq userPutReq, String email, MultipartFile multipartFile) {
         User user = userRepository.findByEmail(email);
 
         if(userPutReq.getUserName() != null){
             user.setName(userPutReq.getUserName());
         }
-        if(userPutReq.getUserImage() != null){
-            user.setProfileImage(userPutReq.getUserImage());
+        if(multipartFile != null){
+            String imageUrl = fileService.uploadFile(multipartFile);
+            user.setProfileImage(imageUrl);
         }
         if(userPutReq.getBirthday() != null) {
             user.setBirthday(userPutReq.getBirthday());
