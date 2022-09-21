@@ -1,0 +1,1 @@
+function RelatedPost(params) {}
