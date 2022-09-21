@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import SimilarFlowerCard from "../../components/atoms/flower/SimilarFlowerCard";
+import SimilarFlowers from "../../components/molecules/flower/SimilarFlowers";
 
 function FlowerDetail(params) {
   const [duplicated, setDuplicated] = useState(["없음"]);
@@ -86,7 +86,7 @@ function FlowerDetail(params) {
                   className="carousel-item relative w-1/4 h-fit px-1"
                   key={idx}
                 >
-                  <SimilarFlowerCard info={info} key={idx} />
+                  <SimilarFlowers info={info} key={idx} />
                 </div>
               );
             })}

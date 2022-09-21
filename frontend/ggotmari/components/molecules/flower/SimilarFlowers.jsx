@@ -1,6 +1,6 @@
 import { useRouter } from "next/router";
 
-function SimilarFlowerCard({
+function SimilarFlowers({
   info: { imgUrl, kindId, kindName, subjectId, subjectName },
 }) {
   const router = useRouter();
@@ -25,4 +25,4 @@ function SimilarFlowerCard({
   );
 }
 
-export default SimilarFlowerCard;
+export default SimilarFlowers;
