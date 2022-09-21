@@ -4,15 +4,22 @@ import CollectionImage from "../../atoms/profile/CollectionImage";
 import YJ from "../../../assets/YJ.png";
 
 function ProfileCollection() {
-  const [tabs, setTabs] = useState([
-    { category: "전체", isActive: true },
-    { category: "가족", isActive: false },
-    { category: "연인", isActive: false },
-    { category: "친구", isActive: false },
-    { category: "선생님", isActive: false },
-    { category: "직장동료", isActive: false },
-    { category: "기타", isActive: false },
-  ]);
+  const [activeTab, setActiveTab] = useState(0);
+
+  const tabs = [
+    { category: "전체" },
+    { category: "가족" },
+    { category: "연인" },
+    { category: "친구" },
+    { category: "선생님" },
+    { category: "직장동료" },
+    { category: "기타" },
+  ];
+
+  const onClickTab = (index) => {
+    setActiveTab(index);
+  };
+
   const [collectionItems, setCollectionItems] = useState([
     { url: YJ.src, title: "소통왕 영준" },
     { url: YJ.src, title: "소통왕 영준" },
@@ -23,43 +30,21 @@ function ProfileCollection() {
     { url: YJ.src, title: "소통왕 영준" },
   ]);
 
-  const btnClick = (category) => {
-    // console.log("clicked", tabs);
-    for (let i = 0; i < tabs.length; i++) {
-      // console.log(tabs[i]);
-      if (tabs[i].category === category && tabs[i].isActive === true) {
-        return;
-      } else if (tabs[i].category === category && tabs[i].isActive === false) {
-        const tmp = [
-          { category: "전체", isActive: false },
-          { category: "가족", isActive: false },
-          { category: "연인", isActive: false },
-          { category: "친구", isActive: false },
-          { category: "선생님", isActive: false },
-          { category: "직장동료", isActive: false },
-          { category: "기타", isActive: false },
-        ];
-        tmp[i].isActive = true;
-        // console.log(tmp);
-        setTabs(tmp);
-      }
-    }
-  };
-
   return (
     <>
       {/* 탭들 */}
       <div className="tabs grid grid-cols-4 mx-4">
-        {tabs.map((tab) => {
+        {tabs.map((tab, index) => {
           // console.log(tab);
           return (
             <div key={tab.category} className="col-span-1 p-0.5">
               <CollectionBtn
                 category={tab.category}
-                isActive={tab.isActive}
+                activeTab={activeTab}
+                index={index}
                 onClick={() => {
                   // console.log("clicked");
-                  btnClick(tab.category);
+                  onClickTab(index);
                 }}
               />
             </div>
