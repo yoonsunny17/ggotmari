@@ -76,8 +76,8 @@ class Comment(models.Model):
 class DailyFlower(models.Model):
     daily_flower_id = models.BigAutoField(primary_key=True)
     flower_name = models.CharField(max_length=255)
-    content = models.CharField(max_length=255)
-    date = models.DateField()
+    flower_content = models.CharField(max_length=255)
+    flower_date = models.CharField(max_length=255)
     flower_image = models.CharField(max_length=255)
     flower_language = models.CharField(max_length=255)
 
