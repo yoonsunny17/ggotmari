@@ -1,6 +1,7 @@
 package com.ssafy.api.service;
 
 import org.json.JSONObject;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
@@ -15,8 +16,10 @@ import java.util.Map;
 
 @Service
 public class KakaoService {
-    private final String KAKAO_CLIENT_ID = "bcf2bd5b8708530d7dc5a312ad648204";
-    private final String KAKAO_REDIRECT_URI = "http://localhost:3000/login/kakao";
+    @Value("${kakao.client.id}")
+    private String KAKAO_CLIENT_ID;
+    @Value("${kakao.redirect.uri}")
+    private String KAKAO_REDIRECT_URI;
 
     private Map<String, String> kakaoTokenMap = new HashMap<>();
 
