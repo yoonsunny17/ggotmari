@@ -133,6 +133,9 @@ public class UserService {
         User user = userRepository.findByEmail(email);
 
         if(userPutReq.getUserName() != null){
+            if(userRepository.findByName(userPutReq.getUserName()) != null){
+                return false;
+            }
             user.setName(userPutReq.getUserName().toLowerCase());
         }
         if(multipartFile != null){
