@@ -3,6 +3,8 @@ package com.ssafy.api.controller;
 import com.ssafy.api.request.FlowerTagPostReq;
 import com.ssafy.api.response.*;
 import com.ssafy.api.service.FlowerService;
+import com.ssafy.api.service.UserService;
+import com.ssafy.common.util.JwtTokenUtil;
 import com.ssafy.db.entity.Article;
 import com.ssafy.db.entity.DailyFlower;
 import com.ssafy.db.entity.Kind;
@@ -15,6 +17,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 @Api(value = "꽃 api", tags = {"Flower"})
@@ -24,6 +27,10 @@ public class FlowerController {
 
     @Autowired
     FlowerService flowerService;
+    @Autowired
+    private JwtTokenUtil jwtTokenUtil;
+    @Autowired
+    UserService userService;
 
     @GetMapping("/daily")
     @ApiOperation(value = "오늘의 꽃 조회", notes = "오늘의 꽃 반환한다.")
@@ -65,16 +72,18 @@ public class FlowerController {
             @ApiResponse(code = 201, message = "품목 조회 성공"),
             @ApiResponse(code = 500, message = "품목 조회 실패")
     })
-    public ResponseEntity<? extends FlowerDetailGetRes> getFlowerDetail(@PathVariable("subjectId") Long subjectId){
+    public ResponseEntity<? extends FlowerDetailGetRes> getFlowerDetail(@PathVariable("subjectId") Long subjectId,
+                                                                        HttpServletRequest request){
 
-        Long userId = 1L;
+        String jwtToken = request.getHeader("Authorization");
+        String email = jwtTokenUtil.getUserEmailFromToken(jwtToken);
 
         Subject subject = flowerService.getFlowerDetail(subjectId);
 
         if(subject == null){
             return ResponseEntity.status(403).body(FlowerDetailGetRes.of(403, "조회실패.", null, null, null));
         }else{
-            List<KindDetailRes> kinds = flowerService.getFlowerKinds(userId, subjectId);
+            List<KindDetailRes> kinds = flowerService.getFlowerKinds(email, subjectId);
             List<Article> articles = flowerService.getSubjectArticles(subjectId);
 
             return ResponseEntity.status(201).body(FlowerDetailGetRes.of(201, "정상적으로 조회되었습니다.", subject, kinds, articles));
@@ -87,12 +96,15 @@ public class FlowerController {
             @ApiResponse(code = 201, message = "태그 전환 성공"),
             @ApiResponse(code = 500, message = "태그 전환 실패")
     })
-    public ResponseEntity<? extends TagPostRes> reverseTag(@PathVariable("subjectId") Long subjectId, @RequestBody FlowerTagPostReq tagInfo){
+    public ResponseEntity<? extends TagPostRes> reverseTag(@PathVariable("subjectId") Long subjectId,
+                                                           @RequestBody FlowerTagPostReq tagInfo,
+                                                           HttpServletRequest request){
 
 
-        Long userId = 1L;
+        String jwtToken = request.getHeader("Authorization");
+        String email = jwtTokenUtil.getUserEmailFromToken(jwtToken);
 
-        boolean isSuccess = flowerService.reverseFlowerTag(userId, tagInfo);
+        boolean isSuccess = flowerService.reverseFlowerTag(email, tagInfo);
 
         if(!isSuccess){
             return ResponseEntity.status(403).body(TagPostRes.of(403, "전환 실패.", isSuccess));
