@@ -5,9 +5,9 @@ function FlowerCard({ info: { subjectId, kindId, flowerName, imgUrl } }) {
   const handlePostClick = () => {
     router.push(
       {
-        pathname: `community/${subjectId}`,
+        pathname: `flower/${subjectId}`,
       },
-      `community/${subjectId}`
+      `flower/${subjectId}`
     );
   };
   return (

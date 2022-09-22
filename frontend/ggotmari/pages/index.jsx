@@ -125,7 +125,7 @@ const recommPost = [
   {
     articleId: 100,
     username: "sangchuman",
-    imgUrl:
+    articleImage:
       "https://images.unsplash.com/photo-1496483648148-47c686dc86a8?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1173&q=80",
     likeNumbs: 13,
   },
@@ -133,7 +133,7 @@ const recommPost = [
     articleId: 101,
 
     username: "hot_bubbletea",
-    imgUrl:
+    articleImage:
       "https://images.unsplash.com/photo-1530092285049-1c42085fd395?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80",
     likeNumbs: 32,
   },
@@ -141,7 +141,7 @@ const recommPost = [
     articleId: 102,
 
     username: "princess_yo",
-    imgUrl:
+    articleImage:
       "https://images.unsplash.com/photo-1561181286-d3fee7d55364?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80",
     likeNumbs: 6,
   },
@@ -149,7 +149,7 @@ const recommPost = [
     articleId: 103,
 
     username: "sleepy_ssuny",
-    imgUrl:
+    articleImage:
       "https://images.unsplash.com/photo-1510894399130-57dfa8dcc45d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1083&q=80",
     likeNumbs: 123,
   },

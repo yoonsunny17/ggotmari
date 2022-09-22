@@ -1,7 +1,6 @@
 import { useRouter } from "next/router";
 import { IoMdHeart } from "react-icons/io";
 
-// function CommunityCard({ info: { username, imgUrl, likeNumbs } }) {
 function CommunityCard({
   info: {
     articleId,
@@ -30,7 +29,7 @@ function CommunityCard({
     <div onClick={postClickHandler}>
       <div className="cursor-pointer rounded-lg aspect-square shadow overflow-hidden relative">
         <img
-          src={imgUrl}
+          src={articleImage}
           alt="communityCard"
           className="w-full h-full object-cover"
         />
