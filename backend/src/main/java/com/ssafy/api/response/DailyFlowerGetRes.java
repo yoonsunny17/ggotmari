@@ -37,7 +37,7 @@ public class DailyFlowerGetRes extends BaseResponseBody {
         res.setDailyFlowerName(dailyFlower.getFlowerName());
         res.setDailyFlowerLanguage(dailyFlower.getFlowerLanguage());
         res.setDailyFlowerContent(dailyFlower.getFlowerContent());
-        res.setDailyFlowerImage(dailyFlower.getFlowerImage());
+        res.setDailyFlowerImage("https://ggotmari.s3.ap-northeast-2.amazonaws.com/" + dailyFlower.getFlowerImage());
         return res;
     }
 }

@@ -13,9 +13,6 @@ import java.util.Date;
 @ApiModel("UserPutRequest")
 public class UserPutReq {
 
-    @ApiModelProperty(name = "회원 사진")
-    String userImage;
-
     @ApiModelProperty(name = "회원 닉네임")
     String userName;
 

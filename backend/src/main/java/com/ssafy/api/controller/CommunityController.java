@@ -3,6 +3,8 @@ package com.ssafy.api.controller;
 import com.ssafy.api.request.*;
 import com.ssafy.api.response.*;
 import com.ssafy.api.service.CommunityService;
+import com.ssafy.api.service.UserService;
+import com.ssafy.common.util.JwtTokenUtil;
 import com.ssafy.db.entity.Article;
 import com.ssafy.db.entity.Comment;
 import com.ssafy.db.entity.Subject;
@@ -14,7 +16,9 @@ import io.swagger.annotations.ApiResponses;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 @Api(value = "커뮤니티 api", tags = {"Community"})
@@ -24,6 +28,10 @@ public class CommunityController {
 
     @Autowired
     CommunityService communityService;
+    @Autowired
+    private JwtTokenUtil jwtTokenUtil;
+    @Autowired
+    UserService userService;
 
     @PostMapping("/article")
     @ApiOperation(value = "게시글 생성", notes = "생성된 게시글 id 값을 응답한다.")
@@ -31,11 +39,13 @@ public class CommunityController {
             @ApiResponse(code = 201, message = "게시글 생성 성공"),
             @ApiResponse(code = 500, message = "게시글 생성 실패")
     })
-    public ResponseEntity<? extends ArticlePostRes> createArticle(@RequestBody ArticleCreatePostReq articleInfo){
-        //TODO : userId 받아오기
-        Long userId = 1L;
+    public ResponseEntity<? extends ArticlePostRes> createArticle(@RequestPart ArticleCreatePostReq articleInfo,
+                                                                  @RequestPart(value = "images") List<MultipartFile> multipartFiles,
+                                                                  HttpServletRequest request){
+        String jwtToken = request.getHeader("Authorization");
+        String email = jwtTokenUtil.getUserEmailFromToken(jwtToken);
 
-        Article article = communityService.createArticle(userId, articleInfo);
+        Article article = communityService.createArticle(email, articleInfo, multipartFiles);
 
         return ResponseEntity.status(201).body(ArticlePostRes.of(201, "정상적으로 작성되었습니다", article.getId()));
     }
@@ -59,11 +69,15 @@ public class CommunityController {
             @ApiResponse(code = 201, message = "게시글 수정 성공"),
             @ApiResponse(code = 500, message = "게시글 수정 실패")
     })
-    public ResponseEntity<? extends ArticlePostRes> updateArticle(@PathVariable("articleId") Long articleId, @RequestBody ArticleCreatePostReq articleInfo){
+    public ResponseEntity<? extends ArticlePostRes> updateArticle(@PathVariable("articleId") Long articleId,
+                                                                  @RequestPart ArticleCreatePostReq articleInfo,
+                                                                  @RequestPart(value = "images") List<MultipartFile> multipartFiles,
+                                                                  HttpServletRequest request){
 
-        Long userId = 1L;
+        String jwtToken = request.getHeader("Authorization");
+        String email = jwtTokenUtil.getUserEmailFromToken(jwtToken);
 
-        Article article = communityService.updateArticle(userId, articleId, articleInfo);
+        Article article = communityService.updateArticle(email, articleId, articleInfo, multipartFiles);
 
         if(article == null){
             return ResponseEntity.status(403).body(ArticlePostRes.of(403, "수정할 수 없습니다.", article.getId()));
@@ -78,11 +92,13 @@ public class CommunityController {
             @ApiResponse(code = 201, message = "게시글 삭제 성공"),
             @ApiResponse(code = 500, message = "게시글 삭제 실패")
     })
-    public ResponseEntity<? extends ArticleDelRes> deleteArticle(@PathVariable("articleId") Long articleId){
+    public ResponseEntity<? extends ArticleDelRes> deleteArticle(@PathVariable("articleId") Long articleId,
+                                                                 HttpServletRequest request){
 
-        Long userId = 1L;
+        String jwtToken = request.getHeader("Authorization");
+        String email = jwtTokenUtil.getUserEmailFromToken(jwtToken);
 
-        boolean isSuccess = communityService.deleteArticle(userId, articleId);
+        boolean isSuccess = communityService.deleteArticle(email, articleId);
 
         return ResponseEntity.status(201).body(ArticleDelRes.of(201, "정상적으로 삭제되었습니다", isSuccess));
     }
@@ -93,18 +109,18 @@ public class CommunityController {
             @ApiResponse(code = 201, message = "게시글 상세 조회 성공"),
             @ApiResponse(code = 500, message = "게시글 상세 조회 실패")
     })
-    public ResponseEntity<? extends ArticleGetRes> getArticleDetail(@PathVariable("articleId") Long articleId){
+    public ResponseEntity<? extends ArticleGetRes> getArticleDetail(@PathVariable("articleId") Long articleId,
+                                                                    HttpServletRequest request){
 
-        Long userId = 1L;
+        String jwtToken = request.getHeader("Authorization");
+        String email = jwtTokenUtil.getUserEmailFromToken(jwtToken);
+
         Article article = communityService.getArticle(articleId);
+        User user = userService.getUserByEmail(email);
 
-        //TODO : userService 연결 후 수정
-        boolean isFollow = false;
+        boolean isFollow = userService.checkFollow(user, article.getUser());
 
-        boolean isLike = communityService.checkLike(userId, articleId);
-
-        //TODO : userService 연결 후 수정
-        User user = new User();
+        boolean isLike = communityService.checkLike(email, articleId);
 
         return ResponseEntity.status(201).body(ArticleGetRes.of(201, "정상적으로 조회되었습니다", article, isFollow, isLike, user));
     }
@@ -115,12 +131,13 @@ public class CommunityController {
             @ApiResponse(code = 201, message = "게시글 목록 조회 성공"),
             @ApiResponse(code = 500, message = "게시글 목록 조회 실패")
     })
-    public ResponseEntity<? extends ArticlesGetRes> getArticleList(){
+    public ResponseEntity<? extends ArticlesGetRes> getArticleList(HttpServletRequest request){
 
-        Long userId = 1L;
+        String jwtToken = request.getHeader("Authorization");
+        String email = jwtTokenUtil.getUserEmailFromToken(jwtToken);
 
-        //TODO : userService 연결 후 수정
-        User user = new User();
+        //팔로우 여부 확인용
+        User user = userService.getUserByEmail(email);
 
         List<Article> articles = communityService.getArticles();
 
@@ -133,12 +150,13 @@ public class CommunityController {
             @ApiResponse(code = 201, message = "좋아요 전환 성공"),
             @ApiResponse(code = 500, message = "좋아요 전환 실패")
     })
-    public ResponseEntity<? extends LikePostRes> reverseLike(@PathVariable("articleId") Long articleId, @RequestBody LikePostReq likeInfo){
+    public ResponseEntity<? extends LikePostRes> reverseLike(@PathVariable("articleId") Long articleId, @RequestBody LikePostReq likeInfo,
+                                                             HttpServletRequest request){
 
-        //TODO : userId 받아오기
-        Long userId = 1L;
+        String jwtToken = request.getHeader("Authorization");
+        String email = jwtTokenUtil.getUserEmailFromToken(jwtToken);
 
-        boolean isSuccess = communityService.reverseArticleLike(userId, articleId, likeInfo);
+        boolean isSuccess = communityService.reverseArticleLike(email, articleId, likeInfo);
 
 
         if(isSuccess){
@@ -154,12 +172,14 @@ public class CommunityController {
             @ApiResponse(code = 201, message = "댓글 작성 성공"),
             @ApiResponse(code = 500, message = "댓글 작성 실패")
     })
-    public ResponseEntity<? extends CommentPostRes> createComment(@PathVariable("articleId") Long articleId, @RequestBody CommentCreatePostReq commentInfo){
+    public ResponseEntity<? extends CommentPostRes> createComment(@PathVariable("articleId") Long articleId,
+                                                                  @RequestBody CommentCreatePostReq commentInfo,
+                                                                  HttpServletRequest request){
 
-        //TODO : userId 받아오기
-        Long userId = 1L;
+        String jwtToken = request.getHeader("Authorization");
+        String email = jwtTokenUtil.getUserEmailFromToken(jwtToken);
 
-        Comment comment = communityService.createComment(userId, articleId, commentInfo);
+        Comment comment = communityService.createComment(email, articleId, commentInfo);
 
 
         return ResponseEntity.status(201).body(CommentPostRes.of(201, "정상적으로 작성되었습니다", comment.getId()));
@@ -171,12 +191,14 @@ public class CommunityController {
             @ApiResponse(code = 201, message = "댓글 수정 성공"),
             @ApiResponse(code = 500, message = "댓글 수정 실패")
     })
-    public ResponseEntity<? extends CommentPostRes> updateComment(@PathVariable("articleId") Long articleId, @RequestBody CommentPutReq commentInfo){
+    public ResponseEntity<? extends CommentPostRes> updateComment(@PathVariable("articleId") Long articleId,
+                                                                  @RequestBody CommentPutReq commentInfo,
+                                                                  HttpServletRequest request){
 
-        //TODO : userId 받아오기
-        Long userId = 1L;
+        String jwtToken = request.getHeader("Authorization");
+        String email = jwtTokenUtil.getUserEmailFromToken(jwtToken);
 
-        Comment comment = communityService.updateComment(userId, articleId, commentInfo);
+        Comment comment = communityService.updateComment(email, articleId, commentInfo);
 
         if(comment == null){
             return ResponseEntity.status(403).body(CommentPostRes.of(403, "수정이 불가능합니다.", comment.getId()));
@@ -191,11 +213,14 @@ public class CommunityController {
             @ApiResponse(code = 201, message = "댓글 삭제 성공"),
             @ApiResponse(code = 500, message = "댓글 삭제 실패")
     })
-    public ResponseEntity<? extends CommentDelRes> deleteComment(@PathVariable("articleId") Long articleId, @RequestBody CommentDelReq commentInfo){
+    public ResponseEntity<? extends CommentDelRes> deleteComment(@PathVariable("articleId") Long articleId,
+                                                                 @RequestBody CommentDelReq commentInfo,
+                                                                 HttpServletRequest request){
 
-        Long userId = 1L;
+        String jwtToken = request.getHeader("Authorization");
+        String email = jwtTokenUtil.getUserEmailFromToken(jwtToken);
 
-        boolean isSuccess = communityService.deleteComment(userId, commentInfo);
+        boolean isSuccess = communityService.deleteComment(email, commentInfo);
 
         if(isSuccess){
             return ResponseEntity.status(201).body(CommentDelRes.of(201, "정상적으로 삭제되었습니다", isSuccess));

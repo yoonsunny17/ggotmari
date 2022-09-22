@@ -59,9 +59,9 @@ public class FlowerService {
         return subjectRepository.findById(subjectId).get();
     }
 
-    public List<KindDetailRes> getFlowerKinds(Long userId, Long subjectId){
+    public List<KindDetailRes> getFlowerKinds(String email, Long subjectId){
         Subject subject = subjectRepository.findById(subjectId).get();
-        User user = userRepository.findById(userId).get();
+        User user = userRepository.findByEmail(email);
 
         List<Kind> kinds = kindRepository.findAllBySubject(subject);
 
@@ -105,9 +105,9 @@ public class FlowerService {
     }
 
     @Transactional
-    public boolean reverseFlowerTag(Long userId, FlowerTagPostReq tagInfo){
+    public boolean reverseFlowerTag(String email, FlowerTagPostReq tagInfo){
 
-        User user = userRepository.findById(userId).get();
+        User user = userRepository.findByEmail(email);
         Kind kind = kindRepository.findById(tagInfo.getKindId()).get();
         Tag tag = tagRepository.findById(tagInfo.getTagId()).get();
 
