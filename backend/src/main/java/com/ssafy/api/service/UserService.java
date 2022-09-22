@@ -12,7 +12,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.security.SecureRandom;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -39,14 +41,40 @@ public class UserService {
     public void createUser(String email){
         User user = User.builder()
                 .email(email)
-                .loginCount(1L)
-                .name("랜덤아이디")
+                .loginCount(0L)
+                .name(createName())
                 .profileImage("")
                 .isActive(true)
                 .build();
 
         userRepository.save(user);
     }
+
+    public String createName(){
+//        char[] alnum = {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z',
+//                'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z',
+//                '1', '2', '3', '4', '5', '6', '7', '8', '9', '0'};
+        String[][] words = {{"happy", "pretty", "ugly", "cute", "nice", "cool", "awesome", "cosy", "great", "windy", "sexy", "hot", "crazy", "adorable", "wild", "lovely", "shiny", "glossy"},
+                {"rose", "lily", "carnation", "freesia", "lotus", "hyacinth", "sunflower", "violet", "anemone", "marigold", "hibiscus", "jasmine", "tulip", "daisy", "lavender", "dahila", "bluebell", "iris", "poppy", "snowdrop", "dandelion", "clover", "pansy", "peony"}};
+
+        StringBuffer sb = new StringBuffer();
+        SecureRandom sr = new SecureRandom();
+        sr.setSeed(new Date().getTime());
+
+        int idx = sr.nextInt(words[0].length);
+        sb.append(words[0][idx]).append("_");
+
+        idx = sr.nextInt(words[1].length);
+        sb.append(words[1][idx]).append(sr.nextInt(100000));
+
+        String name = sb.toString();
+        if(userRepository.findByName(name) != null){
+            name = createName();
+        }
+
+        return name;
+    }
+
 
     @Transactional
     public void updateLoginCount(String email){
@@ -105,7 +133,7 @@ public class UserService {
         User user = userRepository.findByEmail(email);
 
         if(userPutReq.getUserName() != null){
-            user.setName(userPutReq.getUserName());
+            user.setName(userPutReq.getUserName().toLowerCase());
         }
         if(multipartFile != null){
             String imageUrl = fileService.uploadFile(multipartFile);
