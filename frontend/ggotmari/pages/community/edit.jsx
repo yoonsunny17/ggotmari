@@ -1,20 +1,24 @@
 import { useRouter } from "next/router";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { IoCameraOutline, IoRefreshOutline } from "react-icons/io5";
 import FlowerTag from "../../components/atoms/common/FlowerTag";
+import axios from "axios";
 
 function EditArticle() {
   const router = useRouter();
   const [flowerTags, setFlowerTags] = useState([]);
+  const [flowers, setFlowers] = useState([]);
 
-  const flowers = [
-    "장미",
-    "거베라",
-    "코스모스",
-    "카네이션",
-    "해바라기",
-    "국화",
-  ];
+  useEffect(() => {
+    axios
+      .get("https://j7a303.p.ssafy.io/api/community/article")
+      .then((res) => {
+        setFlowers(res.data.subjects);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
 
   const [dropDownOpen, setDropDownOpen] = useState(false);
 
@@ -90,7 +94,7 @@ function EditArticle() {
                     className="p-2 font-sans hover:bg-font3"
                     onClick={addFlowerTag}
                   >
-                    {flower}
+                    {flower.subjectName}
                   </div>
                 ))}
               </div>
