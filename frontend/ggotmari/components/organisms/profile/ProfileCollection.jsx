@@ -1,9 +1,8 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import CollectionBtn from "../../atoms/profile/CollectionBtn";
 import CollectionImage from "../../atoms/profile/CollectionImage";
-import YJ from "../../../assets/YJ.png";
 
-function ProfileCollection() {
+function ProfileCollection({ likeFlowers }) {
   const [activeTab, setActiveTab] = useState(0);
 
   const tabs = [
@@ -16,19 +15,47 @@ function ProfileCollection() {
     { category: "기타" },
   ];
 
+  const [collectionItems, setCollectionItems] = useState([
+    {
+      flowerImage: "",
+      subjectId: "",
+      kindId: "",
+      kindName: "",
+    },
+  ]);
+
   const onClickTab = (index) => {
     setActiveTab(index);
+    let arr = [];
+    for (let likeFlower of likeFlowers) {
+      arr.push(likeFlower.tag);
+      // console.log(arr);
+      if (arr.includes(tabs[index].category)) {
+        // console.log("yes");
+        if (tabs[index].category === likeFlower.tag) {
+          setCollectionItems(likeFlower.flowers);
+        }
+      } else {
+        setCollectionItems();
+      }
+    }
   };
 
-  const [collectionItems, setCollectionItems] = useState([
-    { url: YJ.src, title: "소통왕 영준" },
-    { url: YJ.src, title: "소통왕 영준" },
-    { url: YJ.src, title: "소통왕 영준" },
-    { url: YJ.src, title: "소통왕 영준" },
-    { url: YJ.src, title: "소통왕 영준" },
-    { url: YJ.src, title: "소통왕 영준" },
-    { url: YJ.src, title: "소통왕 영준" },
-  ]);
+  useEffect(() => {
+    let arr = [];
+    for (let likeFlower of likeFlowers) {
+      arr.push(likeFlower.tag);
+      // console.log(arr);
+      if (arr.includes(tabs[0].category)) {
+        // console.log("yes");
+        if (tabs[0].category === likeFlower.tag) {
+          setCollectionItems(likeFlower.flowers);
+        }
+      } else {
+        setCollectionItems();
+      }
+    }
+  }, []);
 
   return (
     <>
@@ -53,13 +80,30 @@ function ProfileCollection() {
       </div>
       {/* 사진 및 내용들 */}
       <div className="colletion-items grid grid-cols-3 mt-3 mx-3">
-        {collectionItems.map((item, index) => {
+        {collectionItems ? (
+          collectionItems.map((item, index) => {
+            return (
+              <div className="collection-item p-1.5 text-xs" key={index}>
+                <CollectionImage
+                  flowerImage={item.flowerImage}
+                  kindName={item.kindName}
+                />
+              </div>
+            );
+          })
+        ) : (
+          <div>nonono</div>
+        )}
+        {/* {collectionItems.map((item, index) => {
           return (
             <div className="collection-item p-1.5 text-xs" key={index}>
-              <CollectionImage url={item.url} title={item.title} />
+              <CollectionImage
+                flowerImage={item.flowerImage}
+                kindName={item.kindName}
+              />
             </div>
           );
-        })}
+        })} */}
       </div>
     </>
   );

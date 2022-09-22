@@ -43,7 +43,7 @@ function Edit() {
               초기화
             </span>
           </div>
-          <div className="info-box mx-10  border-t-sub1 border-t-[1px] text-xl">
+          <div className="info-box mx-10  border-t-sub1 border-t-[1px] text-md">
             <div className="id-box border-b-sub1 border-b-[0.5px] py-5 text-font1 font-sanslight ">
               <div className="grid grid-cols-3 mx-3">
                 <div className="category col-span-1 flex items-center">
@@ -52,7 +52,7 @@ function Edit() {
                 <div className="input-box col-span-2">
                   <input
                     type="text"
-                    className="focus:outline-none"
+                    className="focus:outline-none w-full"
                     placeholder="닉네임을 입력해주세요"
                     onChange={onUsernameChange}
                   />
@@ -67,7 +67,7 @@ function Edit() {
                 <div className="input-box col-span-2">
                   <input
                     type="text"
-                    className="focus:outline-none"
+                    className="focus:outline-none w-full"
                     placeholder="YYYY.MM.DD"
                   />
                 </div>
@@ -87,7 +87,7 @@ function Edit() {
               </div>
             </div>
           </div>
-          <div className="btns-box mx-10 mt-8 flex justify-end font-sansultralight text-white text-lg">
+          <div className="btns-box mx-10 mt-8 flex justify-end font-sansultralight text-white text-sm">
             <div className="save-box">
               <button className="mr-2 bg-main w-full h-full px-4 py-1 rounded-md hover:bg-sub1 cursor-pointer">
                 저장
@@ -101,7 +101,7 @@ function Edit() {
           </div>
         </div>
       </form>
-      <div className="logout-signout-box flex justify-end mx-10 mt-52 font-sansultralight">
+      <div className="logout-signout-box flex justify-end mx-10 mt-20 font-sansultralight text-xs">
         <button className="logout mr-2 hover:text-font1">로그아웃</button>
         <span>|</span>
         <button className="signout ml-2 hover:text-font1">회원탈퇴</button>
