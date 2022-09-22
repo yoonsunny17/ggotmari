@@ -7,6 +7,8 @@ import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 @Data
@@ -20,6 +22,7 @@ public class SubjectGetRes extends BaseResponseBody {
         res.setStatusCode(statusCode);
         res.setMessage(message);
         res.setSubjects(subjects);
+
         return res;
     }
 
@@ -27,5 +30,7 @@ public class SubjectGetRes extends BaseResponseBody {
         for(Subject subject : subjects){
             this.subjects.add(SubjectRes.of(subject));
         }
+
+        Collections.sort(this.subjects);
     }
 }
