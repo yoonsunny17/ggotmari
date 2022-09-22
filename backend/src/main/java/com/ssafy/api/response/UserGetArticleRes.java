@@ -13,6 +13,9 @@ public class UserGetArticleRes {
     @ApiModelProperty(name = "글 ID")
     Long articleId;
 
+    @ApiModelProperty(name = "글 제목")
+    String articleTitle;
+
     @ApiModelProperty(name = "글 이미지")
     String articleImage;
 
@@ -20,6 +23,7 @@ public class UserGetArticleRes {
         UserGetArticleRes res = new UserGetArticleRes();
 
         res.setArticleId(article.getId());
+        res.setArticleTitle(article.getTitle());
         if(article.getPictures().size() > 0){
             res.setArticleImage(article.getPictures().get(0).getImage());
         }

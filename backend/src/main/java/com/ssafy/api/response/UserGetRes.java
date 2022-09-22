@@ -45,7 +45,7 @@ public class UserGetRes extends BaseResponseBody {
             res.setMe(false);
         }
 
-        res.setUser(UserGetUserRes.of(user));
+        res.setUser(UserGetUserRes.of(user, loginUser));
 
         res.setArticles(user.getArticles());
 
