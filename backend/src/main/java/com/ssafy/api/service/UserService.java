@@ -180,4 +180,21 @@ public class UserService {
         return followings;
     }
 
+
+    public boolean checkFollow(User loginUser, User targetUser){
+
+        if(loginUser.equals(targetUser)){
+            return true;
+        }
+
+        List<Follow> followings = loginUser.getFollowings();
+        for(Follow following : followings){
+            if(targetUser.equals(following.getFollowingUser())){
+                return true;
+            }
+        }
+
+        return false;
+    }
+
 }
