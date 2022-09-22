@@ -2,6 +2,7 @@ package com.ssafy.api.service;
 
 import com.ssafy.api.request.FollowPostReq;
 import com.ssafy.api.request.UserPutReq;
+import com.ssafy.api.response.FollowGetFollowerRes;
 import com.ssafy.db.entity.Follow;
 import com.ssafy.db.entity.User;
 import com.ssafy.db.repository.FollowRepository;
@@ -9,13 +10,20 @@ import com.ssafy.db.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.multipart.MultipartFile;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Service
+@Transactional(readOnly = true)
 public class UserService {
     @Autowired
     private UserRepository userRepository;
     @Autowired
     private FollowRepository followRepository;
+    @Autowired
+    private FileService fileService;
 
     public boolean checkEmail(String email){
         User user = userRepository.findByEmail(email);
@@ -93,14 +101,15 @@ public class UserService {
     }
 
     @Transactional
-    public boolean updateUser(UserPutReq userPutReq, String email) {
+    public boolean updateUser(UserPutReq userPutReq, String email, MultipartFile multipartFile) {
         User user = userRepository.findByEmail(email);
 
         if(userPutReq.getUserName() != null){
             user.setName(userPutReq.getUserName());
         }
-        if(userPutReq.getUserImage() != null){
-            user.setProfileImage(userPutReq.getUserImage());
+        if(multipartFile != null){
+            String imageUrl = fileService.uploadFile(multipartFile);
+            user.setProfileImage(imageUrl);
         }
         if(userPutReq.getBirthday() != null) {
             user.setBirthday(userPutReq.getBirthday());
@@ -122,4 +131,70 @@ public class UserService {
 
         return true;
     }
+
+    public List<FollowGetFollowerRes> getFollowers(String email, String username){
+
+        User loginUser = userRepository.findByEmail(email);
+        User targetUser = userRepository.findByName(username);
+
+        List<Follow> loginFollowings = loginUser.getFollowings();
+        List<Follow> targetFollowers = targetUser.getFollowers();
+
+        List<FollowGetFollowerRes> followers = new ArrayList<>();
+        for(Follow follow : targetFollowers){
+            FollowGetFollowerRes follower = new FollowGetFollowerRes();
+            follower.setUserImage(follow.getFollowUser().getProfileImage());
+            follower.setUserName(follow.getFollowUser().getName());
+            if(loginFollowings.contains(follow)){
+                follower.setFollowing(true);
+            }else{
+                follower.setFollowing(false);
+            }
+            followers.add(follower);
+        }
+
+        return followers;
+    }
+
+    public List<FollowGetFollowerRes> getFollowings(String email, String username){
+
+        User loginUser = userRepository.findByEmail(email);
+        User targetUser = userRepository.findByName(username);
+
+        List<Follow> loginFollowings = loginUser.getFollowings();
+        List<Follow> targetFollowings = targetUser.getFollowings();
+
+        List<FollowGetFollowerRes> followings = new ArrayList<>();
+        for(Follow follow : targetFollowings){
+            FollowGetFollowerRes following = new FollowGetFollowerRes();
+            following.setUserImage(follow.getFollowingUser().getProfileImage());
+            following.setUserName(follow.getFollowingUser().getName());
+            if(loginFollowings.contains(follow)){
+                following.setFollowing(true);
+            }else{
+                following.setFollowing(false);
+            }
+            followings.add(following);
+        }
+
+        return followings;
+    }
+
+
+    public boolean checkFollow(User loginUser, User targetUser){
+
+        if(loginUser.equals(targetUser)){
+            return true;
+        }
+
+        List<Follow> followings = loginUser.getFollowings();
+        for(Follow following : followings){
+            if(targetUser.equals(following.getFollowingUser())){
+                return true;
+            }
+        }
+
+        return false;
+    }
+
 }

@@ -7,6 +7,7 @@ import com.ssafy.api.service.UserService;
 import com.ssafy.common.util.JwtTokenUtil;
 import com.ssafy.db.entity.Article;
 import com.ssafy.db.entity.Comment;
+import com.ssafy.db.entity.Follow;
 import com.ssafy.db.entity.User;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -15,6 +16,7 @@ import io.swagger.annotations.ApiResponses;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
@@ -64,11 +66,14 @@ public class UserController {
         // user email 가져오기
         String jwtToken = request.getHeader("Authorization");
         String email = jwtTokenUtil.getUserEmailFromToken(jwtToken);
-        User loginUser = userService.getUserByEmail(email);
+        User loginUser = userService.getUserByEmail(email);     //로그인한 사람
 
-        User user = userService.getUserByName(username);
+        User user = userService.getUserByName(username);        //대상
 
-        return ResponseEntity.status(200).body(FollowGetRes.of(200, "팔로우 조회 성공", user, email));
+        List<FollowGetFollowerRes> followers = userService.getFollowers(email, username);
+        List<FollowGetFollowerRes> followings = userService.getFollowings(email, username);
+
+        return ResponseEntity.status(200).body(FollowGetRes.of(200, "팔로우 조회 성공", followers, followings));
     }
 
     @PostMapping("/follow")
@@ -99,7 +104,7 @@ public class UserController {
             @ApiResponse(code = 201, message = "회원 정보 수정 성공"),
             @ApiResponse(code = 500, message = "회원 정보 수정 실패")
     })
-    public ResponseEntity<? extends UserPutRes> updateUser(@RequestBody UserPutReq userPutReq, HttpServletRequest request){
+    public ResponseEntity<? extends UserPutRes> updateUser(@RequestPart UserPutReq userPutReq, HttpServletRequest request, @RequestPart MultipartFile multipartFile){
         // user email 가져오기
         String jwtToken = request.getHeader("Authorization");
         String email = null;
@@ -109,7 +114,7 @@ public class UserController {
             return ResponseEntity.status(403).body(UserPutRes.of(403,"올바르지 않은 접근입니다.", false));
         }
 
-        boolean isSuccess = userService.updateUser(userPutReq, email);
+        boolean isSuccess = userService.updateUser(userPutReq, email, multipartFile);
 
         return ResponseEntity.status(201).body(UserPutRes.of(201, "회원 정보 수정 성공", isSuccess));
     }

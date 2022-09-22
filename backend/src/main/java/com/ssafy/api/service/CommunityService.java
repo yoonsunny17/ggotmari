@@ -4,9 +4,11 @@ import com.ssafy.api.request.*;
 import com.ssafy.api.response.SubjectRes;
 import com.ssafy.db.entity.*;
 import com.ssafy.db.repository.*;
+import com.sun.org.apache.xpath.internal.operations.Mult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -19,31 +21,32 @@ import java.util.List;
 public class CommunityService {
 
     @Autowired
-    ArticleRepository articleRepository;
+    private ArticleRepository articleRepository;
     @Autowired
-    HashtagRepository hashtagRepository;
+    private HashtagRepository hashtagRepository;
     @Autowired
-    UserRepository userRepository;
+    private UserRepository userRepository;
     @Autowired
-    SubjectRepository subjectRepository;
+    private SubjectRepository subjectRepository;
     @Autowired
-    ArticleLikeRepository articleLikeRepository;
+    private ArticleLikeRepository articleLikeRepository;
     @Autowired
-    PictureRepository pictureRepository;
+    private PictureRepository pictureRepository;
     @Autowired
-    CommentRepository commentRepository;
+    private CommentRepository commentRepository;
+    @Autowired
+    private FileService fileService;
 
     @Transactional
-    public Article createArticle(Long userId, ArticleCreatePostReq articleInfo) {
+    public Article createArticle(String email, ArticleCreatePostReq articleInfo, List<MultipartFile> multipartFiles) {
 
-        User user = userRepository.findById(userId).get();
+        User user = userRepository.findByEmail(email);
 
         Article article = new Article();
 
         article.setUser(user);
         article.setTitle(articleInfo.getTitle());
         article.setContent(articleInfo.getContent());
-
 
         article.setDate(LocalDateTime.now());
 
@@ -63,12 +66,12 @@ public class CommunityService {
         }
         article.setHashtags(hashtags);
 
-        //TODO : S3 연결 후, uuid 파일명 변경 필요
         List<Picture> pictures = new ArrayList<>();
-        for (String image : articleInfo.getImages()) {
+        for (MultipartFile image : multipartFiles) {
             Picture picture = new Picture();
             picture.setArticle(article);
-            picture.setImage(image);
+            String imageUrl = fileService.uploadFile(image);
+            picture.setImage(imageUrl);
 
             pictureRepository.save(picture);
 
@@ -84,9 +87,9 @@ public class CommunityService {
     }
 
     @Transactional
-    public Article updateArticle(Long userId, Long articleId, ArticleCreatePostReq articleInfo) {
+    public Article updateArticle(String email, Long articleId, ArticleCreatePostReq articleInfo, List<MultipartFile> multipartFiles) {
 
-        User user = userRepository.findById(userId).get();
+        User user = userRepository.findByEmail(email);
 
         Article article = articleRepository.findById(articleId).get();
 
@@ -105,10 +108,11 @@ public class CommunityService {
         }
 
         List<Picture> newPictures = new ArrayList<>();
-        for (String image : articleInfo.getImages()) {
+        for (MultipartFile image : multipartFiles) {
             Picture picture = new Picture();
             picture.setArticle(article);
-            picture.setImage(image);
+            String imageUrl = fileService.uploadFile(image);
+            picture.setImage(imageUrl);
 
             pictureRepository.save(picture);
 
@@ -141,9 +145,9 @@ public class CommunityService {
     }
 
     @Transactional
-    public boolean deleteArticle(Long userId, Long articleId) {
+    public boolean deleteArticle(String email, Long articleId) {
 
-        User user = userRepository.findById(userId).get();
+        User user = userRepository.findByEmail(email);
         Article article = articleRepository.findById(articleId).get();
 
         if (article.getUser() != user) {
@@ -162,9 +166,9 @@ public class CommunityService {
         return articleRepository.findById(articleId).get();
     }
 
-    public boolean checkLike(Long userId, Long articleId) {
+    public boolean checkLike(String email, Long articleId) {
 
-        User user = userRepository.findById(userId).get();
+        User user = userRepository.findByEmail(email);
         Article article = articleRepository.findById(articleId).get();
 
         List<ArticleLike> likes = article.getLikes();
@@ -177,9 +181,9 @@ public class CommunityService {
     }
 
     @Transactional
-    public Comment createComment(Long userId, Long articleId, CommentCreatePostReq commentInfo) {
+    public Comment createComment(String email, Long articleId, CommentCreatePostReq commentInfo) {
 
-        User user = userRepository.findById(userId).get();
+        User user = userRepository.findByEmail(email);
         Article article = articleRepository.findById(articleId).get();
 
         Comment comment = new Comment();
@@ -196,9 +200,9 @@ public class CommunityService {
     }
 
     @Transactional
-    public Comment updateComment(Long userId, Long articleId, CommentPutReq commentInfo) {
+    public Comment updateComment(String email, Long articleId, CommentPutReq commentInfo) {
 
-        User user = userRepository.findById(userId).get();
+        User user = userRepository.findByEmail(email);
         Article article = articleRepository.findById(articleId).get();
 
         Comment comment = commentRepository.findById(commentInfo.getCommentId()).get();
@@ -214,9 +218,9 @@ public class CommunityService {
     }
 
     @Transactional
-    public boolean deleteComment(Long userId, CommentDelReq commentInfo) {
+    public boolean deleteComment(String email, CommentDelReq commentInfo) {
 
-        User user = userRepository.findById(userId).get();
+        User user = userRepository.findByEmail(email);
         Comment comment = commentRepository.findById(commentInfo.getCommentId()).get();
 
         if (comment.getUser() != user) {
@@ -228,9 +232,9 @@ public class CommunityService {
     }
 
     @Transactional
-    public boolean reverseArticleLike(Long userId, Long articleId, LikePostReq likeInfo) {
+    public boolean reverseArticleLike(String email, Long articleId, LikePostReq likeInfo) {
 
-        User user = userRepository.findById(userId).get();
+        User user = userRepository.findByEmail(email);
         Article article = articleRepository.findById(articleId).get();
 
         if (likeInfo.isLike()) {

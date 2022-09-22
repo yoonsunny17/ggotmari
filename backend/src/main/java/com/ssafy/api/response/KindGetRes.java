@@ -33,7 +33,7 @@ public class KindGetRes {
         res.setSubjectName(flower.getSubject().getSubjectName());
         res.setKindId(flower.getId());
         res.setKindName(flower.getKindName());
-        res.setKindImage(flower.getFlowerImage());
+        res.setKindImage("https://ggotmari.s3.ap-northeast-2.amazonaws.com/" + flower.getFlowerImage());
 
         return res;
     }
