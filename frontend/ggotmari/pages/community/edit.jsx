@@ -1,26 +1,42 @@
 import { useRouter } from "next/router";
 import { useState, useEffect } from "react";
 import { IoCameraOutline, IoRefreshOutline } from "react-icons/io5";
+import { getFlowerKind } from "../../api/community";
 import FlowerTag from "../../components/atoms/common/FlowerTag";
-import axios from "axios";
 
 function EditArticle() {
   const router = useRouter();
   const [flowerTags, setFlowerTags] = useState([]);
-  const [flowers, setFlowers] = useState([]);
+  const [tagSearch, setTagSearch] = useState("");
+  const [filteredList, setFilteredList] = useState([]);
+  const [flowerKindList, setFlowerKindList] = useState([]);
+  const [dropDownOpen, setDropDownOpen] = useState(false);
+  const [imagesPreview, setImagesPreview] = useState([]);
 
   useEffect(() => {
-    axios
-      .get("https://j7a303.p.ssafy.io/api/community/article")
-      .then((res) => {
-        setFlowers(res.data.subjects);
-      })
-      .catch((error) => {
+    getFlowerKind(
+      (res) => setFlowerKindList(res.data.subjects),
+      (error) => {
         console.log(error);
-      });
+      }
+    );
   }, []);
 
-  const [dropDownOpen, setDropDownOpen] = useState(false);
+  useEffect(() => {
+    setFilteredList(flowerKindList);
+  }, [flowerKindList]);
+
+  useEffect(() => {
+    setFilteredList(
+      flowerKindList.filter((flowerKind) =>
+        flowerKind.subjectName.startsWith(tagSearch)
+      )
+    );
+  }, [tagSearch]);
+
+  useEffect(() => {
+    console.log(imagesPreview);
+  });
 
   const addFlowerTag = (e) => {
     const newFlower = e.target.innerHTML;
@@ -33,15 +49,52 @@ function EditArticle() {
     setFlowerTags(flowerTags.filter((flower) => flower != tag));
   };
 
+  const handleFlowerSearchChange = (e) => {
+    setTagSearch(e.target.value);
+  };
+
+  const handleImgUpload = (e) => {
+    const fileArr = Array.from(e.target.files);
+    const fileURLs = [];
+    fileArr.forEach((file, idx) => {
+      const reader = new FileReader();
+      reader.onload = () => {
+        fileURLs[idx] = reader.result;
+        setImagesPreview([...fileURLs]);
+      };
+      reader.readAsDataURL(file);
+    });
+  };
+
   return (
     <div className="flex flex-col items-center">
-      <div className="w-full aspect-square bg-main"></div>
-      <div className="flex flex-row space-x-3 justify-center my-3">
-        <div className="inline text-font2 cursor-pointer">
-          <IoCameraOutline className="inline" /> 사진 첨부
+      <div className="w-screen aspect-square bg-main">
+        <div className="carousel w-full h-full">
+          {imagesPreview.length > 0
+            ? imagesPreview.map((imgSrc, idx) => (
+                <div className="carousel-item relative w-full h-full" key={idx}>
+                  <img src={imgSrc} className="object-cover" />
+                </div>
+              ))
+            : "사진 없음"}
         </div>
+      </div>
+      <div className="flex flex-row space-x-3 justify-center my-3">
+        <label className="inline text-font2 cursor-pointer" htmlFor="flowerImg">
+          <IoCameraOutline className="inline" /> 사진 첨부
+        </label>
+        <input
+          type="file"
+          className="absolute w-0 h-0 p-0 overflow-hidden border-0"
+          id="flowerImg"
+          multiple
+          onChange={handleImgUpload}
+        />
         <p> | </p>
-        <div className="inline text-font2 cursor-pointer">
+        <div
+          className="inline text-font2 cursor-pointer"
+          onClick={() => setImagesPreview([])}
+        >
           <IoRefreshOutline className="inline" /> 초기화
         </div>
       </div>
@@ -80,6 +133,7 @@ function EditArticle() {
               className="w-full text-sm focus:outline-none p-3"
               placeholder="꽃을 검색하세요"
               onClick={() => setDropDownOpen(true)}
+              onChange={handleFlowerSearchChange}
             />
             <hr />
             <div
@@ -89,7 +143,7 @@ function EditArticle() {
               }
             >
               <div className="">
-                {flowers.map((flower) => (
+                {filteredList.map((flower) => (
                   <div
                     className="p-2 font-sans hover:bg-font3"
                     onClick={addFlowerTag}
