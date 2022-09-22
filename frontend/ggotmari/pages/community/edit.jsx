@@ -1,16 +1,37 @@
 import { useRouter } from "next/router";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { IoCameraOutline, IoRefreshOutline } from "react-icons/io5";
 import FlowerTag from "../../components/atoms/common/FlowerTag";
+import axios from "axios";
 
 function EditArticle() {
   const router = useRouter();
-  const [flowerTags, setFlowerTags] = useState([
-    "장미",
-    "거베라",
-    "코스모스",
-    "아크라시아",
-  ]);
+  const [flowerTags, setFlowerTags] = useState([]);
+  const [flowers, setFlowers] = useState([]);
+
+  useEffect(() => {
+    axios
+      .get("https://j7a303.p.ssafy.io/api/community/article")
+      .then((res) => {
+        setFlowers(res.data.subjects);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
+
+  const [dropDownOpen, setDropDownOpen] = useState(false);
+
+  const addFlowerTag = (e) => {
+    const newFlower = e.target.innerHTML;
+    if (!flowerTags.includes(newFlower)) {
+      setFlowerTags([...flowerTags, e.target.innerHTML]);
+    }
+  };
+
+  const removeFlowerTag = (tag) => {
+    setFlowerTags(flowerTags.filter((flower) => flower != tag));
+  };
 
   return (
     <div className="flex flex-col items-center">
@@ -34,6 +55,7 @@ function EditArticle() {
             id="articleTitle"
             className="shadow-md w-full text-sm focus:outline-none px-3 py-2"
             placeholder="제목을 입력하세요"
+            onFocus={() => setDropDownOpen(false)}
           />
           <label htmlFor="flowerTags" className="pl-2 text-sm">
             꽃 태그
@@ -42,7 +64,12 @@ function EditArticle() {
             <div>
               <div className="flex flex-row flex-wrap px-5 py-3">
                 {flowerTags?.map((tag) => (
-                  <FlowerTag flowerName={tag} key={tag} isRemovable={true} />
+                  <FlowerTag
+                    flowerName={tag}
+                    key={tag}
+                    isRemovable={true}
+                    onClick={() => removeFlowerTag(tag)}
+                  />
                 ))}
               </div>
               <hr />
@@ -52,7 +79,26 @@ function EditArticle() {
               type="text"
               className="w-full text-sm focus:outline-none p-3"
               placeholder="꽃을 검색하세요"
+              onClick={() => setDropDownOpen(true)}
             />
+            <hr />
+            <div
+              className={
+                "max-h-32 z-10 overflow-auto " +
+                (dropDownOpen ? "relative" : "hidden")
+              }
+            >
+              <div className="">
+                {flowers.map((flower) => (
+                  <div
+                    className="p-2 font-sans hover:bg-font3"
+                    onClick={addFlowerTag}
+                  >
+                    {flower.subjectName}
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
           <label htmlFor="articleContent" className="pl-2 text-sm">
             내용
@@ -62,6 +108,7 @@ function EditArticle() {
             rows="5"
             className="shadow-md w-full text-sm focus:outline-none p-3"
             placeholder="내용을 입력하세요"
+            onFocus={() => setDropDownOpen(false)}
           ></textarea>
           <input type="submit" />
         </form>
