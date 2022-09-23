@@ -12,8 +12,8 @@ export default function Login() {
 
   return (
     // <div className="flex justify-center relative">
-    <div className="flex justify-center items-center h-screen">
-      <div className="text-center mb-40">
+    <div className="flex justify-center items-center h-screen bg-[url(https://images.unsplash.com/photo-1495583237039-44cb1143f0b6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80)] bg-cover bg-center">
+      <div className="text-center mb-52">
         <div className="font-sansbold text-2xl pb-2">로그인</div>
         <div className="font-sans pb-12">
           카카오 로그인을 통해
