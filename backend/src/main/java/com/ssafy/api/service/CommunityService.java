@@ -1,11 +1,11 @@
 package com.ssafy.api.service;
 
 import com.ssafy.api.request.*;
-import com.ssafy.api.response.SubjectRes;
 import com.ssafy.db.entity.*;
 import com.ssafy.db.repository.*;
-import com.sun.org.apache.xpath.internal.operations.Mult;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
@@ -266,15 +266,4 @@ public class CommunityService {
         return true;
     }
 
-    @Transactional
-    public List<Article> getPopularArticles() {
-
-        LocalDateTime start = LocalDateTime.now().minusDays(7);
-        LocalDateTime end = LocalDateTime.now();
-        List<Article> articles = articleRepository.findAllByDateBetween(start, end);
-
-        Collections.sort(articles, (o1, o2) -> o2.getLikes().size() - o1.getLikes().size());
-
-        return articles;
-    }
 }

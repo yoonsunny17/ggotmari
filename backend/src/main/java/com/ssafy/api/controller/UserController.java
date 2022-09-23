@@ -116,7 +116,11 @@ public class UserController {
 
         boolean isSuccess = userService.updateUser(userPutReq, email, multipartFile);
 
-        return ResponseEntity.status(201).body(UserPutRes.of(201, "회원 정보 수정 성공", isSuccess));
+        if(isSuccess){
+            return ResponseEntity.status(201).body(UserPutRes.of(201, "회원 정보 수정 성공", isSuccess));
+        }else{
+            return ResponseEntity.status(201).body(UserPutRes.of(201, "회원 정보 수정 실패", isSuccess));
+        }
     }
 
     @DeleteMapping("")
