@@ -9,7 +9,7 @@ import java.util.List;
 
 @Data
 @ApiModel("SubjectResponse")
-public class SubjectRes {
+public class SubjectRes implements Comparable<SubjectRes>{
 
     @ApiModelProperty(name = "품목 id", example = "1")
     Long subjectId;
@@ -23,5 +23,10 @@ public class SubjectRes {
         res.setSubjectName(subject.getSubjectName());
 
         return res;
+    }
+
+    @Override
+    public int compareTo(SubjectRes o) {
+        return subjectName.compareTo(o.subjectName);
     }
 }
