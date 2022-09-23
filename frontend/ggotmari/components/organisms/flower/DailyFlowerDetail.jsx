@@ -9,7 +9,8 @@ function DailyFlowerDetail({
         alt="flower luck"
       />
       <div className="my-10 text-center font-gangwon text-font1 text-md">
-        {flowerName}의 꽃말은 <br />'{flowerLanguage}' 입니다.
+        {flowerName}의 꽃말은 <br />
+        &apos;{flowerLanguage}&apos; 입니다.
         <br />
         <div className="mt-5 px-6">{flowerLuck}</div>
       </div>
