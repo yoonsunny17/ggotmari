@@ -3,6 +3,7 @@ package com.ssafy.api.controller;
 import com.ssafy.api.request.*;
 import com.ssafy.api.response.*;
 import com.ssafy.api.service.CommunityService;
+import com.ssafy.api.service.PopularService;
 import com.ssafy.api.service.UserService;
 import com.ssafy.common.util.JwtTokenUtil;
 import com.ssafy.db.entity.Article;
@@ -14,6 +15,8 @@ import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -32,6 +35,8 @@ public class CommunityController {
     private JwtTokenUtil jwtTokenUtil;
     @Autowired
     UserService userService;
+    @Autowired
+    PopularService popularService;
 
     @PostMapping("/article")
     @ApiOperation(value = "게시글 생성", notes = "생성된 게시글 id 값을 응답한다.")
@@ -230,17 +235,17 @@ public class CommunityController {
     }
 
 
-    //TODO : 인기글
     @GetMapping("/article/popular")
     @ApiOperation(value = "인기글 조회", notes = "인기 게시글 목록을 반환한다.")
     @ApiResponses({
             @ApiResponse(code = 201, message = "인기글 조회 성공"),
             @ApiResponse(code = 500, message = "인기글 조회 실패")
     })
-    public ResponseEntity<? extends PopularArticleGetRes> popularArticleList(){
+    public ResponseEntity<? extends PopularArticleGetRes> popularArticles(){
 
-        List<Article> articles = communityService.getPopularArticles();
+        List<Article> articles = popularService.getPopularArticles();
 
         return ResponseEntity.status(201).body(PopularArticleGetRes.of(201, "정상적으로 작성되었습니다", articles));
     }
+
 }
