@@ -165,14 +165,14 @@ function ArticleDetail() {
 
   return (
     <div className="flex flex-col">
-      <div className="flex flex-row justify-between items-center h-16 px-4">
-        <div className="flex flex-row h-1/2">
+      <div className="flex flex-row justify-between items-center h-20 px-4">
+        <div className="flex flex-row h-2/3 items-center">
           <ProfileImg imgSrc={article.articleUser.userImage} />
-          <div className="ml-2">
-            <p className="text-xs font-sans text-black">
+          <div className="ml-4">
+            <p className="text-base font-sans text-black">
               {article.articleUser.userName}
             </p>
-            <p className="text-[4px] font-sans text-font2">
+            <p className="text-sm font-sans text-font2">
               팔로워 {article.articleUser.follower} 팔로잉{" "}
               {article.articleUser.following}
             </p>
