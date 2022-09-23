@@ -10,7 +10,7 @@ const initialValue = {
   content: "", // 편지 내용
 };
 
-function RecommendLetter() {
+function WriteLetter() {
   const router = useRouter();
   const {
     register,
@@ -120,4 +120,4 @@ const relationCategory = [
   { category: "기타" },
 ];
 
-export default RecommendLetter;
+export default WriteLetter;
