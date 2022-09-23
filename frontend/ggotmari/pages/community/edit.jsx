@@ -18,7 +18,7 @@ function EditArticle() {
       (res) => setFlowerKindList(res.data.subjects),
       (error) => {
         console.log(error);
-      }
+      },
     );
   }, []);
 
@@ -29,8 +29,8 @@ function EditArticle() {
   useEffect(() => {
     setFilteredList(
       flowerKindList.filter((flowerKind) =>
-        flowerKind.subjectName.startsWith(tagSearch)
-      )
+        flowerKind.subjectName.startsWith(tagSearch),
+      ),
     );
   }, [tagSearch]);
 
@@ -143,10 +143,11 @@ function EditArticle() {
               }
             >
               <div className="">
-                {filteredList.map((flower) => (
+                {filteredList.map((flower, idx) => (
                   <div
                     className="p-2 font-sans hover:bg-font3"
                     onClick={addFlowerTag}
+                    key={idx}
                   >
                     {flower.subjectName}
                   </div>
