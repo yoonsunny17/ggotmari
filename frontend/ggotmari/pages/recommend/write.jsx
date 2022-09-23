@@ -39,9 +39,9 @@ function WriteLetter() {
   const handleLetterInfo = () => {
     router.push(
       {
-        pathname: "loading",
+        pathname: "result",
       },
-      "loading"
+      "result"
     );
     console.log(selected);
   };
