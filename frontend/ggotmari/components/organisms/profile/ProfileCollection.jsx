@@ -86,6 +86,7 @@ function ProfileCollection({ likeFlowers }) {
               <div className="collection-item p-1.5 text-xs" key={index}>
                 <CollectionImage
                   flowerImage={item.flowerImage}
+                  kindId={item.kindId}
                   kindName={item.kindName}
                 />
               </div>

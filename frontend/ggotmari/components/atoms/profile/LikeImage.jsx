@@ -1,7 +1,8 @@
+import { useRouter } from "next/router";
 import { IoMdHeart } from "react-icons/io";
 
 function LikeImage({ articleId, articleImage, userName, likes, articleTitle }) {
-  console.log({ articleId, articleImage, userName, likes });
+  const router = useRouter();
   return (
     <div className="aspect-square col-span-1 p-1.5 flex flex-col">
       <div className={`article-img cursor-pointer w-full h-full`}>
@@ -9,6 +10,9 @@ function LikeImage({ articleId, articleImage, userName, likes, articleTitle }) {
           src={articleImage}
           alt={`${articleTitle} 대표 이미지입니다.`}
           className="article-image w-full h-full object-cover rounded-md"
+          onClick={() => {
+            router.push(`/coummunity/${articleId}`);
+          }}
         />
       </div>
       <div className="-translate-y-6">
