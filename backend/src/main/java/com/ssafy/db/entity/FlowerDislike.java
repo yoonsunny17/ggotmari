@@ -15,19 +15,21 @@ import javax.persistence.*;
 @NoArgsConstructor
 @DynamicUpdate
 @DynamicInsert
-public class Survey {
+public class FlowerDislike {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "survey_id", nullable = false, updatable = false, columnDefinition = "BIGINT")
+    @Column(name = "flower_dislike_id", nullable = false, updatable = false, columnDefinition = "BIGINT")
     private Long id;
-
-    @Column(columnDefinition = "TEXT")
-    private String question;
 
     @JsonBackReference
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "tag_id")
-    private Tag tag;
+    @JoinColumn(name = "user_id")
+    private User user;
+
+    @JsonBackReference
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "kind_id")
+    private Kind kind;
 
 }
