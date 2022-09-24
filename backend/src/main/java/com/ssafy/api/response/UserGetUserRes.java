@@ -29,9 +29,11 @@ public class UserGetUserRes {
     @ApiModelProperty(name = "유저 생일")
     LocalDate userBirthday;
 
+    @JsonProperty("isFollow")
     @ApiModelProperty(name = "유저 성별")
     boolean userSex;
 
+    @JsonProperty("isFollow")
     @ApiModelProperty(name = "팔로우 여부")
     boolean isFollow = false;
 
