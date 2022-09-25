@@ -2,8 +2,11 @@ import YJ from "../../../assets/YJ.png";
 import { BsCamera } from "react-icons/bs";
 import { IoRefreshOutline } from "react-icons/io5";
 import { useState, useEffect } from "react";
+import { useRouter } from "next/router";
 
 function Edit() {
+  const router = useRouter();
+
   // user 정보 받아온 뒤
   // 라우터와 유저네임 비교 후
   // 다르면 잘못된 접근입니다. alert 띄우고
@@ -168,6 +171,9 @@ function Edit() {
     setProfileImagePreview(YJ.src);
   };
 
+  // 제출
+  const onSubmit = () => {};
+
   return (
     <>
       <div className="title flex justify-center">
@@ -254,19 +260,27 @@ function Edit() {
           </div>
           <div className="btns-box mx-10 mt-8 flex justify-end font-sansultralight text-white text-sm">
             <div className="save-box">
-              <button className="mr-2 bg-main w-full h-full px-4 py-1 rounded-md hover:bg-sub1 cursor-pointer">
+              <button
+                className="mr-2 bg-main w-full h-full px-4 py-1 rounded-md hover:bg-sub1 cursor-pointer"
+                onClick={onSubmit}
+              >
                 저장
               </button>
             </div>
             <div className="cancel-box">
-              <button className="ml-2 bg-font2 w-full h-full px-4 py-1 rounded-md hover:bg-sub1 cursor-pointer">
+              <button
+                className="ml-2 bg-font2 w-full h-full px-4 py-1 rounded-md hover:bg-sub1 cursor-pointer"
+                onClick={() => {
+                  router.push(`/profile/${router.query.username}`);
+                }}
+              >
                 취소
               </button>
             </div>
           </div>
         </div>
       </form>
-      <div className="logout-signout-box flex justify-end mx-10 mt-20 font-sansultralight text-xs">
+      <div className="logout-signout-box flex justify-end mx-10 mt-20 font-sansultralight text-xs mb-14">
         <button className="logout mr-2 hover:text-font1">로그아웃</button>
         <span>|</span>
         <button className="signout ml-2 hover:text-font1">회원탈퇴</button>

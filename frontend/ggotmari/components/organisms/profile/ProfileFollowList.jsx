@@ -145,7 +145,7 @@ function ProfileFollowList() {
           }}
         />
       </div>
-      <div className="follow-list">
+      <div className="follow-list mt-3 mb-14">
         {showList.length > 0 ? (
           showList.map((item, index) => {
             return (
