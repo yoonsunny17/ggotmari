@@ -1,6 +1,10 @@
 import { useRouter } from "next/router";
 import { useState, useEffect } from "react";
-import { IoCameraOutline, IoRefreshOutline } from "react-icons/io5";
+import {
+  IoCameraOutline,
+  IoRefreshOutline,
+  IoImagesOutline,
+} from "react-icons/io5";
 import { getFlowerKind } from "../../api/community";
 import FlowerTag from "../../components/atoms/common/FlowerTag";
 
@@ -52,7 +56,6 @@ function EditArticle() {
   };
 
   const handleImgUpload = (e) => {
-    console.log(e.target.files);
     const fileArr = e.target.files;
     const fileURLs = [];
     [...fileArr].forEach((file, idx) => {
@@ -83,16 +86,20 @@ function EditArticle() {
 
   return (
     <div className="flex flex-col items-center w-screen">
-      <div className="w-full aspect-square bg-main">
-        <div className="carousel w-full h-full">
-          {imagesPreview.length > 0
-            ? imagesPreview.map((imgSrc, idx) => (
-                <div className="carousel-item relative w-full h-full" key={idx}>
-                  <img src={imgSrc} className="w-full h-full object-cover" />
-                </div>
-              ))
-            : "사진 없음"}
-        </div>
+      <div className="w-full aspect-square bg-font3">
+        {imagesPreview.length > 0 ? (
+          <div className="carousel w-full aspect-square">
+            {imagesPreview.map((imgSrc, idx) => (
+              <div className="carousel-item relative w-full h-full" key={idx}>
+                <img src={imgSrc} className="w-full object-cover" />
+              </div>
+            ))}
+          </div>
+        ) : (
+          <div className="flex justify-center items-center h-full">
+            <IoImagesOutline className="text-9xl text-font2" />
+          </div>
+        )}
       </div>
       <div className="flex flex-row space-x-3 justify-center my-3">
         <label className="inline text-font2 cursor-pointer" htmlFor="flowerImg">
@@ -187,7 +194,11 @@ function EditArticle() {
             value={content}
             onChange={handleContentChange}
           ></textarea>
-          <input type="submit" />
+          <input
+            type="submit"
+            className="bg-main text-font3 py-3 leading-normal rounded-lg"
+            value="글 등록하기"
+          />
         </form>
       </div>
       <div className="h-14"></div>
