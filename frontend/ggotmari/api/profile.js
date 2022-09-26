@@ -4,10 +4,10 @@ const api = apiInstance();
 
 async function getUser(username, success, fail) {
   await api
-    .get(`/user/${username}`, {
-      //   headers: {
-      //     Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-      //   },
+    .get(`api/user/${username}`, {
+      headers: {
+        Authorization: localStorage.getItem("accessToken"),
+      },
     })
     .then(success)
     .catch(fail);
@@ -59,4 +59,4 @@ async function signout(success, fail) {
     .catch(fail);
 }
 
-export { getUserInfo };
+export { getUser, getUserFollow, follow, editUser, signout };

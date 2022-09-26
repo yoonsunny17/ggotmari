@@ -64,13 +64,13 @@ function ProfileInfo({ user, isMe }) {
               </span>
             </div>
           ) : !isMe && user.isFollow ? (
-            <div className="box-btns font-sansultralight text-xs my-0.5 w-1/5">
+            <div className="box-btns font-sansultralight text-xs my-0.5 w-1/4">
               <button className="btn-follow bg-main p-1 rounded-md text-font3 hover:bg-sub1 hover:transition-all w-full">
                 팔로잉
               </button>
             </div>
           ) : !isMe && !user.isFollow ? (
-            <div className="box-btns font-sansultralight text-xs my-0.5 w-1/5">
+            <div className="box-btns font-sansultralight text-xs my-0.5 w-1/4">
               <button className="btn-follow bg-sub1 p-1 rounded-md text-font3 hover:bg-main hover:transition-all w-full">
                 팔로우
               </button>

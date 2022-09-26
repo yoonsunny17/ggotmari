@@ -30,7 +30,7 @@ function Footer() {
           <IoPaperPlaneOutline className="text-main text-2xl" />
         </a>
       </Link>
-      <Link href="/profile">
+      <Link href={`/profile/123`}>
         <a>
           <IoPersonCircleOutline className="text-main text-3xl" />
         </a>

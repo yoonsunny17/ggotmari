@@ -177,6 +177,30 @@ export default function Like() {
       </div>
       <div className="content grid grid-cols-3 mt-3 mb-14">
         {userInfo.likeArticles.map((item, index) => {
+          if (
+            (userInfo.likeArticles = [
+              {
+                articleId: "",
+                articleImage: "",
+                userName: "",
+                likes: "",
+                articleTitle: "",
+              },
+            ])
+          ) {
+            return (
+              <div className="col-span-3 flex justify-center">
+                <div className="content-box w-full">
+                  <div className="img-box flex justify-center">
+                    <img src={noFlower.src} alt="조회할 꽃이 없음" />
+                  </div>
+                  <div className="text-box flex justify-center font-gangwon text-font4">
+                    <span>좋아요를 누른 꽃 이야기가 없습니다</span>
+                  </div>
+                </div>
+              </div>
+            );
+          }
           return (
             <LikeImage
               key={index}
