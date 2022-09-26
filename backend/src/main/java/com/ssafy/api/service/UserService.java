@@ -43,7 +43,7 @@ public class UserService {
                 .email(email)
                 .loginCount(0L)
                 .name(createName())
-                .profileImage("")
+                .profileImage("https://ggotmari.s3.ap-northeast-2.amazonaws.com/profile/defualt.jpg")
                 .isActive(true)
                 .build();
 
@@ -139,7 +139,7 @@ public class UserService {
             user.setName(userPutReq.getUserName().toLowerCase());
         }
         if(multipartFile != null){
-            String imageUrl = fileService.uploadFile(multipartFile);
+            String imageUrl = fileService.uploadFile(multipartFile, "profile/");
             user.setProfileImage(imageUrl);
         }
         if(userPutReq.getBirthday() != null) {
