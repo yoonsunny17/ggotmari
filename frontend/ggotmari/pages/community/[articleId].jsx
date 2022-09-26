@@ -1,11 +1,14 @@
 import { useRouter } from "next/router";
 import { useState } from "react";
+
 import ProfileImg from "../../components/atoms/common/ProfileImg";
-import { AiOutlineMore, AiOutlineUp } from "react-icons/ai";
 import FlowerTag from "../../components/atoms/common/FlowerTag";
 import CommentDrawer from "../../components/organisms/community/CommentDrawer";
-import { AiOutlineHeart, AiOutlineComment } from "react-icons/ai";
 import CommentItem from "../../components/molecules/community/CommentItem";
+
+import { AiOutlineHeart, AiOutlineComment } from "react-icons/ai";
+import { AiOutlineMore, AiOutlineUp } from "react-icons/ai";
+import { IoIosArrowUp } from "react-icons/io";
 
 function ArticleDetail() {
   const router = useRouter();
@@ -243,7 +246,7 @@ function ArticleDetail() {
         >
           <div className="flex flex-row justify-between items-center">
             <div>댓글 {article.commentCount}</div>
-            <AiOutlineUp className="text-xl" />
+            <IoIosArrowUp className="text-xl" />
           </div>
 
           <div></div>

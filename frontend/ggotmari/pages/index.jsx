@@ -2,15 +2,15 @@ import Router from "next/router";
 import Link from "next/link";
 
 import Header from "../components/atoms/common/Header";
-import SearchBar from "../components/atoms/common/SearchBar";
 import CommunityCard from "../components/atoms/index/CommunityCard";
-import RecommItem from "../components/molecules/main/RecommItem";
 import ArticleItem from "../components/molecules/community/ArticleItem";
 import SpecialDayRecomm from "../components/organisms/main/SpecialDayRecomm";
 
-import { BsPeople } from "react-icons/bs";
 import { FaRegPaperPlane } from "react-icons/fa";
 import { IoIosArrowForward } from "react-icons/io";
+import { IoFlowerOutline } from "react-icons/io5";
+
+import kakao_channel from "../assets/id_type.png";
 
 function Home() {
   const username = "sangchuman";
@@ -44,12 +44,12 @@ function Home() {
             <div className="">
               {/* 꽃에 담은 편지 버튼 */}
               <button
-                onClick={() => Router.push("/community")}
+                onClick={() => Router.push("/recommend")}
                 className="w-[calc(100%-12px)] h-12 rounded-md font-gangwonlight text-sm text-white bg-sub1 mr-3 mb-2"
               >
                 <div className="flex justify-between">
                   <p className="ml-3 pt-[6px]">
-                    <BsPeople size={25} />
+                    <FaRegPaperPlane size={22} />
                   </p>
                   <p className="pr-2 pt-4">꽃에 담은 편지</p>
                 </div>
@@ -57,12 +57,13 @@ function Home() {
 
               {/* 꽃 사전 버튼 */}
               <button
-                onClick={() => Router.push("/recommend")}
+                onClick={() => Router.push("/flower/search/searchtext")}
                 className="w-[calc(100%-12px)] h-12 rounded-md font-gangwonlight text-sm text-white bg-extra2"
               >
                 <div className="flex justify-between">
                   <p className="ml-3 pt-[6px]">
-                    <FaRegPaperPlane size={22} />
+                    <IoFlowerOutline size={25} />
+                    {/* <AiOutlineSearch size={25} /> */}
                   </p>
                   <p className="pr-2 pt-4">꽃 사전</p>
                 </div>
@@ -126,9 +127,34 @@ function Home() {
         </div>
 
         {/* 특별한 날 선물하기 좋은 꽃 */}
-        <div className="pt-6 font-sans mb-14 w-full">
+        <div className="pt-6 font-sans w-full">
           <p className="mb-3">특별한 날 선물하기 좋은 꽃</p>
           <SpecialDayRecomm />
+        </div>
+
+        {/* 도움을 원하시나요? */}
+        <div className="mb-16 w-full font-sans pt-6">
+          <div className="pb-4">도움을 원하시나요?</div>
+          <div className="flex justify-between text-sm text-font2">
+            <Link href="https://pf.kakao.com/_VKECxj">
+              <a target="_blank">
+                <img className="w-20" src={kakao_channel.src} alt="" />
+              </a>
+            </Link>
+            <Link href="https://www.notion.so/a303-princess/8c05c0267b2742d3a6ea9cc4435267c7">
+              <a target="_blank">
+                <div className="flex">
+                  <img
+                    className="w-6"
+                    src="https://img.icons8.com/offices/30/000000/flower.png"
+                  />
+                  <span className="flex items-end ml-1">
+                    서비스 이용 가이드
+                  </span>
+                </div>
+              </a>
+            </Link>
+          </div>
         </div>
       </div>
     </div>
@@ -141,7 +167,7 @@ const recommPost = [
     username: "sangchuman",
     articleImage:
       "https://images.unsplash.com/photo-1496483648148-47c686dc86a8?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1173&q=80",
-    likeNumbs: 13,
+    likeCount: 13,
   },
   {
     articleId: 101,
@@ -149,7 +175,7 @@ const recommPost = [
     username: "hot_bubbletea",
     articleImage:
       "https://images.unsplash.com/photo-1530092285049-1c42085fd395?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80",
-    likeNumbs: 32,
+    likeCount: 32,
   },
   {
     articleId: 102,
@@ -157,7 +183,7 @@ const recommPost = [
     username: "princess_yo",
     articleImage:
       "https://images.unsplash.com/photo-1561181286-d3fee7d55364?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80",
-    likeNumbs: 6,
+    likeCount: 6,
   },
   {
     articleId: 103,
@@ -165,7 +191,7 @@ const recommPost = [
     username: "sleepy_ssuny",
     articleImage:
       "https://images.unsplash.com/photo-1510894399130-57dfa8dcc45d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1083&q=80",
-    likeNumbs: 123,
+    likeCount: 123,
   },
 ];
 
