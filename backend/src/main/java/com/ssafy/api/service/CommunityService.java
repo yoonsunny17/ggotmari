@@ -70,7 +70,7 @@ public class CommunityService {
         for (MultipartFile image : multipartFiles) {
             Picture picture = new Picture();
             picture.setArticle(article);
-            String imageUrl = fileService.uploadFile(image);
+            String imageUrl = fileService.uploadFile(image, "community/");
             picture.setImage(imageUrl);
 
             pictureRepository.save(picture);
@@ -111,7 +111,7 @@ public class CommunityService {
         for (MultipartFile image : multipartFiles) {
             Picture picture = new Picture();
             picture.setArticle(article);
-            String imageUrl = fileService.uploadFile(image);
+            String imageUrl = fileService.uploadFile(image, "community/");
             picture.setImage(imageUrl);
 
             pictureRepository.save(picture);

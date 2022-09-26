@@ -23,8 +23,8 @@ public class FileService {
     private AmazonS3Client amazonS3Client;
 
     @Transactional
-    public String uploadFile(MultipartFile file){
-        String fileName = "community/" + createFileName(file.getOriginalFilename());
+    public String uploadFile(MultipartFile file, String url){
+        String fileName = url + createFileName(file.getOriginalFilename());
 
         ObjectMetadata metadata = new ObjectMetadata();
         metadata.setContentType(file.getContentType());
