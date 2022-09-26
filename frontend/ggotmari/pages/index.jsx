@@ -3,13 +3,12 @@ import Link from "next/link";
 
 import Header from "../components/atoms/common/Header";
 import CommunityCard from "../components/atoms/index/CommunityCard";
-import RecommItem from "../components/molecules/main/RecommItem";
 import ArticleItem from "../components/molecules/community/ArticleItem";
 import SpecialDayRecomm from "../components/organisms/main/SpecialDayRecomm";
 
-import { BsPeople } from "react-icons/bs";
 import { FaRegPaperPlane } from "react-icons/fa";
 import { IoIosArrowForward } from "react-icons/io";
+import { IoFlowerOutline } from "react-icons/io5";
 
 import kakao_channel from "../assets/id_type.png";
 
@@ -50,7 +49,7 @@ function Home() {
               >
                 <div className="flex justify-between">
                   <p className="ml-3 pt-[6px]">
-                    <BsPeople size={25} />
+                    <FaRegPaperPlane size={22} />
                   </p>
                   <p className="pr-2 pt-4">꽃에 담은 편지</p>
                 </div>
@@ -63,7 +62,8 @@ function Home() {
               >
                 <div className="flex justify-between">
                   <p className="ml-3 pt-[6px]">
-                    <FaRegPaperPlane size={22} />
+                    <IoFlowerOutline size={25} />
+                    {/* <AiOutlineSearch size={25} /> */}
                   </p>
                   <p className="pr-2 pt-4">꽃 사전</p>
                 </div>
