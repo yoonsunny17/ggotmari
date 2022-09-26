@@ -1,16 +1,28 @@
-import { apiInstance } from "./index";
+import { apiInstance, fileApiInstance } from "./index";
 
 const api = apiInstance();
+const fileApi = fileApiInstance();
 
 async function getFlowerKind(success, fail) {
   await api
     .get(`/api/community/article`, {
-      //   headers: {
-      //     Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-      //   },
+      // headers: {
+      //   Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+      // },
     })
     .then(success)
     .catch(fail);
 }
 
-export { getFlowerKind };
+async function postArticle(article, success, fail) {
+  await fileApi
+    .post(`/api/community/article`, article, {
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+      },
+    })
+    .then(success)
+    .catch(fail);
+}
+
+export { getFlowerKind, postArticle };
