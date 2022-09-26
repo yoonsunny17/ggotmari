@@ -2,12 +2,21 @@ from django.shortcuts import get_object_or_404, get_list_or_404
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework import status
-from .models import Subject, Kind, User, Sale
-from .serializers import SubjectSerializer, KindSerializer, UserSerializer, SaleSerializer
+from .models import Subject, Kind, User, Sale, FlowerLike
+from .serializers import SubjectSerializer, KindSerializer, UserSerializer, SaleSerializer, FlowerLikeSerializer
 import numpy as np
 from dateutil.relativedelta import *
 from datetime import *
 from django.db.models import Sum
+import time
+from django.core.cache import cache
+
+
+@api_view(['GET'])
+def test(request):
+    likes = get_list_or_404(FlowerLike, tag=1)
+    serializer = FlowerLikeSerializer(likes, many=True)
+    return Response(serializer.data)
 
 
 # 코사인 유사도
@@ -26,7 +35,7 @@ def cosine_simillarity(v1, v2):
 # 컬렉션 태그별 품종 추천
 @api_view(['GET'])
 def tag(requset, user_pk, tag):
-
+    start = time.time()
     """
     스프링에서
     로그인 상태 확인 - 로그인 안되면 로그인으로 리다이렉트, 로그인 상태면 추천으로
@@ -48,6 +57,7 @@ def tag(requset, user_pk, tag):
     """
 
     user = get_object_or_404(User, pk=user_pk)
+    
     user_flowerlike_set = UserSerializer(user).data['flowerlike_set']
     user_flowerlike_set_tag = []
     for t in user_flowerlike_set:
@@ -55,12 +65,18 @@ def tag(requset, user_pk, tag):
             user_flowerlike_set_tag.append(t['kind'])
     # user_flowerlike_set_tag = [1, 2]
 
+    user_flowerdislike_set = UserSerializer(user).data['flowerdislike_set']
+    user_flowerdislike_set_tag = []
+    for t in user_flowerdislike_set:
+        if t['tag'] == tag:
+            user_flowerdislike_set_tag.append(t['kind'])
+
     users = User.objects.all()
     users_serializer = UserSerializer(users, many=True).data
     users_flowerlike_set = dict()
     for another_user in users_serializer:
         """
-        another_user = 
+        another_user = [
         {
             "user_id": 2,
             "flowerlike_set": [
@@ -89,7 +105,9 @@ def tag(requset, user_pk, tag):
                     "user": 2
                 }
             ]
-        }
+        },
+        ...
+        ]
         """
         another_user_flowerlike_set_tag = []
 
@@ -98,6 +116,8 @@ def tag(requset, user_pk, tag):
                 if a_t['tag'] == tag:
                     another_user_flowerlike_set_tag.append(a_t['kind'])
             users_flowerlike_set[another_user['user_id']] = another_user_flowerlike_set_tag
+
+    # return Response({'time': time.time() - start})
 
     """
     users_flowerlike_set = 
@@ -129,23 +149,7 @@ def tag(requset, user_pk, tag):
 
         if users_flowerlike_set.get(i) != None:
             for j in users_flowerlike_set.get(i):
-
-                subject_sale_point = 0  # 품목별 할당할 점수에 대한 변수 선언
-                subject_id_of_flower = Kind.objects.get(pk=j).subject.subject_id
-                
-                try:
-                    subject_sale_size = sale_data_7days.filter(subject=subject_id_of_flower).values('sale_size__sum')[0]['sale_size__sum']
-                    if subject_sale_size >= 10000:  # 판매량이 1만 이상이면
-                        subject_sale_point = 0.6
-                    elif subject_sale_size >= 5000:  # 5천 이상이면
-                        subject_sale_point = 0.3
-                    elif subject_sale_size >= 1000:  #1천 이상이면
-                        subject_sale_point = 0.1
-
-                except:
-                    pass
-
-                user_list[j-1] = 1 * 0.7 + subject_sale_point * 0.3  # j는 1 이상의 번호이기 때문에 인덱스로 사용하기 위해 -1, 컬렉션 태그와 판매량 7:3비율
+                user_list[j-1] = 1# j는 1 이상의 번호이기 때문에 인덱스로 사용하기 위해 -1
 
         matrix_list.append(user_list)
 
@@ -153,29 +157,47 @@ def tag(requset, user_pk, tag):
 
     # 유저의 컬렉션 기반 코사인 유사도
     similarity_lst = []
-    max_similarity = 0
 
     for idx, vec in enumerate(matrix):  # 매트릭스의 각 사용자 별 벡터를 뽑아 vec에 넣기
         similarity = cosine_simillarity(vec, matrix[user_pk - 1])  # matrix[user_pk] = 추천 요청한 유저pk
-        similarity_lst.append((idx + 1, similarity))
 
-        if idx != (user_pk - 1) and max_similarity < similarity:  # 더 높은 유사도로 갱신
-            max_similarity = similarity
+        if 0.4 <= similarity < 0.99:  # 유사도가 0.4 이상이면 추가, 본인 제외
+            similarity_lst.append((idx + 1, similarity))
 
-    print(similarity_lst)
+    # 유사도 * 품목별 점수 계산, 컬렉션 태그와 판매량 7:3비율
+    flower_dic = dict()
 
-    # 유사도 * 품목별 점수 계산
+    for similar_person in similarity_lst:
+        (another_user_pk, user_similarity) = similar_person
 
-    # return Response(sale_serializer.data, status=status.HTTP_200_OK)
-    return Response({}, status=status.HTTP_200_OK)
+        for flower_number in users_flowerlike_set.get(another_user_pk):
 
-    """
-    key(꽃): value(유사도점수)
-    싫어요에 있는 꽃은 빼고 상위에서 슬라이싱
-    {
-        1번꽃: [0.9]
-        2번꽃: [0.8]
-        3번꽃: [0.9 0.9]
-        1번 3번 2번
-    }
-    """
+            subject_sale_point = 0  # 품목별 할당할 점수에 대한 변수 선언
+            subject_id_of_flower = Kind.objects.get(pk=flower_number).subject.subject_id
+            
+            if cache.get(f'{yesterday}_{subject_id_of_flower}') != None:
+                subject_sale_point = cache.get(f'{yesterday}_{subject_id_of_flower}')
+
+            if flower_dic.get(flower_number) == None:
+                flower_dic[flower_number] = [user_similarity*0.7 + subject_sale_point*0.3]
+
+            elif flower_dic.get(flower_number) != None:
+                flower_dic[flower_number].append(user_similarity*0.7 + subject_sale_point*0.3)
+
+            flower_dic[flower_number].sort(reverse=True)
+
+    sorted_flower_dic = sorted(flower_dic.items(), key=lambda item: item[1], reverse=True)
+
+    result = []
+    cnt = 0
+
+    for flower in sorted_flower_dic:
+        if flower[0] in user_flowerlike_set_tag or flower[0] in user_flowerdislike_set_tag:  # 좋아요에 이미 있으면 제외, 싫어요에 있으면 제외
+            continue
+        else:
+            result.append(flower[0])
+            cnt += 1
+        if cnt == 18:  # 18개 추천
+            break
+
+    return Response({'time': time.time() - start, 'result': result}, status=status.HTTP_200_OK)

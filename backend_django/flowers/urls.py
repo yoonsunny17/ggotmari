@@ -3,5 +3,6 @@ from . import views
 
 
 urlpatterns = [
-    path('/recommend/tag/<int:user_pk>/<int:tag>', views.tag),
+    path('recommend/tag/<int:user_pk>/<int:tag>', views.tag),
+    path('test', views.test),
 ]
