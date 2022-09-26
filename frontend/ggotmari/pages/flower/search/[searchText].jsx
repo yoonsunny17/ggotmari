@@ -14,7 +14,7 @@ function SearchFlowerList() {
           {`{거베라}`} 검색 결과
         </div>
         <div className="px-8">
-          <select className="text-xs select select-bordered select-sm w-fit max-w-xs">
+          <select className="text-xs select select-bordered select-sm w-fit max-w-xs focus:outline-none">
             <option>가나다순</option>
             <option>스크랩순</option>
           </select>

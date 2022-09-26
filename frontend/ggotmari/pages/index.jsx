@@ -57,7 +57,7 @@ function Home() {
             </button>
             {/* 꽃에 담은 편지 버튼 */}
             <button
-              onClick={() => Router.push("/ocr")}
+              onClick={() => Router.push("/recommend")}
               className="w-1/2 h-12 rounded-md font-gangwonlight text-sm text-white bg-sub1"
             >
               <div className="flex justify-between">

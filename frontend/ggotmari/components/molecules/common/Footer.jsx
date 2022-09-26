@@ -25,7 +25,7 @@ function Footer() {
           <IoHomeOutline className="text-main text-2xl" />
         </a>
       </Link>
-      <Link href="#">
+      <Link href="/recommend">
         <a>
           <IoPaperPlaneOutline className="text-main text-2xl" />
         </a>

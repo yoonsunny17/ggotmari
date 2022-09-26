@@ -6,7 +6,14 @@ function RelatedPosts({
 }) {
   const router = useRouter();
   // TODO: community/${articleId} 라우터 이동
-  const postClickHandler = () => {};
+  const postClickHandler = () => {
+    router.push(
+      {
+        pathname: `community/${articleId}`,
+      },
+      `community/${articleId}`
+    );
+  };
   return (
     <div onClick={postClickHandler} className="font-sans">
       <div className="">
