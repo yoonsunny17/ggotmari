@@ -3,11 +3,14 @@ package com.ssafy.api.controller;
 import com.ssafy.api.request.DislikePostReq;
 import com.ssafy.api.request.FlowerTagPostReq;
 import com.ssafy.api.response.DislikePostRes;
+import com.ssafy.api.response.RecommendSituationRes;
+import com.ssafy.api.response.RecommendTagRes;
 import com.ssafy.api.response.TagPostRes;
 import com.ssafy.api.service.FlowerService;
 import com.ssafy.api.service.RecommendService;
 import com.ssafy.api.service.UserService;
 import com.ssafy.common.util.JwtTokenUtil;
+import com.ssafy.db.entity.Kind;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
@@ -17,6 +20,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.List;
 
 @Api(value = "추천 api", tags = {"Recommend"})
 @RestController
@@ -49,6 +53,27 @@ public class RecommendController {
             return ResponseEntity.status(403).body(DislikePostRes.of(403, "전환 실패.", isSuccess));
         }else{
             return ResponseEntity.status(201).body(DislikePostRes.of(201, "정상적으로 전환되었습니다.", isSuccess));
+        }
+    }
+
+    @GetMapping("/situation")
+    @ApiOperation(value = "상황 추천", notes = "상황별 꽃 추천")
+    @ApiResponses({
+            @ApiResponse(code = 201, message = "꽃 추천 성공"),
+            @ApiResponse(code = 500, message = "꽃 추천 실패")
+    })
+    public ResponseEntity<? extends RecommendSituationRes> recommendFlowerBySituation(HttpServletRequest request){
+
+
+        String jwtToken = request.getHeader("Authorization");
+        String email = jwtTokenUtil.getUserEmailFromToken(jwtToken);
+
+        List<RecommendTagRes> kinds = recommendService.recommendBySituation(email);
+
+        if(kinds == null){
+            return ResponseEntity.status(403).body(RecommendSituationRes.of(403, "추천 실패.", kinds));
+        }else{
+            return ResponseEntity.status(201).body(RecommendSituationRes.of(201, "정상적으로 추천되었습니다.", kinds));
         }
     }
 }
