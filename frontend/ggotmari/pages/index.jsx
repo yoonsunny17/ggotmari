@@ -126,9 +126,22 @@ function Home() {
         </div>
 
         {/* 특별한 날 선물하기 좋은 꽃 */}
-        <div className="pt-6 font-sans mb-14 w-full">
+        <div className="pt-6 font-sans w-full">
           <p className="mb-3">특별한 날 선물하기 좋은 꽃</p>
           <SpecialDayRecomm />
+        </div>
+
+        {/* 도움을 원하시나요? */}
+        <div className="mb-16 w-full font-sans pt-6">
+          <div className="pb-4">도움을 원하시나요?</div>
+          <div className="flex text-sm">
+            <p class="mr-4">카카오 채널 추가하기</p>
+            <Link href="https://www.notion.so/a303-princess/8c05c0267b2742d3a6ea9cc4435267c7">
+              <a target="_blank">
+                <p>서비스 이용 가이드</p>
+              </a>
+            </Link>
+          </div>
         </div>
       </div>
     </div>
