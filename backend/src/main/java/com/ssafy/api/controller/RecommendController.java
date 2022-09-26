@@ -8,6 +8,7 @@ import com.ssafy.api.service.FlowerService;
 import com.ssafy.api.service.RecommendService;
 import com.ssafy.api.service.UserService;
 import com.ssafy.common.util.JwtTokenUtil;
+import com.ssafy.db.entity.Article;
 import com.ssafy.db.entity.Kind;
 import com.ssafy.db.entity.Subject;
 import io.swagger.annotations.Api;
@@ -73,6 +74,29 @@ public class RecommendController {
             return ResponseEntity.status(403).body(RecommendSituationRes.of(403, "추천 실패.", kinds));
         }else{
             return ResponseEntity.status(201).body(RecommendSituationRes.of(201, "정상적으로 추천되었습니다.", kinds));
+        }
+    }
+
+    @GetMapping("/article")
+    @ApiOperation(value = "게시글 추천", notes = "좋아요 기반 게시글 추천")
+    @ApiResponses({
+            @ApiResponse(code = 201, message = "게시글 추천 성공"),
+            @ApiResponse(code = 500, message = "게시글 추천 실패")
+    })
+    public ResponseEntity<? extends RecommendArticleRes> recommendArticleByLike(HttpServletRequest request){
+
+
+        String jwtToken = request.getHeader("Authorization");
+        String email = jwtTokenUtil.getUserEmailFromToken(jwtToken);
+
+        List<Article> articles = recommendService.recommendByLike(email);
+
+        String userName = userService.getUserByEmail(email).getName();
+
+        if(articles == null){
+            return ResponseEntity.status(403).body(RecommendArticleRes.of(403, "추천 실패.", articles, userName));
+        }else{
+            return ResponseEntity.status(201).body(RecommendArticleRes.of(201, "정상적으로 추천되었습니다.", articles, userName));
         }
     }
 

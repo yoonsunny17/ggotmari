@@ -29,6 +29,8 @@ public class RecommendService {
     SubjectRepository subjectRepository;
     @Autowired
     LetterRepository letterRepository;
+    @Autowired
+    ArticleRepository articleRepository;
 
     @Transactional
     public boolean addDislike(String email, DislikePostReq dislikeInfo){
@@ -78,6 +80,19 @@ public class RecommendService {
         }
 
         return tags;
+    }
+
+    public List<Article> recommendByLike(String email){
+
+        //TODO : 장고에게 유저 email 전달, article id list 받아오기
+        List<Long> articleIds = new ArrayList<>();
+
+        List<Article> articles = new ArrayList<>();
+        for(Long articleId : articleIds){
+            articles.add(articleRepository.findById(articleId).get());
+        }
+
+        return articles;
     }
 
     @Transactional
