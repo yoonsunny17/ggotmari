@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 function ImageSquare({ imageSrc }) {
   return (
     <div className="w-full aspect-square opbj bg-main overflow-hidden rounded-lg">
