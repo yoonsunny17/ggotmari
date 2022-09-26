@@ -14,7 +14,7 @@ function RecommendMain() {
         />
       </div>
       <div className="font-gangwon text-font1 text-center text-lg mt-12">
-        "편지로는 표현할 수 없는 감정 <br /> 꽃으로 선물했어요"
+        &quot;편지로는 표현할 수 없는 감정 <br /> 꽃으로 선물했어요&quot;
       </div>
       <br />
       {/* font-gangwonlight vs font-gangwon */}
@@ -22,8 +22,8 @@ function RecommendMain() {
         꽃마리는 회원님의 편지를 읽어보고 <br /> 어울리는 꽃을 추천해 드립니다.
         <br />
         <div className="py-3">
-          야생화인 '꽃마리'는 꽃말이 없지만 <br /> 여러분의 편지에는 꽃말을
-          달아드리려 합니다.
+          야생화인 &apos;꽃마리&apos;는 꽃말이 없지만 <br /> 여러분의 편지에는
+          꽃말을 달아드리려 합니다.
         </div>
         여러분의 소중한 하루, <br /> 편지와 함께 향기로운 꽃을 같이 선물해
         주세요.
