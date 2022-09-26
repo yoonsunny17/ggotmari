@@ -1,12 +1,18 @@
 import { useRouter } from "next/router";
 import { useState, useEffect } from "react";
-import { IoCameraOutline, IoRefreshOutline } from "react-icons/io5";
+import {
+  IoCameraOutline,
+  IoRefreshOutline,
+  IoImagesOutline,
+} from "react-icons/io5";
 import { getFlowerKind } from "../../api/community";
 import FlowerTag from "../../components/atoms/common/FlowerTag";
 
 function EditArticle() {
   const router = useRouter();
+  const [title, setTitle] = useState("");
   const [flowerTags, setFlowerTags] = useState([]);
+  const [content, setContent] = useState("");
   const [tagSearch, setTagSearch] = useState("");
   const [filteredList, setFilteredList] = useState([]);
   const [flowerKindList, setFlowerKindList] = useState([]);
@@ -34,10 +40,6 @@ function EditArticle() {
     );
   }, [tagSearch]);
 
-  useEffect(() => {
-    console.log(imagesPreview);
-  });
-
   const addFlowerTag = (e) => {
     const newFlower = e.target.innerHTML;
     if (!flowerTags.includes(newFlower)) {
@@ -54,9 +56,9 @@ function EditArticle() {
   };
 
   const handleImgUpload = (e) => {
-    const fileArr = Array.from(e.target.files);
+    const fileArr = e.target.files;
     const fileURLs = [];
-    fileArr.forEach((file, idx) => {
+    [...fileArr].forEach((file, idx) => {
       const reader = new FileReader();
       reader.onload = () => {
         fileURLs[idx] = reader.result;
@@ -66,18 +68,38 @@ function EditArticle() {
     });
   };
 
+  const handleTitleChange = (e) => {
+    setTitle(e.target.value);
+  };
+
+  const handleContentChange = (e) => {
+    setContent(e.target.value);
+  };
+
+  const handleArticleSubmit = (e) => {
+    e.preventDefault();
+    console.log(title);
+    console.log(content);
+    console.log();
+    console.log(flowerTags);
+  };
+
   return (
-    <div className="flex flex-col items-center">
-      <div className="w-screen aspect-square bg-main">
-        <div className="carousel w-full h-full">
-          {imagesPreview.length > 0
-            ? imagesPreview.map((imgSrc, idx) => (
-                <div className="carousel-item relative w-full h-full" key={idx}>
-                  <img src={imgSrc} className="object-cover" />
-                </div>
-              ))
-            : "사진 없음"}
-        </div>
+    <div className="flex flex-col items-center w-screen">
+      <div className="w-full aspect-square bg-font3">
+        {imagesPreview.length > 0 ? (
+          <div className="carousel w-full aspect-square">
+            {imagesPreview.map((imgSrc, idx) => (
+              <div className="carousel-item relative w-full h-full" key={idx}>
+                <img src={imgSrc} className="w-full object-cover" />
+              </div>
+            ))}
+          </div>
+        ) : (
+          <div className="flex justify-center items-center h-full">
+            <IoImagesOutline className="text-9xl text-font2" />
+          </div>
+        )}
       </div>
       <div className="flex flex-row space-x-3 justify-center my-3">
         <label className="inline text-font2 cursor-pointer" htmlFor="flowerImg">
@@ -85,6 +107,7 @@ function EditArticle() {
         </label>
         <input
           type="file"
+          accept="image/*"
           className="absolute w-0 h-0 p-0 overflow-hidden border-0"
           id="flowerImg"
           multiple
@@ -99,7 +122,10 @@ function EditArticle() {
         </div>
       </div>
       <div className="w-full p-3">
-        <form className="flex flex-col w-full space-y-4 font-sans text-font2">
+        <form
+          className="flex flex-col w-full space-y-4 font-sans text-font2"
+          onSubmit={handleArticleSubmit}
+        >
           <label htmlFor="articleTitle" className="pl-2 text-sm">
             글 제목
           </label>
@@ -109,6 +135,7 @@ function EditArticle() {
             className="shadow-md w-full text-sm focus:outline-none px-3 py-2"
             placeholder="제목을 입력하세요"
             onFocus={() => setDropDownOpen(false)}
+            onChange={handleTitleChange}
           />
           <label htmlFor="flowerTags" className="pl-2 text-sm">
             꽃 태그
@@ -164,8 +191,14 @@ function EditArticle() {
             className="shadow-md w-full text-sm focus:outline-none p-3"
             placeholder="내용을 입력하세요"
             onFocus={() => setDropDownOpen(false)}
+            value={content}
+            onChange={handleContentChange}
           ></textarea>
-          <input type="submit" />
+          <input
+            type="submit"
+            className="bg-main text-font3 py-3 leading-normal rounded-lg"
+            value="글 등록하기"
+          />
         </form>
       </div>
       <div className="h-14"></div>

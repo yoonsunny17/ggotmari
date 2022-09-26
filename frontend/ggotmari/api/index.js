@@ -11,11 +11,14 @@ function apiInstance() {
   return instance;
 }
 
-const fileApi = axios.create({
-  baseURL: "https://j7a303.p.ssafy.io:8080/",
-  headers: {
-    "Content-Type": `multipart/form-data`,
-  },
-});
+function fileApiInstance() {
+  const instance = axios.create({
+    baseURL: "https://j7a303.p.ssafy.io/",
+    headers: {
+      "Content-Type": `multipart/form-data`,
+    },
+  });
+  return instance;
+}
 
-export { apiInstance };
+export { apiInstance, fileApiInstance };
