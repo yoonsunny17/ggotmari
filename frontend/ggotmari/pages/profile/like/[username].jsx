@@ -133,7 +133,7 @@ export default function Like() {
           articleId: 1,
           articleImage:
             "https://photo.jtbc.joins.com/news/2015/06/18/201506182141183067.jpg",
-          userName: "GD",
+          userName: "GDGDGDGDGDGDGDGD",
           likes: 132,
           articleTitle: "꽃",
         },
