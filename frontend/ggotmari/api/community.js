@@ -16,7 +16,11 @@ async function getFlowerKind(success, fail) {
 
 async function postArticle(article, success, fail) {
   await fileApi
-    .post(`/api/community/article`, article)
+    .post(`/api/community/article`, article, {
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+      },
+    })
     .then(success)
     .catch(fail);
 }

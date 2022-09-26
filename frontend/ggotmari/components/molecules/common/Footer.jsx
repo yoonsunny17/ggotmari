@@ -10,7 +10,7 @@ import Link from "next/link";
 function Footer() {
   return (
     <div className="flex flex-row w-full z-20 justify-around fixed bottom-0 bg-white p-3 items-center border-t-2 border-font3">
-      <Link href="#">
+      <Link href="/">
         <a>
           <IoArrowBack className="text-main text-2xl" />
         </a>
@@ -25,7 +25,7 @@ function Footer() {
           <IoHomeOutline className="text-main text-2xl" />
         </a>
       </Link>
-      <Link href="#">
+      <Link href="/">
         <a>
           <IoPaperPlaneOutline className="text-main text-2xl" />
         </a>

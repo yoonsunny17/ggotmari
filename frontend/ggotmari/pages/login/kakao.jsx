@@ -1,6 +1,6 @@
 import { useRouter } from "next/router";
 import { useState, useEffect } from "react";
-import axios from "axios";
+import { doLogin } from "../../api/user";
 
 export default function Kakao() {
   const location = useRouter();
@@ -8,16 +8,15 @@ export default function Kakao() {
   useEffect(() => {
     console.log(kakaoCode);
 
-    axios
-      .post("https://j7a303.p.ssafy.io/api/auth/login", {
-        code: kakaoCode,
-      })
-      .then((res) => {
+    doLogin(
+      kakaoCode,
+      (res) => {
         console.log(res);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+      },
+      (err) => {
+        console.log(err);
+      }
+    );
   }, []);
 
   return <div>카카오 로그인 중</div>;
