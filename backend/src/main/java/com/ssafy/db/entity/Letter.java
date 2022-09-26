@@ -6,7 +6,6 @@ import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
 
 import javax.persistence.*;
-import java.time.LocalDateTime;
 
 @Entity
 @Getter
@@ -16,26 +15,18 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @DynamicUpdate
 @DynamicInsert
-public class Comment {
+public class Letter {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "comment_id", nullable = false, updatable = false, columnDefinition = "BIGINT")
+    @Column(name = "letter_id", nullable = false, updatable = false, columnDefinition = "BIGINT")
     private Long id;
 
-    @Column(name = "comment_content", columnDefinition = "TEXT", nullable = false)
+    @Column(nullable = false, columnDefinition = "TEXT")
     private String content;
 
-    @Column(name = "comment_date")
-    private LocalDateTime date;
-
     @JsonBackReference
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "article_id")
-    private Article article;
-
-    @JsonBackReference
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_id")
-    private User user;
+    @JoinColumn(name = "subject_id")
+    private Subject subject;
 }

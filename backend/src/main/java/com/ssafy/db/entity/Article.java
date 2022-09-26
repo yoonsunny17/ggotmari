@@ -28,12 +28,13 @@ public class Article {
     @Column(name = "article_id", nullable = false, updatable = false, columnDefinition = "BIGINT")
     private Long id;
 
-    @Column(nullable = false)
+    @Column(name = "article_title", nullable = false)
     private String title;
 
-    @Column(columnDefinition = "TEXT", nullable = false)
+    @Column(name = "article_content", columnDefinition = "TEXT", nullable = false)
     private String content;
 
+    @Column(name = "article_date")
     private LocalDateTime date;
 
     @JsonBackReference
