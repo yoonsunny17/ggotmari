@@ -23,9 +23,10 @@ public class Comment {
     @Column(name = "comment_id", nullable = false, updatable = false, columnDefinition = "BIGINT")
     private Long id;
 
-    @Column(columnDefinition = "TEXT", nullable = false)
+    @Column(name = "comment_content", columnDefinition = "TEXT", nullable = false)
     private String content;
 
+    @Column(name = "comment_date")
     private LocalDateTime date;
 
     @JsonBackReference
