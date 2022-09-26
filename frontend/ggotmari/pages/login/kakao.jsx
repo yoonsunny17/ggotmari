@@ -3,15 +3,14 @@ import { useState, useEffect } from "react";
 import { doLogin } from "../../api/user";
 
 export default function Kakao() {
-  const location = useRouter();
-  const [kakaoCode, setKakaoCode] = useState(location.asPath.split("=")[1]);
+  const router = useRouter();
+  const [kakaoCode, setKakaoCode] = useState(router.asPath.split("=")[1]);
   useEffect(() => {
-    console.log(kakaoCode);
-
     doLogin(
       kakaoCode,
       (res) => {
-        console.log(res);
+        localStorage.setItem("accessToken", res.data.token);
+        router.push("/");
       },
       (err) => {
         console.log(err);
