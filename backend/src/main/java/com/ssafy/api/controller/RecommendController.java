@@ -2,15 +2,14 @@ package com.ssafy.api.controller;
 
 import com.ssafy.api.request.DislikePostReq;
 import com.ssafy.api.request.FlowerTagPostReq;
-import com.ssafy.api.response.DislikePostRes;
-import com.ssafy.api.response.RecommendSituationRes;
-import com.ssafy.api.response.RecommendTagRes;
-import com.ssafy.api.response.TagPostRes;
+import com.ssafy.api.request.LetterPostReq;
+import com.ssafy.api.response.*;
 import com.ssafy.api.service.FlowerService;
 import com.ssafy.api.service.RecommendService;
 import com.ssafy.api.service.UserService;
 import com.ssafy.common.util.JwtTokenUtil;
 import com.ssafy.db.entity.Kind;
+import com.ssafy.db.entity.Subject;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
@@ -74,6 +73,23 @@ public class RecommendController {
             return ResponseEntity.status(403).body(RecommendSituationRes.of(403, "추천 실패.", kinds));
         }else{
             return ResponseEntity.status(201).body(RecommendSituationRes.of(201, "정상적으로 추천되었습니다.", kinds));
+        }
+    }
+
+    @GetMapping("/letter")
+    @ApiOperation(value = "편지 추천", notes = "편지 내용 기반 꽃 추천")
+    @ApiResponses({
+            @ApiResponse(code = 201, message = "꽃 추천 성공"),
+            @ApiResponse(code = 500, message = "꽃 추천 실패")
+    })
+    public ResponseEntity<? extends RecommendLetterRes> recommendFlowerByLetter(@RequestBody LetterPostReq letterInfo){
+
+        Subject subject= recommendService.recommendByLetter(letterInfo);
+
+        if(subject == null){
+            return ResponseEntity.status(403).body(RecommendLetterRes.of(403, "추천 실패.", subject));
+        }else{
+            return ResponseEntity.status(201).body(RecommendLetterRes.of(201, "정상적으로 추천되었습니다.", subject));
         }
     }
 }

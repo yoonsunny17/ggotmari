@@ -1,16 +1,11 @@
 package com.ssafy.api.service;
 
 import com.ssafy.api.request.DislikePostReq;
+import com.ssafy.api.request.LetterPostReq;
 import com.ssafy.api.response.KindRes;
 import com.ssafy.api.response.RecommendTagRes;
-import com.ssafy.db.entity.FlowerDislike;
-import com.ssafy.db.entity.Kind;
-import com.ssafy.db.entity.Tag;
-import com.ssafy.db.entity.User;
-import com.ssafy.db.repository.FlowerDislikeRepository;
-import com.ssafy.db.repository.KindRepository;
-import com.ssafy.db.repository.TagRepository;
-import com.ssafy.db.repository.UserRepository;
+import com.ssafy.db.entity.*;
+import com.ssafy.db.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -30,6 +25,10 @@ public class RecommendService {
     TagRepository tagRepository;
     @Autowired
     FlowerDislikeRepository flowerDislikeRepository;
+    @Autowired
+    SubjectRepository subjectRepository;
+    @Autowired
+    LetterRepository letterRepository;
 
     @Transactional
     public boolean addDislike(String email, DislikePostReq dislikeInfo){
@@ -81,4 +80,20 @@ public class RecommendService {
         return tags;
     }
 
+    @Transactional
+    public Subject recommendByLetter(LetterPostReq letterInfo){
+        //TODO : 장고에게 letterInfo 전달, subjectId 받아오기
+        Long subjectId = 1L;
+
+        Letter letter = new Letter();
+        letter.setContent(letterInfo.getContent());
+
+        Subject subject = subjectRepository.findById(subjectId).get();
+        letter.setSubject(subject);
+
+        letterRepository.save(letter);
+
+        return subject;
+
+    }
 }
