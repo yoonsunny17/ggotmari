@@ -151,7 +151,7 @@ export default function Profile() {
         <ProfileNavBar />
         {/* 하단 */}
       </div>
-      <div className="content grid grid-cols-3 mx-3">
+      <div className="content grid grid-cols-3 mt-3 mb-14">
         {userInfo.articles !== [] ? (
           userInfo.articles.map((item, index) => {
             return (

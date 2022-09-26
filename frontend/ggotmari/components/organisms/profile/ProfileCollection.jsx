@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import CollectionBtn from "../../atoms/profile/CollectionBtn";
 import CollectionImage from "../../atoms/profile/CollectionImage";
+import noFlower from "../../../assets/profile/collection/noFlowerImg.jpg";
 
 function ProfileCollection({ likeFlowers }) {
   const [activeTab, setActiveTab] = useState(0);
@@ -79,20 +80,30 @@ function ProfileCollection({ likeFlowers }) {
         })}
       </div>
       {/* 사진 및 내용들 */}
-      <div className="colletion-items grid grid-cols-3 mt-3 mx-3">
+      <div className="colletion-items grid grid-cols-3 mt-3 mb-14">
         {collectionItems ? (
           collectionItems.map((item, index) => {
             return (
               <div className="collection-item p-1.5 text-xs" key={index}>
                 <CollectionImage
                   flowerImage={item.flowerImage}
+                  kindId={item.kindId}
                   kindName={item.kindName}
                 />
               </div>
             );
           })
         ) : (
-          <div>nonono</div>
+          <div className="col-span-3 flex justify-center">
+            <div className="content-box w-full">
+              <div className="img-box flex justify-center">
+                <img src={noFlower.src} alt="조회할 꽃이 없음" />
+              </div>
+              <div className="text-box flex justify-center font-gangwon text-font4">
+                <span>컬렉션에 추가한 꽃이 없습니다</span>
+              </div>
+            </div>
+          </div>
         )}
         {/* {collectionItems.map((item, index) => {
           return (
