@@ -6,8 +6,6 @@ export default function Kakao() {
   const router = useRouter();
   const [kakaoCode, setKakaoCode] = useState(router.asPath.split("=")[1]);
   useEffect(() => {
-    console.log(kakaoCode);
-
     doLogin(
       kakaoCode,
       (res) => {
