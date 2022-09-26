@@ -5,26 +5,27 @@ import {
   IoRefreshOutline,
   IoImagesOutline,
 } from "react-icons/io5";
-import { getFlowerKind } from "../../api/community";
+import { getFlowerKind, postArticle } from "../../api/community";
 import FlowerTag from "../../components/atoms/common/FlowerTag";
 
 function EditArticle() {
   const router = useRouter();
   const [title, setTitle] = useState("");
-  const [flowerTags, setFlowerTags] = useState([]);
+  const [flowerTags, setFlowerTags] = useState({});
   const [content, setContent] = useState("");
   const [tagSearch, setTagSearch] = useState("");
   const [filteredList, setFilteredList] = useState([]);
   const [flowerKindList, setFlowerKindList] = useState([]);
   const [dropDownOpen, setDropDownOpen] = useState(false);
-  const [imagesPreview, setImagesPreview] = useState([]);
+  const [imageFiles, setImageFiles] = useState();
+  const [imagePreviews, setImagePreviews] = useState([]);
 
   useEffect(() => {
     getFlowerKind(
       (res) => setFlowerKindList(res.data.subjects),
       (error) => {
         console.log(error);
-      },
+      }
     );
   }, []);
 
@@ -35,20 +36,23 @@ function EditArticle() {
   useEffect(() => {
     setFilteredList(
       flowerKindList.filter((flowerKind) =>
-        flowerKind.subjectName.startsWith(tagSearch),
-      ),
+        flowerKind.subjectName.startsWith(tagSearch)
+      )
     );
   }, [tagSearch]);
 
-  const addFlowerTag = (e) => {
-    const newFlower = e.target.innerHTML;
-    if (!flowerTags.includes(newFlower)) {
-      setFlowerTags([...flowerTags, e.target.innerHTML]);
+  const addFlowerTag = (flower) => {
+    const newFlowerName = flower.subjectName;
+    const newFlowerId = flower.subjectId;
+    if (!(newFlowerId in flowerTags)) {
+      setFlowerTags({ ...flowerTags, [newFlowerId]: newFlowerName });
     }
   };
 
-  const removeFlowerTag = (tag) => {
-    setFlowerTags(flowerTags.filter((flower) => flower != tag));
+  const removeFlowerTag = (flowerId) => {
+    const removedTags = { ...flowerTags };
+    delete removedTags[flowerId];
+    setFlowerTags(removedTags);
   };
 
   const handleFlowerSearchChange = (e) => {
@@ -57,12 +61,13 @@ function EditArticle() {
 
   const handleImgUpload = (e) => {
     const fileArr = e.target.files;
+    setImageFiles(fileArr);
     const fileURLs = [];
     [...fileArr].forEach((file, idx) => {
       const reader = new FileReader();
       reader.onload = () => {
         fileURLs[idx] = reader.result;
-        setImagesPreview([...fileURLs]);
+        setImagePreviews([...fileURLs]);
       };
       reader.readAsDataURL(file);
     });
@@ -78,18 +83,36 @@ function EditArticle() {
 
   const handleArticleSubmit = (e) => {
     e.preventDefault();
-    console.log(title);
-    console.log(content);
-    console.log();
-    console.log(flowerTags);
+    console.log(imageFiles);
+    const formData = new FormData();
+    const article = {
+      title: title,
+      content: content,
+      subjects: Object.keys(flowerTags),
+    };
+    const json = JSON.stringify(article);
+    const blob = new Blob([json], { type: "application/json" });
+    formData.append("articleInfo", blob);
+    // formData.append("images", imageFiles);
+    [...imageFiles].forEach((file) => formData.append("images", file));
+
+    postArticle(
+      formData,
+      (res) => {
+        console.log(res);
+      },
+      (err) => {
+        console.log(err);
+      }
+    );
   };
 
   return (
     <div className="flex flex-col items-center w-screen">
       <div className="w-full aspect-square bg-font3">
-        {imagesPreview.length > 0 ? (
+        {imagePreviews.length > 0 ? (
           <div className="carousel w-full aspect-square">
-            {imagesPreview.map((imgSrc, idx) => (
+            {imagePreviews.map((imgSrc, idx) => (
               <div className="carousel-item relative w-full h-full" key={idx}>
                 <img src={imgSrc} className="w-full object-cover" />
               </div>
@@ -116,7 +139,10 @@ function EditArticle() {
         <p> | </p>
         <div
           className="inline text-font2 cursor-pointer"
-          onClick={() => setImagesPreview([])}
+          onClick={() => {
+            setImagePreviews([]);
+            setImageFiles();
+          }}
         >
           <IoRefreshOutline className="inline" /> 초기화
         </div>
@@ -143,12 +169,12 @@ function EditArticle() {
           <div className="w-full shadow-md">
             <div>
               <div className="flex flex-row flex-wrap px-5 py-3">
-                {flowerTags?.map((tag) => (
+                {Object.keys(flowerTags).map((flowerId, idx) => (
                   <FlowerTag
-                    flowerName={tag}
-                    key={tag}
+                    flowerName={flowerTags[flowerId]}
+                    key={flowerId}
                     isRemovable={true}
-                    onClick={() => removeFlowerTag(tag)}
+                    onClick={() => removeFlowerTag(flowerId)}
                   />
                 ))}
               </div>
@@ -173,7 +199,7 @@ function EditArticle() {
                 {filteredList.map((flower, idx) => (
                   <div
                     className="p-2 font-sans hover:bg-font3"
-                    onClick={addFlowerTag}
+                    onClick={() => addFlowerTag(flower)}
                     key={idx}
                   >
                     {flower.subjectName}
