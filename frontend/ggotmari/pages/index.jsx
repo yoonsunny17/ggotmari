@@ -2,7 +2,6 @@ import Router from "next/router";
 import Link from "next/link";
 
 import Header from "../components/atoms/common/Header";
-import SearchBar from "../components/atoms/common/SearchBar";
 import CommunityCard from "../components/atoms/index/CommunityCard";
 import RecommItem from "../components/molecules/main/RecommItem";
 import ArticleItem from "../components/molecules/community/ArticleItem";
@@ -11,6 +10,8 @@ import SpecialDayRecomm from "../components/organisms/main/SpecialDayRecomm";
 import { BsPeople } from "react-icons/bs";
 import { FaRegPaperPlane } from "react-icons/fa";
 import { IoIosArrowForward } from "react-icons/io";
+
+import kakao_channel from "../assets/id_type.png";
 
 function Home() {
   const username = "sangchuman";
@@ -44,7 +45,7 @@ function Home() {
             <div className="">
               {/* 꽃에 담은 편지 버튼 */}
               <button
-                onClick={() => Router.push("/community")}
+                onClick={() => Router.push("/recommend")}
                 className="w-[calc(100%-12px)] h-12 rounded-md font-gangwonlight text-sm text-white bg-sub1 mr-3 mb-2"
               >
                 <div className="flex justify-between">
@@ -57,7 +58,7 @@ function Home() {
 
               {/* 꽃 사전 버튼 */}
               <button
-                onClick={() => Router.push("/recommend")}
+                onClick={() => Router.push("/flower/search/searchtext")}
                 className="w-[calc(100%-12px)] h-12 rounded-md font-gangwonlight text-sm text-white bg-extra2"
               >
                 <div className="flex justify-between">
@@ -134,11 +135,23 @@ function Home() {
         {/* 도움을 원하시나요? */}
         <div className="mb-16 w-full font-sans pt-6">
           <div className="pb-4">도움을 원하시나요?</div>
-          <div className="flex text-sm">
-            <p class="mr-4">카카오 채널 추가하기</p>
+          <div className="flex justify-between text-sm text-font2">
+            <Link href="https://pf.kakao.com/_VKECxj">
+              <a target="_blank">
+                <img className="w-20" src={kakao_channel.src} alt="" />
+              </a>
+            </Link>
             <Link href="https://www.notion.so/a303-princess/8c05c0267b2742d3a6ea9cc4435267c7">
               <a target="_blank">
-                <p>서비스 이용 가이드</p>
+                <div className="flex">
+                  <img
+                    className="w-6"
+                    src="https://img.icons8.com/offices/30/000000/flower.png"
+                  />
+                  <span className="flex items-end ml-1">
+                    서비스 이용 가이드
+                  </span>
+                </div>
               </a>
             </Link>
           </div>
