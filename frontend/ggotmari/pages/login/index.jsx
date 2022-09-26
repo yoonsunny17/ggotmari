@@ -8,7 +8,7 @@ export default function Login() {
   const REDIRECT_URI = "https://j7a303.p.ssafy.io/login/kakao";
   const KAKAO_AUTH_URL = `https://kauth.kakao.com/oauth/authorize?response_type=code&client_id=${REST_API_KEY}&redirect_uri=${REDIRECT_URI}`;
 
-  const loginBtn = () => {
+  const handleLoginClick = () => {
     router.push(KAKAO_AUTH_URL);
   };
 
@@ -22,7 +22,7 @@ export default function Login() {
           간편하게 꽃마리를 이용해 보세요
         </div>
         <div className="">
-          <button className="w-48 h-12" onClick={loginBtn}>
+          <button className="w-48 h-12" onClick={handleLoginClick}>
             <img src={kakao_oauth.src} />
           </button>
         </div>
