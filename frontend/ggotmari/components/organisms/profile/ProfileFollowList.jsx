@@ -9,8 +9,11 @@ function ProfileFollowList() {
     follower: [],
     following: [],
   });
+  const [showList, setShowList] = useState([]);
+  const [toShow, setToShow] = useState(true);
+  const [searchTerm, setSearchTerm] = useState("");
 
-  // 정보를 담아줄 함수
+  // 서버에서 요청을 받아 정보를 담아줄 함수 및 useEffect
   const fillFollowInfo = () => {
     // 요기에 통신 후 정보를 담아줄 예정
     setFollowInfo({
@@ -41,12 +44,62 @@ function ProfileFollowList() {
         },
       ],
     });
+    setShowList([
+      {
+        userName: "im follower",
+        userImage:
+          "https://photo.jtbc.joins.com/news/2015/06/18/201506182141183067.jpg",
+        isFollowing: true,
+      },
+      {
+        userName: "im follower2",
+        userImage:
+          "https://photo.jtbc.joins.com/news/2015/06/18/201506182141183067.jpg",
+        isFollowing: false,
+      },
+    ]);
   };
-
   useEffect(fillFollowInfo, []);
 
+  // 팔로우 팔로잉 정보 바뀔 때 및 처음 시작할 때 정보 채워주기
+  useEffect(() => {
+    if (toShow) {
+      setShowList(followInfo.follower);
+    } else {
+      setShowList(followInfo.following);
+    }
+  }, [followInfo]);
+
+  // 팔로우와 팔로잉 탭이 바뀔 때마다 showList 갈아 끼어넣기
+  useEffect(() => {
+    setSearchTerm("");
+    if (toShow) {
+      setShowList(followInfo.follower);
+    } else {
+      setShowList(followInfo.following);
+    }
+  }, [toShow]);
+
+  // 검색어 입력시 showList 갈아 끼어넣기
+  useEffect(() => {
+    if (searchTerm === "") {
+      if (toShow) {
+        setShowList(followInfo.follower);
+      } else {
+        setShowList(followInfo.following);
+      }
+    } else {
+      let arr = [];
+      for (let show of showList) {
+        if (show.userName.includes(searchTerm)) {
+          arr.push(show);
+        }
+      }
+      setShowList(arr);
+    }
+  }, [searchTerm]);
+
   // 팔로우 팔로잉 온오프
-  const [toShow, setToShow] = useState(true);
 
   const changeOn = () => {
     if (toShow) {
@@ -85,24 +138,25 @@ function ProfileFollowList() {
         )}
       </div>
       <div className="searchbar flex justify-center mb-5">
-        <SearchBar placeholder={"유저 검색"} />
+        <SearchBar
+          placeholder={"유저 검색"}
+          onChange={(event) => {
+            setSearchTerm(event.target.value);
+          }}
+        />
       </div>
-      <div className="follow-list">
-        {toShow
-          ? followInfo.follower.map((item, index) => {
-              return (
-                <div className="follower" key={index}>
-                  <FollowUser item={item} />
-                </div>
-              );
-            })
-          : followInfo.following.map((item, index) => {
-              return (
-                <div className="following" key={index}>
-                  <FollowUser item={item} />
-                </div>
-              );
-            })}
+      <div className="follow-list mt-3 mb-14">
+        {showList.length > 0 ? (
+          showList.map((item, index) => {
+            return (
+              <div className="follower" key={index}>
+                <FollowUser item={item} />
+              </div>
+            );
+          })
+        ) : (
+          <div>nonono</div>
+        )}
       </div>
     </>
   );

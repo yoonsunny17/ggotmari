@@ -1,4 +1,7 @@
+import { useRouter } from "next/router";
+
 function FollowUser({ item }) {
+  const router = useRouter();
   // console.log(item);
   return (
     <>
@@ -8,10 +11,18 @@ function FollowUser({ item }) {
             src={item.userImage}
             alt={`${item.userName}님의 프로필 사진입니다.`}
             className="w-full h-full object-cover rounded-full cursor-pointer"
+            onClick={() => {
+              router.push(`/profile/${item.userName}`);
+            }}
           />
         </div>
         <div className="username-box col-span-4 pl-3 grid items-center">
-          <span className="username cursor-pointer text-font1 font-sanslight text-sm w-fit">
+          <span
+            className="username cursor-pointer text-font1 font-sanslight text-sm w-fit"
+            onClick={() => {
+              router.push(`/profile/${item.userName}`);
+            }}
+          >
             {item.userName}
           </span>
         </div>

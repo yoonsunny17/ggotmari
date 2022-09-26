@@ -3,7 +3,6 @@ import ProfileFollowList from "../../../components/organisms/profile/ProfileFoll
 
 function ProfileFollow() {
   const router = useRouter().query.username;
-  console.log(router);
   return (
     <>
       <div className="username-box my-6">
