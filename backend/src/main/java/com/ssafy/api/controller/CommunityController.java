@@ -1,7 +1,7 @@
 package com.ssafy.api.controller;
 
 import com.ssafy.api.request.*;
-import com.ssafy.api.response.*;
+import com.ssafy.api.response.Community.*;
 import com.ssafy.api.service.CommunityService;
 import com.ssafy.api.service.PopularService;
 import com.ssafy.api.service.UserService;
@@ -15,8 +15,6 @@ import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -44,9 +42,10 @@ public class CommunityController {
             @ApiResponse(code = 201, message = "게시글 생성 성공"),
             @ApiResponse(code = 500, message = "게시글 생성 실패")
     })
-    public ResponseEntity<? extends ArticlePostRes> createArticle(@RequestPart ArticleCreatePostReq articleInfo,
+    public ResponseEntity<? extends ArticlePostRes> createArticle(@RequestPart(value = "articleInfo") ArticleCreatePostReq articleInfo,
                                                                   @RequestPart(value = "images") List<MultipartFile> multipartFiles,
                                                                   HttpServletRequest request){
+
         String jwtToken = request.getHeader("Authorization");
         String email = jwtTokenUtil.getUserEmailFromToken(jwtToken);
 
@@ -75,7 +74,7 @@ public class CommunityController {
             @ApiResponse(code = 500, message = "게시글 수정 실패")
     })
     public ResponseEntity<? extends ArticlePostRes> updateArticle(@PathVariable("articleId") Long articleId,
-                                                                  @RequestPart ArticleCreatePostReq articleInfo,
+                                                                  @RequestPart(value = "articleInfo") ArticleCreatePostReq articleInfo,
                                                                   @RequestPart(value = "images") List<MultipartFile> multipartFiles,
                                                                   HttpServletRequest request){
 

@@ -2,7 +2,7 @@ package com.ssafy.api.service;
 
 import com.ssafy.api.request.FollowPostReq;
 import com.ssafy.api.request.UserPutReq;
-import com.ssafy.api.response.FollowGetFollowerRes;
+import com.ssafy.api.response.User.FollowGetFollowerRes;
 import com.ssafy.db.entity.Follow;
 import com.ssafy.db.entity.User;
 import com.ssafy.db.repository.FollowRepository;

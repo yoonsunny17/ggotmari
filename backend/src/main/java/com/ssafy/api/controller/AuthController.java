@@ -1,7 +1,7 @@
 package com.ssafy.api.controller;
 
 import com.ssafy.api.request.KakaoLoginCodeReq;
-import com.ssafy.api.response.KakaoLoginRes;
+import com.ssafy.api.response.Auth.KakaoLoginRes;
 import com.ssafy.api.service.KakaoService;
 import com.ssafy.api.service.UserService;
 import com.ssafy.common.util.JwtTokenUtil;
@@ -11,7 +11,6 @@ import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
