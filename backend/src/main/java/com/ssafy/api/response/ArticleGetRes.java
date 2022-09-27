@@ -8,6 +8,7 @@ import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 @Data
@@ -91,6 +92,7 @@ public class ArticleGetRes extends BaseResponseBody {
 
     public void setComments(List<Comment> comments, User loginUser){
         if(comments.size() != 0){
+            Collections.reverse(comments);
             for(Comment comment : comments){
                 this.comments.add(CommentRes.of(comment, loginUser));
             }
