@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Subject, Kind, Sale, User, FlowerLike, Article, ArticleLike
+from .models import Subject, Kind, Sale, User, FlowerLike, Article, ArticleLike, FlowerDislike
 
 
 class SubjectSerializer(serializers.ModelSerializer):
@@ -41,6 +41,12 @@ class UserSerializer(serializers.ModelSerializer):
             model = FlowerLike
             fields = '__all__'
 
+    class FlowerdislikeSerializer(serializers.ModelSerializer):
+
+        class Meta:
+            model = FlowerDislike
+            fields = '__all__'
+
     class ArticleLikeSerializer(serializers.ModelSerializer):
 
         class Meta:
@@ -48,6 +54,7 @@ class UserSerializer(serializers.ModelSerializer):
             fields = '__all__'
 
     flowerlike_set = FlowerlikeSerializer(many=True, read_only=True)
+    flowerdislike_set = FlowerdislikeSerializer(many=True, read_only=True)
     articlelike_set = ArticleLikeSerializer(many=True, read_only=True)
 
     class Meta:
@@ -108,3 +115,10 @@ class ArticleLikeSerializer(serializers.ModelSerializer):
 
     article = ArticleSerializer(read_only=True)
     user = UserSerializer(read_only=True)
+
+
+class FlowerLikeSerializer(serializers.ModelSerializer):
+    
+    class Meta:
+        model = FlowerLike
+        fields = '__all__'
