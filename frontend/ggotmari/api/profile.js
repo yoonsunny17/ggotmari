@@ -16,9 +16,9 @@ async function getUser(username, success, fail) {
 async function getUserFollow(username, success, fail) {
   await api
     .get(`user/${username}/follow`, {
-      //   headers: {
-      //     Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-      //   },
+      headers: {
+        Authorization: localStorage.getItem("accessToken"),
+      },
     })
     .then(success)
     .catch(fail);

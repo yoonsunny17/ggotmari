@@ -73,8 +73,8 @@ function ProfileInfo({ userInfo, setUserInfo }) {
                 router.push(`/profile/follow/${router.query.username}`);
               }}
             >
-              팔로우 {userInfo.user.followingCount} | 팔로워{" "}
-              {userInfo.user.followerCount}
+              팔로워 {userInfo.user.followerCount} | 팔로잉{" "}
+              {userInfo.user.followingCount}
             </span>
           </div>
           {/* Link */}
