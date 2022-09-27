@@ -1,5 +1,7 @@
 import { useRouter } from "next/router";
 import { useState, useEffect } from "react";
+import Image from "next/image";
+
 import kakao_oauth from "../../assets/kakao_login_large_narrow.png";
 
 export default function Login() {
@@ -22,8 +24,14 @@ export default function Login() {
           간편하게 꽃마리를 이용해 보세요
         </div>
         <div className="">
-          <button className="w-48 h-12" onClick={handleLoginClick}>
-            <img src={kakao_oauth.src} />
+          <button onClick={handleLoginClick}>
+            {/* <img src={kakao_oauth.src} /> */}
+            <Image
+              src={kakao_oauth.src}
+              layout="fixed"
+              width={192}
+              height={48}
+            />
           </button>
         </div>
       </div>

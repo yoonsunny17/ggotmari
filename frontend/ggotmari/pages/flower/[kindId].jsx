@@ -55,7 +55,7 @@ function FlowerDetail(params) {
         {/* 컬렉션에 담기 */}
         <div>
           <div className="font-gangwon text-lg pt-4 pb-2">컬렉션에 담기</div>
-          <div className="grid grid-cols-6 mb-3">
+          <div className="grid grid-cols-6 mb-4">
             {tabContArr.map(({ category }, idx) => (
               <div key={category} className="col-span-1 px-[2px]">
                 <button
@@ -80,7 +80,7 @@ function FlowerDetail(params) {
             {flowerInfo.flower.subjectName}의 다른 품종
           </div>
 
-          <div className="carousel w-full">
+          <div className="carousel w-full mb-2">
             {similarFlowerArr.map((info, idx) => {
               return (
                 <div
@@ -95,12 +95,12 @@ function FlowerDetail(params) {
         </div>
 
         {/* 연관 게시물 보기 */}
-        <div>
-          <div className="font-gangwon text-lg py-4">
+        <div className="mb-16">
+          <div className="font-gangwon text-lg pb-3 pt-4">
             {flowerInfo.flower.subjectName}를 담은 이야기
           </div>
 
-          <div className="grid grid-cols-3 gap-x-3">
+          <div className="grid grid-cols-3 gap-x-3 gap-y-2.5">
             {relatedPostArr.map((info, idx) => {
               return <RelatedPosts info={info} key={idx} />;
             })}
@@ -132,7 +132,7 @@ const similarFlowerArr = [
     kindId: 1001,
     kindName: "파스타",
     imgUrl:
-      "https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyMTA5MTFfMTQ4%2FMDAxNjMxMzUwMTk0OTY1.6CrWXrJpavTs3WsPTKBTkBesb8vITwgHyv3lL9NjtL0g.IP5CAh5L3sU4hEcD7qrunu1ZMyUJHJ8LYn7GvzI0eIcg.JPEG.flowerity_by%2Foutput_3853465575.jpg&type=sc960_832",
+      "https://images.unsplash.com/photo-1646928111250-2b2252682c3e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
   },
   {
     subjectId: 1,
@@ -140,7 +140,7 @@ const similarFlowerArr = [
     kindId: 1002,
     kindName: "스파이더",
     imgUrl:
-      "https://t3.daumcdn.net/thumb/R720x0.fpng/?fname=http://t1.daumcdn.net/brunch/service/user/cDjc/image/FLxszoCosErrwla-YBE8KcfLlms.png",
+      "https://images.unsplash.com/photo-1566228965180-0b4e14f6fcb2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
   },
   {
     subjectId: 1,
@@ -148,7 +148,7 @@ const similarFlowerArr = [
     kindId: 1003,
     kindName: "폼포니",
     imgUrl:
-      "https://static.okkot.com/images/w_600/%E1%84%91%E1%85%A9%E1%86%B7%E1%84%91%E1%85%A9%E1%84%82%E1%85%B5%20%E1%84%80%E1%85%A5%E1%84%87%E1%85%A6%E1%84%85%E1%85%A1%20%E1%84%8C%E1%85%A6%E1%84%8B%E1%85%B5%E1%84%8C%E1%85%A6%E1%84%8B%E1%85%B5-1621589021176-a2ee868f-6e16-4fa0-a474-473a7ae096b7.jpg",
+      "https://images.unsplash.com/photo-1642775588061-5743b12a47c1?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=764&q=80",
   },
   {
     subjectId: 1,
@@ -156,7 +156,7 @@ const similarFlowerArr = [
     kindId: 1004,
     kindName: "파스타",
     imgUrl:
-      "https://images.unsplash.com/photo-1556761223-4c4282c73f77?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=765&q=80",
+      "https://images.unsplash.com/photo-1646928111250-2b2252682c3e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
   },
   {
     subjectId: 1,
@@ -180,7 +180,7 @@ const similarFlowerArr = [
     kindId: 1007,
     kindName: "파스타",
     imgUrl:
-      "https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyMTA5MTFfMTQ4%2FMDAxNjMxMzUwMTk0OTY1.6CrWXrJpavTs3WsPTKBTkBesb8vITwgHyv3lL9NjtL0g.IP5CAh5L3sU4hEcD7qrunu1ZMyUJHJ8LYn7GvzI0eIcg.JPEG.flowerity_by%2Foutput_3853465575.jpg&type=sc960_832",
+      "https://images.unsplash.com/photo-1646928111250-2b2252682c3e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
   },
   {
     subjectId: 1,
@@ -188,7 +188,7 @@ const similarFlowerArr = [
     kindId: 1008,
     kindName: "스파이더",
     imgUrl:
-      "https://t3.daumcdn.net/thumb/R720x0.fpng/?fname=http://t1.daumcdn.net/brunch/service/user/cDjc/image/FLxszoCosErrwla-YBE8KcfLlms.png",
+      "https://images.unsplash.com/photo-1635805737707-575885ab0820?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80",
   },
   {
     subjectId: 1,
@@ -196,7 +196,7 @@ const similarFlowerArr = [
     kindId: 1009,
     kindName: "폼포니",
     imgUrl:
-      "https://static.okkot.com/images/w_600/%E1%84%91%E1%85%A9%E1%86%B7%E1%84%91%E1%85%A9%E1%84%82%E1%85%B5%20%E1%84%80%E1%85%A5%E1%84%87%E1%85%A6%E1%84%85%E1%85%A1%20%E1%84%8C%E1%85%A6%E1%84%8B%E1%85%B5%E1%84%8C%E1%85%A6%E1%84%8B%E1%85%B5-1621589021176-a2ee868f-6e16-4fa0-a474-473a7ae096b7.jpg",
+      "https://images.unsplash.com/photo-1642775588061-5743b12a47c1?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=764&q=80",
   },
   {
     subjectId: 1,
@@ -204,7 +204,7 @@ const similarFlowerArr = [
     kindId: 1010,
     kindName: "파스타",
     imgUrl:
-      "https://images.unsplash.com/photo-1556761223-4c4282c73f77?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=765&q=80",
+      "https://images.unsplash.com/photo-1646928111250-2b2252682c3e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
   },
   {
     subjectId: 1,
