@@ -65,10 +65,8 @@ public class RecommendController {
     public ResponseEntity<? extends RecommendSituationRes> recommendFlowerBySituation(HttpServletRequest request){
 
 
-//        String jwtToken = request.getHeader("Authorization");
-//        String email = jwtTokenUtil.getUserEmailFromToken(jwtToken);
-
-        String email = "tempUser4@naver.com";
+        String jwtToken = request.getHeader("Authorization");
+        String email = jwtTokenUtil.getUserEmailFromToken(jwtToken);
 
         List<RecommendTagRes> kinds = recommendService.recommendBySituation(email);
 
