@@ -1,7 +1,8 @@
 package com.ssafy.api.controller;
 
 import com.ssafy.api.request.*;
-import com.ssafy.api.response.*;
+import com.ssafy.api.response.Community.*;
+import com.ssafy.api.response.Flower.SubjectGetRes;
 import com.ssafy.api.service.CommunityService;
 import com.ssafy.api.service.PopularService;
 import com.ssafy.api.service.UserService;
@@ -15,8 +16,6 @@ import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;

@@ -1,15 +1,12 @@
 package com.ssafy.api.controller;
 
 import com.ssafy.api.request.DislikePostReq;
-import com.ssafy.api.request.FlowerTagPostReq;
 import com.ssafy.api.request.LetterPostReq;
-import com.ssafy.api.response.*;
-import com.ssafy.api.service.FlowerService;
+import com.ssafy.api.response.Recommend.*;
 import com.ssafy.api.service.RecommendService;
 import com.ssafy.api.service.UserService;
 import com.ssafy.common.util.JwtTokenUtil;
 import com.ssafy.db.entity.Article;
-import com.ssafy.db.entity.Kind;
 import com.ssafy.db.entity.Subject;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -41,7 +38,7 @@ public class RecommendController {
             @ApiResponse(code = 500, message = "태그 전환 실패")
     })
     public ResponseEntity<? extends DislikePostRes> addDislike(@RequestBody DislikePostReq dislikeInfo,
-                                                           HttpServletRequest request){
+                                                               HttpServletRequest request){
 
 
         String jwtToken = request.getHeader("Authorization");
