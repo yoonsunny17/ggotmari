@@ -57,7 +57,7 @@ function ProfileCollection({ likeFlowers }) {
       }
     }
   }, []);
-
+  console.log(likeFlowers);
   return (
     <>
       {/* 탭들 */}

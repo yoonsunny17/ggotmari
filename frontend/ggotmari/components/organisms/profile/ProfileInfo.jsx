@@ -1,7 +1,9 @@
 import { BsShare } from "react-icons/bs";
 import { useRouter } from "next/router";
+import { follow } from "../../../api/profile";
+import { useEffect } from "react";
 
-function ProfileInfo({ user, isMe }) {
+function ProfileInfo({ userInfo, setUserInfo }) {
   // 로그인했고, 방문한 페이지의 url과 username이 같은 경우를 찾기 위해
   const router = useRouter();
 
@@ -13,13 +15,36 @@ function ProfileInfo({ user, isMe }) {
     alert("프로필이 복사되었습니다.");
   };
 
+  const success = () => {
+    const tempInfo = { ...userInfo };
+    tempInfo.user.isFollow = !userInfo.user.isFollow;
+    if (tempInfo.user.isFollow) {
+      tempInfo.user.followerCount += 1;
+      setUserInfo(tempInfo);
+    } else {
+      tempInfo.user.followerCount -= 1;
+      setUserInfo(tempInfo);
+    }
+  };
+  const fail = (err) => console.log(err);
+
+  // 팔로우버튼 클릭
+  const onClickFollow = () => {
+    const credential = {
+      isFollow: !userInfo.user.isFollow,
+      userName: router.query.username,
+    };
+    // console.log(credential);
+    follow(credential, success, fail);
+  };
+
   return (
     <div className="profile-head grid grid-cols-2">
       {/* 좌측 */}
       <div className="profile-img col-span-auto flex justify-center">
         <div className="img-box aspect-square w-3/5 my-6">
           <img
-            src={user.userImage}
+            src={userInfo.user.userImage}
             alt=""
             className="w-full h-full object-cover rounded-full"
           />
@@ -30,7 +55,7 @@ function ProfileInfo({ user, isMe }) {
         <div className="profile-info-box">
           <div className="box-username font-sans font-bold flex flex-start my-1">
             {/* {username} */}
-            <span className="mr-3 text-font1">{user.userName}</span>
+            <span className="mr-3 text-font1">{userInfo.user.userName}</span>
             {/* onClick */}
             <span className="grid content-center">
               <BsShare
@@ -48,11 +73,12 @@ function ProfileInfo({ user, isMe }) {
                 router.push(`/profile/follow/${router.query.username}`);
               }}
             >
-              팔로우 {user.followingCount} | 팔로워 {user.followerCount}
+              팔로우 {userInfo.user.followingCount} | 팔로워{" "}
+              {userInfo.user.followerCount}
             </span>
           </div>
           {/* Link */}
-          {isMe ? (
+          {userInfo.isMe ? (
             <div className="box-btns font-sansultralight text-xs text-sub2 underline my-0.5">
               <span
                 className="cursor-pointer"
@@ -63,19 +89,25 @@ function ProfileInfo({ user, isMe }) {
                 프로필 수정
               </span>
             </div>
-          ) : !isMe && user.isFollow ? (
-            <div className="box-btns font-sansultralight text-xs my-0.5 w-1/5">
-              <button className="btn-follow bg-main p-1 rounded-md text-font3 hover:bg-sub1 hover:transition-all w-full">
+          ) : userInfo.user.isFollow ? (
+            <div className="box-btns font-sansultralight text-xs my-0.5 w-1/4">
+              <button
+                onClick={onClickFollow}
+                className="btn-follow bg-main p-1 rounded-md text-white hover:bg-sub1 hover:transition-all w-full"
+              >
                 팔로잉
               </button>
             </div>
-          ) : !isMe && !user.isFollow ? (
-            <div className="box-btns font-sansultralight text-xs my-0.5 w-1/5">
-              <button className="btn-follow bg-sub1 p-1 rounded-md text-font3 hover:bg-main hover:transition-all w-full">
+          ) : (
+            <div className="box-btns font-sansultralight text-xs my-0.5 w-1/4">
+              <button
+                onClick={onClickFollow}
+                className="btn-follow bg-sub1 p-1 rounded-md text-white hover:bg-main hover:transition-all w-full"
+              >
                 팔로우
               </button>
             </div>
-          ) : null}
+          )}
         </div>
       </div>
       <style jsx>{`
