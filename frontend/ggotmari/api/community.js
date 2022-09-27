@@ -20,11 +20,24 @@ async function postArticle(article, success, fail) {
       headers: {
         // Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
         Authorization:
-          "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE2NjQxODE2MDcsImV4cCI6MTY2NTQ3NzYwNywiZW1haWwiOiJqam9vbjAzMDZAbmF2ZXIuY29tIn0.2wmZT7q_67YSB7nDn0eNsNohS32xHZc3RmrTwdnmSsl835Tb7-BkA9aa8PHdv6j0wEnfymYFVsd-iiGh9P04jw",
+          "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE2NjQyNDMzMDEsImV4cCI6MTY2NTUzOTMwMSwiZW1haWwiOiJqam9vbjAzMDZAbmF2ZXIuY29tIn0.xLkGTIv-3kEvz9VGxO9PVAGlskSiwF8fPGAwr6FlHiOP17htzEaVbickaNcgcN8ac4zWYIZ7fsuDjrtM7Nb5CQ",
       },
     })
     .then(success)
     .catch(fail);
 }
 
-export { getFlowerKind, postArticle };
+async function getArticles(success, fail) {
+  await api
+    .get(`api/community/article/list`, {
+      headers: {
+        // Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+        Authorization:
+          "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE2NjQyNDMzMDEsImV4cCI6MTY2NTUzOTMwMSwiZW1haWwiOiJqam9vbjAzMDZAbmF2ZXIuY29tIn0.xLkGTIv-3kEvz9VGxO9PVAGlskSiwF8fPGAwr6FlHiOP17htzEaVbickaNcgcN8ac4zWYIZ7fsuDjrtM7Nb5CQ",
+      },
+    })
+    .then(success)
+    .catch(fail);
+}
+
+export { getFlowerKind, postArticle, getArticles };

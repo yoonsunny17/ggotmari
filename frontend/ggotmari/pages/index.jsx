@@ -8,12 +8,27 @@ import RecommItem from "../components/molecules/main/RecommItem";
 import ArticleItem from "../components/molecules/community/ArticleItem";
 import SpecialDayRecomm from "../components/organisms/main/SpecialDayRecomm";
 
+import { getArticles } from "../api/community";
+
 import { BsPeople } from "react-icons/bs";
 import { FaRegPaperPlane } from "react-icons/fa";
 import { IoIosArrowForward } from "react-icons/io";
+import { useEffect, useState } from "react";
 
 function Home() {
   const username = "sangchuman";
+  const [popularPosts, setPopularPosts] = useState([]);
+
+  useEffect(() => {
+    getArticles(
+      (res) => {
+        setPopularPosts(res.data.articles);
+      },
+      (err) => {
+        console.log(err);
+      },
+    );
+  });
 
   return (
     <div className="flex flex-col">
@@ -111,7 +126,7 @@ function Home() {
               </Link>
             </div>
             <div className="carousel w-full">
-              {articles.map((article, idx) => {
+              {popularPosts.map((article, idx) => {
                 return (
                   <div
                     className="carousel-item relative w-full px-0.5"
@@ -166,61 +181,6 @@ const recommPost = [
     articleImage:
       "https://images.unsplash.com/photo-1510894399130-57dfa8dcc45d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1083&q=80",
     likeNumbs: 123,
-  },
-];
-
-const articles = [
-  {
-    articleId: 1,
-    articleImage:
-      "https://parsley-bucket.s3.ap-northeast-2.amazonaws.com/00bf16c0-06d3-4a01-82f0-9f882d3333f5_%EC%8A%A4%ED%8F%B0%EC%A7%80%EB%B0%A5%EB%B0%A5.jpg",
-    userId: "sangchuman",
-    articleTitle: "여자친구한테 칭찬 받았어요",
-    articleContent:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse placerat vel quam ...",
-    articleDate: "2022.09.07 14:04",
-    tags: ["거베라", "장미"],
-    commentCount: 5,
-    likeCount: 15,
-  },
-  {
-    articleId: 2,
-    articleImage:
-      "https://parsley-bucket.s3.ap-northeast-2.amazonaws.com/005a177b-e5f0-403d-bf7b-20da2560d54a_%EA%BC%AC%EB%B6%80%EA%B8%B0.png",
-    userId: "hotbubbletea",
-    articleTitle: "자기야 결혼하자",
-    articleContent:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse placerat vel quam ...",
-    articleDate: "2022.09.07 14:04",
-    tags: ["국화"],
-    commentCount: 134,
-    likeCount: 178,
-  },
-  {
-    articleId: 3,
-    articleImage:
-      "https://images.unsplash.com/photo-1578863950596-a74dfe8267b5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1080&q=80",
-    userId: "hotbubbletea",
-    articleTitle: "꽃들고 피크닉 다녀왔어요",
-    articleContent:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse placerat vel quam ...",
-    articleDate: "2022.09.07 14:04",
-    tags: ["장미", "수국"],
-    commentCount: 11,
-    likeCount: 178,
-  },
-  {
-    articleId: 4,
-    articleImage:
-      "https://images.unsplash.com/photo-1487530811176-3780de880c2d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80",
-    userId: "hotbubbletea",
-    articleTitle: "나만의 꽃다발",
-    articleContent:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse placerat vel quam ...",
-    articleDate: "2022.09.07 14:04",
-    tags: ["장미"],
-    commentCount: 134,
-    likeCount: 50,
   },
 ];
 

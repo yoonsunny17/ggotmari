@@ -1,12 +1,16 @@
-import { useRouter } from "next/router";
 import { useState, useEffect } from "react";
+import { useRouter } from "next/router";
+import Image from "next/image";
+
+import FlowerTag from "../../components/atoms/common/FlowerTag";
+
+import { getFlowerKind, postArticle } from "../../api/community";
+
 import {
   IoCameraOutline,
   IoRefreshOutline,
   IoImagesOutline,
 } from "react-icons/io5";
-import { getFlowerKind, postArticle } from "../../api/community";
-import FlowerTag from "../../components/atoms/common/FlowerTag";
 
 function EditArticle() {
   const router = useRouter();
@@ -25,7 +29,7 @@ function EditArticle() {
       (res) => setFlowerKindList(res.data.subjects),
       (error) => {
         console.log(error);
-      }
+      },
     );
   }, []);
 
@@ -36,8 +40,8 @@ function EditArticle() {
   useEffect(() => {
     setFilteredList(
       flowerKindList.filter((flowerKind) =>
-        flowerKind.subjectName.startsWith(tagSearch)
-      )
+        flowerKind.subjectName.startsWith(tagSearch),
+      ),
     );
   }, [tagSearch]);
 
@@ -83,7 +87,7 @@ function EditArticle() {
 
   const handleArticleSubmit = (e) => {
     e.preventDefault();
-    console.log(imageFiles);
+
     const formData = new FormData();
     const article = {
       title: title,
@@ -93,7 +97,6 @@ function EditArticle() {
     const json = JSON.stringify(article);
     const blob = new Blob([json], { type: "application/json" });
     formData.append("articleInfo", blob);
-    // formData.append("images", imageFiles);
     [...imageFiles].forEach((file) => formData.append("images", file));
 
     postArticle(
@@ -103,7 +106,7 @@ function EditArticle() {
       },
       (err) => {
         console.log(err);
-      }
+      },
     );
   };
 
@@ -114,13 +117,13 @@ function EditArticle() {
           <div className="carousel w-full aspect-square">
             {imagePreviews.map((imgSrc, idx) => (
               <div className="carousel-item relative w-full h-full" key={idx}>
-                <img src={imgSrc} className="w-full object-cover" />
+                <Image src={imgSrc} className="object-cover" layout="fill" />
               </div>
             ))}
           </div>
         ) : (
           <div className="flex justify-center items-center h-full">
-            <IoImagesOutline className="text-9xl text-font2" />
+            <IoImagesOutline className="text-9xl text-sub1" />
           </div>
         )}
       </div>
@@ -148,10 +151,12 @@ function EditArticle() {
         </div>
       </div>
       <div className="w-full p-3">
+        {/* 게시글 입력폼 */}
         <form
           className="flex flex-col w-full space-y-4 font-sans text-font2"
           onSubmit={handleArticleSubmit}
         >
+          {/* 글 제목 */}
           <label htmlFor="articleTitle" className="pl-2 text-sm">
             글 제목
           </label>
@@ -163,24 +168,28 @@ function EditArticle() {
             onFocus={() => setDropDownOpen(false)}
             onChange={handleTitleChange}
           />
+          {/* 꽃 태그 */}
           <label htmlFor="flowerTags" className="pl-2 text-sm">
             꽃 태그
           </label>
           <div className="w-full shadow-md">
+            {/* 추가된 꽃 태그 컨테이너 */}
             <div>
-              <div className="flex flex-row flex-wrap px-5 py-3">
-                {Object.keys(flowerTags).map((flowerId, idx) => (
-                  <FlowerTag
-                    flowerName={flowerTags[flowerId]}
-                    key={flowerId}
-                    isRemovable={true}
-                    onClick={() => removeFlowerTag(flowerId)}
-                  />
-                ))}
+              <div className="flex flex-row flex-wrap px-5 py-3 text-sub1 text-sm">
+                {Object.keys(flowerTags).length > 0
+                  ? Object.keys(flowerTags).map((flowerId) => (
+                      <FlowerTag
+                        flowerName={flowerTags[flowerId]}
+                        key={flowerId}
+                        isRemovable={true}
+                        onClick={() => removeFlowerTag(flowerId)}
+                      />
+                    ))
+                  : "추가된 꽃 태그가 없습니다"}
               </div>
               <hr />
             </div>
-
+            {/* 꽃 검색창 */}
             <input
               type="text"
               className="w-full text-sm focus:outline-none p-3"
@@ -195,6 +204,7 @@ function EditArticle() {
                 (dropDownOpen ? "relative" : "hidden")
               }
             >
+              {/* 꽃 드롭다운 */}
               <div className="">
                 {filteredList.map((flower, idx) => (
                   <div
@@ -208,6 +218,7 @@ function EditArticle() {
               </div>
             </div>
           </div>
+          {/* 게시글 내용 */}
           <label htmlFor="articleContent" className="pl-2 text-sm">
             내용
           </label>
