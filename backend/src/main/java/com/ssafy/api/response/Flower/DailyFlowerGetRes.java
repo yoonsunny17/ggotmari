@@ -21,6 +21,7 @@ public class DailyFlowerGetRes extends BaseResponseBody {
 
 
     public static DailyFlowerGetRes of(Integer statusCode, String message, DailyFlower dailyFlower) {
+
         DailyFlowerGetRes res = new DailyFlowerGetRes();
 
         if(dailyFlower == null){
@@ -33,6 +34,7 @@ public class DailyFlowerGetRes extends BaseResponseBody {
         res.setDailyFlowerLanguage(dailyFlower.getFlowerLanguage());
         res.setDailyFlowerContent(dailyFlower.getFlowerContent());
         res.setDailyFlowerImage("https://ggotmari.s3.ap-northeast-2.amazonaws.com/" + dailyFlower.getFlowerImage());
+
         return res;
     }
 }

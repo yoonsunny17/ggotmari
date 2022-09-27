@@ -1,5 +1,6 @@
-package com.ssafy.api.response.Flower;
+package com.ssafy.api.response.Community;
 
+import com.ssafy.api.response.Flower.SubjectRes;
 import com.ssafy.common.model.response.BaseResponseBody;
 import com.ssafy.db.entity.Subject;
 import io.swagger.annotations.ApiModel;

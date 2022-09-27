@@ -34,7 +34,7 @@ public class FlowerService {
     HashtagRepository hashtagRepository;
 
     public DailyFlower getDailyFlower() {
-        return dailyFlowerRespository.findDailyFlowerByFlowerDate(LocalDate.now().getMonthValue() + "-" + LocalDate.now().getDayOfMonth());
+        return dailyFlowerRespository.findDailyFlowerByFlowerDate(LocalDate.now().getMonthValue() + "월 " + LocalDate.now().getDayOfMonth() + "일");
     }
 
     public List<Kind> findFlowers(String searchText){
