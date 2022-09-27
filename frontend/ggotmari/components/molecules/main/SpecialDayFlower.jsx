@@ -1,6 +1,7 @@
 import { useState } from "react";
 import FlowerCard from "../../atoms/index/FlowerCard";
 import FlowerPagination from "./FlowerPagination";
+import LongClickFlowerCard from "../../atoms/index/LongClickFlowerCard";
 
 function SpecialDayFlower() {
   // TODO: pagination
@@ -11,7 +12,7 @@ function SpecialDayFlower() {
     <div>
       <div className="w-full grid grid-cols-3 gap-x-3 gap-y-3">
         {recommFlowers.slice(offset, offset + limit).map((info, idx) => {
-          return <FlowerCard info={info} key={idx} />;
+          return <LongClickFlowerCard info={info} key={idx} />;
         })}
       </div>
       <FlowerPagination
