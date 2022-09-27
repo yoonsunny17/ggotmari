@@ -11,4 +11,5 @@ public interface ArticleRepository extends JpaRepository<Article, Long> {
 
     List<Article> findTop10AllByDateBetweenOrderByLikesDesc(LocalDateTime start, LocalDateTime end);
 
+    List<Article> findAllByOrderByDateDesc();
 }

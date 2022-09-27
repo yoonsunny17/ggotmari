@@ -16,7 +16,7 @@ public class ArticleGetRes extends BaseResponseBody {
     @ApiModelProperty(name = "작성자 정보")
     UserRes user;
     @ApiModelProperty(name = "게시글 사진")
-    List<String> articleImage = new ArrayList<>();
+    List<String> articleImages = new ArrayList<>();
     @ApiModelProperty(name = "게시글 제목")
     String articleTitle;
     @ApiModelProperty(name = "게시글 내용")
@@ -47,7 +47,7 @@ public class ArticleGetRes extends BaseResponseBody {
 
         List<Picture> pictures = article.getPictures();
         for(Picture picture : pictures){
-            res.getArticleImage().add(picture.getImage());
+            res.getArticleImages().add(picture.getImage());
         }
 
         res.setArticleTitle(article.getTitle());
