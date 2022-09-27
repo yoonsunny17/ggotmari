@@ -133,7 +133,7 @@ export default function Like() {
           articleId: 1,
           articleImage:
             "https://photo.jtbc.joins.com/news/2015/06/18/201506182141183067.jpg",
-          userName: "GD",
+          userName: "GDGDGDGDGDGDGDGD",
           likes: 132,
           articleTitle: "꽃",
         },
@@ -175,7 +175,7 @@ export default function Like() {
         <ProfileNavBar />
         {/* 하단 */}
       </div>
-      <div className="content grid grid-cols-3 mx-3">
+      <div className="content grid grid-cols-3 mt-3 mb-14">
         {userInfo.likeArticles.map((item, index) => {
           return (
             <LikeImage

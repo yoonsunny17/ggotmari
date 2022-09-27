@@ -252,7 +252,7 @@ function ArticleDetail() {
         >
           <div className="flex flex-row justify-between items-center">
             <div>댓글 {article.commentCount}</div>
-            <AiOutlineUp className="text-xl" />
+            <IoIosArrowUp className="text-xl" />
           </div>
 
           <div></div>

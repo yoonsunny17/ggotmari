@@ -1,4 +1,5 @@
-import { AiOutlineDown } from "react-icons/ai";
+// import { AiOutlineDown } from "react-icons/ai";
+import { IoIosArrowDown } from "react-icons/io";
 import ProfileImg from "../../atoms/common/ProfileImg";
 
 function CommentDrawer({ children, isOpen, setIsOpen, loginUserImg }) {
@@ -24,7 +25,7 @@ function CommentDrawer({ children, isOpen, setIsOpen, loginUserImg }) {
               onClick={() => setIsOpen(false)}
             >
               <div className="font-bold text-lg text-black">댓글</div>
-              <AiOutlineDown className="text-2xl" />
+              <IoIosArrowDown className="text-xl" />
             </div>
             <div className="flex flex-col px-3 space-y-3">{children}</div>
             <div className="h-14"></div>

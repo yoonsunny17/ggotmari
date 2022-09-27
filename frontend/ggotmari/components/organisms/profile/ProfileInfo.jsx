@@ -45,7 +45,7 @@ function ProfileInfo({ user, isMe }) {
             <span
               className="cursor-pointer"
               onClick={() => {
-                router.push(`follow/${router.query.username}`);
+                router.push(`/profile/follow/${router.query.username}`);
               }}
             >
               팔로우 {user.followingCount} | 팔로워 {user.followerCount}
@@ -54,7 +54,14 @@ function ProfileInfo({ user, isMe }) {
           {/* Link */}
           {isMe ? (
             <div className="box-btns font-sansultralight text-xs text-sub2 underline my-0.5">
-              <span className="cursor-pointer">프로필 수정</span>
+              <span
+                className="cursor-pointer"
+                onClick={() => {
+                  router.push(`/profile/edit/${router.query.username}`);
+                }}
+              >
+                프로필 수정
+              </span>
             </div>
           ) : !isMe && user.isFollow ? (
             <div className="box-btns font-sansultralight text-xs my-0.5 w-1/5">
