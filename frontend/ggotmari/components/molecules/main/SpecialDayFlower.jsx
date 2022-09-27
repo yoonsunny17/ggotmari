@@ -10,10 +10,12 @@ function SpecialDayFlower() {
   const offset = (page - 1) * limit;
   return (
     <div>
-      <div className="w-full grid grid-cols-3 gap-x-3 gap-y-3">
-        {recommFlowers.slice(offset, offset + limit).map((info, idx) => {
-          return <LongClickFlowerCard info={info} key={idx} />;
-        })}
+      <div className="">
+        <div className="w-full grid grid-cols-3 gap-x-3 gap-y-3">
+          {recommFlowers.slice(offset, offset + limit).map((info, idx) => {
+            return <LongClickFlowerCard info={info} key={idx} />;
+          })}
+        </div>
       </div>
       <FlowerPagination
         total={recommFlowers.length}

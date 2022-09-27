@@ -1,5 +1,7 @@
 import { useRouter } from "next/router";
 import { useState, useRef } from "react";
+import Image from "next/image";
+
 import Swal from "sweetalert2";
 
 function LongClickFlowerCard({
@@ -85,12 +87,12 @@ function LongClickFlowerCard({
       onTouchEnd={handleOnTouchEnd}
       className=" cursor-pointer rounded-lg aspect-square overflow-hidden relative brightness-96"
     >
-      <img
+      {/* <img
         className="w-full h-full object-cover"
         src={imgUrl}
         alt={flowerName}
-      />
-
+      /> */}
+      <Image src={imgUrl} alt={flowerName} layout="fill" objectFit="cover" />
       {!action && clearAction()}
       {action === "click" && handlePostClick()}
       {action === "longpress" && openSwal()}
