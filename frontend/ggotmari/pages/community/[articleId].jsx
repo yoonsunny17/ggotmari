@@ -9,10 +9,10 @@ import CommentItem from "../../components/molecules/community/CommentItem";
 
 import {
   AiOutlineMore,
-  AiOutlineUp,
   AiOutlineHeart,
   AiOutlineComment,
 } from "react-icons/ai";
+import { IoIosArrowUp } from "react-icons/io";
 
 function ArticleDetail() {
   const router = useRouter();
