@@ -17,8 +17,12 @@ export default function Community() {
 
   useEffect(() => {
     getArticleList(
-      (res) => setArticleList(res.data.articles),
-      (err) => console.log(err),
+      (res) => {
+        setArticleList(res.data.articles);
+      },
+      (err) => {
+        console.log(err);
+      },
     );
   }, []);
 
