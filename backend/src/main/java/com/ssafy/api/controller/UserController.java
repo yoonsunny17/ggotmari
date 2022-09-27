@@ -1,13 +1,10 @@
 package com.ssafy.api.controller;
 
 import com.ssafy.api.request.*;
-import com.ssafy.api.response.*;
+import com.ssafy.api.response.User.*;
 import com.ssafy.api.service.KakaoService;
 import com.ssafy.api.service.UserService;
 import com.ssafy.common.util.JwtTokenUtil;
-import com.ssafy.db.entity.Article;
-import com.ssafy.db.entity.Comment;
-import com.ssafy.db.entity.Follow;
 import com.ssafy.db.entity.User;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -45,6 +42,7 @@ public class UserController {
         // user email 가져오기
         String jwtToken = request.getHeader("Authorization");
         String email = jwtTokenUtil.getUserEmailFromToken(jwtToken);
+
         User loginUser = userService.getUserByEmail(email);
 
         User user = userService.getUserByName(username);

@@ -1,7 +1,7 @@
 package com.ssafy.api.controller;
 
 import com.ssafy.api.request.FlowerTagPostReq;
-import com.ssafy.api.response.*;
+import com.ssafy.api.response.Flower.*;
 import com.ssafy.api.service.FlowerService;
 import com.ssafy.api.service.UserService;
 import com.ssafy.common.util.JwtTokenUtil;

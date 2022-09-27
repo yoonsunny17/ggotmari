@@ -1,9 +1,8 @@
 package com.ssafy.api.service;
 
 import com.ssafy.api.request.FlowerTagPostReq;
-import com.ssafy.api.response.KindDetailRes;
-import com.ssafy.api.response.SubjectArticleRes;
-import com.ssafy.api.response.TagRes;
+import com.ssafy.api.response.Flower.KindDetailRes;
+import com.ssafy.api.response.Flower.TagRes;
 import com.ssafy.db.entity.*;
 import com.ssafy.db.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,7 +34,7 @@ public class FlowerService {
     HashtagRepository hashtagRepository;
 
     public DailyFlower getDailyFlower() {
-        return dailyFlowerRespository.findDailyFlowerByFlowerDate(LocalDate.now().getMonthValue() + "-" + LocalDate.now().getDayOfMonth());
+        return dailyFlowerRespository.findDailyFlowerByFlowerDate(LocalDate.now().getMonthValue() + "월 " + LocalDate.now().getDayOfMonth() + "일");
     }
 
     public List<Kind> findFlowers(String searchText){

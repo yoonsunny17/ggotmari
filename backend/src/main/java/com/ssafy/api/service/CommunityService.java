@@ -159,7 +159,7 @@ public class CommunityService {
     }
 
     public List<Article> getArticles() {
-        return articleRepository.findAll();
+        return articleRepository.findAllByOrderByDateDesc();
     }
 
     public Article getArticle(Long articleId) {
