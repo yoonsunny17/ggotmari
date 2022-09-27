@@ -1,72 +1,50 @@
 import FollowUser from "../../molecules/profile/FollowUser";
 import SearchBar from "../../atoms/common/SearchBar";
 import { useEffect, useState } from "react";
+import { getUserFollow } from "../../../api/profile.js";
 
 function ProfileFollowList() {
   // 여기서 서버로 통신
   // 초기값 세팅
   const [followInfo, setFollowInfo] = useState({
-    follower: [],
-    following: [],
+    followers: [],
+    followings: [],
   });
   const [showList, setShowList] = useState([]);
   const [toShow, setToShow] = useState(true);
   const [searchTerm, setSearchTerm] = useState("");
 
   // 서버에서 요청을 받아 정보를 담아줄 함수 및 useEffect
-  const fillFollowInfo = () => {
-    // 요기에 통신 후 정보를 담아줄 예정
-    setFollowInfo({
-      follower: [
-        {
-          userName: "im follower",
-          userImage:
-            "https://photo.jtbc.joins.com/news/2015/06/18/201506182141183067.jpg",
-          isFollowing: true,
-        },
-        {
-          userName: "im follower2",
-          userImage:
-            "https://photo.jtbc.joins.com/news/2015/06/18/201506182141183067.jpg",
-          isFollowing: false,
-        },
-      ],
-      following: [
-        {
-          userName: "im following",
-          userImage:
-            "https://photo.jtbc.joins.com/news/2015/06/18/201506182141183067.jpg",
-        },
-        {
-          userName: "im following2",
-          userImage:
-            "https://photo.jtbc.joins.com/news/2015/06/18/201506182141183067.jpg",
-        },
-      ],
-    });
-    setShowList([
-      {
-        userName: "im follower",
-        userImage:
-          "https://photo.jtbc.joins.com/news/2015/06/18/201506182141183067.jpg",
-        isFollowing: true,
-      },
-      {
-        userName: "im follower2",
-        userImage:
-          "https://photo.jtbc.joins.com/news/2015/06/18/201506182141183067.jpg",
-        isFollowing: false,
-      },
-    ]);
+  const success = (res) => {
+    console.log(res.data);
+    const newFollowInfo = {
+      followers: res.data.followers,
+      followings: res.data.followings,
+    };
+    setFollowInfo(newFollowInfo);
   };
-  useEffect(fillFollowInfo, []);
+
+  const fail = (err) => console.log(err);
+
+  const getInfo = (username) => {
+    getUserFollow(username, success, fail);
+  };
+  useEffect(() => {
+    if (localStorage.getItem("accessToken")) {
+      const username = window.location.pathname.substring(16);
+      getInfo(username);
+    } else {
+      alert("로그인이 필요한 서비스입니다.");
+      router.push("/login");
+    }
+  }, []);
 
   // 팔로우 팔로잉 정보 바뀔 때 및 처음 시작할 때 정보 채워주기
   useEffect(() => {
     if (toShow) {
-      setShowList(followInfo.follower);
+      setShowList([...followInfo.followers]);
     } else {
-      setShowList(followInfo.following);
+      setShowList([...followInfo.followings]);
     }
   }, [followInfo]);
 
@@ -74,9 +52,9 @@ function ProfileFollowList() {
   useEffect(() => {
     setSearchTerm("");
     if (toShow) {
-      setShowList(followInfo.follower);
+      setShowList(followInfo.followers);
     } else {
-      setShowList(followInfo.following);
+      setShowList(followInfo.followings);
     }
   }, [toShow]);
 
@@ -84,9 +62,9 @@ function ProfileFollowList() {
   useEffect(() => {
     if (searchTerm === "") {
       if (toShow) {
-        setShowList(followInfo.follower);
+        setShowList(followInfo.followers);
       } else {
-        setShowList(followInfo.following);
+        setShowList(followInfo.followings);
       }
     } else {
       let arr = [];
@@ -115,7 +93,7 @@ function ProfileFollowList() {
       <div className="follow-nav flex justify-center font-sanslight mb-3">
         {toShow ? (
           <>
-            <div className="follower border-b-[2px] border-b-main w-1/2 text-main flex justify-center pb-1">
+            <div className="followers border-b-[2px] border-b-main w-1/2 text-main flex justify-center pb-1">
               <span className="cursor-pointer">팔로워</span>
             </div>
             <div className="following border-b-[0.5px] border-b-[E1E1E1] w-1/2 text-font2 flex justify-center pb-1">
@@ -126,7 +104,7 @@ function ProfileFollowList() {
           </>
         ) : (
           <>
-            <div className="follower border-b-[0.5px] border-b-[E1E1E1] w-1/2 text-font2 flex justify-center pb-1">
+            <div className="followers border-b-[0.5px] border-b-[E1E1E1] w-1/2 text-font2 flex justify-center pb-1">
               <span className="cursor-pointer" onClick={changeOn}>
                 팔로워
               </span>
@@ -148,9 +126,17 @@ function ProfileFollowList() {
       <div className="follow-list mt-3 mb-14">
         {showList.length > 0 ? (
           showList.map((item, index) => {
+            console.log(item);
             return (
-              <div className="follower" key={index}>
-                <FollowUser item={item} />
+              <div className="followers" key={index}>
+                <FollowUser
+                  item={item}
+                  followInfo={followInfo}
+                  setFollowInfo={setFollowInfo}
+                  showList={showList}
+                  setShowList={setShowList}
+                  toShow={toShow}
+                />
               </div>
             );
           })
