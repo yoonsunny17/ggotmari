@@ -17,11 +17,14 @@ export default function Profile() {
       followingCount: "",
       followerCount: "",
       userImage: "",
+      userBirthday: "",
+      userSex: "",
       isFollow: "",
     },
     articles: [
       {
         articleId: "",
+        articleTitle: "",
         articleImage: "",
       },
     ],
@@ -42,6 +45,7 @@ export default function Profile() {
       {
         articleId: "",
         articleImage: "",
+        articleTitle: "",
         userName: "",
         likes: "",
       },
@@ -69,10 +73,12 @@ export default function Profile() {
     }
   }, []);
 
+  // useEffect(() => console.log(userInfo), [userInfo]);
+
   return (
     <>
       <div className="profile">
-        <ProfileInfo user={userInfo.user} isMe={userInfo.isMe} />
+        <ProfileInfo userInfo={userInfo} setUserInfo={setUserInfo} />
         <ProfileNavBar />
         {/* 하단 */}
       </div>
