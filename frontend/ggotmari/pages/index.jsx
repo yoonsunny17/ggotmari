@@ -85,7 +85,10 @@ function Home() {
               </button>
             </div>
 
-            <div onClick={() => Router.push("/community")}>
+            <div
+              className="cursor-pointer"
+              onClick={() => Router.push("/community")}
+            >
               <img
                 className="h-[106px] w-full object-cover rounded-md"
                 src="https://images.unsplash.com/photo-1591783097488-bda7e4e8653e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=422&q=80"
