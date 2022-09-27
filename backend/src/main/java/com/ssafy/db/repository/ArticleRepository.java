@@ -9,6 +9,6 @@ import java.util.List;
 
 public interface ArticleRepository extends JpaRepository<Article, Long> {
 
-    List<Article> findTop10AllByDateBetweenOOrderByLikesDesc(LocalDateTime start, LocalDateTime end);
+    List<Article> findTop10AllByDateBetweenOrderByLikesDesc(LocalDateTime start, LocalDateTime end);
 
 }
