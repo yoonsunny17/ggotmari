@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import Image from "next/image";
 
@@ -6,6 +6,8 @@ import ProfileImg from "../../components/atoms/common/ProfileImg";
 import FlowerTag from "../../components/atoms/common/FlowerTag";
 import CommentDrawer from "../../components/organisms/community/CommentDrawer";
 import CommentItem from "../../components/molecules/community/CommentItem";
+
+import { getArticleDetail } from "../../api/community";
 
 import {
   AiOutlineMore,
@@ -18,9 +20,22 @@ function ArticleDetail() {
   const router = useRouter();
   const [isOpen, setIsOpen] = useState(false);
   const [isClicked, setIsClicked] = useState(false);
+  // const [article, setArticle] = useState(false);
+
+  useEffect(() => {
+    console.log(router.query.articleId);
+    getArticleDetail(
+      router.query.articleId,
+      (res) => {
+        console.log(res.data.article);
+      },
+      (err) => {},
+    );
+  }, []);
 
   const loginUserImg =
     "https://parsley-bucket.s3.ap-northeast-2.amazonaws.com/0c7e7405-a032-4dc2-a3e6-7c7de633b383_%EC%A7%B1%EA%B5%AC%EB%BF%8C.jpg";
+
   const article = {
     articleUser: {
       userId: 1,

@@ -5,7 +5,7 @@ import ArticleItem from "../../components/molecules/community/ArticleItem";
 import SearchBar from "../../components/atoms/common/SearchBar";
 import Header from "../../components/atoms/common/Header";
 
-import { getArticles } from "../../api/community";
+import { getArticleList } from "../../api/community";
 
 import { FaPlus } from "react-icons/fa";
 
@@ -16,7 +16,7 @@ export default function Community() {
   const tabs = ["전체", "팔로잉", "인기글"];
 
   useEffect(() => {
-    getArticles(
+    getArticleList(
       (res) => setArticleList(res.data.articles),
       (err) => console.log(err),
     );

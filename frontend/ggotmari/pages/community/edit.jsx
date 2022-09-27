@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import Image from "next/image";
+import Swal from "sweetalert2";
 
 import FlowerTag from "../../components/atoms/common/FlowerTag";
 
@@ -23,6 +24,18 @@ function EditArticle() {
   const [dropDownOpen, setDropDownOpen] = useState(false);
   const [imageFiles, setImageFiles] = useState();
   const [imagePreviews, setImagePreviews] = useState([]);
+
+  const Toast = Swal.mixin({
+    toast: true,
+    position: "top",
+    showConfirmButton: false,
+    timer: 3000,
+    icon: "error",
+    didOpen: (toast) => {
+      toast.addEventListener("mouseenter", Swal.stopTimer);
+      toast.addEventListener("mouseleave", Swal.resumeTimer);
+    },
+  });
 
   useEffect(() => {
     getFlowerKind(
@@ -88,26 +101,47 @@ function EditArticle() {
   const handleArticleSubmit = (e) => {
     e.preventDefault();
 
-    const formData = new FormData();
-    const article = {
-      title: title,
-      content: content,
-      subjects: Object.keys(flowerTags),
-    };
-    const json = JSON.stringify(article);
-    const blob = new Blob([json], { type: "application/json" });
-    formData.append("articleInfo", blob);
-    [...imageFiles].forEach((file) => formData.append("images", file));
+    // 유효성 검사
+    if (imageFiles == undefined) {
+      Toast.fire({
+        title: "사진을 최소 1장 이상 업로드해주세요",
+      });
+    } else if (title == "") {
+      Toast.fire({
+        title: "제목을 입력해주세요",
+      });
+    } else if (Object.keys(flowerTags).length == 0) {
+      Toast.fire({
+        title: "꽃 태그를 최소 1개 이상 추가해주세요",
+      });
+    } else if (content == "") {
+      Toast.fire({
+        title: "내용을 입력해주세요",
+      });
+    } else {
+      const formData = new FormData();
+      const article = {
+        title: title,
+        content: content,
+        subjects: Object.keys(flowerTags),
+      };
+      const json = JSON.stringify(article);
+      formData.append(
+        "articleInfo",
+        new Blob([json], { type: "application/json" }),
+      );
+      [...imageFiles].forEach((file) => formData.append("images", file));
 
-    postArticle(
-      formData,
-      (res) => {
-        console.log(res);
-      },
-      (err) => {
-        console.log(err);
-      },
-    );
+      postArticle(
+        formData,
+        (res) => {
+          router.push(`/community/${res.data.articleId}`);
+        },
+        (err) => {
+          console.log(err);
+        },
+      );
+    }
   };
 
   return (
@@ -129,7 +163,7 @@ function EditArticle() {
       </div>
       <div className="flex flex-row space-x-3 justify-center my-3">
         <label className="inline text-font2 cursor-pointer" htmlFor="flowerImg">
-          <IoCameraOutline className="inline" /> 사진 첨부
+          <IoCameraOutline className="inline" /> 사진 업로드
         </label>
         <input
           type="file"
@@ -233,7 +267,7 @@ function EditArticle() {
           ></textarea>
           <input
             type="submit"
-            className="bg-main text-font3 py-3 leading-normal rounded-lg"
+            className="bg-main text-font3 py-3 leading-normal rounded-lg hover:bg-sub1"
             value="글 등록하기"
           />
         </form>

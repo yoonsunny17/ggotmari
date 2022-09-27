@@ -13,10 +13,10 @@ function apiInstance() {
 
 function fileApiInstance() {
   const instance = axios.create({
-    baseURL: "https://j7a303.p.ssafy.io",
-    // headers: {
-    //   "Content-Type": `multipart/form-data`,
-    // },
+    baseURL: "https://j7a303.p.ssafy.io/api/",
+    headers: {
+      "Content-Type": `multipart/form-data`,
+    },
   });
   return instance;
 }
