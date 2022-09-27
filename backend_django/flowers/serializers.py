@@ -101,24 +101,35 @@ class ArticleSerializer(serializers.ModelSerializer):
 
 class ArticleLikeSerializer(serializers.ModelSerializer):
 
-    class ArticleSerializer(serializers.ModelSerializer):
+    # class ArticleSerializer(serializers.ModelSerializer):
         
-        class Meta:
-            model = Article
-            fields = '__all__'
+    #     class Meta:
+    #         model = Article
+    #         fields = '__all__'
 
-    class UserSerializer(serializers.ModelSerializer):
+    # class UserSerializer(serializers.ModelSerializer):
 
-        class Meta:
-            model = User
-            fields = '__all__'
+    #     class Meta:
+    #         model = User
+    #         fields = '__all__'
 
-    article = ArticleSerializer(read_only=True)
-    user = UserSerializer(read_only=True)
+    # article = ArticleSerializer(read_only=True)
+    # user = UserSerializer(read_only=True)
 
+    class Meta:
+        model = ArticleLike
+        fields = '__all__'
 
+    
 class FlowerLikeSerializer(serializers.ModelSerializer):
     
     class Meta:
         model = FlowerLike
-        fields = '__all__'
+        fields = ('kind', 'user', )
+
+
+class FlowerDislikeSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = FlowerDislike
+        fields = ('kind', )
