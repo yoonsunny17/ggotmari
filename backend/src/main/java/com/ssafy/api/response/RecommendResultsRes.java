@@ -8,8 +8,8 @@ import java.util.List;
 
 @Data
 @ApiModel("RecommendLetterResponse")
-public class RecommendResultRes {
+public class RecommendResultsRes {
 
     @ApiModelProperty(name = "결과")
-    Long result;
+    List<Long> result;
 }
