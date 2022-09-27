@@ -55,6 +55,7 @@ export default function Profile() {
   const success = (res) => {
     setUserInfo(res.data);
   };
+
   const fail = (err) => console.log(err);
   // 서버 통신 짤 코드
 
@@ -82,7 +83,7 @@ export default function Profile() {
         <ProfileNavBar />
         {/* 하단 */}
       </div>
-      <div className="content grid grid-cols-3 mt-3 mb-14">
+      <div className={"content grid grid-cols-3 mt-3 mb-14"}>
         {userInfo.articles.length > 0 ? (
           userInfo.articles.map((item, index) => {
             return (

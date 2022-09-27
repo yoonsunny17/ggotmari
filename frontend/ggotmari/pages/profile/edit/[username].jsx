@@ -3,6 +3,7 @@ import { BsCamera } from "react-icons/bs";
 import { IoRefreshOutline } from "react-icons/io5";
 import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
+import { getUser } from "../../../api/profile.js";
 
 function Edit() {
   const router = useRouter();
@@ -12,9 +13,13 @@ function Edit() {
   // 다르면 잘못된 접근입니다. alert 띄우고
   // home으로 보내기
 
-  const [usernameValue, setUsernameValue] = useState("");
-  const [profileImage, setProfileImage] = useState([]);
-  const [profileImagePreview, setProfileImagePreview] = useState(YJ.src);
+  const [userName, setUserName] = useState("");
+  const [userImage, setUserImage] = useState([]);
+  const [userImagePreview, setUserImagePreview] = useState(
+    "https://ggotmari.s3.ap-northeast-2.amazonaws.com/profile/defualt.jpg"
+  );
+  const [userSex, setUserSex] = useState(false);
+  const [userBirthday, setUserBirthday] = useState(null);
   const [userInfo, setUserInfo] = useState({
     status: "",
     message: "",
@@ -24,11 +29,14 @@ function Edit() {
       followingCount: "",
       followerCount: "",
       userImage: "",
+      userBirthday: "",
+      userSex: "",
       isFollow: "",
     },
     articles: [
       {
         articleId: "",
+        articleTitle: "",
         articleImage: "",
       },
     ],
@@ -49,6 +57,7 @@ function Edit() {
       {
         articleId: "",
         articleImage: "",
+        articleTitle: "",
         userName: "",
         likes: "",
       },
@@ -56,123 +65,66 @@ function Edit() {
   });
 
   // 서버 통신 짤 코드
-
-  const getInfo = () => {
-    const info = {
-      status: 200,
-      message: "회원 정보 조회 성공",
-      isMe: true,
-      user: {
-        userName: "TheYJBaby",
-        followingCount: 20,
-        followerCount: 2000,
-        userImage:
-          "https://pbs.twimg.com/profile_images/1374979417915547648/vKspl9Et_400x400.jpg",
-        isFollow: true,
-      },
-      articles: [
-        {
-          articleId: 1,
-          articleTitle: "제니1",
-          articleImage:
-            "https://images.chosun.com/resizer/fo-0AnY_2j3QZ2DbEuxxVc0VSZQ=/616x0/smart/cloudfront-ap-northeast-1.images.arcpublishing.com/chosun/6Y6TZ5MYRVGFDNVP6FAEPRLIKQ.jpg",
-        },
-        {
-          articleId: 2,
-          articleTitle: "제니1",
-          articleImage:
-            "https://images.chosun.com/resizer/fo-0AnY_2j3QZ2DbEuxxVc0VSZQ=/616x0/smart/cloudfront-ap-northeast-1.images.arcpublishing.com/chosun/6Y6TZ5MYRVGFDNVP6FAEPRLIKQ.jpg",
-        },
-        {
-          articleId: 3,
-          articleTitle: "제니1",
-          articleImage:
-            "https://images.chosun.com/resizer/fo-0AnY_2j3QZ2DbEuxxVc0VSZQ=/616x0/smart/cloudfront-ap-northeast-1.images.arcpublishing.com/chosun/6Y6TZ5MYRVGFDNVP6FAEPRLIKQ.jpg",
-        },
-        {
-          articleId: 4,
-          articleTitle: "제니1",
-          articleImage:
-            "https://images.chosun.com/resizer/fo-0AnY_2j3QZ2DbEuxxVc0VSZQ=/616x0/smart/cloudfront-ap-northeast-1.images.arcpublishing.com/chosun/6Y6TZ5MYRVGFDNVP6FAEPRLIKQ.jpg",
-        },
-      ],
-      likeFlowers: [
-        {
-          tag: "가족",
-          flowers: [
-            {
-              flowerImage:
-                "https://file2.nocutnews.co.kr/newsroom/image/2021/06/13/202106131759472028_0.jpg",
-              subjectId: 1,
-              kindId: 1,
-              kindName: "BTS",
-            },
-            {
-              flowerImage:
-                "https://file2.nocutnews.co.kr/newsroom/image/2021/06/13/202106131759472028_0.jpg",
-              subjectId: 2,
-              kindId: 2,
-              kindName: "BTS2",
-            },
-          ],
-        },
-        {
-          tag: "친구",
-          flowers: [
-            {
-              flowerImage:
-                "https://file2.nocutnews.co.kr/newsroom/image/2021/06/13/202106131759472028_0.jpg",
-              subjectId: 1,
-              kindId: 1,
-              kindName: "BTS",
-            },
-            {
-              flowerImage:
-                "https://file2.nocutnews.co.kr/newsroom/image/2021/06/13/202106131759472028_0.jpg",
-              subjectId: 2,
-              kindId: 2,
-              kindName: "BTS2",
-            },
-          ],
-        },
-      ],
-      likeArticles: [
-        {
-          articleId: 1,
-          articleImage:
-            "https://photo.jtbc.joins.com/news/2015/06/18/201506182141183067.jpg",
-          userName: "GD",
-          likes: 132,
-        },
-      ],
-    };
-    setUserInfo(info);
+  const success = (res) => {
+    console.log(res.data);
+    setUserInfo(res.data);
+    setUserName(res.data.user.userName);
+    setUserImagePreview(res.data.user.userImage);
+    setUserSex(res.data.user.userSex);
+    setUserBirthday(res.data.user.userBirthday);
   };
 
-  useEffect(getInfo, []);
+  const fail = (err) => {
+    console.log(err);
+    alert("잘못된 접근입니다.");
+    router.push("/");
+  };
+  // 서버 통신 짤 코드
+
+  const getInfo = (username) => {
+    // console.log(username);
+    getUser(username, success, fail);
+  };
+
   useEffect(() => {
-    setUsernameValue(userInfo.user.userName);
-    setProfileImage(userInfo.user.userImage);
-    setProfileImagePreview(userInfo.user.userImage);
-  }, [userInfo]);
+    if (localStorage.getItem("accessToken")) {
+      const username = window.location.pathname.substring(14);
+      getInfo(username);
+    } else {
+      alert("로그인이 필요한 서비스입니다.");
+      router.push("/login");
+    }
+  }, []);
+
+  const changeuserImage = (event) => {
+    setUserImage(event.target.files[0]);
+    const url = URL.createObjectURL(event.target.files[0]);
+    setUserImagePreview(url);
+  };
 
   const onUsernameChange = (event) => {
-    setUsernameValue(event.target.value);
+    setUserName(event.target.value);
   };
 
-  const changeProfileImage = (event) => {
-    setProfileImage(event.target.files[0]);
-    const url = URL.createObjectURL(event.target.files[0]);
-    setProfileImagePreview(url);
+  const onUserBirthdayChange = (event) => {
+    setUserBirthday(event.target.value);
   };
 
-  const resetProfileImage = () => {
-    setProfileImage([]);
-    setProfileImagePreview(YJ.src);
+  const onUserSexChange = (event) => {
+    setUserSex(event.target.value);
+  };
+
+  const resetUserImage = () => {
+    setUserImage([]);
+    setUserImagePreview(
+      "https://ggotmari.s3.ap-northeast-2.amazonaws.com/profile/defualt.jpg"
+    );
   };
 
   // 제출
-  const onSubmit = () => {};
+  const onSubmit = (event) => {
+    event.preventDefault();
+  };
 
   return (
     <>
@@ -184,7 +136,7 @@ function Edit() {
           <div className="image-box flex justify-center">
             <div className="w-2/5 aspect-square">
               <img
-                src={profileImagePreview}
+                src={userImagePreview}
                 alt=""
                 className="image w-full h-full rounded-full"
               />
@@ -201,13 +153,13 @@ function Edit() {
               type="file"
               id="profile-pic"
               accept="image/*"
-              onChange={changeProfileImage}
+              onChange={changeuserImage}
               className="w-0"
             />
             <span className="text-xl">|</span>
             <span
               className="ml-2 text-sm flex items-center cursor-pointer"
-              onClick={resetProfileImage}
+              onClick={resetUserImage}
             >
               <IoRefreshOutline size={20} className="mr-1" />
               초기화
@@ -225,7 +177,7 @@ function Edit() {
                     className="focus:outline-none w-full"
                     placeholder="닉네임을 입력해주세요"
                     onChange={onUsernameChange}
-                    value={usernameValue}
+                    value={userName}
                   />
                 </div>
               </div>
@@ -240,6 +192,8 @@ function Edit() {
                     type="text"
                     className="focus:outline-none w-full"
                     placeholder="YYYY.MM.DD"
+                    value={userBirthday}
+                    onChange={onUserBirthdayChange}
                   />
                 </div>
               </div>
@@ -250,9 +204,14 @@ function Edit() {
                   <span>성별</span>
                 </div>
                 <div className="input-box col-span-2">
-                  <select name="sex" id="sex" className="focus:outline-none">
-                    <option value="0">여자</option>
-                    <option value="1">남자</option>
+                  <select
+                    name="sex"
+                    id="sex"
+                    className="focus:outline-none"
+                    onChange={onUserSexChange}
+                  >
+                    <option value={false}>여자</option>
+                    <option value={true}>남자</option>
                   </select>
                 </div>
               </div>
