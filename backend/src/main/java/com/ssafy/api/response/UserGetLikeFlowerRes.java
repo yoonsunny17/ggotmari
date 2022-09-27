@@ -13,7 +13,7 @@ import java.util.List;
 @ApiModel("UserGetLikeFlowerResponse")
 public class UserGetLikeFlowerRes {
 
-    @ApiModelProperty(name = "본인 여부")
+    @ApiModelProperty(name = "태그")
     String tag;
 
     @ApiModelProperty(name = "꽃 목록")

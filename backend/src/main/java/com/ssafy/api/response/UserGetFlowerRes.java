@@ -23,7 +23,7 @@ public class UserGetFlowerRes {
     public static UserGetFlowerRes of(Kind kind){
         UserGetFlowerRes res = new UserGetFlowerRes();
 
-        res.setFlowerImage(kind.getFlowerImage());
+        res.setFlowerImage("https://ggotmari.s3.ap-northeast-2.amazonaws.com/" + kind.getFlowerImage());
         res.setSubjectId(kind.getSubject().getId());
         res.setKindId(kind.getId());
         res.setKindName(kind.getKindName());
