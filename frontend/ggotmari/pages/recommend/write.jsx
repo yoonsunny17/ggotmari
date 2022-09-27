@@ -2,7 +2,7 @@ import Header from "../../components/atoms/common/Header";
 import { useForm } from "react-hook-form";
 import { useState } from "react";
 import { useRouter } from "next/router";
-
+import Image from "next/image";
 const initialValue = {
   from: "", // 보내는 사람
   to: "", // 받는 사람

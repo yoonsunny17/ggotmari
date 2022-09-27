@@ -1,4 +1,5 @@
 import Header from "../../components/atoms/common/Header";
+import Image from "next/image";
 import Router from "next/router";
 
 function RecommendMain() {
@@ -6,14 +7,24 @@ function RecommendMain() {
   return (
     <div className="flex flex-col">
       <Header text={"꽃에 담은 편지"} />
-      <div className="h-52">
-        <img
+      {/* <img
           className="opacity-80 h-full w-full object-cover object-bottom"
           src="https://images.unsplash.com/photo-1597705790378-e30f4c18e427?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1229&q=80"
           alt=""
+        /> */}
+      <div className="h-52">
+        <Image
+          src="https://images.unsplash.com/photo-1597705790378-e30f4c18e427?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1229&q=80"
+          objectFit="cover"
+          layout="responsive"
+          width="500"
+          height="200"
+          objectPosition="bottom"
+          className="opacity-80 h-full w-full"
         />
       </div>
-      <div className="font-gangwon text-font1 text-center text-lg mt-12">
+
+      <div className="font-gangwon text-font1 text-center text-lg mt-10">
         &quot;편지로는 표현할 수 없는 감정 <br /> 꽃으로 선물했어요&quot;
       </div>
       <br />

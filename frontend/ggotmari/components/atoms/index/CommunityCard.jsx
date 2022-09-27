@@ -1,4 +1,6 @@
 import { useRouter } from "next/router";
+import Image from "next/image";
+
 import { IoMdHeart } from "react-icons/io";
 
 function CommunityCard({
@@ -28,11 +30,19 @@ function CommunityCard({
   return (
     <div onClick={postClickHandler}>
       <div className="cursor-pointer rounded-lg aspect-square shadow overflow-hidden relative">
-        <img
+        {/* <img
           src={articleImage}
           alt="communityCard"
           className="w-full h-full object-cover"
-        />
+        /> */}
+        <div className="w-full h-full object-cover">
+          <Image
+            src={articleImage}
+            alt="communityCard"
+            layout="fill"
+            objectFit="cover"
+          />
+        </div>
       </div>
       <div className="flex justify-between mt-1 text-xs">
         <p className="text-font2">@{username}</p>
