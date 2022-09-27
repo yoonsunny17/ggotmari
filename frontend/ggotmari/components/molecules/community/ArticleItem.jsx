@@ -6,7 +6,7 @@ import ImageSquare from "../../atoms/common/ImageSquare";
 function ArticleItem({ article }) {
   const {
     articleId,
-    articleImage,
+    articleImages,
     userId,
     articleTitle,
     articleContent,
@@ -31,7 +31,7 @@ function ArticleItem({ article }) {
     <div className="flex flex-row my-2 h-32 w-full" onClick={handleDetailClick}>
       <div className="flex flex-col items-end justify-center">
         <div className="w-24">
-          <ImageSquare imageSrc={articleImage} />
+          <ImageSquare imageSrc={articleImages[0]} />
           <div className="text-xs text-font2 w-full">@{userId}</div>
         </div>
       </div>
