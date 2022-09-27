@@ -4,7 +4,7 @@ const api = apiInstance();
 
 async function doLogin(code, success, fail) {
   await api
-    .post(`/api/auth/login`, {
+    .post(`/auth/login`, {
       code,
     })
     .then(success)
