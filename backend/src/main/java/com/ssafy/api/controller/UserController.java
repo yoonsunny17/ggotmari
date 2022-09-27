@@ -45,6 +45,7 @@ public class UserController {
         // user email 가져오기
         String jwtToken = request.getHeader("Authorization");
         String email = jwtTokenUtil.getUserEmailFromToken(jwtToken);
+
         User loginUser = userService.getUserByEmail(email);
 
         User user = userService.getUserByName(username);

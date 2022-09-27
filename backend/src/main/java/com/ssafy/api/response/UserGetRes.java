@@ -2,15 +2,13 @@ package com.ssafy.api.response;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.ssafy.common.model.response.BaseResponseBody;
-import com.ssafy.db.entity.Article;
-import com.ssafy.db.entity.ArticleLike;
-import com.ssafy.db.entity.FlowerLike;
-import com.ssafy.db.entity.User;
+import com.ssafy.db.entity.*;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 @Data
 @ApiModel("UserGetResponse")
@@ -67,16 +65,25 @@ public class UserGetRes extends BaseResponseBody {
     public void setLikeFlowers(List<FlowerLike> flowers){
         Map<String, List<UserGetFlowerRes>> tagMap = new HashMap<>();
 
+        List<UserGetFlowerRes> entire = new ArrayList<>();
+
         if(flowers.size() > 0) {
             for (FlowerLike flower : flowers) {
                 if(tagMap.get(flower.getTag().getDear()) == null){
                     List<UserGetFlowerRes> list = new ArrayList<>();
-                    list.add(UserGetFlowerRes.of(flower.getKind()));
+                    UserGetFlowerRes userGetFlowerRes = UserGetFlowerRes.of(flower.getKind());
+
+                    list.add(userGetFlowerRes);
+                    entire.add(userGetFlowerRes);
+
                     tagMap.put(flower.getTag().getDear(), list);
                 }else{
-                    tagMap.get(flower.getTag().getDear()).add(UserGetFlowerRes.of(flower.getKind()));
+                    UserGetFlowerRes userGetFlowerRes = UserGetFlowerRes.of(flower.getKind());
+                    tagMap.get(flower.getTag().getDear()).add(userGetFlowerRes);
+                    entire.add(userGetFlowerRes);
                 }
             }
+            tagMap.put("전체", entire.stream().distinct().collect(Collectors.toList()));
         }
 
         for(String key : tagMap.keySet()){
