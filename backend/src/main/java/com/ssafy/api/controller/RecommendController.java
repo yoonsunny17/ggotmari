@@ -65,10 +65,14 @@ public class RecommendController {
     public ResponseEntity<? extends RecommendSituationRes> recommendFlowerBySituation(HttpServletRequest request){
 
 
-        String jwtToken = request.getHeader("Authorization");
-        String email = jwtTokenUtil.getUserEmailFromToken(jwtToken);
+//        String jwtToken = request.getHeader("Authorization");
+//        String email = jwtTokenUtil.getUserEmailFromToken(jwtToken);
+
+        String email = "tempUser4@naver.com";
 
         List<RecommendTagRes> kinds = recommendService.recommendBySituation(email);
+
+        System.out.println("==== " + kinds.size());
 
         if(kinds == null){
             return ResponseEntity.status(403).body(RecommendSituationRes.of(403, "추천 실패.", kinds));

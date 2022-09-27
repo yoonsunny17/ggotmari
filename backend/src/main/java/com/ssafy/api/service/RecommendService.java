@@ -3,13 +3,21 @@ package com.ssafy.api.service;
 import com.ssafy.api.request.DislikePostReq;
 import com.ssafy.api.request.LetterPostReq;
 import com.ssafy.api.response.KindRes;
+import com.ssafy.api.response.RecommendResultRes;
 import com.ssafy.api.response.RecommendTagRes;
 import com.ssafy.db.entity.*;
 import com.ssafy.db.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.core.ParameterizedTypeReference;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.MultiValueMap;
+import org.springframework.web.client.RestTemplate;
+import org.springframework.web.util.UriComponentsBuilder;
 
+import java.net.URI;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -31,6 +39,9 @@ public class RecommendService {
     LetterRepository letterRepository;
     @Autowired
     ArticleRepository articleRepository;
+
+    @Value("${django.redirect.uri}")
+    private String DJANGO_REDIRECT_URI;
 
     @Transactional
     public boolean addDislike(String email, DislikePostReq dislikeInfo){
@@ -55,18 +66,17 @@ public class RecommendService {
 
         List<RecommendTagRes> tags = new ArrayList<>();
         for(int i=1; i<= tagSize; i++){
-            long kindId = Long.valueOf(i);
+            long tagId = Long.valueOf(i);
 
-            //TODO : 장고에게 userId, i 전달 - kindId list 받아오기
-            List<Long> kinds = new ArrayList<>();
+            List<Long> kindIds = connectSituation(user.getId(), tagId).getResult();
 
             RecommendTagRes tagRes = new RecommendTagRes();
-            Tag tag = tagRepository.findById(kindId).get();
+            Tag tag = tagRepository.findById(tagId).get();
             tagRes.setTagId(tag.getId());
             tagRes.setTagName(tag.getDear());
 
             List<KindRes> flowers = new ArrayList<>();
-            for(Long id : kinds){
+            for(Long id : kindIds){
                 KindRes kindRes = new KindRes();
                 Kind kind = kindRepository.findById(id).get();
                 kindRes.setKindId(id);
@@ -77,6 +87,7 @@ public class RecommendService {
             }
 
             tagRes.setFlowers(flowers);
+            tags.add(tagRes);
         }
 
         return tags;
@@ -84,7 +95,9 @@ public class RecommendService {
 
     public List<Article> recommendByLike(String email){
 
-        //TODO : 장고에게 유저 email 전달, article id list 받아오기
+        //TODO : 장고에게 유저 id 전달, article id list 받아오기
+        User user = userRepository.findByEmail(email);
+
         List<Long> articleIds = new ArrayList<>();
 
         List<Article> articles = new ArrayList<>();
@@ -111,4 +124,20 @@ public class RecommendService {
         return subject;
 
     }
+
+    public RecommendResultRes connectSituation(Long userId, Long tagId){
+        RestTemplate restTemplate = new RestTemplate();
+
+        URI uri = UriComponentsBuilder.fromUriString(DJANGO_REDIRECT_URI)
+                .path("/api/data/tag/{userId}/{tagId}")
+                .encode()
+                .build()
+                .expand(userId, tagId)
+                .toUri();
+
+        ResponseEntity<RecommendResultRes> kindIds = restTemplate.getForEntity(uri, RecommendResultRes.class);
+
+        return kindIds.getBody();
+    }
+
 }
