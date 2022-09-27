@@ -118,6 +118,16 @@ class FlowerLike(models.Model):
         db_table = 'flower_like'
 
 
+class FlowerDislike(models.Model):
+    flower_dislike_id = models.BigAutoField(primary_key=True)
+    kind = models.ForeignKey(Kind, on_delete=models.PROTECT)
+    user = models.ForeignKey(User, on_delete=models.PROTECT)
+
+    class Meta:
+        managed = True
+        db_table = 'flower_dislike'
+
+
 class Follow(models.Model):
     follow_id = models.BigAutoField(primary_key=True)
     following_user_user = models.ManyToManyField('self', symmetrical=False, related_name='follow_user_user')
