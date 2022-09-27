@@ -8,6 +8,7 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @Data
@@ -25,6 +26,13 @@ public class UserGetUserRes {
     @ApiModelProperty(name = "유저 프로필")
     String userImage;
 
+    @ApiModelProperty(name = "유저 생일")
+    LocalDate userBirthday;
+
+    @ApiModelProperty(name = "유저 성별")
+    boolean userSex;
+
+    @JsonProperty("isFollow")
     @ApiModelProperty(name = "팔로우 여부")
     boolean isFollow = false;
 
@@ -35,6 +43,9 @@ public class UserGetUserRes {
         res.setFollowingCount(user.getFollowings().size());
         res.setFollowerCount(user.getFollowers().size());
         res.setUserImage(user.getProfileImage());
+        res.setUserBirthday(user.getBirthday());
+        res.setUserSex(user.isSex());
+
 
         if(loginUser.getId() == user.getId()){
             res.setFollow(true);

@@ -1,23 +1,32 @@
+import Link from "next/link";
+import { useRouter } from "next/router";
+
 import {
   IoFlowerOutline,
   IoArrowBack,
   IoHomeOutline,
   IoPersonCircleOutline,
-  IoPaperPlaneOutline,
+  IoChatbubblesOutline,
 } from "react-icons/io5";
-import Link from "next/link";
+import { BsPeople } from "react-icons/bs";
 
 function Footer() {
+  const router = useRouter();
+  const { username } = router.query;
+
   return (
     <div className="flex flex-row w-full z-20 justify-around fixed bottom-0 bg-white p-3 items-center border-t-2 border-font3">
-      <Link href="#">
+      {/* <Link href="/">
         <a>
           <IoArrowBack className="text-main text-2xl" />
         </a>
-      </Link>
+      </Link> */}
+      <button onClick={() => router.back()}>
+        <IoArrowBack className="text-main text-2xl" />
+      </button>
       <Link href="/community">
         <a>
-          <IoFlowerOutline className="text-main text-2xl" />
+          <IoChatbubblesOutline className="text-main text-2xl" />
         </a>
       </Link>
       <Link href="/">
@@ -25,12 +34,12 @@ function Footer() {
           <IoHomeOutline className="text-main text-2xl" />
         </a>
       </Link>
-      <Link href="#">
+      <Link href="/flower/search/all">
         <a>
-          <IoPaperPlaneOutline className="text-main text-2xl" />
+          <IoFlowerOutline className="text-main text-2xl" />
         </a>
       </Link>
-      <Link href={`/profile/123`}>
+      <Link href="profile/[username]" as={`/profile/${username}`}>
         <a>
           <IoPersonCircleOutline className="text-main text-3xl" />
         </a>

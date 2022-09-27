@@ -17,6 +17,9 @@ public class UserGetLikeArticleRes{
     @ApiModelProperty(name = "게시글 이미지")
     String articleImage;
 
+    @ApiModelProperty(name = "게시글 제목")
+    String articleTitle;
+
     @ApiModelProperty(name = "게시글 작성자 닉네임")
     String userName;
 
@@ -28,6 +31,7 @@ public class UserGetLikeArticleRes{
 
         res.setArticleId(article.getId());
         res.setArticleImage(article.getPictures().get(0).getImage());
+        res.setArticleTitle(article.getTitle());
         res.setUserName(article.getUser().getName());
         res.setLikes(article.getLikes().size());
 

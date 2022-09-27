@@ -41,4 +41,8 @@ public class Subject {
     @JsonBackReference
     @OneToMany(mappedBy = "subject", fetch = FetchType.LAZY)
     List<Hashtag> articles = new ArrayList<>();
+
+    @JsonBackReference
+    @OneToMany(mappedBy = "subject", fetch = FetchType.LAZY)
+    List<Letter> letters = new ArrayList<>();
 }

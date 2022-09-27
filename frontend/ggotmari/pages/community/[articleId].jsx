@@ -1,11 +1,18 @@
-import { useRouter } from "next/router";
 import { useState } from "react";
+import { useRouter } from "next/router";
+import Image from "next/image";
+
 import ProfileImg from "../../components/atoms/common/ProfileImg";
-import { AiOutlineMore, AiOutlineUp } from "react-icons/ai";
 import FlowerTag from "../../components/atoms/common/FlowerTag";
 import CommentDrawer from "../../components/organisms/community/CommentDrawer";
-import { AiOutlineHeart, AiOutlineComment } from "react-icons/ai";
 import CommentItem from "../../components/molecules/community/CommentItem";
+
+import {
+  AiOutlineMore,
+  AiOutlineHeart,
+  AiOutlineComment,
+} from "react-icons/ai";
+import { IoIosArrowUp } from "react-icons/io";
 
 function ArticleDetail() {
   const router = useRouter();
@@ -166,8 +173,10 @@ function ArticleDetail() {
   return (
     <div className="flex flex-col">
       <div className="flex flex-row justify-between items-center h-20 px-4">
-        <div className="flex flex-row h-2/3 items-center">
-          <ProfileImg imgSrc={article.articleUser.userImage} />
+        <div className="flex flex-row h-2/3 items-center grow">
+          <div className="h-full aspect-square">
+            <ProfileImg imgSrc={article.articleUser.userImage} />
+          </div>
           <div className="ml-4">
             <p className="text-base font-sans text-black">
               {article.articleUser.userName}
@@ -199,7 +208,7 @@ function ArticleDetail() {
           {article.articleImages.map((imgSrc, idx) => {
             return (
               <div className="carousel-item relative w-full" key={idx}>
-                <img src={imgSrc} className="object-cover" />
+                <Image src={imgSrc} className="object-cover" layout="fill" />
               </div>
             );
           })}
@@ -243,7 +252,7 @@ function ArticleDetail() {
         >
           <div className="flex flex-row justify-between items-center">
             <div>댓글 {article.commentCount}</div>
-            <AiOutlineUp className="text-xl" />
+            <IoIosArrowUp className="text-xl" />
           </div>
 
           <div></div>
