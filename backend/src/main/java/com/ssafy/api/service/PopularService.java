@@ -71,7 +71,7 @@ public class PopularService {
 
         LocalDateTime start = LocalDateTime.now().minusDays(7);
         LocalDateTime end = LocalDateTime.now();
-        List<Article> articles = articleRepository.findAllByDateBetween(start, end);
+        List<Article> articles = articleRepository.findTop10AllByDateBetweenOOrderByLikesDesc(start, end);
 
 //        Collections.sort(articles, (o1, o2) -> o2.getLikes().size() - o1.getLikes().size());
 
