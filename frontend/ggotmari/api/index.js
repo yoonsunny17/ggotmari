@@ -3,7 +3,7 @@ import axios from "axios";
 // axios 객체 생성
 function apiInstance() {
   const instance = axios.create({
-    baseURL: "https://j7a303.p.ssafy.io/",
+    baseURL: "https://j7a303.p.ssafy.io",
     headers: {
       "Content-type": "application/json",
     },
@@ -13,10 +13,10 @@ function apiInstance() {
 
 function fileApiInstance() {
   const instance = axios.create({
-    baseURL: "https://j7a303.p.ssafy.io/",
-    headers: {
-      "Content-Type": `multipart/form-data`,
-    },
+    baseURL: "https://j7a303.p.ssafy.io",
+    // headers: {
+    //   "Content-Type": `multipart/form-data`,
+    // },
   });
   return instance;
 }

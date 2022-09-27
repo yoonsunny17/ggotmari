@@ -1,7 +1,9 @@
+import Image from "next/image";
+
 function ProfileImg({ imgSrc }) {
   return (
-    <div className="h-full aspect-square overflow-hidden rounded-full">
-      <img className="object-cover h-full" src={imgSrc}></img>
+    <div className="h-full aspect-square overflow-hidden rounded-full relative">
+      <Image className="object-cover" src={imgSrc} layout="fill" />
     </div>
   );
 }
