@@ -9,8 +9,7 @@ async function getFlowerDetail(success, fail) {
       {},
       {
         headers: {
-          Authorization:
-            "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE2NjQyNjg1NjMsImV4cCI6MTY2NTU2NDU2MywiZW1haWwiOiJqdW5zeXMyMjNAbmF2ZXIuY29tIn0.DTeeKZwW7k-t7U9DblTxwlAcT87C123tERzFGc5xOFePjMK-EbjCf7MZ4lfd8_zNDsn3IQ7TXh7THn-7xEGQTA",
+          Authorization: localStorage.getItem("accessToken"),
         },
       }
     )
@@ -29,8 +28,7 @@ async function postFlowerDetail(success, fail) {
       },
       {
         headers: {
-          Authorization:
-            "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE2NjQyNjg1NjMsImV4cCI6MTY2NTU2NDU2MywiZW1haWwiOiJqdW5zeXMyMjNAbmF2ZXIuY29tIn0.DTeeKZwW7k-t7U9DblTxwlAcT87C123tERzFGc5xOFePjMK-EbjCf7MZ4lfd8_zNDsn3IQ7TXh7THn-7xEGQTA",
+          Authorization: localStorage.getItem("accessToken"),
         },
       }
     )
