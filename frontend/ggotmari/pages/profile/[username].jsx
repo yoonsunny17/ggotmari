@@ -1,10 +1,10 @@
-import { itMatchesOne } from "daisyui/src/lib/postcss-prefixer/utils";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import StoryImage from "../../components/atoms/profile/StoryImage";
 import ProfileInfo from "../../components/organisms/profile/ProfileInfo";
 import ProfileNavBar from "../../components/organisms/profile/ProfileNavBar";
-import YJ from "../../assets/YJ.png";
+import { getUser } from "../../api/profile.js";
+import noStory from "../../assets/profile/main/noStoryImg.jpg";
 
 export default function Profile() {
   const router = useRouter();
@@ -17,11 +17,14 @@ export default function Profile() {
       followingCount: "",
       followerCount: "",
       userImage: "",
+      userBirthday: "",
+      userSex: "",
       isFollow: "",
     },
     articles: [
       {
         articleId: "",
+        articleTitle: "",
         articleImage: "",
       },
     ],
@@ -42,117 +45,45 @@ export default function Profile() {
       {
         articleId: "",
         articleImage: "",
+        articleTitle: "",
         userName: "",
         likes: "",
       },
     ],
   });
 
+  const success = (res) => {
+    setUserInfo(res.data);
+  };
+  const fail = (err) => console.log(err);
   // 서버 통신 짤 코드
 
-  const getInfo = () => {
-    const info = {
-      status: 200,
-      message: "회원 정보 조회 성공",
-      isMe: true,
-      user: {
-        userName: "TheYJBaby",
-        followingCount: 20,
-        followerCount: 2000,
-        userImage:
-          "https://pbs.twimg.com/profile_images/1374979417915547648/vKspl9Et_400x400.jpg",
-        isFollow: true,
-      },
-      articles: [
-        {
-          articleId: 1,
-          articleTitle: "제니1",
-          articleImage:
-            "https://images.chosun.com/resizer/fo-0AnY_2j3QZ2DbEuxxVc0VSZQ=/616x0/smart/cloudfront-ap-northeast-1.images.arcpublishing.com/chosun/6Y6TZ5MYRVGFDNVP6FAEPRLIKQ.jpg",
-        },
-        {
-          articleId: 2,
-          articleTitle: "제니1",
-          articleImage:
-            "https://images.chosun.com/resizer/fo-0AnY_2j3QZ2DbEuxxVc0VSZQ=/616x0/smart/cloudfront-ap-northeast-1.images.arcpublishing.com/chosun/6Y6TZ5MYRVGFDNVP6FAEPRLIKQ.jpg",
-        },
-        {
-          articleId: 3,
-          articleTitle: "제니1",
-          articleImage:
-            "https://images.chosun.com/resizer/fo-0AnY_2j3QZ2DbEuxxVc0VSZQ=/616x0/smart/cloudfront-ap-northeast-1.images.arcpublishing.com/chosun/6Y6TZ5MYRVGFDNVP6FAEPRLIKQ.jpg",
-        },
-        {
-          articleId: 4,
-          articleTitle: "제니1",
-          articleImage:
-            "https://images.chosun.com/resizer/fo-0AnY_2j3QZ2DbEuxxVc0VSZQ=/616x0/smart/cloudfront-ap-northeast-1.images.arcpublishing.com/chosun/6Y6TZ5MYRVGFDNVP6FAEPRLIKQ.jpg",
-        },
-      ],
-      likeFlowers: [
-        {
-          tag: "가족",
-          flowers: [
-            {
-              flowerImage:
-                "https://file2.nocutnews.co.kr/newsroom/image/2021/06/13/202106131759472028_0.jpg",
-              subjectId: 1,
-              kindId: 1,
-              kindName: "BTS",
-            },
-            {
-              flowerImage:
-                "https://file2.nocutnews.co.kr/newsroom/image/2021/06/13/202106131759472028_0.jpg",
-              subjectId: 2,
-              kindId: 2,
-              kindName: "BTS2",
-            },
-          ],
-        },
-        {
-          tag: "친구",
-          flowers: [
-            {
-              flowerImage:
-                "https://file2.nocutnews.co.kr/newsroom/image/2021/06/13/202106131759472028_0.jpg",
-              subjectId: 1,
-              kindId: 1,
-              kindName: "BTS",
-            },
-            {
-              flowerImage:
-                "https://file2.nocutnews.co.kr/newsroom/image/2021/06/13/202106131759472028_0.jpg",
-              subjectId: 2,
-              kindId: 2,
-              kindName: "BTS2",
-            },
-          ],
-        },
-      ],
-      likeArticles: [
-        {
-          articleId: 1,
-          articleImage:
-            "https://photo.jtbc.joins.com/news/2015/06/18/201506182141183067.jpg",
-          userName: "GD",
-          likes: 132,
-        },
-      ],
-    };
-    setUserInfo(info);
+  const getInfo = (username) => {
+    // console.log(username);
+    getUser(username, success, fail);
   };
 
-  useEffect(getInfo, []);
+  useEffect(() => {
+    if (localStorage.getItem("accessToken")) {
+      const username = window.location.pathname.substring(9);
+      getInfo(username);
+    } else {
+      alert("로그인이 필요한 서비스입니다.");
+      router.push("/login");
+    }
+  }, []);
+
+  // useEffect(() => console.log(userInfo), [userInfo]);
 
   return (
     <>
       <div className="profile">
-        <ProfileInfo user={userInfo.user} isMe={userInfo.isMe} />
+        <ProfileInfo userInfo={userInfo} setUserInfo={setUserInfo} />
         <ProfileNavBar />
         {/* 하단 */}
       </div>
       <div className="content grid grid-cols-3 mt-3 mb-14">
-        {userInfo.articles !== [] ? (
+        {userInfo.articles.length > 0 ? (
           userInfo.articles.map((item, index) => {
             return (
               <StoryImage
@@ -164,7 +95,20 @@ export default function Profile() {
             );
           })
         ) : (
-          <div>nononono</div>
+          <div className="col-span-3 flex justify-center">
+            <div className="content-box w-full">
+              <div className="img-box flex justify-center my-10">
+                <img
+                  src={noStory.src}
+                  alt="조회할 꽃이 없음"
+                  className="w-2/3"
+                />
+              </div>
+              <div className="text-box flex justify-center font-gangwon text-font4">
+                <span>작성한 꽃 이야기가 없습니다</span>
+              </div>
+            </div>
+          </div>
         )}
       </div>
     </>

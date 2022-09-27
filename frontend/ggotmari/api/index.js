@@ -3,7 +3,7 @@ import axios from "axios";
 // axios 객체 생성
 function apiInstance() {
   const instance = axios.create({
-    baseURL: "https://j7a303.p.ssafy.io",
+    baseURL: "https://j7a303.p.ssafy.io/api/",
     headers: {
       "Content-type": "application/json",
     },
