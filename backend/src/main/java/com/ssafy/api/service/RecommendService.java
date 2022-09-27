@@ -2,6 +2,8 @@ package com.ssafy.api.service;
 
 import com.ssafy.api.request.DislikePostReq;
 import com.ssafy.api.request.LetterPostReq;
+import com.ssafy.api.request.RecommendLikeReq;
+import com.ssafy.api.request.RecommendTagReq;
 import com.ssafy.api.response.KindRes;
 import com.ssafy.api.response.RecommendResultRes;
 import com.ssafy.api.response.RecommendTagRes;
@@ -10,6 +12,7 @@ import com.ssafy.db.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.ParameterizedTypeReference;
+import org.springframework.http.HttpEntity;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -95,10 +98,9 @@ public class RecommendService {
 
     public List<Article> recommendByLike(String email){
 
-        //TODO : 장고에게 유저 id 전달, article id list 받아오기
         User user = userRepository.findByEmail(email);
 
-        List<Long> articleIds = new ArrayList<>();
+        List<Long> articleIds = connectArticle(user.getId()).getResult();
 
         List<Article> articles = new ArrayList<>();
         for(Long articleId : articleIds){
@@ -128,14 +130,45 @@ public class RecommendService {
     public RecommendResultRes connectSituation(Long userId, Long tagId){
         RestTemplate restTemplate = new RestTemplate();
 
+        /*GET*/
+//        URI uri = UriComponentsBuilder.fromUriString(DJANGO_REDIRECT_URI)
+//                .path("/api/data/tag/{userId}/{tagId}")
+//                .encode()
+//                .build()
+//                .expand(userId, tagId)
+//                .toUri();
+
+//        ResponseEntity<RecommendResultRes> kindIds = restTemplate.getForEntity(uri, RecommendResultRes.class);
+
+        /*POST*/
         URI uri = UriComponentsBuilder.fromUriString(DJANGO_REDIRECT_URI)
-                .path("/api/data/tag/{userId}/{tagId}")
+                .path("/api/data/tag")
                 .encode()
                 .build()
-                .expand(userId, tagId)
                 .toUri();
 
-        ResponseEntity<RecommendResultRes> kindIds = restTemplate.getForEntity(uri, RecommendResultRes.class);
+        RecommendTagReq recommendTagReq = new RecommendTagReq();
+        recommendTagReq.setTagId(tagId);
+        recommendTagReq.setUserId(userId);
+
+        ResponseEntity<RecommendResultRes> kindIds = restTemplate.postForEntity(uri, recommendTagReq, RecommendResultRes.class);
+
+        return kindIds.getBody();
+    }
+
+    public RecommendResultRes connectArticle(Long userId){
+        RestTemplate restTemplate = new RestTemplate();
+
+        URI uri = UriComponentsBuilder.fromUriString(DJANGO_REDIRECT_URI)
+                .path("/api/data/like")
+                .encode()
+                .build()
+                .toUri();
+
+        RecommendLikeReq recommendLikeReq = new RecommendLikeReq();
+        recommendLikeReq.setUserId(userId);
+
+        ResponseEntity<RecommendResultRes> kindIds = restTemplate.postForEntity(uri, recommendLikeReq, RecommendResultRes.class);
 
         return kindIds.getBody();
     }
