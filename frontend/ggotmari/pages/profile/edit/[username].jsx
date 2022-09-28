@@ -13,10 +13,14 @@ function Edit() {
   // 다르면 잘못된 접근입니다. alert 띄우고
   // home으로 보내기
 
+  // console.log(userName);
+
   const [userName, setUserName] = useState("");
   const [userImage, setUserImage] = useState([]);
   const [userImagePreview, setUserImagePreview] = useState(
-    "https://ggotmari.s3.ap-northeast-2.amazonaws.com/profile/defualt.jpg"
+    userInfo
+      ? userInfo.user.userImage
+      : "https://ggotmari.s3.ap-northeast-2.amazonaws.com/profile/defualt.jpg"
   );
   const [userSex, setUserSex] = useState(false);
   const [userBirthday, setUserBirthday] = useState("");
@@ -71,7 +75,7 @@ function Edit() {
     setUserName(res.data.user.userName);
     setUserImagePreview(res.data.user.userImage);
     setUserSex(res.data.user.userSex);
-    setUserBirthday(res.data.user.userBirthday);
+    setUserBirthday(res.data.user.userBirthday || "");
   };
 
   const fail = (err) => {
@@ -103,27 +107,140 @@ function Edit() {
   };
 
   const onUsernameChange = (event) => {
-    setUserName(event.target.value);
+    if (event.target.value.length > 15) {
+      alert("닉네임은 최대 15글자입니다.");
+      return;
+    } else {
+      setUserName(event.target.value);
+    }
   };
 
   const onUserBirthdayChange = (event) => {
     if (isNaN(event.target.value)) {
-      setUserBirthday("");
       alert("생년월일은 숫자만 입력가능합니다. 다시 입력해주세요");
+      return;
     }
-    // if (event.target.value.length === 4) {
-    //   if (1799 > +event.target.value || 2022 < +event.target.value) {
-    //     alert("생년 1800년부터 2022년까지 입력가능합니다.");
-    //     setUserBirthday("");
-    //   }
-    // }
-    // if (event.target.value.length === 6) {
-    //   const tmp = event.target.value.substr(0, 4);
-    //   if (+tmp < 1 || +tmp > 12) {
-    //     alert("생월은 1월부터 12월까지 입력가능합니다.");
-    //     setUserBirthday("");
-    //   }
-    // }
+    if (event.target.value.length === 4) {
+      if (+event.target.value < 1900 || event.target.value > 2022) {
+        alert("생년은 1900년과 2022년 사이만 입력해주세요.");
+        return;
+      }
+    }
+    if (event.target.value.length === 6) {
+      // console.log(+event.target.value.substring(4));
+      if (
+        +event.target.value.substring(4) < 1 ||
+        +event.target.value.substring(4) > 12
+      ) {
+        alert("생월은 1월부터 12월 사이입니다.");
+        return;
+      }
+    }
+    if (event.target.value.length === 8) {
+      // console.log(+event.target.value.substring(4, 6));
+      switch (+event.target.value.substring(4, 6)) {
+        case 1:
+          if (
+            +event.target.value.substring(6) < 1 ||
+            +event.target.value.substring(6) > 31
+          ) {
+            alert("날짜가 잘못되었습니다.");
+            return;
+          }
+        case 2:
+          if (
+            +event.target.value.substring(6) < 1 ||
+            +event.target.value.substring(6) > 29
+          ) {
+            alert("날짜가 잘못되었습니다.");
+            return;
+          }
+        case 3:
+          if (
+            +event.target.value.substring(6) < 1 ||
+            +event.target.value.substring(6) > 31
+          ) {
+            alert("날짜가 잘못되었습니다.");
+            return;
+          }
+        case 4:
+          if (
+            +event.target.value.substring(6) < 1 ||
+            +event.target.value.substring(6) > 30
+          ) {
+            alert("날짜가 잘못되었습니다.");
+            return;
+          }
+        case 5:
+          if (
+            +event.target.value.substring(6) < 1 ||
+            +event.target.value.substring(6) > 31
+          ) {
+            alert("날짜가 잘못되었습니다.");
+            return;
+          }
+        case 6:
+          if (
+            +event.target.value.substring(6) < 1 ||
+            +event.target.value.substring(6) > 30
+          ) {
+            alert("날짜가 잘못되었습니다.");
+            return;
+          }
+        case 7:
+          if (
+            +event.target.value.substring(6) < 1 ||
+            +event.target.value.substring(6) > 31
+          ) {
+            alert("날짜가 잘못되었습니다.");
+            return;
+          }
+        case 8:
+          if (
+            +event.target.value.substring(6) < 1 ||
+            +event.target.value.substring(6) > 31
+          ) {
+            alert("날짜가 잘못되었습니다.");
+            return;
+          }
+        case 9:
+          if (
+            +event.target.value.substring(6) < 1 ||
+            +event.target.value.substring(6) > 30
+          ) {
+            alert("날짜가 잘못되었습니다.");
+            return;
+          }
+        case 10:
+          if (
+            +event.target.value.substring(6) < 1 ||
+            +event.target.value.substring(6) > 31
+          ) {
+            alert("날짜가 잘못되었습니다.");
+            return;
+          }
+        case 11:
+          if (
+            +event.target.value.substring(6) < 1 ||
+            +event.target.value.substring(6) > 30
+          ) {
+            alert("날짜가 잘못되었습니다.");
+            return;
+          }
+        case 12:
+          if (
+            +event.target.value.substring(6) < 1 ||
+            +event.target.value.substring(6) > 31
+          ) {
+            alert("날짜가 잘못되었습니다.");
+            return;
+          }
+      }
+    }
+    if (event.target.value.length > 8) {
+      alert("생년월일은 최대 8자리 숫자입니다.");
+      return;
+    }
     setUserBirthday(event.target.value);
   };
 
@@ -141,6 +258,14 @@ function Edit() {
   // 제출
   const onSubmit = (event) => {
     event.preventDefault();
+    const credentials = {
+      userName: userName,
+      userImage: userImage,
+      birthday: userBirthday,
+      sex: userSex,
+    };
+    if (!userImage) {
+    }
   };
 
   return (
@@ -186,7 +311,7 @@ function Edit() {
             <div className="id-box border-b-sub1 border-b-[0.5px] py-5 text-font1 font-sanslight ">
               <div className="grid grid-cols-3 mx-3">
                 <div className="category col-span-1 flex items-center">
-                  <span>아이디</span>
+                  <span>닉네임</span>
                 </div>
                 <div className="input-box col-span-2">
                   <input
@@ -208,7 +333,7 @@ function Edit() {
                   <input
                     type="text"
                     className="focus:outline-none w-full"
-                    placeholder="YYYY.MM.DD"
+                    placeholder="YYYYMMDD"
                     value={userBirthday}
                     onChange={onUserBirthdayChange}
                   />

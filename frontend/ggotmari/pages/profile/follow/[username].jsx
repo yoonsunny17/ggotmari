@@ -3,6 +3,16 @@ import ProfileFollowList from "../../../components/organisms/profile/ProfileFoll
 
 function ProfileFollow() {
   const router = useRouter().query.username;
+
+  useEffect(() => {
+    if (localStorage.getItem("accessToken")) {
+      const username = window.location.pathname.substring(16);
+      getInfo(username);
+    } else {
+      router.push("/login");
+    }
+  }, []);
+
   return (
     <>
       <div className="username-box my-6">

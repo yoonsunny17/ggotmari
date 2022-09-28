@@ -39,10 +39,10 @@ function ProfileInfo({ userInfo, setUserInfo }) {
   };
 
   return (
-    <div className="profile-head grid grid-cols-2">
+    <div className="profile-head grid grid-cols-5">
       {/* 좌측 */}
-      <div className="profile-img col-span-auto flex justify-center">
-        <div className="img-box aspect-square w-3/5 my-6">
+      <div className="profile-img col-span-2 flex justify-center">
+        <div className="img-box aspect-square w-4/5 my-6">
           <img
             src={userInfo.user.userImage}
             alt=""
@@ -51,7 +51,7 @@ function ProfileInfo({ userInfo, setUserInfo }) {
         </div>
       </div>
       {/* 우측 */}
-      <div className="profile-info col-span-1 grid content-center">
+      <div className="profile-info col-span-3 grid content-center">
         <div className="profile-info-box">
           <div className="box-username font-sans font-bold flex flex-start my-1">
             {/* {username} */}
