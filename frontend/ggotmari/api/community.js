@@ -40,6 +40,10 @@ async function getArticleList(success, fail) {
     .catch(fail);
 }
 
+async function getArticleIds(success, fail) {
+  await api.get(`/community/article/id`).then(success).catch(fail);
+}
+
 async function getArticleDetail(articleId, success, fail) {
   await api
     .get(`/community/article/${articleId}`, {
@@ -53,4 +57,10 @@ async function getArticleDetail(articleId, success, fail) {
     .catch(fail);
 }
 
-export { getFlowerKind, postArticle, getArticleList, getArticleDetail };
+export {
+  getFlowerKind,
+  postArticle,
+  getArticleList,
+  getArticleIds,
+  getArticleDetail,
+};
