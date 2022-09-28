@@ -65,7 +65,7 @@ public class UserController {
         String jwtToken = request.getHeader("Authorization");
         String email = jwtTokenUtil.getUserEmailFromToken(jwtToken);
 
-        User loginUser = userService.getUserByEmail(email);     //로그인한 사람
+//        User loginUser = userService.getUserByEmail(email);     //로그인한 사람
 //        User user = userService.getUserByName(username);        //대상
 
         List<FollowGetFollowerRes> followers = userService.getFollowers(email, username);
