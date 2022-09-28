@@ -10,6 +10,7 @@ import com.ssafy.api.response.Recommend.RecommendResultsRes;
 import com.ssafy.api.response.Recommend.RecommendTagRes;
 import com.ssafy.db.entity.*;
 import com.ssafy.db.repository.*;
+import org.checkerframework.checker.units.qual.K;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
@@ -85,6 +86,18 @@ public class RecommendService {
                 kindRes.setSubjectId(kind.getSubject().getId());
 
                 flowers.add(kindRes);
+            }
+
+            if(flowers.size()%9 != 0){
+                int left = 9 - flowers.size()%9;
+                for(int j=0; j<left; j++){
+                    KindRes kindRes = new KindRes();
+                    kindRes.setKindId(0L);
+                    kindRes.setKindImage("/kind/default.jpg");
+                    kindRes.setSubjectId(0L);
+
+                    flowers.add(kindRes);
+                }
             }
 
             tagRes.setFlowers(flowers);
