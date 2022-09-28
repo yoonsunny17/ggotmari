@@ -7,6 +7,7 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Data
@@ -16,7 +17,7 @@ public class RecommendArticleRes extends BaseResponseBody {
     @ApiModelProperty(name = "로그인한 유저")
     String userName;
     @ApiModelProperty(name = "추천 게시글")
-    List<ArticleRes> articles;
+    List<ArticleRes> articles = new ArrayList<>();
 
     public static RecommendArticleRes of(Integer statusCode, String message, List<Article> articles, String userName) {
         RecommendArticleRes res = new RecommendArticleRes();
