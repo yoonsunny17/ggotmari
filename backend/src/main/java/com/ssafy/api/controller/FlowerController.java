@@ -66,17 +66,19 @@ public class FlowerController {
         }
     }
 
-    @GetMapping("/{subjectId}")
+    @GetMapping("/{kindId}")
     @ApiOperation(value = "품목 상세 페이지 조회", notes = "품목 상세 내역을 반환한다.")
     @ApiResponses({
             @ApiResponse(code = 201, message = "품목 조회 성공"),
             @ApiResponse(code = 500, message = "품목 조회 실패")
     })
-    public ResponseEntity<? extends FlowerDetailGetRes> getFlowerDetail(@PathVariable("subjectId") Long subjectId,
+    public ResponseEntity<? extends FlowerDetailGetRes> getFlowerDetail(@PathVariable("kindId") Long kindId,
                                                                         HttpServletRequest request){
 
         String jwtToken = request.getHeader("Authorization");
         String email = jwtTokenUtil.getUserEmailFromToken(jwtToken);
+
+        Long subjectId = flowerService.getSubjectByKindId(kindId);
 
         Subject subject = flowerService.getFlowerDetail(subjectId);
 
@@ -90,13 +92,13 @@ public class FlowerController {
         }
     }
 
-    @PostMapping("/{subjectId}")
+    @PostMapping("/{kindId}")
     @ApiOperation(value = "컬랙션(태그) 추가/삭제", notes = "컬렉션 전환 성공 여부를 반환한다.")
     @ApiResponses({
             @ApiResponse(code = 201, message = "태그 전환 성공"),
             @ApiResponse(code = 500, message = "태그 전환 실패")
     })
-    public ResponseEntity<? extends TagPostRes> reverseTag(@PathVariable("subjectId") Long subjectId,
+    public ResponseEntity<? extends TagPostRes> reverseTag(@PathVariable("kindId") Long kindId,
                                                            @RequestBody FlowerTagPostReq tagInfo,
                                                            HttpServletRequest request){
 

@@ -137,4 +137,11 @@ public class FlowerService {
 
         return true;
     }
+
+    public Long getSubjectByKindId(Long kindId) {
+
+        Kind kind = kindRepository.findById(kindId).get();
+
+        return kind.getSubject().getId();
+    }
 }
