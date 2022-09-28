@@ -10,6 +10,7 @@ import com.ssafy.api.response.Recommend.RecommendResultsRes;
 import com.ssafy.api.response.Recommend.RecommendTagRes;
 import com.ssafy.db.entity.*;
 import com.ssafy.db.repository.*;
+import org.checkerframework.checker.units.qual.K;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
@@ -87,6 +88,18 @@ public class RecommendService {
                 flowers.add(kindRes);
             }
 
+            if(flowers.size()%9 != 0){
+                int left = 9 - flowers.size()%9;
+                for(int j=0; j<left; j++){
+                    KindRes kindRes = new KindRes();
+                    kindRes.setKindId(0L);
+                    kindRes.setKindImage("/kind/default.jpg");
+                    kindRes.setSubjectId(0L);
+
+                    flowers.add(kindRes);
+                }
+            }
+
             tagRes.setFlowers(flowers);
             tags.add(tagRes);
         }
@@ -139,7 +152,7 @@ public class RecommendService {
 
         /*POST*/
         URI uri = UriComponentsBuilder.fromUriString(DJANGO_REDIRECT_URI)
-                .path("/tag")
+                .path("/situation")
                 .encode()
                 .build()
                 .toUri();
@@ -157,7 +170,7 @@ public class RecommendService {
         RestTemplate restTemplate = new RestTemplate();
 
         URI uri = UriComponentsBuilder.fromUriString(DJANGO_REDIRECT_URI)
-                .path("like")
+                .path("/article")
                 .encode()
                 .build()
                 .toUri();
