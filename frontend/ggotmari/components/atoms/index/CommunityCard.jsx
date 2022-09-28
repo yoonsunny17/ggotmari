@@ -39,8 +39,11 @@ function CommunityCard({
           <Image
             src={articleImage}
             alt="communityCard"
-            layout="fill"
+            layout="responsive"
+            width={300}
+            height={300}
             objectFit="cover"
+            priority
           />
         </div>
       </div>

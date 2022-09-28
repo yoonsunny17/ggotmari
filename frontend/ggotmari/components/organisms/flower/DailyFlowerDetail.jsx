@@ -1,18 +1,44 @@
-function DailyFlowerDetail({
-  info: { flowerName, flowerLanguage, flowerLuck, imgUrl },
-}) {
+import { getDailyFlower } from "../../../api/flower";
+import { useEffect, useState } from "react";
+import { useRouter } from "next/router";
+import Image from "next/image";
+
+function DailyFlowerDetail({}) {
+  const [dailyFlower, setDailyFlower] = useState([]);
+
+  useEffect(() => {
+    getDailyFlower(
+      (res) => {
+        console.log(res.data);
+        setDailyFlower(res.data);
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
+  }, []);
+
+  console.log(dailyFlower);
   return (
     <div>
-      <img
+      {/* <img
         className="w-full h-full aspect-square object-cover"
-        src={imgUrl}
+        src={dailyFlower.dailyFlowerImage}
         alt="flower luck"
+      /> */}
+      <Image
+        src={dailyFlower.dailyFlowerImage}
+        alt=""
+        width={500}
+        height={500}
+        layout="responsive"
+        priority
       />
       <div className="my-10 text-center font-gangwon text-font1 text-md">
-        {flowerName}의 꽃말은 <br />
-        &apos;{flowerLanguage}&apos; 입니다.
+        {dailyFlower.dailyFlowerName}의 꽃말은 <br />
+        &apos;{dailyFlower.dailyFlowerLanguage}&apos; 입니다.
         <br />
-        <div className="mt-5 px-6">{flowerLuck}</div>
+        <div className="mt-5 px-6">{dailyFlower.dailyFlowerContent}</div>
       </div>
     </div>
   );
