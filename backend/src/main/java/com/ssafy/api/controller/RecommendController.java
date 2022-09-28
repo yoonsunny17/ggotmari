@@ -53,21 +53,19 @@ public class RecommendController {
         }
     }
 
-    @GetMapping("/situation")
+    @GetMapping("/situation/{tagId}")
     @ApiOperation(value = "상황 추천", notes = "상황별 꽃 추천")
     @ApiResponses({
             @ApiResponse(code = 201, message = "꽃 추천 성공"),
             @ApiResponse(code = 500, message = "꽃 추천 실패")
     })
-    public ResponseEntity<? extends RecommendSituationRes> recommendFlowerBySituation(HttpServletRequest request){
+    public ResponseEntity<? extends RecommendSituationRes> recommendFlowerBySituation(@PathVariable Long tagId, HttpServletRequest request){
 
 
         String jwtToken = request.getHeader("Authorization");
         String email = jwtTokenUtil.getUserEmailFromToken(jwtToken);
 
-        List<RecommendTagRes> kinds = recommendService.recommendBySituation(email);
-
-        System.out.println("==== " + kinds.size());
+        List<KindRes> kinds = recommendService.recommendBySituation(email, tagId);
 
         if(kinds == null){
             return ResponseEntity.status(403).body(RecommendSituationRes.of(403, "추천 실패.", kinds));
