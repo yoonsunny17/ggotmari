@@ -8,9 +8,10 @@ function DailyFlower() {
       <div>
         <Header text={"오늘의 꽃"} />
       </div>
-      {DailyFlowers.map((info, idx) => {
+      <DailyFlowerDetail />
+      {/* {DailyFlowers.map((info, idx) => {
         return <DailyFlowerDetail info={info} key={idx} />;
-      })}
+      })} */}
     </div>
   );
 }
