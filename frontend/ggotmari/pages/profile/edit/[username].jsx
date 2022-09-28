@@ -257,7 +257,16 @@ function Edit() {
         </div>
       </form>
       <div className="logout-signout-box flex justify-end mx-10 mt-20 font-sansultralight text-xs mb-14">
-        <button className="logout mr-2 hover:text-font1">로그아웃</button>
+        <button
+          className="logout mr-2 hover:text-font1"
+          onClick={() => {
+            localStorage.setItem("accessToken", "");
+            alert("로구아웃 되었습니다.");
+            router.push("/login");
+          }}
+        >
+          로그아웃
+        </button>
         <span>|</span>
         <button className="signout ml-2 hover:text-font1">회원탈퇴</button>
       </div>
