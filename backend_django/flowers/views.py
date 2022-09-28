@@ -1,8 +1,9 @@
+from operator import indexOf
 from django.shortcuts import get_object_or_404, get_list_or_404
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework import status
-from .models import Kind, User, FlowerLike, FlowerDislike, ArticleLike, Article
+from .models import Kind, User, FlowerLike, FlowerDislike, ArticleLike, Article, Subject
 from .serializers import UserSerializer, FlowerLikeSerializer, FlowerDislikeSerializer, ArticleLikeSerializer
 import numpy as np
 from dateutil.relativedelta import *
@@ -11,6 +12,8 @@ import time
 from sklearn.metrics.pairwise import cosine_similarity
 import redis
 import my_settings
+from sklearn.feature_extraction.text import TfidfVectorizer
+from konlpy.tag import Okt
 
 
 # 컬렉션 태그 기반 상황별 꽃 추천
@@ -168,3 +171,43 @@ def article(request):
             break
 
     return Response({'time': time.time() - start, 'result': result}, status=status.HTTP_200_OK)
+
+
+# 편지 내용 기반 꽃 추천
+@api_view(['POST'])
+def letter(request):
+    start = time.time()
+
+    okt = Okt()
+
+    # text_list = []
+    text_list = ['편지 내용 사랑 하는 누구 에게 오늘 이 벌써 며칠 이다 사랑 한다.']
+
+    all_flower_language = Subject.objects.all().values('flower_language')
+
+    for flower in all_flower_language:
+        flower_language = flower['flower_language']
+
+        text_list.append(flower_language)
+
+    # text_list = ['편지 내용 사랑 하는 누구 에게 오늘 이 벌써 며칠 이다 사랑 한다.']
+
+    # text_list.append('신비, 풀 수 없는 수수께끼')
+    # text_list.append('붉은 장미 - 사랑, 아름다움, 낭만적인 사랑, 용기, 존경, 열망, 열정/하얀 장미 - 순수, 결백, 젊음, 영성, 숭배/분홍색 장미 - 감탄, 감사, 성실, 우아함, 사랑의 맹세/노란 장미 - 변하지 않는 사랑, 기쁨, 우정, 질투, 환영, 영원한 우정과 사랑')
+    # text_list.append('소녀의 사랑')
+    # text_list.append('신비, 풀 수 없는 수수께끼')
+    # text_list.append('붉은 장미 - 사랑, 아름다움, 낭만적인 사랑, 용기, 존경, 열망, 열정/하얀 장미 - 순수, 결백, 젊음, 영성, 숭배/분홍색 장미 - 감탄, 감사, 성실, 우아함, 사랑의 맹세/노란 장미 - 변하지 않는 사랑, 기쁨, 우정, 질투, 환영, 영원한 우정과 사랑')
+    # text_list.append('소녀의 사랑')
+    text_nouns_list = [' '.join(okt.nouns(text)) for text in text_list]
+
+    tfidf_vectorizer = TfidfVectorizer(min_df=1)
+    tfidf_matrix = tfidf_vectorizer.fit_transform(text_nouns_list)
+    doc_similarities = (tfidf_matrix * tfidf_matrix.T)
+
+    # print(doc_similarities.toarray())
+
+    lst = list(enumerate(doc_similarities.toarray()[0]))
+    lst.sort(key=lambda x: (x[1], -x[0]), reverse=True)
+
+
+    return Response({'result': lst[1][0]})
