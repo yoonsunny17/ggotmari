@@ -19,7 +19,7 @@ function Edit() {
     "https://ggotmari.s3.ap-northeast-2.amazonaws.com/profile/defualt.jpg"
   );
   const [userSex, setUserSex] = useState(false);
-  const [userBirthday, setUserBirthday] = useState(null);
+  const [userBirthday, setUserBirthday] = useState("");
   const [userInfo, setUserInfo] = useState({
     status: "",
     message: "",
@@ -107,6 +107,23 @@ function Edit() {
   };
 
   const onUserBirthdayChange = (event) => {
+    if (isNaN(event.target.value)) {
+      setUserBirthday("");
+      alert("생년월일은 숫자만 입력가능합니다. 다시 입력해주세요");
+    }
+    // if (event.target.value.length === 4) {
+    //   if (1799 > +event.target.value || 2022 < +event.target.value) {
+    //     alert("생년 1800년부터 2022년까지 입력가능합니다.");
+    //     setUserBirthday("");
+    //   }
+    // }
+    // if (event.target.value.length === 6) {
+    //   const tmp = event.target.value.substr(0, 4);
+    //   if (+tmp < 1 || +tmp > 12) {
+    //     alert("생월은 1월부터 12월까지 입력가능합니다.");
+    //     setUserBirthday("");
+    //   }
+    // }
     setUserBirthday(event.target.value);
   };
 
