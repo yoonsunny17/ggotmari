@@ -130,7 +130,14 @@ public class UserService {
 
     @Transactional
     public boolean updateUser(UserPutReq userPutReq, String email, MultipartFile multipartFile) {
+
         User user = userRepository.findByEmail(email);
+
+        //악성 사용자 방지
+        User tempUser = userRepository.findByName(userPutReq.getUserName());
+        if(user.getId() != tempUser.getId()){
+            return false;
+        }
 
         if(userPutReq.getUserName() != null){
             if(userRepository.findByName(userPutReq.getUserName()) != null){
