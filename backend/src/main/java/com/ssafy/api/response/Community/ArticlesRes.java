@@ -17,8 +17,8 @@ public class ArticlesRes {
     Long articleId;
     @ApiModelProperty(name = "게시글 사진 목록")
     List<String> articleImages;
-    @ApiModelProperty(name = "유저 id", example = "1")
-    Long userId;
+    @ApiModelProperty(name = "유저 이름", example = "ggotmari")
+    String userName;
     @ApiModelProperty(name = "게시글 제목")
     String articleTitle;
     @ApiModelProperty(name = "게시글 내용")
@@ -46,7 +46,7 @@ public class ArticlesRes {
         }
         res.setArticleImages(pictures);
 
-        res.setUserId(article.getUser().getId());
+        res.setUserName(article.getUser().getName());
         res.setArticleTitle(article.getTitle());
         res.setArticleContent(article.getContent());
         res.setArticleDate(article.getDate().toString());
