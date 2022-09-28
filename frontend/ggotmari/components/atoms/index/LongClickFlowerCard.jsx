@@ -58,10 +58,6 @@ function LongClickFlowerCard({
   // TODO: 일반 클릭 시 링크 이동
 
   const [action, setAction] = useState("");
-
-  const clearAction = () => {
-    isLongPress.current = false;
-  };
   const timerRef = useRef();
   const isLongPress = useRef();
 
@@ -76,11 +72,12 @@ function LongClickFlowerCard({
   function handleOnClick(e) {
     console.log("handleOnClick");
     if (isLongPress.current) {
-      console.log("is long press; not continuing");
+      console.log("Is long press - not continuing.");
       return;
     }
     setAction("click");
   }
+
   function handleOnMouseDown() {
     console.log("handleOnMouseDown");
     startPressTimer();
@@ -97,29 +94,46 @@ function LongClickFlowerCard({
   }
 
   function handleOnTouchEnd() {
+    if (action === "longpress") return;
     console.log("handleOnTouchEnd");
     clearTimeout(timerRef.current);
   }
 
+  const successLongClick = () => {
+    console.log("successful long click");
+    openSwal();
+    setAction(undefined);
+  };
+
   return (
-    <div
-      onClick={handlePostClick}
-      // onClick={handleOnClick}
-      // onMouseDown={handleOnMouseDown}
-      // onMouseUp={handleOnMouseUp}
-      // onTouchStart={handleOnTouchStart}
-      // onTouchEnd={handleOnTouchEnd}
-      className=" cursor-pointer rounded-lg aspect-square overflow-hidden relative brightness-96"
-    >
-      {/* <img
+    <div>
+      <div
+        // onClick={handlePostClick}
+        onClick={handleOnClick}
+        onMouseDown={handleOnMouseDown}
+        onMouseUp={handleOnMouseUp}
+        onTouchStart={handleOnTouchStart}
+        onTouchEnd={handleOnTouchEnd}
+        className=" cursor-pointer rounded-lg aspect-square overflow-hidden relative brightness-96"
+      >
+        {/* <img
         className="w-full h-full object-cover"
         src={imgUrl}
         alt={flowerName}
       /> */}
-      <Image src={imgUrl} alt={flowerName} layout="fill" objectFit="cover" />
-      {/* {!action && clearAction()} */}
-      {/* {action === "click" && handlePostClick()}
+        <Image src={imgUrl} alt={flowerName} layout="fill" objectFit="cover" />
+
+        {/* {!action && clearAction()} */}
+        {/* {action === "click" && handlePostClick()}
       {action === "longpress" && openSwal()} */}
+      </div>
+
+      <div>
+        {/* {!action &} */}
+        {action === "click" && handlePostClick()}
+        {action === "longpress" && successLongClick()}
+        {/* {action === "longpress" && console.log("long click")} */}
+      </div>
     </div>
   );
 }
