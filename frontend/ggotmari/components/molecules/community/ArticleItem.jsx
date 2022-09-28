@@ -10,7 +10,6 @@ function ArticleItem({ article }) {
     userId,
     articleTitle,
     articleContent,
-    articleDate,
     tags,
     commentCount,
     likeCount,
@@ -28,31 +27,44 @@ function ArticleItem({ article }) {
   };
 
   return (
-    <div className="flex flex-row my-2 h-32 w-full" onClick={handleDetailClick}>
-      <div className="flex flex-col items-end justify-center">
-        <div className="w-24">
-          <ImageSquare imageSrc={articleImages[0]} />
-          <div className="text-xs text-font2 w-full">@{userId}</div>
-        </div>
+    <div
+      className="grid grid-rows-[auto_auto] grid-cols-[1fr_3fr] w-full"
+      onClick={handleDetailClick}
+    >
+      <div className="row-start-1 row-end-2 col-start-1 col-end-2 items-end justify-center">
+        <ImageSquare imageSrc={articleImages[0]} />
       </div>
-      <div className="flex flex-col justify-center px-2">
-        <div className="h-24">
-          <p className="text-sm font-sans font-medium text-black">
+      <div className="row-start-2 row-end-3 col-start-1 col-end-2 text-xs sm:text-base text-font2 px-1">
+        @{userId}
+      </div>
+      <div className="row-start-1 row-end-2 col-start-2 col-end-3 grid grid-rows-[1fr_auto_2fr] px-3">
+        <div className="row-start-1 row-end-2 flex items-center truncate">
+          <p className="text-sm sm:text-lg font-sans font-medium text-black truncate">
             {articleTitle}
           </p>
+        </div>
+        <div className="row-start-2 row-end-3 flex items-center">
           <div>
-            {tags.map((tag) => (
-              <FlowerTag flowerName={tag} key={tag} isRemovable={false} />
-            ))}
+            {tags.map((tag, idx) =>
+              idx < 3 ? (
+                <FlowerTag flowerName={tag} key={tag} isRemovable={false} />
+              ) : (
+                ""
+              ),
+            )}
           </div>
-          <div className="h-1/2 text-xs text-font2">{articleContent}</div>
         </div>
-        <div className="text-xs text-font2 w-full">
-          <AiFillHeart className="inline text-red-600" />{" "}
-          {`${likeCount >= 100 ? "99+" : likeCount} `}
-          <AiOutlineComment className="inline ml-2" />{" "}
-          {commentCount >= 100 ? "99+" : commentCount}
+        <div className="row-start-3 row-end-4 flex items-center text-ellipsis py-0.5">
+          <p className="text-xs text-font2 text-ellipsis line-clamp-2 sm:line-clamp-4">
+            {articleContent}
+          </p>
         </div>
+      </div>
+      <div className="row-start-2 row-end-3 col-start-2 col-end-3 text-xs text-font2 px-3">
+        <AiFillHeart className="inline text-red-600" />{" "}
+        {`${likeCount >= 100 ? "99+" : likeCount} `}
+        <AiOutlineComment className="inline ml-2" />{" "}
+        {commentCount >= 100 ? "99+" : commentCount}
       </div>
     </div>
   );
