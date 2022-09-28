@@ -139,7 +139,7 @@ public class RecommendService {
 
         /*POST*/
         URI uri = UriComponentsBuilder.fromUriString(DJANGO_REDIRECT_URI)
-                .path("/tag")
+                .path("/situation")
                 .encode()
                 .build()
                 .toUri();
@@ -157,7 +157,7 @@ public class RecommendService {
         RestTemplate restTemplate = new RestTemplate();
 
         URI uri = UriComponentsBuilder.fromUriString(DJANGO_REDIRECT_URI)
-                .path("like")
+                .path("/article")
                 .encode()
                 .build()
                 .toUri();
