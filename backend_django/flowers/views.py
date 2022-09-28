@@ -10,6 +10,7 @@ from datetime import *
 import time
 from sklearn.metrics.pairwise import cosine_similarity
 import redis
+import my_settings
 
 
 # 컬렉션 태그 기반 상황별 꽃 추천
@@ -61,7 +62,7 @@ def situation(request):
     # yesterday = (datetime.now() + timedelta(days=-1)).strftime('%Y-%m-%d')
     yesterday = '2022-09-05' # 임시
 
-    with redis.StrictRedis(host='172.17.0.1', port=6379, db=2, charset='utf-8', decode_responses=True) as connect:
+    with redis.StrictRedis(host='172.17.0.1', port=6379, db=2, charset='utf-8', decode_responses=True, password=my_settings.mysql_password) as connect:
         subject_sales = connect.hgetall(yesterday)
 
     for flower in like_flower:
