@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { useRouter } from "next/router";
+import { getUserName } from "../../../api/user.js";
 
 import {
   IoFlowerOutline,
@@ -9,10 +9,27 @@ import {
   IoChatbubblesOutline,
 } from "react-icons/io5";
 import { BsPeople } from "react-icons/bs";
+import { useEffect, useState } from "react";
 
 function Footer() {
-  const router = useRouter();
-  const { username } = router.query;
+  const [username, setUsername] = useState("");
+
+  const success = (res) => {
+    // console.log(res);
+    setUsername(res.data.userName);
+  };
+
+  const fail = (err) => console.log(err);
+
+  const getInfo = () => {
+    getUserName(success, fail);
+  };
+
+  useEffect(() => {
+    getInfo();
+  }, []);
+
+  // console.log(username);
 
   return (
     <div className="flex flex-row w-full z-20 justify-around fixed bottom-0 bg-white p-3 items-center border-t-2 border-font3">
@@ -39,7 +56,7 @@ function Footer() {
           <IoFlowerOutline className="text-main text-2xl" />
         </a>
       </Link>
-      <Link href="profile/[username]" as={`/profile/${username}`}>
+      <Link href={`/profile/${username}`}>
         <a>
           <IoPersonCircleOutline className="text-main text-3xl" />
         </a>

@@ -11,4 +11,15 @@ async function doLogin(code, success, fail) {
     .catch(fail);
 }
 
-export { doLogin };
+async function getUserName(success, fail) {
+  await api
+    .get(`user`, {
+      headers: {
+        Authorization: localStorage.getItem("accessToken"),
+      },
+    })
+    .then(success)
+    .catch(fail);
+}
+
+export { doLogin, getUserName };
