@@ -11,43 +11,19 @@ function FollowUser({
 }) {
   const router = useRouter();
 
-  console.log(item.isFollowing);
-
-  const success = () => {
+  const success = (userName) => {
     const newFollowInfo = { ...followInfo };
-    // console.log(newFollowInfo);
-    // console.log(followInfo);
-    const newShowList = [...showList];
-    // console.log(newShowList);
-    // console.log(showList);
-    // followInfo 바꿔주기
-    if (toShow) {
-      for (const follower of newFollowInfo.followers) {
-        if (follower === item) {
-          follower.isFollowing = !follower.isFollowing;
-          console.log(follower);
-          console.log(item);
-          setFollowInfo(newFollowInfo);
-        }
+
+    for (const follower of newFollowInfo.followers) {
+      if (follower.userName === userName) {
+        follower.isFollowing = !follower.isFollowing;
+        setFollowInfo(newFollowInfo);
       }
-      for (const follower of newShowList.followers) {
-        if (follower === item) {
-          follower.isFollowing = !follower.isFollowing;
-          setShowList(newShowList);
-        }
-      }
-    } else {
-      for (const follower of newFollowInfo.followers) {
-        if (follower === item) {
-          follower.isFollowing = !follower.isFollowing;
-          setFollowInfo(newFollowInfo);
-        }
-      }
-      for (const follower of newShowList.followers) {
-        if (follower === item) {
-          follower.isFollowing = !follower.isFollowing;
-          setShowList(newShowList);
-        }
+    }
+    for (const following of newFollowInfo.followings) {
+      if (following.userName === userName) {
+        following.isFollowing = !following.isFollowing;
+        setFollowInfo(newFollowInfo);
       }
     }
   };
@@ -59,8 +35,7 @@ function FollowUser({
       isFollow: !item.isFollowing,
       userName: item.userName,
     };
-    console.log(credential);
-    follow(credential, success, fail);
+    follow(credential, success(credential.userName), fail);
   };
 
   return (

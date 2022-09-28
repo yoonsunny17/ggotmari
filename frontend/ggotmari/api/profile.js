@@ -25,7 +25,6 @@ async function getUserFollow(username, success, fail) {
 }
 
 async function follow(credential, success, fail) {
-  console.log(credential);
   await api
     .post(
       `user/follow`,
