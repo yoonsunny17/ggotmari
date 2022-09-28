@@ -31,9 +31,8 @@ function Home() {
   });
 
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col w-screen">
       <Header text={"꽃마리"} />
-      <div className="font-sans flex justify-center"></div>
       <hr />
       <div className="flex flex-col items-center w-screen px-6 divide-y divide-sub1 divide-opacity-60">
         {/* 오늘의 꽃, 꽃 이야기, 꽃에 담은 편지 */}
@@ -72,7 +71,7 @@ function Home() {
 
               {/* 꽃 사전 버튼 */}
               <button
-                onClick={() => Router.push("/flower/search/searchtext")}
+                onClick={() => Router.push("/flower/search/")}
                 className="w-[calc(100%-12px)] h-12 rounded-md font-gangwonlight text-sm text-white bg-extra2"
               >
                 <div className="flex justify-between">
