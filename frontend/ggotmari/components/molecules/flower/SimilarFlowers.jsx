@@ -8,9 +8,9 @@ function SimilarFlowers({
   const handlePostClick = () => {
     router.push(
       {
-        pathname: `${kindId}`,
+        pathname: `${subjectId}`,
       },
-      `${kindId}`
+      `${subjectId}`
     );
   };
   return (

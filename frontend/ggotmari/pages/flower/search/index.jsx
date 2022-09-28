@@ -10,7 +10,7 @@ function AllFlowerList() {
       </div>
       <hr />
       <div className="flex items-end justify-between">
-        <div className="font-gangwon text-xl pt-6 pl-8">전체 꽃</div>
+        <div className="font-gangwon text-xl pt-6 pl-8">꽃을 검색해 보세요</div>
         <div className="px-8">
           <select className="text-xs select select-bordered select-sm w-fit max-w-xs focus:outline-none">
             <option>가나다순</option>

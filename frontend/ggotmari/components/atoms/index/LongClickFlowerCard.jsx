@@ -1,6 +1,8 @@
 import { useRouter } from "next/router";
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import Image from "next/image";
+
+import { getFlowerDetail } from "../../../api/flower";
 
 import Swal from "sweetalert2";
 
@@ -17,8 +19,21 @@ function LongClickFlowerCard({
     );
   };
 
+  useEffect(() => {
+    console.log(router.query.subjectId);
+    getFlowerDetail(
+      router.query.subjectId,
+      (res) => {
+        console.log(res.data);
+      },
+      (err) => {
+        console.log(err);
+      }
+    );
+  });
+
   // TODO: 스타일 적용, 사이즈 조절
-  const openSwal = () => {
+  const openSwal = (e) => {
     Swal.fire({
       title: `정말 ${flowerName} 추천을 그만 받으시겠습니까?`,
       text: "추천을 그만 받으면 앞으로 해당 꽃이 표시 되지 않습니다.",
@@ -45,17 +60,25 @@ function LongClickFlowerCard({
   const [action, setAction] = useState("");
 
   const clearAction = () => {
-    action: "";
+    isLongPress.current = false;
   };
   const timerRef = useRef();
+  const isLongPress = useRef();
 
   function startPressTimer() {
+    isLongPress.current = false;
     timerRef.current = setTimeout(() => {
+      isLongPress.current = true;
       setAction("longpress");
     }, 500);
   }
 
   function handleOnClick(e) {
+    console.log("handleOnClick");
+    if (isLongPress.current) {
+      console.log("is long press; not continuing");
+      return;
+    }
     setAction("click");
   }
   function handleOnMouseDown() {

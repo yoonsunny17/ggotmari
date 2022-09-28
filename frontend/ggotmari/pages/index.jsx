@@ -152,7 +152,8 @@ function Home() {
         {/* 도움을 원하시나요? */}
         <div className="mb-16 w-full font-sans pt-6">
           <div className="pb-4">도움을 원하시나요?</div>
-          <div className="flex justify-between text-sm text-font2">
+          {/* <div className="flex justify-between text-sm text-font2"> */}
+          <div className="text-sm text-font2 grid grid-cols gap-y-1">
             <Link href="https://pf.kakao.com/_VKECxj">
               <a target="_blank">
                 <img className="w-20" src={kakao_channel.src} alt="" />
