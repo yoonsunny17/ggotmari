@@ -69,7 +69,7 @@ public class FlowerService {
             KindDetailRes detail = new KindDetailRes();
             detail.setKindId(kind.getId());
             detail.setKindName(kind.getKindName());
-            detail.setKindImage(kind.getFlowerImage());
+            detail.setKindImage("https://ggotmari.s3.ap-northeast-2.amazonaws.com" + kind.getFlowerImage());
 
             List<Tag> tags = tagRepository.findAll();
             for(Tag tag : tags){
