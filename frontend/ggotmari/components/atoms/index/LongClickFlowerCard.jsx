@@ -19,21 +19,21 @@ function LongClickFlowerCard({
     );
   };
 
-  useEffect(() => {
-    console.log(router.query.subjectId);
-    getFlowerDetail(
-      router.query.subjectId,
-      (res) => {
-        console.log(res.data);
-      },
-      (err) => {
-        console.log(err);
-      }
-    );
-  });
+  // useEffect(() => {
+  //   console.log(router.query.subjectId);
+  //   getFlowerDetail(
+  //     router.query.subjectId,
+  //     (res) => {
+  //       console.log(res.data);
+  //     },
+  //     (err) => {
+  //       console.log(err);
+  //     }
+  //   );
+  // }, []);
 
   // TODO: 스타일 적용, 사이즈 조절
-  const openSwal = (e) => {
+  const openSwal = () => {
     Swal.fire({
       title: `정말 ${flowerName} 추천을 그만 받으시겠습니까?`,
       text: "추천을 그만 받으면 앞으로 해당 꽃이 표시 되지 않습니다.",
@@ -103,11 +103,12 @@ function LongClickFlowerCard({
 
   return (
     <div
-      onClick={handleOnClick}
-      onMouseDown={handleOnMouseDown}
-      onMouseUp={handleOnMouseUp}
-      onTouchStart={handleOnTouchStart}
-      onTouchEnd={handleOnTouchEnd}
+      onClick={handlePostClick}
+      // onClick={handleOnClick}
+      // onMouseDown={handleOnMouseDown}
+      // onMouseUp={handleOnMouseUp}
+      // onTouchStart={handleOnTouchStart}
+      // onTouchEnd={handleOnTouchEnd}
       className=" cursor-pointer rounded-lg aspect-square overflow-hidden relative brightness-96"
     >
       {/* <img
@@ -116,9 +117,9 @@ function LongClickFlowerCard({
         alt={flowerName}
       /> */}
       <Image src={imgUrl} alt={flowerName} layout="fill" objectFit="cover" />
-      {!action && clearAction()}
-      {action === "click" && handlePostClick()}
-      {action === "longpress" && openSwal()}
+      {/* {!action && clearAction()} */}
+      {/* {action === "click" && handlePostClick()}
+      {action === "longpress" && openSwal()} */}
     </div>
   );
 }
