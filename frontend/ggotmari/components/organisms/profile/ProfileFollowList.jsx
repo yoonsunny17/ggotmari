@@ -16,7 +16,6 @@ function ProfileFollowList() {
 
   // 서버에서 요청을 받아 정보를 담아줄 함수 및 useEffect
   const success = (res) => {
-    console.log(res.data);
     const newFollowInfo = {
       followers: res.data.followers,
       followings: res.data.followings,
@@ -41,6 +40,7 @@ function ProfileFollowList() {
 
   // 팔로우 팔로잉 정보 바뀔 때 및 처음 시작할 때 정보 채워주기
   useEffect(() => {
+    setSearchTerm("");
     if (toShow) {
       setShowList([...followInfo.followers]);
     } else {
@@ -121,12 +121,12 @@ function ProfileFollowList() {
           onChange={(event) => {
             setSearchTerm(event.target.value);
           }}
+          value={searchTerm}
         />
       </div>
       <div className="follow-list mt-3 mb-14">
         {showList.length > 0 ? (
           showList.map((item, index) => {
-            console.log(item);
             return (
               <div className="followers" key={index}>
                 <FollowUser
