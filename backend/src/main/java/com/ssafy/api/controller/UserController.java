@@ -32,6 +32,26 @@ public class UserController {
     @Autowired
     private JwtTokenUtil jwtTokenUtil;
 
+    @GetMapping("")
+    @ApiOperation(value = "회원 이메일 조회", notes = "회원 이메일 조회")
+    @ApiResponses({
+            @ApiResponse(code = 201, message = "회원 이메일 조회 성공"),
+            @ApiResponse(code = 500, message = "회원 이메일 조회 실패")
+    })
+    public ResponseEntity<? extends UserEmailRes> getUserEmail(HttpServletRequest request){
+        // user email 가져오기
+        String jwtToken = request.getHeader("Authorization");
+        String email = jwtTokenUtil.getUserEmailFromToken(jwtToken);
+
+        User user = userService.getUserByEmail(email);
+
+        if(user == null){
+            return ResponseEntity.status(404).body(UserEmailRes.of(404, "존재하지 않는 사용자입니다.", null));
+        }
+
+        return ResponseEntity.status(200).body(UserEmailRes.of(200,"회원 정보 조회 성공", user.getName()));
+    }
+
     @GetMapping("/{username}")
     @ApiOperation(value = "회원 정보 조회", notes = "회원 정보와 작성글, 좋아하는 꽃, 글 등을 반환")
     @ApiResponses({

@@ -265,5 +265,4 @@ public class CommunityService {
         }
         return true;
     }
-
 }
