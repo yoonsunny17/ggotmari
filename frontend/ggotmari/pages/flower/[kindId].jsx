@@ -57,7 +57,7 @@ function FlowerDetail() {
       (res) => {
         // console.log(res);
         // setFlowerInfo(res.data);
-        console.log(res.data);
+        console.log(res);
         console.log(res.data.kinds[0].kindImage);
         // console.log(res)
       },
