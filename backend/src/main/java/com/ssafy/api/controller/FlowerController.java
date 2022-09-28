@@ -92,13 +92,13 @@ public class FlowerController {
         }
     }
 
-    @PostMapping("/{subjectId}")
+    @PostMapping("/{kindId}")
     @ApiOperation(value = "컬랙션(태그) 추가/삭제", notes = "컬렉션 전환 성공 여부를 반환한다.")
     @ApiResponses({
             @ApiResponse(code = 201, message = "태그 전환 성공"),
             @ApiResponse(code = 500, message = "태그 전환 실패")
     })
-    public ResponseEntity<? extends TagPostRes> reverseTag(@PathVariable("subjectId") Long subjectId,
+    public ResponseEntity<? extends TagPostRes> reverseTag(@PathVariable("kindId") Long kindId,
                                                            @RequestBody FlowerTagPostReq tagInfo,
                                                            HttpServletRequest request){
 
