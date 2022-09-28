@@ -19,6 +19,10 @@ public class FollowGetFollowerRes {
     @ApiModelProperty(name = "맞팔 여부")
     boolean isFollowing;
 
+    @JsonProperty("isMe")
+    @ApiModelProperty(name = "본인 여부")
+    boolean isMe = false;
+
     public static FollowGetFollowerRes of(Follow follower, String loginUserEmail){
         FollowGetFollowerRes res = new FollowGetFollowerRes();
 
