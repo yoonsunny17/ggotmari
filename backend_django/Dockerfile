@@ -1,5 +1,10 @@
 FROM python:3.9.14
-ENV PYTHONUNBUFFERED 1
+ENV JAVA_HOME /usr/lib/jvm/java-8-openjdk-amd64/jre
+ENV PYTHONUNBUFFERED 1  
+
+RUN apt-get update && apt-get install -y g++ default-jdk
+# RUN pip install konlpy
+
 WORKDIR /var/jenkins_home/workspace/ggotmari/backend_django
 
 COPY . .
