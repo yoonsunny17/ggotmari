@@ -250,4 +250,17 @@ public class CommunityController {
         return ResponseEntity.status(201).body(PopularArticleGetRes.of(201, "정상적으로 작성되었습니다", articles));
     }
 
+    @GetMapping("/article/id")
+    @ApiOperation(value = "게시글 id 조회", notes = "ssr을 위해 전체 게시글 id를 반환한다.")
+    @ApiResponses({
+            @ApiResponse(code = 201, message = "id 조회 성공"),
+            @ApiResponse(code = 500, message = "id 조회 실패")
+    })
+    public ResponseEntity<? extends DynamicArticlesRes> dynamicArticles(){
+
+        List<Article> articles = communityService.getArticles();
+
+        return ResponseEntity.status(201).body(DynamicArticlesRes.of(201, "정상적으로 작성되었습니다", articles));
+    }
+
 }
