@@ -31,9 +31,8 @@ function Home() {
   });
 
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col w-screen">
       <Header text={"꽃마리"} />
-      <div className="font-sans flex justify-center"></div>
       <hr />
       <div className="flex flex-col items-center w-screen px-6 divide-y divide-sub1 divide-opacity-60">
         {/* 오늘의 꽃, 꽃 이야기, 꽃에 담은 편지 */}
@@ -72,7 +71,7 @@ function Home() {
 
               {/* 꽃 사전 버튼 */}
               <button
-                onClick={() => Router.push("/flower/search/searchtext")}
+                onClick={() => Router.push("/flower/search/")}
                 className="w-[calc(100%-12px)] h-12 rounded-md font-gangwonlight text-sm text-white bg-extra2"
               >
                 <div className="flex justify-between">
@@ -153,7 +152,8 @@ function Home() {
         {/* 도움을 원하시나요? */}
         <div className="mb-16 w-full font-sans pt-6">
           <div className="pb-4">도움을 원하시나요?</div>
-          <div className="flex justify-between text-sm text-font2">
+          {/* <div className="flex justify-between text-sm text-font2"> */}
+          <div className="text-sm text-font2 grid grid-cols gap-y-1">
             <Link href="https://pf.kakao.com/_VKECxj">
               <a target="_blank">
                 <img className="w-20" src={kakao_channel.src} alt="" />
