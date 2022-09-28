@@ -144,6 +144,7 @@ CACHES = {
         "LOCATION": "redis://172.17.0.1:6379/2",  # 2번 DB 사용
         "OPTIONS": {
             "CLIENT_CLASS": "django_redis.client.DefaultClient",
+            "PASSWORD": my_settings.mysql_password,
         }
     }
 }
