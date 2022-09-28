@@ -1,4 +1,3 @@
-from operator import indexOf
 from django.shortcuts import get_object_or_404, get_list_or_404
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
@@ -178,10 +177,12 @@ def article(request):
 def letter(request):
     start = time.time()
 
+    content = request.data['content']
+
     okt = Okt()
 
     # text_list = []
-    text_list = ['편지 내용 사랑 하는 누구 에게 오늘 이 벌써 며칠 이다 사랑 한다.']
+    text_list = [content]
 
     all_flower_language = Subject.objects.all().values('flower_language')
 
