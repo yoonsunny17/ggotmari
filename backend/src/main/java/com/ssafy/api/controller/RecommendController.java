@@ -97,7 +97,7 @@ public class RecommendController {
         }
     }
 
-    @GetMapping("/letter")
+    @PostMapping("/letter")
     @ApiOperation(value = "편지 추천", notes = "편지 내용 기반 꽃 추천")
     @ApiResponses({
             @ApiResponse(code = 201, message = "꽃 추천 성공"),
