@@ -133,9 +133,6 @@ function ProfileFollowList() {
                   item={item}
                   followInfo={followInfo}
                   setFollowInfo={setFollowInfo}
-                  showList={showList}
-                  setShowList={setShowList}
-                  toShow={toShow}
                 />
               </div>
             );
