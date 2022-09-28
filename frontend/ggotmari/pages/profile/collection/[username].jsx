@@ -69,7 +69,6 @@ export default function Collection() {
       const username = window.location.pathname.substring(20);
       getInfo(username);
     } else {
-      alert("로그인이 필요한 서비스입니다.");
       router.push("/login");
     }
   }, []);

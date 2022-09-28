@@ -26,7 +26,9 @@ function Footer() {
   };
 
   useEffect(() => {
-    getInfo();
+    if (localStorage.getItem("accessToken")) {
+      getInfo();
+    }
   }, []);
 
   // console.log(username);
@@ -56,7 +58,7 @@ function Footer() {
           <IoFlowerOutline className="text-main text-2xl" />
         </a>
       </Link>
-      <Link href={`/profile/${username}`}>
+      <Link href={username ? `/profile/${username}` : "/login"}>
         <a>
           <IoPersonCircleOutline className="text-main text-3xl" />
         </a>
