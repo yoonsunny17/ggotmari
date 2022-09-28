@@ -16,7 +16,7 @@ function Edit() {
   // console.log(userName);
 
   const [userName, setUserName] = useState("");
-  const [userImage, setUserImage] = useState([]);
+  const [userImage, setUserImage] = useState("");
   const [userImagePreview, setUserImagePreview] = useState(
     userInfo
       ? userInfo.user.userImage
@@ -102,6 +102,7 @@ function Edit() {
 
   const changeuserImage = (event) => {
     setUserImage(event.target.files[0]);
+    console.log(event.target.files[0]);
     const url = URL.createObjectURL(event.target.files[0]);
     setUserImagePreview(url);
   };
@@ -249,7 +250,7 @@ function Edit() {
   };
 
   const resetUserImage = () => {
-    setUserImage([]);
+    setUserImage("");
     setUserImagePreview(
       "https://ggotmari.s3.ap-northeast-2.amazonaws.com/profile/defualt.jpg"
     );
@@ -260,11 +261,11 @@ function Edit() {
     event.preventDefault();
     const credentials = {
       userName: userName,
-      userImage: userImage,
       birthday: userBirthday,
       sex: userSex,
     };
     if (!userImage) {
+      // 이미지 담지 않을때는 어떻게 보내면 되나요? 빈 문자열로 담으면 되나요?
     }
   };
 
