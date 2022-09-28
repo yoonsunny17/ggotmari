@@ -1,14 +1,7 @@
 import { useRouter } from "next/router";
 import { follow } from "../../../api/profile";
 
-function FollowUser({
-  item,
-  followInfo,
-  setFollowInfo,
-  showList,
-  setShowList,
-  toShow,
-}) {
+function FollowUser({ item, followInfo, setFollowInfo }) {
   const router = useRouter();
 
   const success = (userName) => {
