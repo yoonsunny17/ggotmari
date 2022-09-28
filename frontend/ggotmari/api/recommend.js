@@ -41,7 +41,7 @@ async function postDislikeRecomm(success, fail) {
         headers: {
           Authorization: localStorage.getItem("accessToken"),
         },
-      },
+      }
       {
         kindId,
       }

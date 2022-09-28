@@ -19,20 +19,51 @@ function LongClickFlowerCard({ info }) {
   };
 
   // TODO: 스타일 적용, 사이즈 조절
+  // const openSwal = () => {
+  //   Swal.fire({
+  //     title: `정말 ${flowerName} 추천을 그만 받으시겠습니까?`,
+  //     text: "추천을 그만 받으면 앞으로 해당 꽃이 표시 되지 않습니다.",
+  //     width: 300,
+  //     height: 250,
+  //     showDenyButton: true,
+  //     confirmButtonColor: "#FFD365",
+  //     denyButtonColor: "#709FB0",
+  //     confirmButtonText: "네",
+  //     denyButtonText: "아니요",
+  //   }).then((result) => {
+  //     if (result.isConfirmed) {
+  //       Swal.fire("Deleted!", "Your file has been deleted.", "success");
+  //     }
+  //   });
+  // };
+
   const openSwal = () => {
     Swal.fire({
       title: `정말 ${flowerName} 추천을 그만 받으시겠습니까?`,
       text: "추천을 그만 받으면 앞으로 해당 꽃이 표시 되지 않습니다.",
       width: 300,
       height: 250,
-      // icon: "warning",
-      // showCancelButton: true,
       showDenyButton: true,
       confirmButtonColor: "#FFD365",
       denyButtonColor: "#709FB0",
-      // cancelButtonColor: "#d33",
       confirmButtonText: "네",
       denyButtonText: "아니요",
+      showLoaderOnConfirm: true,
+      preConfirm: () => {
+        return fetch(`https://j7a303.p.ssafy.io/api/recommend/dislike`, {
+          method: "POST",
+          body: {
+            kindId: `${kindId}`,
+          },
+        })
+          .then((response) => {
+            console.log(response);
+          })
+          .catch((error) => {
+            Swal.showValidationMessage(`Request failed: ${error}`);
+          });
+      },
+      allowOutsideClick: () => !Swal.isLoading(),
     }).then((result) => {
       if (result.isConfirmed) {
         Swal.fire("Deleted!", "Your file has been deleted.", "success");
