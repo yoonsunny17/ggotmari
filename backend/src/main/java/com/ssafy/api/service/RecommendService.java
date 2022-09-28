@@ -7,10 +7,8 @@ import com.ssafy.api.request.RecommendTagReq;
 import com.ssafy.api.response.Recommend.KindRes;
 import com.ssafy.api.response.Recommend.RecommendResultRes;
 import com.ssafy.api.response.Recommend.RecommendResultsRes;
-import com.ssafy.api.response.Recommend.RecommendTagRes;
 import com.ssafy.db.entity.*;
 import com.ssafy.db.repository.*;
-import org.checkerframework.checker.units.qual.K;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
@@ -60,51 +58,36 @@ public class RecommendService {
         return true;
     }
 
-    public List<RecommendTagRes> recommendBySituation(String email){
+    public List<KindRes> recommendBySituation(String email, Long tagId){
 
         User user = userRepository.findByEmail(email);
 
-        int tagSize = (int)tagRepository.count();
+        List<Long> kindIds = connectSituation(user.getId(), tagId).getResult();
 
-        List<RecommendTagRes> tags = new ArrayList<>();
-        for(int i=1; i<= tagSize; i++){
-            long tagId = Long.valueOf(i);
+        List<KindRes> flowers = new ArrayList<>();
+        for(Long id : kindIds){
+            KindRes kindRes = new KindRes();
+            Kind kind = kindRepository.findById(id).get();
+            kindRes.setKindId(id);
+            kindRes.setKindImage("https://ggotmari.s3.ap-northeast-2.amazonaws.com" + kind.getFlowerImage());
+            kindRes.setSubjectId(kind.getSubject().getId());
 
-            List<Long> kindIds = connectSituation(user.getId(), tagId).getResult();
+            flowers.add(kindRes);
+        }
 
-            RecommendTagRes tagRes = new RecommendTagRes();
-            Tag tag = tagRepository.findById(tagId).get();
-            tagRes.setTagId(tag.getId());
-            tagRes.setTagName(tag.getDear());
-
-            List<KindRes> flowers = new ArrayList<>();
-            for(Long id : kindIds){
+        if(flowers.size()%9 != 0){
+            int left = 9 - flowers.size()%9;
+            for(int j=0; j<left; j++){
                 KindRes kindRes = new KindRes();
-                Kind kind = kindRepository.findById(id).get();
-                kindRes.setKindId(id);
-                kindRes.setKindImage(kind.getFlowerImage());
-                kindRes.setSubjectId(kind.getSubject().getId());
+                kindRes.setKindId(0L);
+                kindRes.setKindImage("https://ggotmari.s3.ap-northeast-2.amazonaws.com/kind/default.jpg");
+                kindRes.setSubjectId(0L);
 
                 flowers.add(kindRes);
             }
-
-            if(flowers.size()%9 != 0){
-                int left = 9 - flowers.size()%9;
-                for(int j=0; j<left; j++){
-                    KindRes kindRes = new KindRes();
-                    kindRes.setKindId(0L);
-                    kindRes.setKindImage("/kind/default.jpg");
-                    kindRes.setSubjectId(0L);
-
-                    flowers.add(kindRes);
-                }
-            }
-
-            tagRes.setFlowers(flowers);
-            tags.add(tagRes);
         }
 
-        return tags;
+        return flowers;
     }
 
     public List<Article> recommendByLike(String email){

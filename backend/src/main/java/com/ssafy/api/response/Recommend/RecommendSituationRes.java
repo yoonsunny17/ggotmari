@@ -13,9 +13,9 @@ import java.util.List;
 public class RecommendSituationRes extends BaseResponseBody {
 
     @ApiModelProperty(name = "태그별 꽃 추천")
-    List<RecommendTagRes> tags = new ArrayList<>();
+    List<KindRes> tags = new ArrayList<>();
 
-    public static RecommendSituationRes of(Integer statusCode, String message, List<RecommendTagRes> tags) {
+    public static RecommendSituationRes of(Integer statusCode, String message, List<KindRes> tags) {
         RecommendSituationRes res = new RecommendSituationRes();
         res.setStatusCode(statusCode);
         res.setMessage(message);
