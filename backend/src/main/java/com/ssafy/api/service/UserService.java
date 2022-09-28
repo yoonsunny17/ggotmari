@@ -183,10 +183,12 @@ public class UserService {
             FollowGetFollowerRes follower = new FollowGetFollowerRes();
             follower.setUserImage(follow.getFollowUser().getProfileImage());
             follower.setUserName(follow.getFollowUser().getName());
-            if(loginFollowings.contains(follow)){
-                follower.setFollowing(true);
-            }else{
-                follower.setFollowing(false);
+
+            follower.setFollowing(false);
+            for(Follow login : loginFollowings){
+                if((follow.getFollowUser().getId() == login.getFollowingUser().getId()) || (follow.getFollowUser().getId() == loginUser.getId())){
+                    follower.setFollowing(true);
+                }
             }
             followers.add(follower);
         }
@@ -207,10 +209,12 @@ public class UserService {
             FollowGetFollowerRes following = new FollowGetFollowerRes();
             following.setUserImage(follow.getFollowingUser().getProfileImage());
             following.setUserName(follow.getFollowingUser().getName());
-            if(loginFollowings.contains(follow)){
-                following.setFollowing(true);
-            }else{
-                following.setFollowing(false);
+
+            following.setFollowing(false);
+            for(Follow login : loginFollowings){
+                if((follow.getFollowingUser().getId() == login.getFollowingUser().getId()) || (follow.getFollowingUser().getId() == loginUser.getId())){
+                    following.setFollowing(true);
+                }
             }
             followings.add(following);
         }
