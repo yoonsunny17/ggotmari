@@ -6,31 +6,17 @@ import { getFlowerDetail } from "../../../api/flower";
 
 import Swal from "sweetalert2";
 
-function LongClickFlowerCard({
-  info: { subjectId, kindId, flowerName, imgUrl },
-}) {
+function LongClickFlowerCard({ info }) {
+  const { subjectId, kindId, flowerName, imgUrl } = info;
   const router = useRouter();
   const handlePostClick = () => {
     router.push(
-      {
-        pathname: `flower/${subjectId}`,
-      },
-      `flower/${subjectId}`
+      // {
+      //   pathname: `flower/${subjectId}`,
+      // },
+      `/flower/${kindId}`
     );
   };
-
-  // useEffect(() => {
-  //   console.log(router.query.subjectId);
-  //   getFlowerDetail(
-  //     router.query.subjectId,
-  //     (res) => {
-  //       console.log(res.data);
-  //     },
-  //     (err) => {
-  //       console.log(err);
-  //     }
-  //   );
-  // }, []);
 
   // TODO: 스타일 적용, 사이즈 조절
   const openSwal = () => {
@@ -122,17 +108,11 @@ function LongClickFlowerCard({
         alt={flowerName}
       /> */}
         <Image src={imgUrl} alt={flowerName} layout="fill" objectFit="cover" />
-
-        {/* {!action && clearAction()} */}
-        {/* {action === "click" && handlePostClick()}
-      {action === "longpress" && openSwal()} */}
       </div>
 
       <div>
-        {/* {!action &} */}
         {action === "click" && handlePostClick()}
         {action === "longpress" && successLongClick()}
-        {/* {action === "longpress" && console.log("long click")} */}
       </div>
     </div>
   );

@@ -29,7 +29,7 @@ export async function getStaticPaths() {
     },
     (err) => {
       console.log(err);
-    },
+    }
   );
 
   return { paths, fallback: false };
@@ -46,7 +46,7 @@ export async function getStaticProps({ params }) {
     },
     (err) => {
       console.log(err);
-    },
+    }
   );
 
   return {
