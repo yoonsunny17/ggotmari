@@ -16,10 +16,12 @@ RUN pip install --upgrade pip
 
 RUN pip install -r requirements.txt
 
-# RUN pip install gunicorn
-COPY . .
+RUN python sale_data.py
 
-RUN python manage.py migrate --fake
+# RUN pip install gunicorn
+# COPY . .
+
+# RUN python manage.py migrate --fake
 
 # CMD ["gunicorn", "ggotmari.wsgi", "--bind", "0.0.0.0:8000"]
 CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
