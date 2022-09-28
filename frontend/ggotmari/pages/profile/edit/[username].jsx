@@ -3,7 +3,7 @@ import { BsCamera } from "react-icons/bs";
 import { IoRefreshOutline } from "react-icons/io5";
 import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
-import { getUser } from "../../../api/profile.js";
+import { getUser, editUser, signout } from "../../../api/profile.js";
 
 function Edit() {
   const router = useRouter();
@@ -18,9 +18,7 @@ function Edit() {
   const [userName, setUserName] = useState("");
   const [userImage, setUserImage] = useState("");
   const [userImagePreview, setUserImagePreview] = useState(
-    userInfo
-      ? userInfo.user.userImage
-      : "https://ggotmari.s3.ap-northeast-2.amazonaws.com/profile/defualt.jpg"
+    "https://ggotmari.s3.ap-northeast-2.amazonaws.com/profile/defualt.jpg"
   );
   const [userSex, setUserSex] = useState(false);
   const [userBirthday, setUserBirthday] = useState("");
@@ -68,9 +66,8 @@ function Edit() {
     ],
   });
 
-  // 서버 통신 짤 코드
-  const success = (res) => {
-    console.log(res.data);
+  // 초기 데이터 받아오기
+  const getUserSuccess = (res) => {
     setUserInfo(res.data);
     setUserName(res.data.user.userName);
     setUserImagePreview(res.data.user.userImage);
@@ -78,16 +75,14 @@ function Edit() {
     setUserBirthday(res.data.user.userBirthday || "");
   };
 
-  const fail = (err) => {
+  const getUserFail = (err) => {
     console.log(err);
     alert("잘못된 접근입니다.");
     router.push("/");
   };
-  // 서버 통신 짤 코드
 
   const getInfo = (username) => {
-    // console.log(username);
-    getUser(username, success, fail);
+    getUser(username, getUserSuccess, getUserFail);
   };
 
   useEffect(() => {
@@ -100,9 +95,51 @@ function Edit() {
     }
   }, []);
 
+  // 제출 통신
+  const onSubmitSuccess = (res) => {
+    console.log(res);
+  };
+
+  const onSubmitFail = (err) => {
+    console.log(err);
+  };
+
+  const onSubmit = (event) => {
+    event.preventDefault();
+
+    const formData = new FormData();
+
+    const credentials = {
+      userName: userName,
+      birthday: userBirthday,
+      sex: userSex,
+    };
+
+    const json = JSON.stringify(credentials);
+    const blob = new Blob([json], { type: "application/json" });
+    formData.append("userPurReq", blob);
+    formData.append("multipartfile", userImage);
+    editUser(credentials, onSubmitSuccess, onSubmitFail);
+  };
+
+  // 회원탈퇴 통신
+  const onSignoutSuccess = () => {
+    localStorage.removeItem("accessToken");
+    router.push("/login");
+    alert("성공적으로 탈퇴되었습니다.");
+  };
+
+  const onSignoutFail = (err) => {
+    console.log(err);
+  };
+
+  const onSignout = () => {
+    signout(onSignoutSuccess, onSignoutFail);
+  };
+
+  // input값 변경될 때 사용할 함수들
   const changeuserImage = (event) => {
     setUserImage(event.target.files[0]);
-    console.log(event.target.files[0]);
     const url = URL.createObjectURL(event.target.files[0]);
     setUserImagePreview(url);
   };
@@ -256,19 +293,6 @@ function Edit() {
     );
   };
 
-  // 제출
-  const onSubmit = (event) => {
-    event.preventDefault();
-    const credentials = {
-      userName: userName,
-      birthday: userBirthday,
-      sex: userSex,
-    };
-    if (!userImage) {
-      // 이미지 담지 않을때는 어떻게 보내면 되나요? 빈 문자열로 담으면 되나요?
-    }
-  };
-
   return (
     <>
       <div className="title flex justify-center">
@@ -386,7 +410,7 @@ function Edit() {
         <button
           className="logout mr-2 hover:text-font1"
           onClick={() => {
-            localStorage.setItem("accessToken", "");
+            localStorage.removeItem("accessToken");
             alert("로구아웃 되었습니다.");
             router.push("/login");
           }}
@@ -394,7 +418,9 @@ function Edit() {
           로그아웃
         </button>
         <span>|</span>
-        <button className="signout ml-2 hover:text-font1">회원탈퇴</button>
+        <button className="signout ml-2 hover:text-font1" onClick={onSignout}>
+          회원탈퇴
+        </button>
       </div>
     </>
   );

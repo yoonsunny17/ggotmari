@@ -42,13 +42,12 @@ async function follow(credential, success, fail) {
     .catch(fail);
 }
 
-async function editUser(credential, success, fail) {
+async function editUser(credentials, success, fail) {
   await api
-    .post(`user/follow`, {
-      //   headers: {
-      //     Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-      //   },
-      // userImage: credential.userImage, userName: credential.userName, birthday: credential.birthday, sex: credential.sex,
+    .put(`user`, {
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+      },
     })
     .then(success)
     .catch(fail);
@@ -56,10 +55,10 @@ async function editUser(credential, success, fail) {
 
 async function signout(success, fail) {
   await api
-    .delete(`user/follow`, {
-      //   headers: {
-      //     Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-      //   },
+    .delete(`user`, {
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+      },
     })
     .then(success)
     .catch(fail);
