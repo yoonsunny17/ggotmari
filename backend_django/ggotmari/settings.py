@@ -141,7 +141,7 @@ CORS_ALLOW_ALL_ORIGINS = True
 CACHES = {
     "default": {
         "BACKEND": "django_redis.cache.RedisCache",
-        "LOCATION": "redis://127.0.0.1:6379/2",  # 2번 DB 사용
+        "LOCATION": "redis://172.17.0.1:6379/2",  # 2번 DB 사용
         "OPTIONS": {
             "CLIENT_CLASS": "django_redis.client.DefaultClient",
         }

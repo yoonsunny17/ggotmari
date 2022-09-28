@@ -50,7 +50,7 @@ while True:
             #     connect.set(f':1:{yesterday}_{record[1]}', sale_point, 60)  # 어제날짜_품종id를 key로, 품종별 판매량을 value로 설정
         
         
-        with redis.StrictRedis(host='localhost', port=6379, db=2, charset='utf-8', decode_responses=True) as connect:  # 2번 db 사용
+        with redis.StrictRedis(host='172.17.0.1', port=6379, db=2, charset='utf-8', decode_responses=True) as connect:  # 2번 db 사용
             connect.hmset(yesterday, subject_sales)  # 어제날짜_품종id를 key로, 품종별 판매량을 value로 설정
             print(connect.hgetall(yesterday))
 
