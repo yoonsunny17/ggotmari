@@ -1,4 +1,5 @@
 import { useRouter } from "next/router";
+import { useEffect } from "react";
 import { AiOutlineHeart, AiFillHeart, AiOutlineComment } from "react-icons/ai";
 import FlowerTag from "../../atoms/common/FlowerTag";
 import ImageSquare from "../../atoms/common/ImageSquare";
@@ -7,7 +8,7 @@ function ArticleItem({ article }) {
   const {
     articleId,
     articleImages,
-    userId,
+    userName,
     articleTitle,
     articleContent,
     tags,
@@ -35,7 +36,7 @@ function ArticleItem({ article }) {
         <ImageSquare imageSrc={articleImages[0]} />
       </div>
       <div className="row-start-2 row-end-3 col-start-1 col-end-2 text-xs sm:text-base text-font2 px-1">
-        @{userId}
+        @{userName}
       </div>
       <div className="row-start-1 row-end-2 col-start-2 col-end-3 grid grid-rows-[1fr_auto_2fr] px-3">
         <div className="row-start-1 row-end-2 flex items-center truncate">
@@ -46,7 +47,7 @@ function ArticleItem({ article }) {
         <div className="row-start-2 row-end-3 flex items-center">
           <div>
             {tags.map((tag, idx) =>
-              idx < 3 ? (
+              idx < 2 ? (
                 <FlowerTag flowerName={tag} key={tag} isRemovable={false} />
               ) : (
                 ""
@@ -61,10 +62,10 @@ function ArticleItem({ article }) {
         </div>
       </div>
       <div className="row-start-2 row-end-3 col-start-2 col-end-3 text-xs text-font2 px-3">
-        <AiFillHeart className="inline text-red-600" />{" "}
-        {`${likeCount >= 100 ? "99+" : likeCount} `}
-        <AiOutlineComment className="inline ml-2" />{" "}
-        {commentCount >= 100 ? "99+" : commentCount}
+        <AiFillHeart className="inline text-red-600" />
+        {` ${likeCount >= 100 ? "99+" : likeCount} `}
+        <AiOutlineComment className="inline ml-2" />
+        {` ${commentCount >= 100 ? "99+" : commentCount}`}
       </div>
     </div>
   );

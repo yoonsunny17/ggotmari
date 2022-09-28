@@ -1,8 +1,50 @@
 // import { AiOutlineDown } from "react-icons/ai";
-import { IoIosArrowDown } from "react-icons/io";
-import ProfileImg from "../../atoms/common/ProfileImg";
+import { useState } from "react";
 
-function CommentDrawer({ children, isOpen, setIsOpen, loginUserImg }) {
+import ProfileImg from "../../atoms/common/ProfileImg";
+import CommentItem from "../../molecules/community/CommentItem";
+
+import { getArticleDetail, postArticleComment } from "../../../api/community";
+
+import { IoIosArrowDown } from "react-icons/io";
+
+function CommentDrawer({
+  commentList,
+  articleId,
+  isOpen,
+  setIsOpen,
+  loginUserImg,
+}) {
+  const [comment, setComment] = useState("");
+  const [comments, setComments] = useState(commentList);
+
+  const handleCommentChange = (e) => {
+    setComment(e.target.value);
+  };
+
+  const handleCommentSubmit = async () => {
+    await postArticleComment(
+      articleId,
+      comment,
+      (res) => {
+        console.log(res);
+      },
+      (err) => {
+        console.log(err);
+      },
+    );
+
+    await getArticleDetail(
+      articleId,
+      (res) => {
+        setComments(res.data.comments);
+      },
+      (err) => {
+        console.log(err);
+      },
+    );
+  };
+
   return (
     <div
       className={
@@ -27,7 +69,17 @@ function CommentDrawer({ children, isOpen, setIsOpen, loginUserImg }) {
               <div className="font-bold text-lg text-black">댓글</div>
               <IoIosArrowDown className="text-xl" />
             </div>
-            <div className="flex flex-col px-3 space-y-3">{children}</div>
+            <div className="flex flex-col px-3 space-y-3">
+              {comments.map((comment) => (
+                <CommentItem
+                  userName={comment.userName}
+                  commentContent={comment.commentContent}
+                  userImage={comment.userImage}
+                  key={comment.commentId}
+                  isMe={comment.isMe}
+                />
+              ))}
+            </div>
             <div className="h-14"></div>
           </div>
           <div>
@@ -40,9 +92,13 @@ function CommentDrawer({ children, isOpen, setIsOpen, loginUserImg }) {
                   type="text"
                   placeholder="댓글을 입력하세요"
                   className="input bg-white w-full focus:outline-none text-font2 text-sm px-0"
+                  onChange={handleCommentChange}
                 />
               </div>
-              <p className="rounded-md bg-main px-2 py-1 text-white font-sans text-sm">
+              <p
+                className="rounded-md bg-main px-2 py-1 text-white font-sans text-sm"
+                onClick={handleCommentSubmit}
+              >
                 등록
               </p>
             </div>
