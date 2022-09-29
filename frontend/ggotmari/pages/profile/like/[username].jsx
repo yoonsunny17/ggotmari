@@ -4,7 +4,7 @@ import ProfileInfo from "../../../components/organisms/profile/ProfileInfo";
 import ProfileNavBar from "../../../components/organisms/profile/ProfileNavBar";
 import LikeImage from "../../../components/atoms/profile/LikeImage";
 import { getUser } from "../../../api/profile.js";
-import noFlower from "../../../assets/profile/collection/noFlowerImg.jpg";
+import noLikeStory from "../../../assets/profile/like/noLikeStoryImg.jpg";
 
 export default function Like() {
   const router = useRouter();
@@ -90,8 +90,12 @@ export default function Like() {
         ) : (
           <div className="col-span-3 flex justify-center">
             <div className="content-box w-full">
-              <div className="img-box flex justify-center">
-                <img src={noFlower.src} alt="조회할 꽃이 없음" />
+              <div className="img-box flex justify-center my-10">
+                <img
+                  src={noLikeStory.src}
+                  alt="조회할 꽃 이야기가 없음"
+                  className="w-2/3"
+                />
               </div>
               <div className="text-box flex justify-center font-gangwon text-font4">
                 <span>좋아요를 누른 꽃 이야기가 없습니다</span>
