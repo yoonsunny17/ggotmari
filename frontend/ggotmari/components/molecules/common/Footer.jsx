@@ -35,6 +35,14 @@ function Footer() {
 
   // console.log(username);
 
+  const onCheck = () => {
+    if (localStorage.getItem("accessToken")) {
+      router.push(`/profile/${username}`);
+    } else {
+      router.push("/login");
+    }
+  };
+
   return (
     <div className="flex flex-row w-full z-20 justify-around fixed bottom-0 bg-white p-3 items-center border-t-2 border-font3">
       {/* <Link href="/">
@@ -60,11 +68,9 @@ function Footer() {
           <IoFlowerOutline className="text-main text-2xl" />
         </a>
       </Link>
-      <Link href={username ? `/profile/${username}` : "/login"}>
-        <a>
-          <IoPersonCircleOutline className="text-main text-3xl" />
-        </a>
-      </Link>
+      <button onClick={onCheck}>
+        <IoPersonCircleOutline className="text-main text-3xl" />
+      </button>
     </div>
   );
 }
