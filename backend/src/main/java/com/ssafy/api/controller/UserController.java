@@ -122,7 +122,7 @@ public class UserController {
             @ApiResponse(code = 201, message = "회원 정보 수정 성공"),
             @ApiResponse(code = 500, message = "회원 정보 수정 실패")
     })
-    public ResponseEntity<? extends UserPutRes> updateUser(@RequestPart UserPutReq userPutReq, HttpServletRequest request, @RequestPart MultipartFile multipartFile){
+    public ResponseEntity<? extends UserPutRes> updateUser(@RequestPart(value = "userPutReq") UserPutReq userPutReq, HttpServletRequest request, @RequestPart(value = "multipart", required = false) MultipartFile multipartFile){
         // user email 가져오기
         String jwtToken = request.getHeader("Authorization");
         String email = null;

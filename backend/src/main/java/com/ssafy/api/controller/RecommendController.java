@@ -108,7 +108,7 @@ public class RecommendController {
         Subject subject= recommendService.recommendByLetter(letterInfo);
 
         if(subject == null){
-            return ResponseEntity.status(403).body(RecommendLetterRes.of(403, "추천 실패.", subject));
+            return ResponseEntity.status(403).body(RecommendLetterRes.of(403, "추천 실패.", null));
         }else{
             return ResponseEntity.status(201).body(RecommendLetterRes.of(201, "정상적으로 추천되었습니다.", subject));
         }
