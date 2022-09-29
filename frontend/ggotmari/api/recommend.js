@@ -2,13 +2,8 @@ import { apiInstance } from "./index";
 
 const api = apiInstance();
 
-async function postLetterRecomm(success, fail) {
-  await api
-    .post(`recommend/letter`, {
-      content,
-    })
-    .then(success)
-    .catch(fail);
+async function postLetterRecomm(content, success, fail) {
+  await api.post(`recommend/letter`, content).then(success).catch(fail);
 }
 
 async function getSituationRecomm(success, fail) {

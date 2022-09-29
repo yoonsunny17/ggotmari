@@ -24,7 +24,7 @@ function RecommendMain() {
         />
       </div>
 
-      <div className="font-gangwon text-font1 text-center text-lg mt-10">
+      <div className="font-gangwon text-font1 text-center text-lg mt-4">
         &quot;편지로는 표현할 수 없는 감정 <br /> 꽃으로 선물했어요&quot;
       </div>
       <br />
@@ -42,7 +42,7 @@ function RecommendMain() {
 
       <div className="flex justify-center">
         <button
-          onClick={() => router.push("/recommend/write")}
+          onClick={() => router.push("/recommend/letter")}
           className="mt-6 font-gangwon bg-sub2 rounded-md w-52 py-2 pt-2.5 pb-1.5 text-font3"
         >
           편지 작성하기

@@ -181,14 +181,14 @@ function Home() {
 
 const recommPost = [
   {
-    articleId: 100,
+    articleId: 1,
     username: "sangchuman",
     articleImage:
       "https://images.unsplash.com/photo-1496483648148-47c686dc86a8?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1173&q=80",
     likeCount: 13,
   },
   {
-    articleId: 101,
+    articleId: 2,
 
     username: "hot_bubbletea",
     articleImage:
@@ -196,7 +196,7 @@ const recommPost = [
     likeCount: 32,
   },
   {
-    articleId: 102,
+    articleId: 3,
 
     username: "princess_yo",
     articleImage:
@@ -204,7 +204,7 @@ const recommPost = [
     likeCount: 6,
   },
   {
-    articleId: 103,
+    articleId: 4,
 
     username: "sleepy_ssuny",
     articleImage:

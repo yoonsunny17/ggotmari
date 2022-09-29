@@ -16,7 +16,7 @@ async function getFlowerDetail(subjectId, success, fail) {
 async function postFlowerDetail(success, fail) {
   await api
     .post(
-      `flower/${subjectId}`,
+      `flower/${kindId}`,
       {
         kindId,
         tagId,

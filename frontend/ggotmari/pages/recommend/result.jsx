@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import Header from "../../components/atoms/common/Header";
+import { postLetterRecomm } from "../../api/recommend";
 
 function LetterResult() {
   return (

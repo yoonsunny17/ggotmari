@@ -1,14 +1,71 @@
+import { useRouter } from "next/router";
 import { useState, useEffect } from "react";
+
+import { getFlowerDetail } from "../../api/flower";
+
 import RelatedPosts from "../../components/molecules/flower/RelatedPosts";
 import SimilarFlowers from "../../components/molecules/flower/SimilarFlowers";
 
-function FlowerDetail(params) {
+function FlowerDetail() {
+  const router = useRouter();
+  const [flowerInfo, setFlowerInfo] = useState({
+    subjectId: "",
+    subjectName: "",
+    subjectLanguage: "",
+    kinds: [
+      {
+        kindId: "",
+        kindName: "",
+        kindImage: "",
+        kinds: [
+          {
+            tagId: "",
+            tagName: "",
+            tagStatus: "",
+          },
+        ],
+      },
+    ],
+
+    articles: [
+      {
+        articleId: "",
+        articleImage: "",
+        userName: "",
+        likeCount: "",
+      },
+    ],
+  });
+
   const [duplicated, setDuplicated] = useState(["없음"]);
   useEffect(() => {
     if (duplicated.length === 7 || duplicated.length === 0) {
       setDuplicated(["없음"]);
     }
   }, [duplicated]);
+
+  // useEffect(() => {
+  //   console.log(flowerInfo);
+  // }, []);
+  useEffect(() => {
+    console.log(router.query.subjectId);
+    const path = window.location.pathname.substring(8);
+    // const username = window.location.pathname.substring(20);
+    getFlowerDetail(
+      // router.query.subjectId,
+      path,
+      (res) => {
+        // console.log(res);
+        // setFlowerInfo(res.data);
+        console.log(res.data);
+        console.log(res.data.kinds[0].kindImage);
+        // console.log(res)
+      },
+      (err) => {
+        console.log(err);
+      }
+    );
+  }, []);
 
   const handleDuplicated = (e) => {
     console.log(e.target.innerText);
@@ -31,7 +88,7 @@ function FlowerDetail(params) {
     <div className="mb-10">
       <img
         className="w-full aspect-square object-cover"
-        src={flowerInfo.kinds.kindImage}
+        // src={flowerInfo.flower.kinds[0].kindImage}
         alt="flower image"
       />
       <div className="px-6 pt-6 divide-y divide-sub1 divide-opacity-60">
@@ -39,15 +96,12 @@ function FlowerDetail(params) {
         <div>
           <div className="font-gangwon text-2xl font-medium mb-1">
             {/* 품종명, 품목명 */}
-            {flowerInfo.kinds.kindName}, {flowerInfo.flower.subjectName}
+            {flowerInfo.kinds[0].kindName}, {flowerInfo.kinds[0].subjectName}
           </div>
           {/* 꽃말 */}
           <div className="font-sans text-font2 text-base mb-4">
-            {flowerInfo.flower.subjectName}의 꽃말은{" "}
-            {/* 꽃말 부분만 bold 강조 */}
-            <span className="font-bold">
-              {flowerInfo.flower.subjectLanguage}
-            </span>{" "}
+            {flowerInfo.subjectName}의 꽃말은 {/* 꽃말 부분만 bold 강조 */}
+            <span className="font-bold">{flowerInfo.subjectLanguage}</span>{" "}
             입니다
           </div>
         </div>
@@ -77,7 +131,7 @@ function FlowerDetail(params) {
         {/* 다른 품종 보기 */}
         <div>
           <div className="font-gangwon text-lg pt-4 pb-2">
-            {flowerInfo.flower.subjectName}의 다른 품종
+            {flowerInfo.subjectName}의 다른 품종
           </div>
 
           <div className="carousel w-full mb-2">
@@ -97,7 +151,7 @@ function FlowerDetail(params) {
         {/* 연관 게시물 보기 */}
         <div className="mb-16">
           <div className="font-gangwon text-lg pb-3 pt-4">
-            {flowerInfo.flower.subjectName}를 담은 이야기
+            {flowerInfo.subjectName}를 담은 이야기
           </div>
 
           <div className="grid grid-cols-3 gap-x-3 gap-y-2.5">
