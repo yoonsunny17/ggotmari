@@ -81,7 +81,7 @@ public class RecommendService {
             KindRes kindRes = new KindRes();
             Kind kind = kindRepository.findById(id).get();
             kindRes.setKindId(id);
-            kindRes.setKindImage("https://ggotmari.s3.ap-northeast-2.amazonaws.com" + kind.getFlowerImage());
+            kindRes.setKindImage("https://ggotmari.s3.ap-northeast-2.amazonaws.com/" + kind.getFlowerImage());
             kindRes.setSubjectId(kind.getSubject().getId());
 
             flowers.add(kindRes);

@@ -25,7 +25,7 @@ public class RecommendLetterRes extends BaseResponseBody {
         if(subject != null){
             res.setSubjectName(subject.getSubjectName());
             res.setSubjectLanguage(subject.getFlowerLanguage());
-            res.setKindImage(subject.getKinds().get(0).getFlowerImage());
+            res.setKindImage("https://ggotmari.s3.ap-northeast-2.amazonaws.com/" + subject.getKinds().get(0).getFlowerImage());
 
         }
         return res;

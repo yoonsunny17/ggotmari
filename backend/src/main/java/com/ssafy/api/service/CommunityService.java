@@ -173,10 +173,18 @@ public class CommunityService {
             List<Popular> populars = popularRepository.findAll();
 
             for(Popular popular : populars){
-                if(popular.getArticle().getId() == articleId){
-                    popular.setArticle(null);
+                if(popular.getArticle() != null && popular.getArticle().getId() == articleId){
+//                    popular.setArticle(null);
+
+                    if(popular.getPopularDate().equals(LocalDate.now())){
+                        redisTemplate.opsForZSet().remove("popular", Long.toString(articleId));
+                    }
+
+                    popularRepository.delete(popular);
                 }
             }
+
+
 
             articleRepository.delete(article);
             return true;
