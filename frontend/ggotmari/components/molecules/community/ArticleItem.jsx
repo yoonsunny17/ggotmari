@@ -1,5 +1,4 @@
 import { useRouter } from "next/router";
-import { useEffect } from "react";
 import { AiOutlineHeart, AiFillHeart, AiOutlineComment } from "react-icons/ai";
 import FlowerTag from "../../atoms/common/FlowerTag";
 import ImageSquare from "../../atoms/common/ImageSquare";
@@ -19,23 +18,18 @@ function ArticleItem({ article }) {
   const router = useRouter();
 
   const handleDetailClick = () => {
-    router.push(
-      {
-        pathname: `community/${articleId}`,
-      },
-      `community/${articleId}`,
-    );
+    router.push(`community/${articleId}`);
   };
 
   return (
     <div
-      className="grid grid-rows-[auto_auto] grid-cols-[1fr_3fr] w-full"
+      className="grid grid-rows-[auto_auto] grid-cols-[2fr_5fr] w-full"
       onClick={handleDetailClick}
     >
       <div className="row-start-1 row-end-2 col-start-1 col-end-2 items-end justify-center">
         <ImageSquare imageSrc={articleImages[0]} />
       </div>
-      <div className="row-start-2 row-end-3 col-start-1 col-end-2 text-xs sm:text-base text-font2 px-1">
+      <div className="row-start-2 row-end-3 col-start-1 col-end-2 text-xs text-font2 px-1">
         @{userName}
       </div>
       <div className="row-start-1 row-end-2 col-start-2 col-end-3 grid grid-rows-[1fr_auto_2fr] px-3">
@@ -51,7 +45,7 @@ function ArticleItem({ article }) {
                 <FlowerTag flowerName={tag} key={tag} isRemovable={false} />
               ) : (
                 ""
-              ),
+              )
             )}
           </div>
         </div>
