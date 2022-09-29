@@ -16,14 +16,7 @@ function ProfileCollection({ likeFlowers }) {
     { category: "기타" },
   ];
 
-  const [collectionItems, setCollectionItems] = useState([
-    {
-      flowerImage: "",
-      subjectId: "",
-      kindId: "",
-      kindName: "",
-    },
-  ]);
+  const [collectionItems, setCollectionItems] = useState([]);
 
   const onClickTab = (index) => {
     setActiveTab(index);
@@ -57,7 +50,7 @@ function ProfileCollection({ likeFlowers }) {
       }
     }
   }, []);
-  console.log(likeFlowers);
+
   return (
     <>
       {/* 탭들 */}
@@ -81,7 +74,7 @@ function ProfileCollection({ likeFlowers }) {
       </div>
       {/* 사진 및 내용들 */}
       <div className="colletion-items grid grid-cols-3 mt-3 mb-14">
-        {collectionItems ? (
+        {collectionItems.length > 0 ? (
           collectionItems.map((item, index) => {
             return (
               <div className="collection-item p-1.5 text-xs" key={index}>
@@ -96,8 +89,12 @@ function ProfileCollection({ likeFlowers }) {
         ) : (
           <div className="col-span-3 flex justify-center">
             <div className="content-box w-full">
-              <div className="img-box flex justify-center">
-                <img src={noFlower.src} alt="조회할 꽃이 없음" />
+              <div className="img-box flex justify-center my-10">
+                <img
+                  src={noFlower.src}
+                  alt="조회할 꽃이 없습니다."
+                  className="w-2/3"
+                />
               </div>
               <div className="text-box flex justify-center font-gangwon text-font4">
                 <span>컬렉션에 추가한 꽃이 없습니다</span>
@@ -105,16 +102,6 @@ function ProfileCollection({ likeFlowers }) {
             </div>
           </div>
         )}
-        {/* {collectionItems.map((item, index) => {
-          return (
-            <div className="collection-item p-1.5 text-xs" key={index}>
-              <CollectionImage
-                flowerImage={item.flowerImage}
-                kindName={item.kindName}
-              />
-            </div>
-          );
-        })} */}
       </div>
     </>
   );
