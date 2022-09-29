@@ -19,7 +19,9 @@ public class PopularArticleGetRes extends BaseResponseBody {
         PopularArticleGetRes res = new PopularArticleGetRes();
         res.setStatusCode(statusCode);
         res.setMessage(message);
-        res.setArticles(articles);
+        if(articles != null){
+            res.setArticles(articles);
+        }
         return res;
     }
 

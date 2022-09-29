@@ -14,13 +14,20 @@ public class RecommendLetterRes extends BaseResponseBody {
     String subjectName;
     @ApiModelProperty(name = "꽃말")
     String subjectLanguage;
+    @ApiModelProperty(name = "품종 이미지")
+    String kindImage;
+
 
     public static RecommendLetterRes of(Integer statusCode, String message, Subject subject) {
         RecommendLetterRes res = new RecommendLetterRes();
         res.setStatusCode(statusCode);
         res.setMessage(message);
-        res.setSubjectName(subject.getSubjectName());
-        res.setSubjectLanguage(subject.getFlowerLanguage());
+        if(subject != null){
+            res.setSubjectName(subject.getSubjectName());
+            res.setSubjectLanguage(subject.getFlowerLanguage());
+            res.setKindImage(subject.getKinds().get(0).getFlowerImage());
+
+        }
         return res;
     }
 

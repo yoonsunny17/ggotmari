@@ -23,7 +23,9 @@ public class RecommendArticleRes extends BaseResponseBody {
         RecommendArticleRes res = new RecommendArticleRes();
         res.setStatusCode(statusCode);
         res.setMessage(message);
-        res.setArticles(articles);
+        if(articles != null){
+            res.setArticles(articles);
+        }
         res.setUserName(userName);
         return res;
     }
