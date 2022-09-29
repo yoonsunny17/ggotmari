@@ -37,7 +37,7 @@ function Footer() {
 
   const onCheck = () => {
     if (localStorage.getItem("accessToken")) {
-      router.push(`/profile${username}`);
+      router.push(`/profile/${username}`);
     } else {
       router.push("/login");
     }
