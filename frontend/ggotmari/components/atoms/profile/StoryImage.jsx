@@ -7,7 +7,7 @@ function StoryImage({ url, title, id }) {
       <img
         src={url}
         alt={`${title} 대표 이미지입니다.`}
-        className="w-full h-full rounded-md cursor-pointer"
+        className="w-full h-full object-cover rounded-md cursor-pointer"
         onClick={() => router.push(`/community/${id}`)}
       />
     </div>
