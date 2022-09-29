@@ -42,7 +42,7 @@ function EditArticle() {
       (res) => setFlowerKindList(res.data.subjects),
       (error) => {
         console.log(error);
-      },
+      }
     );
   }, []);
 
@@ -53,8 +53,8 @@ function EditArticle() {
   useEffect(() => {
     setFilteredList(
       flowerKindList.filter((flowerKind) =>
-        flowerKind.subjectName.startsWith(tagSearch),
-      ),
+        flowerKind.subjectName.startsWith(tagSearch)
+      )
     );
   }, [tagSearch]);
 
@@ -128,7 +128,7 @@ function EditArticle() {
       const json = JSON.stringify(article);
       formData.append(
         "articleInfo",
-        new Blob([json], { type: "application/json" }),
+        new Blob([json], { type: "application/json" })
       );
       [...imageFiles].forEach((file) => formData.append("images", file));
 
@@ -138,8 +138,10 @@ function EditArticle() {
           router.push(`/community/${res.data.articleId}`);
         },
         (err) => {
-          console.log(err);
-        },
+          Toast.fire({
+            title: "게시글 등록에 실패하였습니다",
+          });
+        }
       );
     }
   };
