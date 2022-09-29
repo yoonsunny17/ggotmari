@@ -62,10 +62,13 @@ def situation(request):
 
 
     yesterday = (datetime.now() + timedelta(days=-1)).strftime('%Y-%m-%d')
-    # yesterday = '2022-09-05' # 임시
+    yesterday_one_year_ago = str(int(yesterday[0:4])-1) + yesterday[4:]
+    yesterday_two_years_ago = str(int(yesterday[0:4])-2) + yesterday[4:]
 
     with redis.StrictRedis(host='172.17.0.1', port=6379, db=2, charset='utf-8', decode_responses=True, password=my_settings.mysql_password) as connect:
         subject_sales = connect.hgetall(yesterday)
+        subject_sales_one_year_ago = connect.hgetall(yesterday_one_year_ago)
+        subject_sales_two_years_ago = connect.hgetall(yesterday_two_years_ago)
 
     for flower in like_flower:
         if flower[1] != user_pk:  # flower[0]==품종pk, flower[1]==유저pk
@@ -75,15 +78,18 @@ def situation(request):
 
                 # 판매점수
                 subject_id_of_flower = str(all_kind[flower[0]-1].subject.subject_id)  # 품종의 품목번호
+
                 subject_sale_point = int(subject_sales.get(subject_id_of_flower, 0))
+                subject_sale_point_one_year_ago = int(subject_sales_one_year_ago.get(subject_id_of_flower, 0))
+                subject_sale_point_two_years_ago = int(subject_sales_two_years_ago.get(subject_id_of_flower, 0))
+                
 
-
-                # 유사도:판매점수 == 7:3
+                # 유사도:판매점수 == 7:3, 판매점수는 올해:작년:재작년 == 6:3:1
                 if flower_dic.get(flower[0]) == None:
-                    flower_dic[flower[0]] = [cosine_sim[flower[1]-1]*0.7 + subject_sale_point*0.3/10]
+                    flower_dic[flower[0]] = [cosine_sim[flower[1]-1]*0.7 + (subject_sale_point*0.6+subject_sale_point_one_year_ago*0.3+subject_sale_point_two_years_ago*0.1)*0.3/10]
                 
                 else:
-                    flower_dic[flower[0]].append(cosine_sim[flower[1]-1]*0.7 + subject_sale_point*0.3/10)
+                    flower_dic[flower[0]].append(cosine_sim[flower[1]-1]*0.7 + (subject_sale_point*0.6+subject_sale_point_one_year_ago*0.3+subject_sale_point_two_years_ago*0.1)*0.3/10)
 
     for key in flower_dic.keys():
         flower_dic[key].sort(reverse=True)
