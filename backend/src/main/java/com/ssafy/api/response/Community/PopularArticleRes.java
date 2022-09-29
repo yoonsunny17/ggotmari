@@ -17,7 +17,7 @@ public class PopularArticleRes {
     @ApiModelProperty(name = "게시글 사진 목록")
     List<String> articleImages;
     @ApiModelProperty(name = "유저 id", example = "1")
-    Long userId;
+    String userName;
     @ApiModelProperty(name = "게시글 제목")
     String articleTitle;
     @ApiModelProperty(name = "게시글 내용")
@@ -42,7 +42,7 @@ public class PopularArticleRes {
         }
         res.setArticleImages(pictures);
 
-        res.setUserId(article.getUser().getId());
+        res.setUserName(article.getUser().getName());
         res.setArticleTitle(article.getTitle());
         res.setArticleContent(article.getContent());
         res.setArticleDate(article.getDate().toString());

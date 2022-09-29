@@ -23,4 +23,7 @@ public class UserPutReq {
     @JsonProperty("sex")
     @ApiModelProperty(name = "성별")
     boolean sex;
+
+    @ApiModelProperty(name = "프로필 이미지")
+    String profile;
 }

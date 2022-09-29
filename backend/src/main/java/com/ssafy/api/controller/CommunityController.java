@@ -242,9 +242,6 @@ public class CommunityController {
     })
     public ResponseEntity<? extends PopularArticleGetRes> popularArticles(){
 
-        //TODO: redis 해결 시 삭제
-        popularService.updatePopularArticles();
-
         List<Article> articles = popularService.getPopularArticles();
 
         return ResponseEntity.status(201).body(PopularArticleGetRes.of(201, "정상적으로 작성되었습니다", articles));
