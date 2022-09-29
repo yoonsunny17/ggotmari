@@ -19,5 +19,7 @@ public class KindRes{
     Long kindId;
     @ApiModelProperty(name = "품종 이미지")
     String kindImage;
+    @ApiModelProperty(name = "품종 이름")
+    String kindName;
 
 }
