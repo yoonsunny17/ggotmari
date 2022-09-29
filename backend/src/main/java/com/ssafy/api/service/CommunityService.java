@@ -170,20 +170,12 @@ public class CommunityService {
             return false;
         } else {
 
-            Set<ZSetOperations.TypedTuple<Object>> redisArticles = redisTemplate.opsForZSet().reverseRangeWithScores(ZSET_KEY, 0 ,-1);
+            List<Popular> populars = popularRepository.findAll();
 
-            for(ZSetOperations.TypedTuple<Object> redisArticle : redisArticles){
-                String value = (String) redisArticle.getValue();
-                Article tempArticle = articleRepository.findById(Long.parseLong(value)).get();
-
-                if(tempArticle.getId() == articleId){
-                    redisTemplate.opsForZSet().remove("popular", articleId);
-
-                    //popular fk null로 바꾸고
-                    Popular popular = popularRepository.findPopularByArticle(article);
+            for(Popular popular : populars){
+                if(popular.getArticle().getId() == articleId){
                     popular.setArticle(null);
                 }
-
             }
 
             articleRepository.delete(article);

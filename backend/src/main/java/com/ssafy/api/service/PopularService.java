@@ -50,6 +50,8 @@ public class PopularService {
             articles.add(article);
         }
 
+        Collections.sort(articles, (o1, o2) -> o2.getLikes().size() - o1.getLikes().size());
+
         return articles;
     }
 
