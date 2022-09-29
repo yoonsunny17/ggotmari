@@ -133,25 +133,17 @@ public class UserService {
 
         User user = userRepository.findByEmail(email);
 
-        //악성 사용자 방지
-        User tempUser = userRepository.findByName(userPutReq.getUserName());
-        if(user.getId() != tempUser.getId()){
+        User findUser = userRepository.findByName(userPutReq.getUserName());
+
+        if(findUser != null  && !findUser.getName().equals(user.getName())){
             return false;
         }
-
-        if(userPutReq.getUserName() != null){
-            if(userRepository.findByName(userPutReq.getUserName()) != null){
-                return false;
-            }
-            user.setName(userPutReq.getUserName().toLowerCase());
-        }
-        if(multipartFile != null){
+//        user.setName(userPutReq.getUserName().toLowerCase());
+        if(userPutReq.getProfile().length() == 0){
             String imageUrl = fileService.uploadFile(multipartFile, "profile/");
             user.setProfileImage(imageUrl);
         }
-        if(userPutReq.getBirthday() != null) {
-            user.setBirthday(userPutReq.getBirthday());
-        }
+        user.setBirthday(userPutReq.getBirthday());
         user.setSex(userPutReq.isSex());
 
         return true;
