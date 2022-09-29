@@ -6,15 +6,20 @@ import { getFlowerDetail } from "../../../api/flower";
 
 import Swal from "sweetalert2";
 
-function LongClickFlowerCard({ info }) {
-  const { subjectId, kindId, flowerName, imgUrl } = info;
+// function LongClickFlowerCard({ info }) {
+//   const { subjectId, kindId, flowerName, imgUrl } = info;
+function LongClickFlowerCard(props) {
+  // useEffect(() => {
+  //   console.log("======================== this is info");
+  //   console.log(props);
+  // }, []);
   const router = useRouter();
   const handlePostClick = () => {
     router.push(
       // {
       //   pathname: `flower/${subjectId}`,
       // },
-      `/flower/${kindId}`
+      `/flower/${props.kindId}`
     );
   };
 
@@ -44,8 +49,8 @@ function LongClickFlowerCard({ info }) {
       width: 300,
       height: 250,
       showDenyButton: true,
-      confirmButtonColor: "#FFD365",
-      denyButtonColor: "#709FB0",
+      confirmButtonColor: "#6E85B7",
+      denyButtonColor: "#84898C",
       confirmButtonText: "네",
       denyButtonText: "아니요",
       showLoaderOnConfirm: true,
@@ -133,12 +138,12 @@ function LongClickFlowerCard({ info }) {
         onTouchEnd={handleOnTouchEnd}
         className=" cursor-pointer rounded-lg aspect-square overflow-hidden relative brightness-96"
       >
-        {/* <img
-        className="w-full h-full object-cover"
-        src={imgUrl}
-        alt={flowerName}
-      /> */}
-        <Image src={imgUrl} alt={flowerName} layout="fill" objectFit="cover" />
+        <img
+          className="w-full h-full object-cover"
+          src={props.info.kindImage}
+          alt={props.info.kindId}
+        />
+        {/* <Image src={imgUrl} alt={flowerName} layout="fill" objectFit="cover" /> */}
       </div>
 
       <div>
