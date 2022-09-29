@@ -5,6 +5,7 @@ import com.ssafy.db.entity.*;
 import com.ssafy.db.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.data.redis.core.ZSetOperations;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -15,6 +16,7 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Set;
 
 @Service
 @Transactional(readOnly = true)
@@ -36,6 +38,15 @@ public class CommunityService {
     private CommentRepository commentRepository;
     @Autowired
     private FileService fileService;
+    @Autowired
+    private PopularRepository popularRepository;
+    private final String ZSET_KEY = "popular";
+
+    private final RedisTemplate<String, Object> redisTemplate;
+
+    public CommunityService(RedisTemplate<String, Object> redisTemplate) {
+        this.redisTemplate = redisTemplate;
+    }
 
     @Transactional
     public Article createArticle(String email, ArticleCreatePostReq articleInfo, List<MultipartFile> multipartFiles) {
@@ -153,6 +164,23 @@ public class CommunityService {
         if (article.getUser() != user) {
             return false;
         } else {
+
+            Set<ZSetOperations.TypedTuple<Object>> redisArticles = redisTemplate.opsForZSet().reverseRangeWithScores(ZSET_KEY, 0 ,-1);
+
+            for(ZSetOperations.TypedTuple<Object> redisArticle : redisArticles){
+                String value = (String) redisArticle.getValue();
+                Article tempArticle = articleRepository.findById(Long.parseLong(value)).get();
+
+                if(tempArticle.getId() == articleId){
+                    redisTemplate.opsForZSet().remove("popular", articleId);
+
+                    //popular fk null로 바꾸고
+                    Popular popular = popularRepository.findPopularByArticle(article);
+                    popular.setArticle(null);
+                }
+
+            }
+
             articleRepository.delete(article);
             return true;
         }
