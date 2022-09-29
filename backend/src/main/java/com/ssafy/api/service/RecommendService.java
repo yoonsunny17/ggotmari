@@ -108,6 +108,10 @@ public class RecommendService {
     public Subject recommendByLetter(LetterPostReq letterInfo){
         Long subjectId = connectLetter(letterInfo).getResult();
 
+        if(subjectId < 0){
+            return null;
+        }
+
         Letter letter = new Letter();
         letter.setContent(letterInfo.getContent());
 
