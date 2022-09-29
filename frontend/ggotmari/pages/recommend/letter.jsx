@@ -66,7 +66,7 @@ function WriteLetter() {
         // console.log(content);
         setSubjectName(res.data.subjectName);
         setSubjectLanguage(res.data.subjectLanguage);
-        router.push(`/recommend/write`);
+        router.push(`/recommend/letter`);
       },
       (err) => {
         console.log(err);
@@ -163,6 +163,9 @@ function WriteLetter() {
       ) : (
         <div>
           <div>{to + letter + from + selected}</div>
+          {(subjectName.length == 0 || subjectLanguage.length == 0) && (
+            <div>추천 못해줘요</div>
+          )}
           <div>{subjectName}</div>
           <div>{subjectLanguage}</div>
           <div className="flex justify-center mt-8">
@@ -170,6 +173,7 @@ function WriteLetter() {
               onClick={() => {
                 setClickBtn(false);
                 router.push("/recommend/letter");
+                window.location.reload();
               }}
               type="submit"
               // className="mt-7 font-gangwon bg-sub1 rounded-md w-52 py-2 pt-2.5 pb-1.5 text-font3"
