@@ -21,8 +21,12 @@ public class FollowGetRes extends BaseResponseBody {
 
         res.setStatusCode(statusCode);
         res.setMessage(message);
-        res.setFollowers(followers);
-        res.setFollowings(followings);
+        if(followers != null){
+            res.setFollowers(followers);
+        }
+        if(followings != null){
+            res.setFollowings(followings);
+        }
 
         return res;
     }

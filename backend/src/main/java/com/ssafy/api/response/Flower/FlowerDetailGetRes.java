@@ -29,11 +29,13 @@ public class FlowerDetailGetRes extends BaseResponseBody {
         FlowerDetailGetRes res = new FlowerDetailGetRes();
         res.setStatusCode(statusCode);
         res.setMessage(message);
-        res.setSubjectId(subject.getId());
-        res.setSubjectName(subject.getSubjectName());
-        res.setSubjectLanguage(subject.getFlowerLanguage());
-        res.setKinds(kinds);
-        res.setArticles(articles);
+        if(subject != null){
+            res.setSubjectId(subject.getId());
+            res.setSubjectName(subject.getSubjectName());
+            res.setSubjectLanguage(subject.getFlowerLanguage());
+            res.setKinds(kinds);
+            res.setArticles(articles);
+        }
         return res;
     }
 

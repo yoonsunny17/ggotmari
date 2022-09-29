@@ -21,7 +21,9 @@ public class SubjectGetRes extends BaseResponseBody {
         SubjectGetRes res = new SubjectGetRes();
         res.setStatusCode(statusCode);
         res.setMessage(message);
-        res.setSubjects(subjects);
+        if(subjects != null){
+            res.setSubjects(subjects);
+        }
 
         return res;
     }

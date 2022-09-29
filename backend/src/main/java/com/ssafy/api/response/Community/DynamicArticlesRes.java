@@ -20,7 +20,9 @@ public class DynamicArticlesRes extends BaseResponseBody {
         DynamicArticlesRes res = new DynamicArticlesRes();
         res.setStatusCode(statusCode);
         res.setMessage(message);
-        res.setArticlesId(articles);
+        if(articles != null){
+            res.setArticlesId(articles);
+        }
         return res;
     }
 

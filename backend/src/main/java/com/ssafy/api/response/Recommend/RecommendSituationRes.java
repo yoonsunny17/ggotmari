@@ -19,7 +19,9 @@ public class RecommendSituationRes extends BaseResponseBody {
         RecommendSituationRes res = new RecommendSituationRes();
         res.setStatusCode(statusCode);
         res.setMessage(message);
-        res.setTags(tags);
+        if(tags != null){
+            res.setTags(tags);
+        }
         return res;
     }
 

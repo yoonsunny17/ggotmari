@@ -46,21 +46,23 @@ public class ArticleGetRes extends BaseResponseBody {
         res.setStatusCode(statusCode);
         res.setMessage(message);
 
-        res.setUser(article.getUser(), isFollow, loginUser);
+        if(article != null && loginUser != null){
+            res.setUser(article.getUser(), isFollow, loginUser);
 
-        List<Picture> pictures = article.getPictures();
-        for(Picture picture : pictures){
-            res.getArticleImages().add(picture.getImage());
+            List<Picture> pictures = article.getPictures();
+            for(Picture picture : pictures){
+                res.getArticleImages().add(picture.getImage());
+            }
+
+            res.setArticleTitle(article.getTitle());
+            res.setArticleContent(article.getContent());
+            res.setArticleDate(article.getDate().toString());
+            res.setTags(article.getHashtags());
+            res.setLike(isLike);
+            res.setLikeCount(article.getLikes().size());
+            res.setCommentCount(article.getComments().size());
+            res.setComments(article.getComments(), loginUser);
         }
-
-        res.setArticleTitle(article.getTitle());
-        res.setArticleContent(article.getContent());
-        res.setArticleDate(article.getDate().toString());
-        res.setTags(article.getHashtags());
-        res.setLike(isLike);
-        res.setLikeCount(article.getLikes().size());
-        res.setCommentCount(article.getComments().size());
-        res.setComments(article.getComments(), loginUser);
 
         return res;
     }

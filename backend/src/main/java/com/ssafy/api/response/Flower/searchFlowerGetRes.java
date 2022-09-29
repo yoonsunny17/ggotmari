@@ -22,7 +22,9 @@ public class searchFlowerGetRes extends BaseResponseBody  {
 
         res.setStatusCode(statusCode);
         res.setMessage(message);
-        res.setFlowers(flowers);
+        if(flowers != null){
+            res.setFlowers(flowers);
+        }
 
         return res;
     }
