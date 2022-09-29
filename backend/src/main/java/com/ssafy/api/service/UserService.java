@@ -54,18 +54,17 @@ public class UserService {
 //        char[] alnum = {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z',
 //                'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z',
 //                '1', '2', '3', '4', '5', '6', '7', '8', '9', '0'};
-        String[][] words = {{"happy", "pretty", "ugly", "cute", "nice", "cool", "awesome", "cosy", "great", "windy", "sexy", "hot", "crazy", "adorable", "wild", "lovely", "shiny", "glossy"},
-                {"rose", "lily", "carnation", "freesia", "lotus", "hyacinth", "sunflower", "violet", "anemone", "marigold", "hibiscus", "jasmine", "tulip", "daisy", "lavender", "dahila", "bluebell", "iris", "poppy", "snowdrop", "dandelion", "clover", "pansy", "peony"}};
+//        String[][] words = {{"happy", "pretty", "ugly", "cute", "nice", "cool", "awesome", "cosy", "great", "windy", "sexy", "hot", "crazy", "adorable", "wild", "lovely", "shiny", "glossy"},
+//                {"rose", "lily", "carnation", "freesia", "lotus", "hyacinth", "sunflower", "violet", "anemone", "marigold", "hibiscus", "jasmine", "tulip", "daisy", "lavender", "dahila", "bluebell", "iris", "poppy", "snowdrop", "dandelion", "clover", "pansy", "peony"}};
+
+        String[] flowers = {"rose", "lily", "carnation", "freesia", "lotus", "hyacinth", "sunflower", "violet", "anemone", "marigold", "hibiscus", "jasmine", "tulip", "daisy", "lavender", "dahila", "bluebell", "iris", "poppy", "snowdrop", "dandelion", "clover", "pansy", "peony"};
 
         StringBuffer sb = new StringBuffer();
         SecureRandom sr = new SecureRandom();
         sr.setSeed(new Date().getTime());
 
-        int idx = sr.nextInt(words[0].length);
-        sb.append(words[0][idx]).append("_");
-
-        idx = sr.nextInt(words[1].length);
-        sb.append(words[1][idx]).append(sr.nextInt(100000));
+        int idx = sr.nextInt(flowers.length);
+        sb.append(flowers[idx]).append(sr.nextInt(100000));
 
         String name = sb.toString();
         if(userRepository.findByName(name) != null){
