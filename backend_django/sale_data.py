@@ -10,14 +10,14 @@ conn = pymysql.connect(host='43.201.16.227', port=3306, user='ggotmari', passwor
 
 cur = conn.cursor()
 
-yesterday_raw = (datetime.now() + timedelta(days=-22))  # -1
-before_7days_raw = (datetime.now() + timedelta(days=-28))  # -7
+yesterday_raw = (datetime.now() + timedelta(days=-1))  # -1
+before_7days_raw = (datetime.now() + timedelta(days=-7))  # -7
 
-# yesterday = yesterday_raw.strftime('%Y-%m-%d')  # 2022-09-24
-# before_7days = before_7days_raw.strftime('%Y-%m-%d')  # 2022-09-18
+yesterday = yesterday_raw.strftime('%Y-%m-%d')  # 2022-09-24
+before_7days = before_7days_raw.strftime('%Y-%m-%d')  # 2022-09-18
 
-yesterday = '2022-09-05'
-before_7days = '2022-08-30'
+# yesterday = '2022-09-05'
+# before_7days = '2022-08-30'
 
 while True:
 
@@ -60,7 +60,7 @@ while True:
     yesterday = yesterday_raw.strftime('%Y-%m-%d')  # 2022-09-24
     before_7days = before_7days_raw.strftime('%Y-%m-%d')  # 2022-09-18
 
-    if yesterday == '2022-09-04':
+    if yesterday == '2019-01-01':
         break
 
 conn.close()
