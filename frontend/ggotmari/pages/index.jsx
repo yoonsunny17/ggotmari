@@ -6,7 +6,7 @@ import CommunityCard from "../components/atoms/index/CommunityCard";
 import ArticleItem from "../components/molecules/community/ArticleItem";
 import SpecialDayRecomm from "../components/organisms/main/SpecialDayRecomm";
 
-import { getArticleList } from "../api/community";
+import { getPopularList } from "../api/community";
 
 import { useEffect, useState } from "react";
 import { FaRegPaperPlane } from "react-icons/fa";
@@ -20,7 +20,7 @@ function Home() {
   const [popularPosts, setPopularPosts] = useState([]);
 
   useEffect(() => {
-    getArticleList(
+    getPopularList(
       (res) => {
         setPopularPosts(res.data.articles);
       },
@@ -28,7 +28,7 @@ function Home() {
         console.log(err);
       }
     );
-  });
+  }, []);
 
   return (
     <div className="flex flex-col w-screen">

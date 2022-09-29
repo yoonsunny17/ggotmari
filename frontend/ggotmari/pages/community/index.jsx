@@ -41,7 +41,7 @@ export async function getStaticProps() {
 
 export default function Community({ articles, popularArticles }) {
   const router = useRouter();
-  const [tab, setTab] = useState("");
+  const [tab, setTab] = useState("전체");
   const [currList, setCurrList] = useState(articles);
   const tabs = ["전체", "팔로잉", "인기글"];
 
