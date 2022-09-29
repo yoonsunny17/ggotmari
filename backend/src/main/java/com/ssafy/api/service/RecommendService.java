@@ -83,6 +83,7 @@ public class RecommendService {
             kindRes.setKindId(id);
             kindRes.setKindImage("https://ggotmari.s3.ap-northeast-2.amazonaws.com/" + kind.getFlowerImage());
             kindRes.setSubjectId(kind.getSubject().getId());
+            kindRes.setKindName(kind.getSubject().getSubjectName() + " " + kind.getKindName());
 
             flowers.add(kindRes);
         }
@@ -94,6 +95,7 @@ public class RecommendService {
                 kindRes.setKindId(0L);
                 kindRes.setKindImage("https://ggotmari.s3.ap-northeast-2.amazonaws.com/kind/default.jpg");
                 kindRes.setSubjectId(0L);
+                kindRes.setKindName("default");
 
                 flowers.add(kindRes);
             }
