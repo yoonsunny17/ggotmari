@@ -45,9 +45,21 @@ async function postDislikeRecomm(success, fail) {
     .catch(fail);
 }
 
+async function getSituationTag(tagId, success, fail) {
+  await api
+    .get(`recommend/situation/${tagId}`, {
+      headers: {
+        Authorization: localStorage.getItem("accessToken"),
+      },
+    })
+    .then(success)
+    .catch(fail);
+}
+
 export {
   postLetterRecomm,
   getSituationRecomm,
   getArticleRecomm,
   postDislikeRecomm,
+  getSituationTag,
 };
