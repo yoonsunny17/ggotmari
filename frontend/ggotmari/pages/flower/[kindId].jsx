@@ -48,7 +48,7 @@ function FlowerDetail() {
   //   console.log(flowerInfo);
   // }, []);
   useEffect(() => {
-    console.log(router.query.subjectId);
+    console.log(router.query.kindId);
     const path = window.location.pathname.substring(8);
     // const username = window.location.pathname.substring(20);
     getFlowerDetail(
