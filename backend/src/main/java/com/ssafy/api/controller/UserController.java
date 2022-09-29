@@ -1,6 +1,7 @@
 package com.ssafy.api.controller;
 
 import com.ssafy.api.request.*;
+import com.ssafy.api.response.Recommend.RecommendArticleRes;
 import com.ssafy.api.response.User.*;
 import com.ssafy.api.service.KakaoService;
 import com.ssafy.api.service.UserService;
@@ -36,11 +37,17 @@ public class UserController {
     @ApiOperation(value = "회원 이메일 조회", notes = "회원 이메일 조회")
     @ApiResponses({
             @ApiResponse(code = 201, message = "회원 이메일 조회 성공"),
-            @ApiResponse(code = 500, message = "회원 이메일 조회 실패")
+            @ApiResponse(code = 404, message = "회원 이메일 조회 실패"),
+            @ApiResponse(code = 401, message = "로그인 필요")
     })
     public ResponseEntity<? extends UserEmailRes> getUserEmail(HttpServletRequest request){
         // user email 가져오기
         String jwtToken = request.getHeader("Authorization");
+
+        if(jwtToken == null){
+            return ResponseEntity.status(401).body(UserEmailRes.of(401, "로그인이 필요합니다.", null));
+        }
+
         String email = jwtTokenUtil.getUserEmailFromToken(jwtToken);
 
         User user = userService.getUserByEmail(email);
@@ -56,11 +63,17 @@ public class UserController {
     @ApiOperation(value = "회원 정보 조회", notes = "회원 정보와 작성글, 좋아하는 꽃, 글 등을 반환")
     @ApiResponses({
             @ApiResponse(code = 201, message = "회원 정보 조회 성공"),
-            @ApiResponse(code = 500, message = "회원 정보 조회 실패")
+            @ApiResponse(code = 404, message = "회원 정보 조회 실패"),
+            @ApiResponse(code = 401, message = "로그인 필요")
     })
     public ResponseEntity<? extends UserGetRes> getUserDetail(@PathVariable String username, HttpServletRequest request){
         // user email 가져오기
         String jwtToken = request.getHeader("Authorization");
+
+        if(jwtToken == null){
+            return ResponseEntity.status(401).body(UserGetRes.of(401, "로그인이 필요합니다.", null, null));
+        }
+
         String email = jwtTokenUtil.getUserEmailFromToken(jwtToken);
 
         User loginUser = userService.getUserByEmail(email);
@@ -78,11 +91,16 @@ public class UserController {
     @ApiOperation(value = "팔로우 리스트 조회", notes = "팔로워, 팔로잉 리스트를 반환한다.")
     @ApiResponses({
             @ApiResponse(code = 201, message = "팔로우 리스트 조회 성공"),
-            @ApiResponse(code = 500, message = "팔로우 리스트 조회 실패")
+            @ApiResponse(code = 401, message = "로그인 필요")
     })
     public ResponseEntity<? extends FollowGetRes> getUserFollow(@PathVariable String username, HttpServletRequest request){
         // user email 가져오기
         String jwtToken = request.getHeader("Authorization");
+
+        if(jwtToken == null){
+            return ResponseEntity.status(401).body(FollowGetRes.of(401, "로그인이 필요합니다.", null, null));
+        }
+
         String email = jwtTokenUtil.getUserEmailFromToken(jwtToken);
 
 //        User loginUser = userService.getUserByEmail(email);     //로그인한 사람
@@ -98,12 +116,19 @@ public class UserController {
     @ApiOperation(value = "팔로우 추가 / 삭제", notes = "팔로우 추가 / 삭제 성공 여부를 응답한다.")
     @ApiResponses({
             @ApiResponse(code = 201, message = "팔로우 추가/삭제 성공"),
-            @ApiResponse(code = 500, message = "팔로우 추가/삭제 실패")
+            @ApiResponse(code = 400, message = "팔로우 추가/삭제 실패"),
+            @ApiResponse(code = 401, message = "로그인 필요")
     })
     public ResponseEntity<? extends FollowPostRes> reverseFollow(@RequestBody FollowPostReq followPostReq, HttpServletRequest request){
         // user email 가져오기
         String jwtToken = request.getHeader("Authorization");
+
+        if(jwtToken == null){
+            return ResponseEntity.status(401).body(FollowPostRes.of(401, "로그인이 필요합니다.", false));
+        }
+
         String email = jwtTokenUtil.getUserEmailFromToken(jwtToken);
+
         User loginUser = userService.getUserByEmail(email);
 
         boolean isSuccess = userService.reverseFollow(followPostReq, loginUser);
@@ -112,7 +137,7 @@ public class UserController {
         if(isSuccess){
             return ResponseEntity.status(201).body(FollowPostRes.of(201, "팔로우 추가/삭제 성공", isSuccess));
         }else{
-            return ResponseEntity.status(500).body(FollowPostRes.of(500, "팔로우 추가/삭제 실패", isSuccess));
+            return ResponseEntity.status(400).body(FollowPostRes.of(400, "팔로우 추가/삭제 실패", isSuccess));
         }
     }
 
@@ -120,7 +145,8 @@ public class UserController {
     @ApiOperation(value = "회원 정보 수정", notes = "회원 정보 수정 여부 반환")
     @ApiResponses({
             @ApiResponse(code = 201, message = "회원 정보 수정 성공"),
-            @ApiResponse(code = 500, message = "회원 정보 수정 실패")
+            @ApiResponse(code = 404, message = "회원 정보 수정 실패"),
+            @ApiResponse(code = 401, message = "로그인 필요")
     })
     public ResponseEntity<? extends UserPutRes> updateUser(@RequestPart(value = "userPutReq") UserPutReq userPutReq, HttpServletRequest request, @RequestPart(value = "multipart", required = false) MultipartFile multipartFile){
         // user email 가져오기
@@ -137,7 +163,7 @@ public class UserController {
         if(isSuccess){
             return ResponseEntity.status(201).body(UserPutRes.of(201, "회원 정보 수정 성공", isSuccess));
         }else{
-            return ResponseEntity.status(201).body(UserPutRes.of(201, "회원 정보 수정 실패", isSuccess));
+            return ResponseEntity.status(404).body(UserPutRes.of(404, "회원 정보 수정 실패", isSuccess));
         }
     }
 
@@ -145,7 +171,8 @@ public class UserController {
     @ApiOperation(value = "회원 탈퇴", notes = "회원 탈퇴 성공 여부를 반환한다.")
     @ApiResponses({
             @ApiResponse(code = 201, message = "회원 탈퇴 성공"),
-            @ApiResponse(code = 500, message = "회원 탈퇴 실패")
+            @ApiResponse(code = 500, message = "회원 탈퇴 실패"),
+            @ApiResponse(code = 401, message = "로그인 필요")
     })
     public ResponseEntity<? extends UserDeleteRes> deleteUser(HttpServletRequest request){
         // user email 가져오기

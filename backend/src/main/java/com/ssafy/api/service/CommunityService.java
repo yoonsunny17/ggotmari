@@ -5,6 +5,7 @@ import com.ssafy.db.entity.*;
 import com.ssafy.db.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.data.redis.core.ZSetOperations;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -15,6 +16,7 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Set;
 
 @Service
 @Transactional(readOnly = true)
@@ -36,6 +38,15 @@ public class CommunityService {
     private CommentRepository commentRepository;
     @Autowired
     private FileService fileService;
+    @Autowired
+    private PopularRepository popularRepository;
+    private final String ZSET_KEY = "popular";
+
+    private final RedisTemplate<String, Object> redisTemplate;
+
+    public CommunityService(RedisTemplate<String, Object> redisTemplate) {
+        this.redisTemplate = redisTemplate;
+    }
 
     @Transactional
     public Article createArticle(String email, ArticleCreatePostReq articleInfo, List<MultipartFile> multipartFiles) {
@@ -53,18 +64,20 @@ public class CommunityService {
         articleRepository.save(article);
 
         List<Hashtag> hashtags = new ArrayList<>();
-        for (Long subjectId : articleInfo.getSubjects()) {
-            Subject subject = subjectRepository.findById(subjectId).get();
+        if(articleInfo.getSubjects().size() != 0){
+            for (Long subjectId : articleInfo.getSubjects()) {
+                Subject subject = subjectRepository.findById(subjectId).get();
 
-            Hashtag hashtag = new Hashtag();
-            hashtag.setArticle(article);
-            hashtag.setSubject(subject);
+                Hashtag hashtag = new Hashtag();
+                hashtag.setArticle(article);
+                hashtag.setSubject(subject);
 
-            hashtagRepository.save(hashtag);
+                hashtagRepository.save(hashtag);
 
-            hashtags.add(hashtag);
+                hashtags.add(hashtag);
+            }
+            article.setHashtags(hashtags);
         }
-        article.setHashtags(hashtags);
 
         List<Picture> pictures = new ArrayList<>();
         for (MultipartFile image : multipartFiles) {
@@ -122,24 +135,27 @@ public class CommunityService {
 
         //이전 해시태그 전부 삭제
         List<Hashtag> hashtags = article.getHashtags();
-        for (Hashtag hashtag : hashtags) {
-            hashtagRepository.delete(hashtag);
+        if(hashtags.size() != 0){
+            for (Hashtag hashtag : hashtags) {
+                hashtagRepository.delete(hashtag);
+            }
         }
 
         List<Hashtag> newHashtags = new ArrayList<>();
+        if(articleInfo.getSubjects().size() != 0){
+            for (Long subjectId : articleInfo.getSubjects()) {
+                Subject subject = subjectRepository.findById(subjectId).get();
 
-        for (Long subjectId : articleInfo.getSubjects()) {
-            Subject subject = subjectRepository.findById(subjectId).get();
+                Hashtag hashtag = new Hashtag();
+                hashtag.setArticle(article);
+                hashtag.setSubject(subject);
 
-            Hashtag hashtag = new Hashtag();
-            hashtag.setArticle(article);
-            hashtag.setSubject(subject);
+                hashtagRepository.save(hashtag);
 
-            hashtagRepository.save(hashtag);
-
-            newHashtags.add(hashtag);
+                newHashtags.add(hashtag);
+            }
+            article.setHashtags(newHashtags);
         }
-        article.setHashtags(newHashtags);
 
         return article;
     }
@@ -153,6 +169,23 @@ public class CommunityService {
         if (article.getUser() != user) {
             return false;
         } else {
+
+            Set<ZSetOperations.TypedTuple<Object>> redisArticles = redisTemplate.opsForZSet().reverseRangeWithScores(ZSET_KEY, 0 ,-1);
+
+            for(ZSetOperations.TypedTuple<Object> redisArticle : redisArticles){
+                String value = (String) redisArticle.getValue();
+                Article tempArticle = articleRepository.findById(Long.parseLong(value)).get();
+
+                if(tempArticle.getId() == articleId){
+                    redisTemplate.opsForZSet().remove("popular", articleId);
+
+                    //popular fk null로 바꾸고
+                    Popular popular = popularRepository.findPopularByArticle(article);
+                    popular.setArticle(null);
+                }
+
+            }
+
             articleRepository.delete(article);
             return true;
         }

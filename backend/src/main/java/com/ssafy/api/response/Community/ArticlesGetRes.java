@@ -20,7 +20,9 @@ public class ArticlesGetRes extends BaseResponseBody {
         ArticlesGetRes res = new ArticlesGetRes();
         res.setStatusCode(statusCode);
         res.setMessage(message);
-        res.setArticles(articles, user);
+        if(articles != null && user != null){
+            res.setArticles(articles, user);
+        }
         return res;
     }
 
