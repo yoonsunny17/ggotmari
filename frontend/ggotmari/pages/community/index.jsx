@@ -5,42 +5,59 @@ import ArticleItem from "../../components/molecules/community/ArticleItem";
 import SearchBar from "../../components/atoms/common/SearchBar";
 import Header from "../../components/atoms/common/Header";
 
-import {
-  getArticleDetail,
-  getArticleIds,
-  getArticleList,
-} from "../../api/community";
+import { getArticleList, getPopularList } from "../../api/community";
 
 import { FaPlus } from "react-icons/fa";
 
-export default function Community() {
+export async function getStaticProps() {
+  var articles = [];
+  var popularArticles = [];
+
+  await getArticleList(
+    (res) => {
+      articles = res.data.articles;
+    },
+    (err) => {
+      console.log(err);
+    }
+  );
+
+  await getPopularList(
+    (res) => {
+      popularArticles = res.data.articles;
+    },
+    (err) => {
+      console.log(err);
+    }
+  );
+
+  return {
+    props: {
+      articles,
+      popularArticles,
+    },
+  };
+}
+
+export default function Community({ articles, popularArticles }) {
   const router = useRouter();
-  const [tab, setTab] = useState("전체");
-  const [articleList, setArticleList] = useState([]);
+  const [tab, setTab] = useState("");
+  const [currList, setCurrList] = useState(articles);
   const tabs = ["전체", "팔로잉", "인기글"];
 
-  useEffect(() => {
-    getArticleDetail(
-      14,
-      (res) => {
-        console.log(res.data);
-      },
-      (err) => {
-        console.log(err);
-      }
-    );
-  });
+  const articleList = articles;
+  const followingList = articles.filter((article) => article.isFollow);
+  const popularList = popularArticles.reverse();
 
   useEffect(() => {
-    getArticleList(
-      (res) => {
-        setArticleList(res.data.articles);
-      },
-      (err) => {
-        console.log(err);
-      }
-    );
-  }, []);
+    if (tab == "전체") {
+      setCurrList(articleList);
+    } else if (tab == "팔로잉") {
+      setCurrList(followingList);
+    } else if (tab == "인기글") {
+      setCurrList(popularList);
+    }
+  }, [tab]);
 
   const handleAddClick = () => {
     router.push(
@@ -71,7 +88,7 @@ export default function Community() {
         ))}
       </div>
       <div className="p-4 flex flex-col space-y-3">
-        {articleList.map((article) => (
+        {currList.map((article) => (
           <ArticleItem article={article} key={article.articleId} />
         ))}
       </div>

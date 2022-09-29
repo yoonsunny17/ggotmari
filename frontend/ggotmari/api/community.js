@@ -83,6 +83,10 @@ async function getArticleIds(success, fail) {
   await api.get(`/community/article/id`).then(success).catch(fail);
 }
 
+async function getPopularList(success, fail) {
+  await api.get(`/community/article/popular`).then(success).catch(fail);
+}
+
 async function getArticleDetail(articleId, success, fail) {
   await api
     .get(`/community/article/${articleId}`, {
@@ -124,4 +128,5 @@ export {
   getArticleIds,
   getArticleDetail,
   deleteArticle,
+  getPopularList,
 };
