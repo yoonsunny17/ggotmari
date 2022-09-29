@@ -72,7 +72,15 @@ function Edit() {
     setUserName(res.data.user.userName);
     setUserImagePreview(res.data.user.userImage);
     setUserSex(res.data.user.userSex);
-    setUserBirthday(res.data.user.userBirthday || "");
+    // 생일에서 '-' 제거
+    const bday = (bday) => {
+      let newBday =
+        bday.substring(0, 4) + bday.substring(5, 7) + bday.substring(8, 10);
+      return newBday;
+    };
+    setUserBirthday(
+      res.data.user.userBirthday ? bday(res.data.user.userBirthday) : ""
+    );
   };
 
   const getUserFail = (err) => {
@@ -98,6 +106,8 @@ function Edit() {
   // 제출 통신
   const onSubmitSuccess = (res) => {
     console.log(res);
+    alert("성공적으로 변경되었습니다");
+    router.push(`/profile/${userName}`);
   };
 
   const onSubmitFail = (err) => {
@@ -109,20 +119,28 @@ function Edit() {
 
     const formData = new FormData();
 
-    const credentials = {
+    const userPutReq = {
       userName: userName,
-      birthday: userBirthday,
+      // 생일 '-' 추가
+      birthday:
+        userBirthday.substring(0, 4) +
+        "-" +
+        userBirthday.substring(4, 6) +
+        "-" +
+        userBirthday.substring(6, 8),
       sex: userSex,
       profile: userImage ? "" : userImagePreview,
     };
 
-    const json = JSON.stringify(credentials);
+    const json = JSON.stringify(userPutReq);
+    console.log(json);
     const blob = new Blob([json], { type: "application/json" });
-    formData.append("userPurReq", blob);
+    formData.append("userPutReq", blob);
     if (userImage) {
-      formData.append("multipartfile", userImage);
+      formData.append("multipart", userImage);
     }
-    editUser(credentials, onSubmitSuccess, onSubmitFail);
+    console.log(formData);
+    editUser(formData, onSubmitSuccess, onSubmitFail);
   };
 
   // 회원탈퇴 통신
