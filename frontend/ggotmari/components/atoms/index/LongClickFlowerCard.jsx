@@ -6,46 +6,28 @@ import { getFlowerDetail } from "../../../api/flower";
 
 import Swal from "sweetalert2";
 
-// function LongClickFlowerCard({ info }) {
-//   const { subjectId, kindId, flowerName, imgUrl } = info;
 function LongClickFlowerCard(props) {
-  // useEffect(() => {
-  //   console.log("======================== this is info");
-  //   console.log(props);
-  // }, []);
+  const [flowerSubjectName, setSubjectName] = useState();
+  const [flowerKindName, setKindName] = useState();
+  useEffect(() => {
+    console.log(props);
+    const flowerName = props.info.kindName;
+    const blank = flowerName.indexOf(" ");
+    setSubjectName(flowerName.slice(0, blank));
+    setKindName(flowerName.slice(blank));
+  }, []);
+
   const router = useRouter();
   const handlePostClick = () => {
-    router.push(
-      // {
-      //   pathname: `flower/${subjectId}`,
-      // },
-      `/flower/${props.info.kindId}`
-    );
+    router.push(`/flower/${props.info.kindId}`);
   };
 
   // TODO: 스타일 적용, 사이즈 조절
-  // const openSwal = () => {
-  //   Swal.fire({
-  //     title: `정말 ${flowerName} 추천을 그만 받으시겠습니까?`,
-  //     text: "추천을 그만 받으면 앞으로 해당 꽃이 표시 되지 않습니다.",
-  //     width: 300,
-  //     height: 250,
-  //     showDenyButton: true,
-  //     confirmButtonColor: "#FFD365",
-  //     denyButtonColor: "#709FB0",
-  //     confirmButtonText: "네",
-  //     denyButtonText: "아니요",
-  //   }).then((result) => {
-  //     if (result.isConfirmed) {
-  //       Swal.fire("Deleted!", "Your file has been deleted.", "success");
-  //     }
-  //   });
-  // };
 
   const openSwal = () => {
     Swal.fire({
-      // title: `정말 ${flowerName} 추천을 그만 받으시겠습니까?`,
-      title: `정말 꽃 추천을 그만 받으시겠습니까?`,
+      title: `정말 ${flowerKindName} 추천을 그만 받으시겠습니까?`,
+      // title: `정말 꽃 추천을 그만 받으시겠습니까?`,
       text: "추천을 그만 받으면 앞으로 해당 꽃이 표시 되지 않습니다.",
       width: 300,
       height: 250,
@@ -55,6 +37,7 @@ function LongClickFlowerCard(props) {
       confirmButtonText: "네",
       denyButtonText: "아니요",
       showLoaderOnConfirm: true,
+      // TODO: 추천 안받기 API 연동 수정하기
       preConfirm: () => {
         return fetch(`https://j7a303.p.ssafy.io/api/recommend/dislike`, {
           method: "POST",
