@@ -19,7 +19,7 @@ function LongClickFlowerCard(props) {
       // {
       //   pathname: `flower/${subjectId}`,
       // },
-      `/flower/${props.kindId}`
+      `/flower/${props.info.kindId}`
     );
   };
 
@@ -44,7 +44,8 @@ function LongClickFlowerCard(props) {
 
   const openSwal = () => {
     Swal.fire({
-      title: `정말 ${flowerName} 추천을 그만 받으시겠습니까?`,
+      // title: `정말 ${flowerName} 추천을 그만 받으시겠습니까?`,
+      title: `정말 꽃 추천을 그만 받으시겠습니까?`,
       text: "추천을 그만 받으면 앞으로 해당 꽃이 표시 되지 않습니다.",
       width: 300,
       height: 250,
