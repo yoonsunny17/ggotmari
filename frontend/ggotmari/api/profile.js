@@ -42,11 +42,11 @@ async function follow(credential, success, fail) {
     .catch(fail);
 }
 
-async function editUser(credentials, success, fail) {
+async function editUser(formData, success, fail) {
   await api
-    .put(`user`, {
+    .put(`user`, formData, {
       headers: {
-        Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+        Authorization: `${localStorage.getItem("accessToken")}`,
       },
     })
     .then(success)
@@ -57,7 +57,7 @@ async function signout(success, fail) {
   await api
     .delete(`user`, {
       headers: {
-        Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+        Authorization: `${localStorage.getItem("accessToken")}`,
       },
     })
     .then(success)
