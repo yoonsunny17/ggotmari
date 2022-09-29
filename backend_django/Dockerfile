@@ -16,7 +16,7 @@ RUN pip install --upgrade pip
 
 RUN pip install -r requirements.txt
 
-# RUN python sale_data.py
+RUN python sale_data.py
 
 # RUN pip install gunicorn
 # COPY . .
