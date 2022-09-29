@@ -42,7 +42,7 @@ function RecommendMain() {
 
       <div className="flex justify-center">
         <button
-          onClick={() => router.push("/recommend/write")}
+          onClick={() => router.push("/recommend/letter")}
           className="mt-6 font-gangwon bg-sub2 rounded-md w-52 py-2 pt-2.5 pb-1.5 text-font3"
         >
           편지 작성하기
