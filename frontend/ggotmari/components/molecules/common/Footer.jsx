@@ -36,10 +36,13 @@ function Footer() {
   // console.log(username);
 
   const onCheck = () => {
-    if (localStorage.getItem("accessToken")) {
+    if (localStorage.getItem("accessToken") && username) {
+      router.push(`/profile/${username}`);
+    } else if (localStorage.getItem("accessToken") && !username) {
+      getInfo();
       router.push(`/profile/${username}`);
     } else {
-      router.push("/login");
+      router.push("/");
     }
   };
 
