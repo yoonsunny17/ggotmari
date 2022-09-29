@@ -1,6 +1,5 @@
 import Link from "next/link";
 import { getUserName } from "../../../api/user.js";
-
 import {
   IoFlowerOutline,
   IoArrowBack,
@@ -10,8 +9,11 @@ import {
 } from "react-icons/io5";
 import { BsPeople } from "react-icons/bs";
 import { useEffect, useState } from "react";
+import { useRouter } from "next/router.js";
 
 function Footer() {
+  const router = useRouter();
+
   const [username, setUsername] = useState("");
 
   const success = (res) => {

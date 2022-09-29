@@ -46,18 +46,16 @@ export default function Like() {
     ],
   });
 
-  const success = (res) => {
+  // 초기 데이터 받아오기
+  const getUserSuccess = (res) => {
     setUserInfo(res.data);
   };
-  const fail = (err) => console.log(err);
-  // 서버 통신 짤 코드
+
+  const getUserFail = (err) => console.log(err);
 
   const getInfo = (username) => {
-    // console.log(username);
-    getUser(username, success, fail);
+    getUser(username, getUserSuccess, getUserFail);
   };
-
-  // console.log(userInfo.likeArticles);
 
   useEffect(() => {
     if (localStorage.getItem("accessToken")) {

@@ -1,14 +1,12 @@
 import { useRouter } from "next/router";
 import ProfileFollowList from "../../../components/organisms/profile/ProfileFollowList";
+import { useEffect } from "react";
 
 function ProfileFollow() {
   const router = useRouter().query.username;
 
   useEffect(() => {
-    if (localStorage.getItem("accessToken")) {
-      const username = window.location.pathname.substring(16);
-      getInfo(username);
-    } else {
+    if (!localStorage.getItem("accessToken")) {
       router.push("/login");
     }
   }, []);
