@@ -5,7 +5,11 @@ import ArticleItem from "../../components/molecules/community/ArticleItem";
 import SearchBar from "../../components/atoms/common/SearchBar";
 import Header from "../../components/atoms/common/Header";
 
-import { getArticleList } from "../../api/community";
+import {
+  getArticleDetail,
+  getArticleIds,
+  getArticleList,
+} from "../../api/community";
 
 import { FaPlus } from "react-icons/fa";
 
@@ -16,13 +20,25 @@ export default function Community() {
   const tabs = ["전체", "팔로잉", "인기글"];
 
   useEffect(() => {
+    getArticleDetail(
+      14,
+      (res) => {
+        console.log(res.data);
+      },
+      (err) => {
+        console.log(err);
+      }
+    );
+  });
+
+  useEffect(() => {
     getArticleList(
       (res) => {
         setArticleList(res.data.articles);
       },
       (err) => {
         console.log(err);
-      },
+      }
     );
   }, []);
 
@@ -31,7 +47,7 @@ export default function Community() {
       {
         pathname: "/community/edit",
       },
-      "/community",
+      "/community"
     );
   };
 

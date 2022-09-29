@@ -35,10 +35,10 @@ export async function getStaticPaths() {
     },
     (err) => {
       console.log(err);
-    },
+    }
   );
 
-  return { paths, fallback: false };
+  return { paths, fallback: "blocking" };
 }
 
 export async function getStaticProps({ params }) {
@@ -46,14 +46,14 @@ export async function getStaticProps({ params }) {
   await getArticleDetail(
     params.articleId,
     (res) => {
-      article = { ...res.data };
+      article = res.data;
       delete article.status;
       delete article.message;
       article.articleId = params.articleId;
     },
     (err) => {
       console.log(err);
-    },
+    }
   );
 
   return {
@@ -83,7 +83,7 @@ function ArticleDetail({ article }) {
       },
       (err) => {
         console.log(err);
-      },
+      }
     );
   };
 
@@ -118,7 +118,7 @@ function ArticleDetail({ article }) {
               icon: "error",
               title: "삭제에 실패하였습니다",
             });
-          },
+          }
         );
       }
     });
