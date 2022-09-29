@@ -55,7 +55,8 @@ function FollowUser({ item, followInfo, setFollowInfo }) {
           </span>
         </div>
         <div className="follow-btn col-span-1 grid items-center font-sansultralight text-xs">
-          {item.isFollowing ? (
+          {item.isMe && null}
+          {!item.isMe && item.isFollowing && (
             <div>
               <button
                 onClick={onClickFollow}
@@ -64,7 +65,8 @@ function FollowUser({ item, followInfo, setFollowInfo }) {
                 팔로잉
               </button>
             </div>
-          ) : (
+          )}
+          {!item.isMe && !item.isFollowing && (
             <div>
               <button
                 onClick={onClickFollow}

@@ -113,12 +113,15 @@ function Edit() {
       userName: userName,
       birthday: userBirthday,
       sex: userSex,
+      profile: userImage ? "" : userImagePreview,
     };
 
     const json = JSON.stringify(credentials);
     const blob = new Blob([json], { type: "application/json" });
     formData.append("userPurReq", blob);
-    formData.append("multipartfile", userImage);
+    if (userImage) {
+      formData.append("multipartfile", userImage);
+    }
     editUser(credentials, onSubmitSuccess, onSubmitFail);
   };
 

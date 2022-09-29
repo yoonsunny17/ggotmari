@@ -138,7 +138,9 @@ function ProfileFollowList() {
             );
           })
         ) : (
-          <div>nonono</div>
+          <div className="nouser-box mx-10 mt-10 flex justify-center font-sansultralight text-font2 text-sm">
+            <span className="nouser">조회할 유저가 없습니다</span>
+          </div>
         )}
       </div>
     </>
