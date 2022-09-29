@@ -19,48 +19,47 @@ before_7days = before_7days_raw.strftime('%Y-%m-%d')  # 2022-09-18
 # yesterday = '2022-09-05'
 # before_7days = '2022-08-30'
 
-while True:
+with redis.StrictRedis(host='172.17.0.1', port=6379, db=2, charset='utf-8', decode_responses=True, password=my_settings.mysql_password) as connect:
+    if connect.hgetall(yesterday) == False:
+                
+        sql = "select sum(sale_size) sale_size, subject_id from sale where DATE(sale_date) BETWEEN %s AND %s group by subject_id"
+        vals = (before_7days, yesterday)
+        cur.execute(sql, vals)
 
-    sql = "select sum(sale_size) sale_size, subject_id from sale where DATE(sale_date) BETWEEN %s AND %s group by subject_id"
-    vals = (before_7days, yesterday)
-    cur.execute(sql, vals)
+        result = cur.fetchall()
 
-    result = cur.fetchall()
+        subject_sales = dict()
 
-    subject_sales = dict()
+        if len(result) >= 1:
+            for record in result:
+                # print(record[0], record[1])  sum, id
+                if int(record[0]) >= 10000:
+                    sale_point = 6
 
-    if len(result) >= 1:
-        for record in result:
-            # print(record[0], record[1])  sum, id
-            if int(record[0]) >= 10000:
-                sale_point = 6
+                elif int(record[0]) >= 5000:
+                    sale_point = 3
+                
+                elif int(record[0]) >= 1000:
+                    sale_point = 1
 
-            elif int(record[0]) >= 5000:
-                sale_point = 3
-            
-            elif int(record[0]) >= 1000:
-                sale_point = 1
+                else:
+                    sale_point = 0
 
-            else:
-                sale_point = 0
+                subject_sales[int(record[1])] = sale_point
 
-            subject_sales[int(record[1])] = sale_point
+                # with redis.Redis(host='localhost', port=6379, db=2) as connect:  # 2번 db 사용
+                #     connect.set(f':1:{yesterday}_{record[1]}', sale_point, 60)  # 어제날짜_품종id를 key로, 품종별 판매량을 value로 설정
 
-            # with redis.Redis(host='localhost', port=6379, db=2) as connect:  # 2번 db 사용
-            #     connect.set(f':1:{yesterday}_{record[1]}', sale_point, 60)  # 어제날짜_품종id를 key로, 품종별 판매량을 value로 설정
-        
-        
-        with redis.StrictRedis(host='172.17.0.1', port=6379, db=2, charset='utf-8', decode_responses=True, password=my_settings.mysql_password) as connect:  # 2번 db 사용
+
+            # with redis.StrictRedis(host='172.17.0.1', port=6379, db=2, charset='utf-8', decode_responses=True, password=my_settings.mysql_password) as connect:  # 2번 db 사용
             connect.hmset(yesterday, subject_sales)  # 어제날짜_품종id를 key로, 품종별 판매량을 value로 설정
             # print(connect.hgetall(yesterday))
 
-    yesterday_raw += timedelta(days=-1)
-    before_7days_raw += timedelta(days=-1)
+        # yesterday_raw += timedelta(days=-1)
+        # before_7days_raw += timedelta(days=-1)
 
-    yesterday = yesterday_raw.strftime('%Y-%m-%d')  # 2022-09-24
-    before_7days = before_7days_raw.strftime('%Y-%m-%d')  # 2022-09-18
+        # yesterday = yesterday_raw.strftime('%Y-%m-%d')  # 2022-09-24
+        # before_7days = before_7days_raw.strftime('%Y-%m-%d')  # 2022-09-18
 
-    if yesterday == '2019-01-01':
-        break
 
 conn.close()
