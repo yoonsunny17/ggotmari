@@ -137,7 +137,7 @@ public class UserService {
         if(findUser != null  && !findUser.getName().equals(user.getName())){
             return false;
         }
-//        user.setName(userPutReq.getUserName().toLowerCase());
+        user.setName(userPutReq.getUserName());
         if(userPutReq.getProfile().length() == 0){
             String imageUrl = fileService.uploadFile(multipartFile, "profile/");
             user.setProfileImage(imageUrl);
