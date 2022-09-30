@@ -80,7 +80,7 @@ public class FlowerController {
         String jwtToken = request.getHeader("Authorization");
 
         if(jwtToken == null){
-            return ResponseEntity.status(401).body(FlowerDetailGetRes.of(401, "로그인이 필요합니다.", null, null, null));
+            return ResponseEntity.status(401).body(FlowerDetailGetRes.of(401, "로그인이 필요합니다.", null, null, null, null));
         }
 
         String email = jwtTokenUtil.getUserEmailFromToken(jwtToken);
@@ -90,12 +90,13 @@ public class FlowerController {
         Subject subject = flowerService.getFlowerDetail(subjectId);
 
         if(subject == null){
-            return ResponseEntity.status(404).body(FlowerDetailGetRes.of(404, "조회실패.", null, null, null));
+            return ResponseEntity.status(404).body(FlowerDetailGetRes.of(404, "조회실패.", null,  null, null, null));
         }else{
-            List<KindDetailRes> kinds = flowerService.getFlowerKinds(email, subjectId);
+            List<KindDetailRes> kinds = flowerService.getFlowerKinds(email, subjectId, kindId);
             List<Article> articles = flowerService.getSubjectArticles(subjectId);
+            Kind kind = flowerService.getKindDetail(kindId);
 
-            return ResponseEntity.status(201).body(FlowerDetailGetRes.of(201, "정상적으로 조회되었습니다.", subject, kinds, articles));
+            return ResponseEntity.status(201).body(FlowerDetailGetRes.of(201, "정상적으로 조회되었습니다.", subject, kind, kinds, articles));
         }
     }
 
