@@ -17,5 +17,5 @@ public class KindDetailRes {
     @ApiModelProperty(name = "품종 이미지")
     String kindImage;
     @ApiModelProperty(name = "태그 상태 리스트")
-    List<TagRes> kinds = new ArrayList<>();
+    List<TagRes> tags = new ArrayList<>();
 }
