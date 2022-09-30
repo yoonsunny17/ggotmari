@@ -73,12 +73,17 @@ public class PopularService {
 
         LocalDateTime start = LocalDateTime.now().minusDays(7);
         LocalDateTime end = LocalDateTime.now();
-        List<Article> articles = articleRepository.findTop10AllByDateBetweenOrderByLikesDesc(start, end);
+//        List<Article> articles = articleRepository.findTop10AllByDateBetweenOrderByLikesDesc(start, end);
+        List<Article> articles = articleRepository.findAllByDateBetween(start, end);
 
-//        Collections.sort(articles, (o1, o2) -> o2.getLikes().size() - o1.getLikes().size());
+        Collections.sort(articles, (o1, o2) -> o2.getLikes().size() - o1.getLikes().size());
 
         //인기글 선정된 데이터 로그 찍기기 + 레디스에 데이터 넣기
+        int cnt = 0;
         for(Article article : articles){
+            if(cnt >= 10){
+                break;
+            }
             Popular popular = new Popular();
             popular.setPopularDate(LocalDate.now());
             popular.setArticle(article);
@@ -86,6 +91,8 @@ public class PopularService {
             popularRepository.save(popular);
 
             redisTemplate.opsForZSet().add(ZSET_KEY, Long.toString(article.getId()), article.getLikes().size());
+
+            cnt++;
         }
 
     }
