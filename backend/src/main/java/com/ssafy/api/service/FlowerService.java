@@ -58,7 +58,11 @@ public class FlowerService {
         return subjectRepository.findById(subjectId).get();
     }
 
-    public List<KindDetailRes> getFlowerKinds(String email, Long subjectId){
+    public Kind getKindDetail(Long kindId){
+        return kindRepository.findById(kindId).get();
+    }
+
+    public List<KindDetailRes> getFlowerKinds(String email, Long subjectId, Long kindId){
         Subject subject = subjectRepository.findById(subjectId).get();
         User user = userRepository.findByEmail(email);
 
@@ -66,10 +70,15 @@ public class FlowerService {
 
         List<KindDetailRes> flowers = new ArrayList<>();
         for(Kind kind : kinds){
+
+            if(kind.getId().equals(kindId)){
+                continue;
+            }
+
             KindDetailRes detail = new KindDetailRes();
             detail.setKindId(kind.getId());
             detail.setKindName(kind.getKindName());
-            detail.setKindImage("https://ggotmari.s3.ap-northeast-2.amazonaws.com" + kind.getFlowerImage());
+            detail.setKindImage("https://ggotmari.s3.ap-northeast-2.amazonaws.com/" + kind.getFlowerImage());
 
             List<Tag> tags = tagRepository.findAll();
             for(Tag tag : tags){
@@ -81,7 +90,7 @@ public class FlowerService {
                 }else{
                     tagRes.setTagStatus(false);
                 }
-                detail.getKinds().add(tagRes);
+                detail.getTags().add(tagRes);
             }
 
             flowers.add(detail);
