@@ -9,7 +9,6 @@ import CommentDrawer from "../../components/organisms/community/CommentDrawer";
 
 import {
   getArticleDetail,
-  getArticleIds,
   postArticleLike,
   deleteArticle,
 } from "../../api/community";
@@ -22,60 +21,69 @@ import {
 } from "react-icons/ai";
 import { IoIosArrowUp } from "react-icons/io";
 
-export async function getStaticPaths() {
-  var paths = [];
-
-  await getArticleIds(
-    (res) => {
-      paths = res.data.articlesId.map((articleId) => ({
-        params: {
-          articleId: articleId.toString(),
-        },
-      }));
-    },
-    (err) => {
-      console.log(err);
-    }
-  );
-
-  return { paths, fallback: "blocking" };
-}
-
-export async function getStaticProps({ params }) {
-  var article = {};
-  await getArticleDetail(
-    params.articleId,
-    (res) => {
-      article = res.data;
-      delete article.status;
-      delete article.message;
-      article.articleId = params.articleId;
-    },
-    (err) => {
-      console.log(err);
-    }
-  );
-
+export async function getServerSideProps(context) {
   return {
-    props: {
-      article,
-    },
+    props: {},
   };
 }
 
-function ArticleDetail({ article }) {
+function ArticleDetail() {
   const router = useRouter();
   const [isOpen, setIsOpen] = useState(false);
   const [isClicked, setIsClicked] = useState(false);
-  const [isLike, setIsLike] = useState(article.isLike);
-  const [likeCount, setLikeCount] = useState(article.likeCount);
+  const [isLike, setIsLike] = useState(false);
+  const [likeCount, setLikeCount] = useState(false);
+  const [commentCount, setCommentCount] = useState();
+  const [comments, setComments] = useState([]);
+  const [article, setArticle] = useState({
+    user: {
+      userId: 0,
+      userName: "",
+      userImage: "",
+      follower: 0,
+      following: 0,
+      isFollow: false,
+      isMe: false,
+    },
+    articleTitle: "",
+    articleContent: "",
+    articleImages: [],
+    articleDate: "",
+    tags: [],
+    isLike: false,
+    likeCount: 0,
+    commentCount: 0,
+    comments: [],
+  });
+
+  useEffect(() => {
+    getArticleDetail(
+      router.query.articleId,
+      (res) => {
+        const article = res.data;
+        delete article.status;
+        delete article.message;
+        setArticle(article);
+      },
+      (err) => {
+        console.log(err);
+      },
+    );
+  }, []);
+
+  useEffect(() => {
+    setIsLike(article.isLike);
+    setLikeCount(article.likeCount);
+    setComments(article.comments);
+    setCommentCount(article.commentCount);
+  }, [article]);
 
   const loginUserImg =
     "https://parsley-bucket.s3.ap-northeast-2.amazonaws.com/0c7e7405-a032-4dc2-a3e6-7c7de633b383_%EC%A7%B1%EA%B5%AC%EB%BF%8C.jpg";
 
   const handleLikeClick = async () => {
     await postArticleLike(
-      article.articleId,
+      router.query.articleId,
       !isLike,
       () => {
         setLikeCount(isLike ? likeCount - 1 : likeCount + 1);
@@ -83,7 +91,7 @@ function ArticleDetail({ article }) {
       },
       (err) => {
         console.log(err);
-      }
+      },
     );
   };
 
@@ -102,7 +110,7 @@ function ArticleDetail({ article }) {
     deleteConfirmAlert.fire().then(async (result) => {
       if (result.isDenied) {
         await deleteArticle(
-          article.articleId,
+          router.query.articleId,
           (res) => {
             Swal.fire({
               icon: "success",
@@ -118,7 +126,7 @@ function ArticleDetail({ article }) {
               icon: "error",
               title: "삭제에 실패하였습니다",
             });
-          }
+          },
         );
       }
     });
@@ -207,7 +215,7 @@ function ArticleDetail({ article }) {
                 onClick={() => setIsOpen(true)}
               >
                 <AiOutlineComment className="inline ml-2" />{" "}
-                {article.commentCount >= 100 ? "99+" : article.commentCount}
+                {commentCount >= 100 ? "99+" : commentCount}
               </div>
             </div>
             <div className="text-sm">
@@ -222,7 +230,7 @@ function ArticleDetail({ article }) {
           onClick={() => setIsOpen(true)}
         >
           <div className="flex flex-row justify-between items-center">
-            <div>댓글 {article.commentCount}</div>
+            <div>댓글 {commentCount}</div>
             <IoIosArrowUp className="text-xl" />
           </div>
 
@@ -232,8 +240,10 @@ function ArticleDetail({ article }) {
           isOpen={isOpen}
           setIsOpen={setIsOpen}
           loginUserImg={loginUserImg}
-          articleId={article.articleId}
-          commentList={article.comments}
+          articleId={router.query.articleId}
+          commentList={comments}
+          setComments={setComments}
+          setCommentCount={setCommentCount}
         />
       </div>
       <div className="h-14"></div>

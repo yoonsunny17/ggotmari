@@ -14,9 +14,10 @@ function CommentDrawer({
   isOpen,
   setIsOpen,
   loginUserImg,
+  setComments,
+  setCommentCount,
 }) {
   const [comment, setComment] = useState("");
-  const [comments, setComments] = useState(commentList);
 
   const handleCommentChange = (e) => {
     setComment(e.target.value);
@@ -38,6 +39,7 @@ function CommentDrawer({
       articleId,
       (res) => {
         setComments(res.data.comments);
+        setCommentCount(res.data.commentCount);
       },
       (err) => {
         console.log(err);
@@ -70,7 +72,7 @@ function CommentDrawer({
               <IoIosArrowDown className="text-xl" />
             </div>
             <div className="flex flex-col px-3 space-y-3">
-              {comments.map((comment) => (
+              {commentList.map((comment) => (
                 <CommentItem
                   userName={comment.userName}
                   commentContent={comment.commentContent}
