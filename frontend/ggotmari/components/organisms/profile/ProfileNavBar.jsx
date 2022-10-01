@@ -40,7 +40,7 @@ function ProfileNavBar({ activeTab, onActiveTab }) {
           </div>
         )}
         {/* 좋아요 탭 활성화 여부 */}
-        {activeTab === 3 ? (
+        {activeTab === 2 ? (
           <div className="like w-full flex justify-center border-b-2 border-b-main pb-4">
             <span className="w-2/5 text-main hover:cursor-pointer">
               <BsHeart className="w-full" />

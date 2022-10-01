@@ -38,16 +38,6 @@ function ProfileFollowList() {
     }
   }, []);
 
-  // 팔로우 팔로잉 정보 바뀔 때 및 처음 시작할 때 정보 채워주기
-  useEffect(() => {
-    setSearchTerm("");
-    if (toShow) {
-      setShowList([...followInfo.followers]);
-    } else {
-      setShowList([...followInfo.followings]);
-    }
-  }, [followInfo]);
-
   // 팔로우와 팔로잉 탭이 바뀔 때마다 showList 갈아 끼어넣기
   useEffect(() => {
     setSearchTerm("");
@@ -57,6 +47,36 @@ function ProfileFollowList() {
       setShowList(followInfo.followings);
     }
   }, [toShow]);
+
+  // 팔로우 팔로잉 정보 바뀔 때 및 처음 시작할 때 정보 채워주기
+  useEffect(() => {
+    // setSearchTerm("");
+    if (toShow) {
+      if (searchTerm !== "") {
+        let arr = [];
+        for (let show of showList) {
+          if (show.userName.includes(searchTerm)) {
+            arr.push(show);
+          }
+        }
+        setShowList(arr);
+      } else {
+        setShowList([...followInfo.followers]);
+      }
+    } else {
+      if (searchTerm !== "") {
+        let arr = [];
+        for (let show of showList) {
+          if (show.userName.includes(searchTerm)) {
+            arr.push(show);
+          }
+        }
+        setShowList(arr);
+      } else {
+        setShowList([...followInfo.followings]);
+      }
+    }
+  }, [followInfo]);
 
   // 검색어 입력시 showList 갈아 끼어넣기
   useEffect(() => {
@@ -78,8 +98,8 @@ function ProfileFollowList() {
   }, [searchTerm]);
 
   // 팔로우 팔로잉 온오프
-
   const changeOn = () => {
+    setSearchTerm("");
     if (toShow) {
       setToShow(false);
     } else {
@@ -121,7 +141,7 @@ function ProfileFollowList() {
           onChange={(event) => {
             setSearchTerm(event.target.value);
           }}
-          value={searchTerm}
+          searchTerm={searchTerm}
         />
       </div>
       <div className="follow-list mt-3 mb-14">
