@@ -69,7 +69,10 @@ export default function Profile() {
     setUserInfo(res.data);
   };
 
-  const getUserFail = (err) => console.log(err);
+  const getUserFail = (err) => {
+    console.log(err);
+    router.push("/404");
+  };
 
   const getInfo = (username) => {
     getUser(username, getUserSuccess, getUserFail);

@@ -104,8 +104,8 @@ function Edit() {
   }, []);
 
   // 제출 통신
-  const onSubmitSuccess = (res) => {
-    console.log(res);
+  const onSubmitSuccess = () => {
+    // console.log(res);
     alert("성공적으로 변경되었습니다");
     router.push(`/profile/${userName}`);
   };
@@ -139,7 +139,6 @@ function Edit() {
     if (userImage) {
       formData.append("multipart", userImage);
     }
-    console.log(formData);
     editUser(formData, onSubmitSuccess, onSubmitFail);
   };
 
