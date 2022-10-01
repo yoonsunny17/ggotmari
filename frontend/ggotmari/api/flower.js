@@ -2,9 +2,9 @@ import { apiInstance } from "./index";
 
 const api = apiInstance();
 
-async function getFlowerDetail(subjectId, success, fail) {
+async function getFlowerDetail(kindId, success, fail) {
   await api
-    .get(`flower/${subjectId}`, {
+    .get(`flower/${kindId}`, {
       headers: {
         Authorization: localStorage.getItem("accessToken"),
       },

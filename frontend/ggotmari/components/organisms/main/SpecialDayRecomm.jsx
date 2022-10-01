@@ -14,6 +14,7 @@ function SpecialDayRecomm() {
         subjectId: "",
         kindId: "",
         kindImage: "",
+        subjectName: "",
       },
     ],
   });
