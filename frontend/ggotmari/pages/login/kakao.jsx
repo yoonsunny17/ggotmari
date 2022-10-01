@@ -1,6 +1,7 @@
 import { useRouter } from "next/router";
 import { useState, useEffect } from "react";
 import { doLogin } from "../../api/user";
+import kakaoLogin from "../../assets/login/login.gif";
 
 export default function Kakao() {
   const router = useRouter();
@@ -18,5 +19,20 @@ export default function Kakao() {
     );
   }, []);
 
-  return <div>카카오 로그인 중</div>;
+  return (
+    <div className="login h-screen bg-login bg-cover bg-center">
+      <div className="login-img-box mx-10 pt-40 flex justify-center">
+        <img
+          src={kakaoLogin.src}
+          alt="카카오 로그인 GIF"
+          className="login-img w-2/3"
+        />
+      </div>
+      <div className="login-text-box flex justify-center">
+        <span className="mt-10 font-sansultralight bg-main/80 text-white px-5 py-3 rounded-md">
+          꽃마리로 로그인 중...
+        </span>
+      </div>
+    </div>
+  );
 }
