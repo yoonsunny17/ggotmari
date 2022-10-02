@@ -48,12 +48,13 @@ function SearchFlowerList() {
         </div>
       </div>
       <div className="flex flex-wrap justify-evenly items-center">
-        {flowerList.map((flower) => (
+        {flowerList.map((flower, idx) => (
           <FlowerCard
             kindImage={flower.kindImage}
             kindName={flower.kindName}
             subjectName={flower.subjectName}
             kindId={flower.kindId}
+            key={idx}
           />
         ))}
       </div>
