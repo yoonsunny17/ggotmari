@@ -1,7 +1,7 @@
 import { useRouter } from "next/router";
 import Flower from "../assets/404/404Flower.jpg";
 
-function page404() {
+function Page404() {
   const router = useRouter();
   return (
     <div className="404 w-screen font-maru">
@@ -26,4 +26,4 @@ function page404() {
   );
 }
 
-export default page404;
+export default Page404;
