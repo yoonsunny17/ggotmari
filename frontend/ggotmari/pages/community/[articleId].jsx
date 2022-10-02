@@ -21,13 +21,26 @@ import {
 } from "react-icons/ai";
 import { IoIosArrowUp } from "react-icons/io";
 
-export async function getServerSideProps(context) {
+export async function getServerSideProps({ params }) {
+  var article;
+  await getArticleDetail(
+    params.articleId,
+    (res) => {
+      article = res.data;
+      delete article.status;
+      delete article.message;
+      article.articleId = params.articleId;
+    },
+    (err) => {
+      console.log(err);
+    },
+  );
   return {
-    props: {},
+    props: { article },
   };
 }
 
-function ArticleDetail() {
+function ArticleDetail({ article }) {
   const router = useRouter();
   const [isOpen, setIsOpen] = useState(false);
   const [isClicked, setIsClicked] = useState(false);
@@ -35,51 +48,13 @@ function ArticleDetail() {
   const [likeCount, setLikeCount] = useState(false);
   const [commentCount, setCommentCount] = useState();
   const [comments, setComments] = useState([]);
-  const [article, setArticle] = useState({
-    user: {
-      userId: 0,
-      userName: "",
-      userImage: "",
-      follower: 0,
-      following: 0,
-      isFollow: false,
-      isMe: false,
-    },
-    articleTitle: "",
-    articleContent: "",
-    articleImages: [],
-    articleDate: "",
-    tags: [],
-    isLike: false,
-    likeCount: 0,
-    commentCount: 0,
-    comments: [],
-  });
-
-  useEffect(() => {
-    getArticleDetail(
-      router.query.articleId,
-      (res) => {
-        const article = res.data;
-        delete article.status;
-        delete article.message;
-        setArticle(article);
-      },
-      (err) => {
-        console.log(err);
-      },
-    );
-  }, []);
 
   useEffect(() => {
     setIsLike(article.isLike);
     setLikeCount(article.likeCount);
     setComments(article.comments);
     setCommentCount(article.commentCount);
-  }, [article]);
-
-  const loginUserImg =
-    "https://parsley-bucket.s3.ap-northeast-2.amazonaws.com/0c7e7405-a032-4dc2-a3e6-7c7de633b383_%EC%A7%B1%EA%B5%AC%EB%BF%8C.jpg";
+  }, []);
 
   const handleLikeClick = async () => {
     await postArticleLike(
@@ -104,7 +79,20 @@ function ArticleDetail() {
     cancelButtonText: `취소`,
   });
 
-  const handleEditClick = () => {};
+  const handleEditClick = () => {
+    router.push(
+      {
+        pathname: "/community/edit",
+        query: {
+          title: article.articleTitle,
+          content: article.articleContent,
+          images: article.articleImages,
+          tags: article.tags,
+        },
+      },
+      "/community",
+    );
+  };
 
   const handleDeleteClick = () => {
     deleteConfirmAlert.fire().then(async (result) => {
@@ -239,7 +227,7 @@ function ArticleDetail() {
         <CommentDrawer
           isOpen={isOpen}
           setIsOpen={setIsOpen}
-          loginUserImg={loginUserImg}
+          loginUserImg={article.loginUserImage}
           articleId={router.query.articleId}
           commentList={comments}
           setComments={setComments}

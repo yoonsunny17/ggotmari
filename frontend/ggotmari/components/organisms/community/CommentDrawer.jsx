@@ -28,7 +28,7 @@ function CommentDrawer({
       articleId,
       comment,
       (res) => {
-        console.log(res);
+        setComment("");
       },
       (err) => {
         console.log(err);
@@ -95,6 +95,7 @@ function CommentDrawer({
                   placeholder="댓글을 입력하세요"
                   className="input bg-white w-full focus:outline-none text-font2 text-sm px-0"
                   onChange={handleCommentChange}
+                  value={comment}
                 />
               </div>
               <p

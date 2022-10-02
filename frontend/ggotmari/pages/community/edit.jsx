@@ -15,15 +15,15 @@ import {
 
 function EditArticle() {
   const router = useRouter();
-  const [title, setTitle] = useState("");
-  const [flowerTags, setFlowerTags] = useState({});
-  const [content, setContent] = useState("");
+  const [title, setTitle] = useState(router.query.title && "");
+  const [flowerTags, setFlowerTags] = useState(router.query.tags && []);
+  const [content, setContent] = useState(router.query.content && "");
   const [tagSearch, setTagSearch] = useState("");
   const [filteredList, setFilteredList] = useState([]);
   const [flowerKindList, setFlowerKindList] = useState([]);
   const [dropDownOpen, setDropDownOpen] = useState(false);
   const [imageFiles, setImageFiles] = useState();
-  const [imagePreviews, setImagePreviews] = useState([]);
+  const [imagePreviews, setImagePreviews] = useState(router.query.images && []);
 
   const Toast = Swal.mixin({
     toast: true,
@@ -42,7 +42,7 @@ function EditArticle() {
       (res) => setFlowerKindList(res.data.subjects),
       (error) => {
         console.log(error);
-      }
+      },
     );
   }, []);
 
@@ -53,8 +53,8 @@ function EditArticle() {
   useEffect(() => {
     setFilteredList(
       flowerKindList.filter((flowerKind) =>
-        flowerKind.subjectName.startsWith(tagSearch)
-      )
+        flowerKind.subjectName.startsWith(tagSearch),
+      ),
     );
   }, [tagSearch]);
 
@@ -64,6 +64,7 @@ function EditArticle() {
     if (!(newFlowerId in flowerTags)) {
       setFlowerTags({ ...flowerTags, [newFlowerId]: newFlowerName });
     }
+    setTagSearch("");
   };
 
   const removeFlowerTag = (flowerId) => {
@@ -128,7 +129,7 @@ function EditArticle() {
       const json = JSON.stringify(article);
       formData.append(
         "articleInfo",
-        new Blob([json], { type: "application/json" })
+        new Blob([json], { type: "application/json" }),
       );
       [...imageFiles].forEach((file) => formData.append("images", file));
 
@@ -141,7 +142,7 @@ function EditArticle() {
           Toast.fire({
             title: "게시글 등록에 실패하였습니다",
           });
-        }
+        },
       );
     }
   };
@@ -203,6 +204,7 @@ function EditArticle() {
             placeholder="제목을 입력하세요"
             onFocus={() => setDropDownOpen(false)}
             onChange={handleTitleChange}
+            value={title}
           />
           {/* 꽃 태그 */}
           <label htmlFor="flowerTags" className="pl-2 text-sm">
@@ -232,6 +234,7 @@ function EditArticle() {
               placeholder="꽃을 검색하세요"
               onClick={() => setDropDownOpen(true)}
               onChange={handleFlowerSearchChange}
+              value={tagSearch}
             />
             <hr />
             <div
