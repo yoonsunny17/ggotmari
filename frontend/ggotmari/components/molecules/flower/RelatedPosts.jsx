@@ -4,18 +4,14 @@ import Image from "next/image";
 import { IoMdHeart } from "react-icons/io";
 
 function RelatedPosts({
-  info: { articleId, articleImage, likeCount, username },
+  info: { articleId, articleImage, likeCount, userName },
 }) {
   const router = useRouter();
   // TODO: community/${articleId} 라우터 이동
   const postClickHandler = () => {
-    router.push(
-      {
-        pathname: `community/${articleId}`,
-      },
-      `community/${articleId}`
-    );
+    router.push(`/community/${articleId}`);
   };
+  console.log(articleId + userName);
   return (
     <div onClick={postClickHandler} className="font-sans">
       <div className="">
@@ -42,7 +38,7 @@ function RelatedPosts({
             </div>
           </div>
         </div>
-        <div className="text-[11px] text-font2 pt-0.5">@{username}</div>
+        <div className="text-[11px] text-font2 pt-0.5">@{userName}</div>
       </div>
     </div>
   );

@@ -13,15 +13,16 @@ async function getFlowerDetail(kindId, success, fail) {
     .catch(fail);
 }
 
-async function postFlowerDetail(success, fail) {
+async function postFlowerDetail(info, success, fail) {
   await api
     .post(
       `flower/${kindId}`,
-      {
-        kindId,
-        tagId,
-        tagStatus,
-      },
+      info,
+      // {
+      //   kindId,
+      //   tagId,
+      //   tagStatus,
+      // },
       {
         headers: {
           Authorization: localStorage.getItem("accessToken"),
