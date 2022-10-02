@@ -31,11 +31,8 @@ public class ArticlesRes {
     int commentCount;
     @ApiModelProperty(name = "좋아요 수")
     int likeCount;
-    @JsonProperty("isFollow")
-    @ApiModelProperty(name = "팔로우 여부")
-    boolean isFollow = false;
 
-    public static ArticlesRes of(Article article, User user) {
+    public static ArticlesRes of(Article article) {
         ArticlesRes res = new ArticlesRes();
 
         res.setArticleId(article.getId());
@@ -60,11 +57,11 @@ public class ArticlesRes {
         res.setCommentCount(article.getComments().size());
         res.setLikeCount(article.getLikes().size());
 
-        for(Follow follow : user.getFollowings()){
-            if(article.getUser().equals(follow.getFollowingUser())){
-                res.setFollow(true);
-            }
-        }
+//        for(Follow follow : user.getFollowings()){
+//            if(article.getUser().equals(follow.getFollowingUser())){
+//                res.setFollow(true);
+//            }
+//        }
 
         return res;
     }

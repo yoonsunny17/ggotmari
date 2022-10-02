@@ -16,19 +16,19 @@ public class ArticlesGetRes extends BaseResponseBody {
     @ApiModelProperty(name = "품목 리스트")
     List<ArticlesRes> articles = new ArrayList<>();
 
-    public static ArticlesGetRes of(Integer statusCode, String message, List<Article> articles, User user) {
+    public static ArticlesGetRes of(Integer statusCode, String message, List<Article> articles) {
         ArticlesGetRes res = new ArticlesGetRes();
         res.setStatusCode(statusCode);
         res.setMessage(message);
-        if(articles != null && user != null){
-            res.setArticles(articles, user);
+        if(articles != null){
+            res.setArticles(articles);
         }
         return res;
     }
 
-    public void setArticles(List<Article> articles, User user){
+    public void setArticles(List<Article> articles){
         for(Article article : articles){
-            this.articles.add(ArticlesRes.of(article, user));
+            this.articles.add(ArticlesRes.of(article));
         }
     }
 }
