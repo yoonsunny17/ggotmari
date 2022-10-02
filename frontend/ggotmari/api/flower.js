@@ -13,7 +13,7 @@ async function getFlowerDetail(kindId, success, fail) {
     .catch(fail);
 }
 
-async function postFlowerDetail(info, success, fail) {
+async function postFlowerDetail(kindId, info, success, fail) {
   await api
     .post(
       `flower/${kindId}`,
@@ -34,7 +34,7 @@ async function postFlowerDetail(info, success, fail) {
 }
 
 async function getDailyFlower(success, fail) {
-  await api.get(`flower/daily`, {}).then(success).catch(fail);
+  await api.get(`flower/daily`).then(success).catch(fail);
 }
 
 async function getSearchFlower(searchText, success, fail) {

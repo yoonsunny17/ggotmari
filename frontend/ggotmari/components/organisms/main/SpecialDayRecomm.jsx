@@ -7,7 +7,7 @@ import { getSituationTag } from "../../../api/recommend";
 
 function SpecialDayRecomm() {
   // TODO: tab index button
-  const [activeIndex, setActiveIndex] = useState(0);
+  const [activeIndex, setActiveIndex] = useState(1);
   const [isRecommended, setIsRecommended] = useState({
     tags: [
       {
@@ -21,8 +21,23 @@ function SpecialDayRecomm() {
 
   const tabClickHandler = (index) => {
     setActiveIndex(index);
+    // getSituationTag(
+    //   index,
+    //   (res) => {
+    //     console.log(res.data);
+    //     setIsRecommended(res.data);
+    //     // setIsRecommended(res);
+    //     // console.log(isRecommended);
+    //   },
+    //   (err) => {
+    //     console.log(err);
+    //   }
+    // );
+  };
+
+  useEffect(() => {
     getSituationTag(
-      index,
+      activeIndex,
       (res) => {
         console.log(res.data);
         setIsRecommended(res.data);
@@ -33,7 +48,7 @@ function SpecialDayRecomm() {
         console.log(err);
       }
     );
-  };
+  }, [activeIndex]);
 
   // TODO: pagination
   const limit = 9;
@@ -117,8 +132,8 @@ const tabContArr = [
   { category: "가족" },
   { category: "연인" },
   { category: "직장동료" },
-  { category: "선생님" },
   { category: "친구" },
+  { category: "선생님" },
   { category: "기타" },
 ];
 
