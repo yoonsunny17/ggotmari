@@ -152,7 +152,7 @@ function FlowerDetail() {
           <div className="carousel w-full">
             {flowerInfo.kinds.map((info, idx) => {
               return (
-                <div className="carousel-item w-1/4 px-1">
+                <div className="carousel-item w-1/4 px-1" key={idx}>
                   <SimilarFlowers info={info} key={idx} />
                 </div>
               );
