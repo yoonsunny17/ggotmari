@@ -114,24 +114,26 @@ public class CommunityService {
         article.setTitle(articleInfo.getTitle());
         article.setContent(articleInfo.getContent());
 
-        //이전 사진 전부 삭제
-        List<Picture> pictures = article.getPictures();
-        for (Picture picture : pictures) {
-            pictureRepository.delete(picture);
+        if(multipartFiles != null){
+            //이전 사진 전부 삭제
+            List<Picture> pictures = article.getPictures();
+            for (Picture picture : pictures) {
+                pictureRepository.delete(picture);
+            }
+
+            List<Picture> newPictures = new ArrayList<>();
+            for (MultipartFile image : multipartFiles) {
+                Picture picture = new Picture();
+                picture.setArticle(article);
+                String imageUrl = fileService.uploadFile(image, "community/");
+                picture.setImage(imageUrl);
+
+                pictureRepository.save(picture);
+
+                newPictures.add(picture);
+            }
+            article.setPictures(newPictures);
         }
-
-        List<Picture> newPictures = new ArrayList<>();
-        for (MultipartFile image : multipartFiles) {
-            Picture picture = new Picture();
-            picture.setArticle(article);
-            String imageUrl = fileService.uploadFile(image, "community/");
-            picture.setImage(imageUrl);
-
-            pictureRepository.save(picture);
-
-            newPictures.add(picture);
-        }
-        article.setPictures(newPictures);
 
         //이전 해시태그 전부 삭제
         List<Hashtag> hashtags = article.getHashtags();
