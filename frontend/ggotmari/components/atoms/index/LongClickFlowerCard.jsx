@@ -13,6 +13,8 @@ function LongClickFlowerCard(props) {
   useEffect(() => {
     console.log(props);
     const flowerName = props.info.kindName;
+    console.log(flowerName);
+    console.log(props.info.kindImage);
     const blank = flowerName.indexOf(" ");
     setSubjectName(flowerName.slice(0, blank));
     setKindName(flowerName.slice(blank));

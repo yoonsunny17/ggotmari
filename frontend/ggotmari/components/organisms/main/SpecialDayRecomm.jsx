@@ -117,8 +117,8 @@ const tabContArr = [
   { category: "가족" },
   { category: "연인" },
   { category: "직장동료" },
-  { category: "친구" },
   { category: "선생님" },
+  { category: "친구" },
   { category: "기타" },
 ];
 
