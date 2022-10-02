@@ -1,5 +1,5 @@
 import { useRouter } from "next/router";
-import Flower from "../assets/404/404Flower.jpg";
+import Flower from "../assets/404/404flower.jpg";
 
 function Page404() {
   const router = useRouter();
