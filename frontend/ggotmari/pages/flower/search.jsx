@@ -12,16 +12,18 @@ function SearchFlowerList() {
   const [flowerList, setFlowerList] = useState([]);
 
   const getSearchedList = () => {
-    getSearchFlower(
-      searchKeyword,
-      (res) => {
-        setFlowerList(res.data.flowers);
-        setKeyword(searchKeyword);
-      },
-      (err) => {
-        console.log(err);
-      },
-    );
+    if (searchKeyword) {
+      getSearchFlower(
+        searchKeyword,
+        (res) => {
+          setFlowerList(res.data.flowers);
+          setKeyword(searchKeyword);
+        },
+        (err) => {
+          console.log(err);
+        },
+      );
+    }
   };
 
   return (

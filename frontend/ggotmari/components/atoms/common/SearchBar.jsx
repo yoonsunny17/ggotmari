@@ -2,8 +2,8 @@ import { AiOutlineSearch } from "react-icons/ai";
 
 function SearchBar({ placeholder, onChange, searchTerm, handleEnterEvent }) {
   const handleEnterClick = (e) => {
+    console.log(e.key);
     if (e.key == "Enter") {
-      console.log(e.key);
       handleEnterEvent();
     }
   };
