@@ -7,7 +7,7 @@ import { getSituationTag } from "../../../api/recommend";
 
 function SpecialDayRecomm() {
   // TODO: tab index button
-  const [activeIndex, setActiveIndex] = useState(0);
+  const [activeIndex, setActiveIndex] = useState(1);
   const [isRecommended, setIsRecommended] = useState({
     tags: [
       {
