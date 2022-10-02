@@ -431,7 +431,7 @@ function Edit() {
           className="logout mr-2 hover:text-font1"
           onClick={() => {
             localStorage.removeItem("accessToken");
-            alert("로구아웃 되었습니다.");
+            alert("로그아웃 되었습니다.");
             router.push("/login");
           }}
         >
