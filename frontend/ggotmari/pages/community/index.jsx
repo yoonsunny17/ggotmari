@@ -39,39 +39,69 @@ import { FaPlus } from "react-icons/fa";
 //   };
 // }
 
+export async function getServerSideProps() {
+  var articles;
+  var popularArticles;
+
+  await getArticleList(
+    (res) => {
+      articles = res.data.articles;
+    },
+    (err) => {
+      console.log(err);
+    },
+  );
+
+  await getPopularList(
+    (res) => {
+      popularArticles = res.data.articles;
+    },
+    (err) => {
+      console.log(err);
+    },
+  );
+
+  return { props: { articles, popularArticles } };
+}
+
 export default function Community({ articles, popularArticles }) {
   const router = useRouter();
-  const [tab, setTab] = useState("전체");
   const tabs = ["전체", "팔로잉", "인기글"];
+  const [tab, setTab] = useState("전체");
   const [currList, setCurrList] = useState([]);
-  const [articleList, setArticleList] = useState([]);
-  const [followingList, setFollowingList] = useState([]);
-  const [popularList, setPopularList] = useState([]);
 
-  useEffect(() => {
-    getArticleList(
-      (res) => {
-        setArticleList(res.data.articles);
-      },
-      (err) => {
-        console.log(err);
-      },
-    );
+  const articleList = articles;
+  const followingList = articles.filter((article) => article.isFollow);
+  const popularList = popularArticles;
 
-    getPopularList(
-      (res) => {
-        setPopularList(res.data.articles);
-      },
-      (err) => {
-        console.log(err);
-      },
-    );
-  }, []);
+  // const [articleList, setArticleList] = useState([]);
+  // const [followingList, setFollowingList] = useState([]);
+  // const [popularList, setPopularList] = useState([]);
 
-  useEffect(() => {
-    setCurrList(articleList);
-    setFollowingList(articleList.filter((article) => article.isFollow));
-  }, [articleList]);
+  // useEffect(() => {
+  //   getArticleList(
+  //     (res) => {
+  //       setArticleList(res.data.articles);
+  //     },
+  //     (err) => {
+  //       console.log(err);
+  //     },
+  //   );
+
+  //   getPopularList(
+  //     (res) => {
+  //       setPopularList(res.data.articles);
+  //     },
+  //     (err) => {
+  //       console.log(err);
+  //     },
+  //   );
+  // }, []);
+
+  // useEffect(() => {
+  //   setCurrList(articleList);
+  //   setFollowingList(articleList.filter((article) => article.isFollow));
+  // }, [articleList]);
 
   useEffect(() => {
     if (tab == "전체") {
@@ -87,6 +117,7 @@ export default function Community({ articles, popularArticles }) {
     router.push(
       {
         pathname: "/community/edit",
+        query: { mode: "write" },
       },
       "/community",
     );
