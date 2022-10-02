@@ -23,18 +23,19 @@ function LongClickFlowerCard(props) {
     router.push(`/flower/${props.info.kindId}`);
   };
 
-  const [kindId, setKindId] = useState();
-
-  const content = {
-    kindId: kindId,
-  };
-
   const handleClickDislike = (e) => {
+    // const formData = new FormData();
+    const kindId = {
+      kindId: props.info.kindId,
+    };
+
+    console.log(`kindId: ${kindId}`);
+
     postDislikeRecomm(
-      content,
+      kindId,
       (res) => {
         console.log(res);
-        router.push(`recommend/dislike`);
+        router.push(`/`);
       },
       (err) => {
         console.log(err);
