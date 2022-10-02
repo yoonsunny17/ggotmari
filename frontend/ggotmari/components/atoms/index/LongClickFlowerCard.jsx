@@ -137,6 +137,7 @@ function LongClickFlowerCard(props) {
           src={props.info.kindImage}
           alt={props.info.kindId}
         /> */}
+        {/* // FIXME: 사진 에러 고칠 것  */}
         <Image
           src={props.info.kindImage}
           alt={props.info.kindId}
