@@ -2,7 +2,7 @@ import { useRouter } from "next/router";
 import { useState, useEffect } from "react";
 import Image from "next/image";
 
-import { getFlowerDetail } from "../../api/flower";
+import { getFlowerDetail, postFlowerDetail } from "../../api/flower";
 import { postDislikeRecomm } from "../../api/recommend";
 
 import RelatedPosts from "../../components/molecules/flower/RelatedPosts";
@@ -49,9 +49,6 @@ function FlowerDetail() {
     }
   }, [duplicated]);
 
-  // useEffect(() => {
-  //   console.log(flowerInfo);
-  // }, []);
   useEffect(() => {
     console.log(router.query.kindId);
     const path = window.location.pathname.substring(8);
@@ -76,7 +73,8 @@ function FlowerDetail() {
   console.log(flowerInfo);
 
   const handleDuplicated = (e) => {
-    console.log(e.target.innerText);
+    console.log(e);
+    // console.log(e.target.innerText);
     const isIncludes = duplicated.find((el) => el === e.target.innerText);
 
     if (e.target.value === "없음") {
@@ -89,11 +87,11 @@ function FlowerDetail() {
         e.target.innerText,
       ]);
     }
-    // console.log(duplicated);
+    console.log(duplicated);
   };
 
   return (
-    <div className="mb-10">
+    <div className="mb-10 w-screen">
       {/* <img
         className="w-full aspect-square object-cover"
         src={flowerInfo.kindImage}
@@ -106,16 +104,17 @@ function FlowerDetail() {
         width={500}
         height={500}
         objectFit="cover"
+        priority
       />
       <div className="px-6 pt-6 divide-y divide-sub1 divide-opacity-60">
         {/* 품종명, 품목명, 꽃말 */}
         <div>
-          <div className="font-gangwon text-2xl font-medium mb-2">
+          <div className="font-gangwon text-2xl font-medium mb-4">
             {/* 품종명, 품목명 */}
             {flowerInfo.kindName}, {flowerInfo.subjectName}
           </div>
           {/* 꽃말 */}
-          <div className="font-sanslight text-font2 text-sm mb-4">
+          <div className="font-sanslight text-font2 text-sm mb-5">
             {flowerInfo.subjectName}의 꽃말은 {/* 꽃말 부분만 bold 강조 */}
             <span className="font-bold">{flowerInfo.subjectLanguage}</span>{" "}
             입니다
@@ -124,8 +123,8 @@ function FlowerDetail() {
 
         {/* 컬렉션에 담기 */}
         <div>
-          <div className="font-gangwon text-lg pt-4 pb-2">컬렉션에 담기</div>
-          <div className="grid grid-cols-6 mb-4">
+          <div className="font-gangwon text-lg pt-4 pb-3">컬렉션에 담기</div>
+          <div className="grid grid-cols-6 mb-5">
             {tabContArr.map(({ category }, idx) => (
               <div key={category} className="col-span-1 px-[2px]">
                 <button
@@ -146,22 +145,18 @@ function FlowerDetail() {
 
         {/* 다른 품종 보기 */}
         <div>
-          <div className="font-gangwon text-lg pt-4 pb-2">
+          <div className="font-gangwon text-lg pt-4 pb-4">
             {flowerInfo.subjectName}의 다른 품종
           </div>
 
-          {/* // FIXME: carousel 고쳐! */}
-          <div className="carousel w-full mb-2">
-            {/* {flowerInfo.kinds.map((info, idx) => {
+          <div className="carousel w-full">
+            {flowerInfo.kinds.map((info, idx) => {
               return (
-                <div
-                  className="carousel-item relative w-1/4 h-fit px-1"
-                  key={idx}
-                >
+                <div className="carousel-item w-1/4 px-1">
                   <SimilarFlowers info={info} key={idx} />
                 </div>
               );
-            })} */}
+            })}
           </div>
         </div>
 
