@@ -23,8 +23,8 @@ function Footer() {
 
   const fail = (err) => console.log(err);
 
-  const getInfo = () => {
-    getUserName(success, fail);
+  const getInfo = async () => {
+    await getUserName(success, fail);
   };
 
   useEffect(() => {
@@ -35,11 +35,9 @@ function Footer() {
 
   // console.log(username);
 
-  const onCheck = () => {
-    if (!!localStorage.getItem("accessToken") && username) {
-      router.push(`/profile/${username}`);
-    } else if (!!localStorage.getItem("accessToken") && !username) {
-      getInfo();
+  const onCheck = async () => {
+    if (localStorage.getItem("accessToken")) {
+      await getInfo();
       router.push(`/profile/${username}`);
     } else {
       router.push("/login");
