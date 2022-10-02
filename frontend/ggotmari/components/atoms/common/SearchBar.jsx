@@ -1,8 +1,8 @@
 import { AiOutlineSearch } from "react-icons/ai";
 
 function SearchBar({ placeholder, onChange, searchTerm, handleEnterEvent }) {
-  const handleEnterClick = () => {
-    if (window.event.keyCode == 13) {
+  const handleEnterClick = (e) => {
+    if (e.keyCode == 13) {
       handleEnterEvent();
     }
   };
@@ -16,7 +16,7 @@ function SearchBar({ placeholder, onChange, searchTerm, handleEnterEvent }) {
           placeholder={placeholder}
           className="input bg-font3 w-full h-full text-xs focus:outline-none"
           onChange={onChange}
-          onKeyUp={handleEnterClick}
+          onKeyDown={handleEnterClick}
           value={searchTerm}
         />
       </label>

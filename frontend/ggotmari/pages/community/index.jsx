@@ -9,71 +9,11 @@ import { getArticleList, getPopularList } from "../../api/community";
 
 import { FaPlus } from "react-icons/fa";
 
-// export async function getStaticProps() {
-//   var articles = [];
-//   var popularArticles = [];
-
-//   await getArticleList(
-//     (res) => {
-//       articles = res.data.articles;
-//     },
-//     (err) => {
-//       console.log(err);
-//     }
-//   );
-
-//   await getPopularList(
-//     (res) => {
-//       popularArticles = res.data.articles;
-//     },
-//     (err) => {
-//       console.log(err);
-//     }
-//   );
-
-//   return {
-//     props: {
-//       articles,
-//       popularArticles,
-//     },
-//   };
-// }
-
-// export async function getServerSideProps() {
-//   var articles;
-//   var popularArticles;
-
-//   await getArticleList(
-//     (res) => {
-//       articles = res.data.articles;
-//     },
-//     (err) => {
-//       console.log(err);
-//     },
-//   );
-
-//   await getPopularList(
-//     (res) => {
-//       popularArticles = res.data.articles;
-//     },
-//     (err) => {
-//       console.log(err);
-//     },
-//   );
-
-//   return { props: { articles, popularArticles } };
-// }
-
 export default function Community() {
   const router = useRouter();
   const tabs = ["전체", "팔로잉", "인기글"];
   const [tab, setTab] = useState("전체");
   const [currList, setCurrList] = useState([]);
-
-  // const articleList = articles;
-  // const followingList = articles.filter((article) => article.isFollow);
-  // const popularList = popularArticles;
-
   const [articleList, setArticleList] = useState([]);
   const [followingList, setFollowingList] = useState([]);
   const [popularList, setPopularList] = useState([]);
@@ -127,7 +67,7 @@ export default function Community() {
     <div className="flex flex-col">
       <div className="flex flex-col items-center mb-6">
         <Header text={"우리들의 꽃 이야기"} />
-        <SearchBar placeholder={"꽃 이야기 찾기"} />
+        {/* <SearchBar placeholder={"꽃 이야기 찾기"} /> */}
       </div>
       <div className="flex flex-row border-b-2 border-font3">
         {tabs.map((tabName) => (
