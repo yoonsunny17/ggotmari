@@ -5,32 +5,50 @@ import Swal from "sweetalert2";
 
 import FlowerTag from "../../components/atoms/common/FlowerTag";
 
-import { getFlowerKind, postArticle } from "../../api/community";
+import { editArticle, getFlowerKind, postArticle } from "../../api/community";
 
 import {
   IoCameraOutline,
   IoRefreshOutline,
   IoImagesOutline,
 } from "react-icons/io5";
-import { getServerSideProps } from ".";
 
 export async function getServerSideProps(context) {
+  var flowerKinds;
+
+  await getFlowerKind(
+    (res) => (flowerKinds = res.data.subjects),
+    (error) => {
+      console.log(error);
+    },
+  );
+
   return {
-    props: {},
+    props: { flowerKinds },
   };
 }
 
-function EditArticle() {
+function EditArticle({ flowerKinds }) {
   const router = useRouter();
-  const [title, setTitle] = useState(router.query.title && "");
-  const [flowerTags, setFlowerTags] = useState(router.query.tags && []);
-  const [content, setContent] = useState(router.query.content && "");
+  const flowerKindList = flowerKinds;
+
+  const [title, setTitle] = useState(router.query.title);
+  const [content, setContent] = useState(router.query.content);
+  const [flowerTags, setFlowerTags] = useState(
+    router.query.tags ? JSON.parse(router.query.tags) : [],
+  );
+  const [imagePreviews, setImagePreviews] = useState(
+    router.query.images ? JSON.parse(router.query.images) : [],
+  );
   const [tagSearch, setTagSearch] = useState("");
-  const [filteredList, setFilteredList] = useState([]);
-  const [flowerKindList, setFlowerKindList] = useState([]);
+  const [flowerTagIds, setFlowerTagIds] = useState(
+    router.query.tags
+      ? JSON.parse(router.query.tags).map((tag) => tag.subjectId)
+      : [],
+  );
+  const [filteredList, setFilteredList] = useState(flowerKinds);
   const [dropDownOpen, setDropDownOpen] = useState(false);
   const [imageFiles, setImageFiles] = useState();
-  const [imagePreviews, setImagePreviews] = useState(router.query.images && []);
 
   const Toast = Swal.mixin({
     toast: true,
@@ -45,19 +63,6 @@ function EditArticle() {
   });
 
   useEffect(() => {
-    getFlowerKind(
-      (res) => setFlowerKindList(res.data.subjects),
-      (error) => {
-        console.log(error);
-      },
-    );
-  }, []);
-
-  useEffect(() => {
-    setFilteredList(flowerKindList);
-  }, [flowerKindList]);
-
-  useEffect(() => {
     setFilteredList(
       flowerKindList.filter((flowerKind) =>
         flowerKind.subjectName.startsWith(tagSearch),
@@ -66,18 +71,17 @@ function EditArticle() {
   }, [tagSearch]);
 
   const addFlowerTag = (flower) => {
-    const newFlowerName = flower.subjectName;
     const newFlowerId = flower.subjectId;
-    if (!(newFlowerId in flowerTags)) {
-      setFlowerTags({ ...flowerTags, [newFlowerId]: newFlowerName });
+    if (!flowerTagIds.includes(newFlowerId)) {
+      setFlowerTagIds([...flowerTagIds, newFlowerId]);
+      setFlowerTags([...flowerTags, flower]);
     }
     setTagSearch("");
   };
 
   const removeFlowerTag = (flowerId) => {
-    const removedTags = { ...flowerTags };
-    delete removedTags[flowerId];
-    setFlowerTags(removedTags);
+    setFlowerTags(flowerTags.filter((tag) => tag.subjectId != flowerId));
+    setFlowerTagIds(flowerTagIds.filter((id) => id != flowerId));
   };
 
   const handleFlowerSearchChange = (e) => {
@@ -108,9 +112,10 @@ function EditArticle() {
 
   const handleArticleSubmit = (e) => {
     e.preventDefault();
+    const mode = router.query.mode;
 
     // 유효성 검사
-    if (imageFiles == undefined) {
+    if (imagePreviews.length == 0) {
       Toast.fire({
         title: "사진을 최소 1장 이상 업로드해주세요",
       });
@@ -118,7 +123,7 @@ function EditArticle() {
       Toast.fire({
         title: "제목을 입력해주세요",
       });
-    } else if (Object.keys(flowerTags).length == 0) {
+    } else if (flowerTags.length == 0) {
       Toast.fire({
         title: "꽃 태그를 최소 1개 이상 추가해주세요",
       });
@@ -131,26 +136,44 @@ function EditArticle() {
       const article = {
         title: title,
         content: content,
-        subjects: Object.keys(flowerTags),
+        subjects: flowerTagIds,
       };
       const json = JSON.stringify(article);
       formData.append(
         "articleInfo",
         new Blob([json], { type: "application/json" }),
       );
-      [...imageFiles].forEach((file) => formData.append("images", file));
 
-      postArticle(
-        formData,
-        (res) => {
-          router.push(`/community/${res.data.articleId}`);
-        },
-        (err) => {
-          Toast.fire({
-            title: "게시글 등록에 실패하였습니다",
-          });
-        },
-      );
+      if (imageFiles != undefined) {
+        [...imageFiles].forEach((file) => formData.append("images", file));
+      }
+
+      if (mode == "write") {
+        postArticle(
+          formData,
+          (res) => {
+            router.push(`/community/${res.data.articleId}`);
+          },
+          (err) => {
+            Toast.fire({
+              title: "게시글 등록에 실패하였습니다",
+            });
+          },
+        );
+      } else if (mode == "edit") {
+        editArticle(
+          router.query.articleId,
+          formData,
+          (res) => {
+            router.push(`/community/${res.data.articleId}`);
+          },
+          (err) => {
+            Toast.fire({
+              title: "게시글 수정에 실패하였습니다",
+            });
+          },
+        );
+      }
     }
   };
 
@@ -221,13 +244,13 @@ function EditArticle() {
             {/* 추가된 꽃 태그 컨테이너 */}
             <div>
               <div className="flex flex-row flex-wrap px-5 py-3 text-sub1 text-sm">
-                {Object.keys(flowerTags).length > 0
-                  ? Object.keys(flowerTags).map((flowerId) => (
+                {flowerTags.length > 0
+                  ? flowerTags.map((flower) => (
                       <FlowerTag
-                        flowerName={flowerTags[flowerId]}
-                        key={flowerId}
+                        flowerName={flower.subjectName}
+                        key={flower.subjectId}
                         isRemovable={true}
-                        onClick={() => removeFlowerTag(flowerId)}
+                        onClick={() => removeFlowerTag(flower.subjectId)}
                       />
                     ))
                   : "추가된 꽃 태그가 없습니다"}
@@ -280,7 +303,7 @@ function EditArticle() {
           <input
             type="submit"
             className="bg-main text-font3 py-3 leading-normal rounded-lg hover:bg-sub1"
-            value="글 등록하기"
+            value={router.query.mode == "write" ? "등록하기" : "수정하기"}
           />
         </form>
       </div>

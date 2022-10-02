@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useRouter } from "next/router";
 import Image from "next/image";
 import Swal from "sweetalert2/dist/sweetalert2.js";
@@ -40,21 +40,28 @@ export async function getServerSideProps({ params }) {
   };
 }
 
+const deleteConfirmAlert = Swal.mixin({
+  title: `<p className="text-base">정말 삭제하시겠습니까?</p>`,
+  showDenyButton: true,
+  showCancelButton: true,
+  showConfirmButton: false,
+  denyButtonText: `삭제`,
+  cancelButtonText: `취소`,
+});
+
 function ArticleDetail({ article }) {
   const router = useRouter();
   const [isOpen, setIsOpen] = useState(false);
   const [isClicked, setIsClicked] = useState(false);
-  const [isLike, setIsLike] = useState(false);
-  const [likeCount, setLikeCount] = useState(false);
-  const [commentCount, setCommentCount] = useState();
-  const [comments, setComments] = useState([]);
+  const [isLike, setIsLike] = useState(article.isLike);
+  const [likeCount, setLikeCount] = useState(article.likeCount);
+  const [commentCount, setCommentCount] = useState(article.commentCount);
+  const [comments, setComments] = useState(article.comments);
 
-  useEffect(() => {
-    setIsLike(article.isLike);
-    setLikeCount(article.likeCount);
-    setComments(article.comments);
-    setCommentCount(article.commentCount);
-  }, []);
+  const handleWriterClick = () => {
+    console.log("click");
+    router.push(`/profile/${article.user.userName}`);
+  };
 
   const handleLikeClick = async () => {
     await postArticleLike(
@@ -70,15 +77,6 @@ function ArticleDetail({ article }) {
     );
   };
 
-  const deleteConfirmAlert = Swal.mixin({
-    title: `<p className="text-base">정말 삭제하시겠습니까?</p>`,
-    showDenyButton: true,
-    showCancelButton: true,
-    showConfirmButton: false,
-    denyButtonText: `삭제`,
-    cancelButtonText: `취소`,
-  });
-
   const handleEditClick = () => {
     router.push(
       {
@@ -86,8 +84,10 @@ function ArticleDetail({ article }) {
         query: {
           title: article.articleTitle,
           content: article.articleContent,
-          images: article.articleImages,
-          tags: article.tags,
+          images: JSON.stringify(article.articleImages),
+          tags: JSON.stringify(article.tags),
+          articleId: article.articleId,
+          mode: "edit",
         },
       },
       "/community",
@@ -123,7 +123,10 @@ function ArticleDetail({ article }) {
   return (
     <div className="flex flex-col">
       <div className="flex flex-row justify-between items-center h-20 px-4">
-        <div className="flex flex-row h-2/3 items-center grow">
+        <div
+          className="flex flex-row h-2/3 items-center grow"
+          onClick={handleWriterClick}
+        >
           <div className="h-full aspect-square">
             <ProfileImg imgSrc={article.user.userImage} />
           </div>

@@ -117,6 +117,7 @@ export default function Community({ articles, popularArticles }) {
     router.push(
       {
         pathname: "/community/edit",
+        query: { mode: "write" },
       },
       "/community",
     );
