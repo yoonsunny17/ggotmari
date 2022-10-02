@@ -28,7 +28,7 @@ async function getArticleRecomm(success, fail) {
     .catch(fail);
 }
 
-async function postDislikeRecomm(success, fail) {
+async function postDislikeRecomm(content, success, fail) {
   await api
     .post(
       `recommend/dislike`,
@@ -37,9 +37,10 @@ async function postDislikeRecomm(success, fail) {
           Authorization: localStorage.getItem("accessToken"),
         },
       },
-      {
-        kindId,
-      }
+      content
+      // {
+      //   kindId,
+      // }
     )
     .then(success)
     .catch(fail);
