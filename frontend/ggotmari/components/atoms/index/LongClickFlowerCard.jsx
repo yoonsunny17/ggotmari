@@ -2,7 +2,8 @@ import { useRouter } from "next/router";
 import { useState, useRef, useEffect } from "react";
 import Image from "next/image";
 
-import { getFlowerDetail } from "../../../api/flower";
+// import { getFlowerDetail } from "../../../api/flower";
+import { postDislikeRecomm } from "../../../api/recommend";
 
 import Swal from "sweetalert2";
 
@@ -22,6 +23,26 @@ function LongClickFlowerCard(props) {
     router.push(`/flower/${props.info.kindId}`);
   };
 
+  const handleClickDislike = (e) => {
+    // const formData = new FormData();
+    const kindId = {
+      kindId: props.info.kindId,
+    };
+
+    console.log(`kindId: ${kindId}`);
+
+    postDislikeRecomm(
+      kindId,
+      (res) => {
+        console.log(res);
+        router.push(`/`);
+      },
+      (err) => {
+        console.log(err);
+      }
+    );
+  };
+
   // TODO: 스타일 적용, 사이즈 조절
 
   const openSwal = () => {
@@ -37,25 +58,26 @@ function LongClickFlowerCard(props) {
       confirmButtonText: "네",
       denyButtonText: "아니요",
       showLoaderOnConfirm: true,
-      // TODO: 추천 안받기 API 연동 수정하기
-      preConfirm: () => {
-        return fetch(`https://j7a303.p.ssafy.io/api/recommend/dislike`, {
-          method: "POST",
-          body: {
-            kindId: `${kindId}`,
-          },
-        })
-          .then((response) => {
-            console.log(response);
-          })
-          .catch((error) => {
-            Swal.showValidationMessage(`Request failed: ${error}`);
-          });
-      },
       allowOutsideClick: () => !Swal.isLoading(),
+      // TODO: 추천 안받기 API 연동 수정하기
+      // preConfirm: () => {
+      //   return fetch(`https://j7a303.p.ssafy.io/api/recommend/dislike`, {
+      //     method: "POST",
+      //     body: {
+      //       kindId: `${kindId}`,
+      //     },
+      //   })
+      //     .then((response) => {
+      //       console.log(response);
+      //     })
+      //     .catch((error) => {
+      //       Swal.showValidationMessage(`Request failed: ${error}`);
+      //     });
+      // },
     }).then((result) => {
       if (result.isConfirmed) {
         Swal.fire("Deleted!", "Your file has been deleted.", "success");
+        handleClickDislike();
       }
     });
   };

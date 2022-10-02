@@ -70,6 +70,7 @@ function WriteLetter() {
       },
       (err) => {
         console.log(err);
+        router.push(`/recommend/notFound`);
       }
     );
   };
@@ -97,7 +98,7 @@ function WriteLetter() {
 
       {/* 편지 작성하기 */}
       {!clickBtn ? (
-        <form onSubmit={handleLetterSubmit} className="font-sans mt-2 bg-white">
+        <form onSubmit={handleLetterSubmit} className="font-sans mt-2">
           <div>
             <div className="mt-4 ml-8">
               <span className="text-font1">FROM. </span>
@@ -111,7 +112,7 @@ function WriteLetter() {
             <div className="flex justify-center mt-3 font-sans">
               <textarea
                 rows="9"
-                className="textarea w-5/6 shadow-md focus:outline-none resize-none focus:shadow-sub1"
+                className="textarea bg-white w-5/6 shadow-md focus:outline-none resize-none focus:shadow-sub1"
                 placeholder="회원님의 마음을 담아 편지를 써주세요."
                 onChange={handleWrite}
               ></textarea>
