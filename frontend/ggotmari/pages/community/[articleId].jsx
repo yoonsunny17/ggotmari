@@ -223,6 +223,7 @@ function ArticleDetail() {
               <FlowerTag
                 flowerName={flowerTag.subjectName}
                 key={flowerTag.subjectName}
+                onClick={() => router.push(`/flower/${flowerTag.kindId}`)}
               />
             ))}
           </div>

@@ -1,5 +1,5 @@
 import { useRouter } from "next/router";
-import { AiOutlineHeart, AiFillHeart, AiOutlineComment } from "react-icons/ai";
+import { AiFillHeart, AiOutlineComment } from "react-icons/ai";
 import FlowerTag from "../../atoms/common/FlowerTag";
 import ImageSquare from "../../atoms/common/ImageSquare";
 
@@ -45,7 +45,7 @@ function ArticleItem({ article }) {
                 <FlowerTag flowerName={tag} key={tag} isRemovable={false} />
               ) : (
                 ""
-              )
+              ),
             )}
           </div>
         </div>

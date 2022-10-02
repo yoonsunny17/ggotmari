@@ -24,16 +24,18 @@ function CommentDrawer({
   };
 
   const handleCommentSubmit = async () => {
-    await postArticleComment(
-      articleId,
-      comment,
-      (res) => {
-        setComment("");
-      },
-      (err) => {
-        console.log(err);
-      },
-    );
+    if (comment) {
+      await postArticleComment(
+        articleId,
+        comment,
+        (res) => {
+          setComment("");
+        },
+        (err) => {
+          console.log(err);
+        },
+      );
+    }
 
     await getArticleDetail(
       articleId,
