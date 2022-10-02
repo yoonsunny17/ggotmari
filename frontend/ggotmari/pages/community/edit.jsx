@@ -12,6 +12,13 @@ import {
   IoRefreshOutline,
   IoImagesOutline,
 } from "react-icons/io5";
+import { getServerSideProps } from ".";
+
+export async function getServerSideProps(context) {
+  return {
+    props: {},
+  };
+}
 
 function EditArticle() {
   const router = useRouter();
