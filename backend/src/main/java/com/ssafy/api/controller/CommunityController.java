@@ -171,15 +171,25 @@ public class CommunityController {
             @ApiResponse(code = 404, message = "게시글 목록 조회 실패"),
             @ApiResponse(code = 401, message = "로그인 필요")
     })
-    public ResponseEntity<? extends ArticlesGetRes> getArticleList(){
+    public ResponseEntity<? extends ArticlesGetRes> getArticleList(HttpServletRequest request){
 
+        String jwtToken = request.getHeader("Authorization");
+
+        if(jwtToken == null){
+            return ResponseEntity.status(401).body(ArticlesGetRes.of(401, "로그인이 필요합니다.", null, null));
+        }
+
+        String email = jwtTokenUtil.getUserEmailFromToken(jwtToken);
+
+        //팔로우 여부 확인용
+        User user = userService.getUserByEmail(email);
 
         List<Article> articles = communityService.getArticles();
 
         if(articles != null){
-            return ResponseEntity.status(201).body(ArticlesGetRes.of(201, "정상적으로 작성되었습니다", articles));
+            return ResponseEntity.status(201).body(ArticlesGetRes.of(201, "정상적으로 작성되었습니다", articles, user));
         }else{
-            return ResponseEntity.status(404).body(ArticlesGetRes.of(404, "조회에 실패하였습니다.", null));
+            return ResponseEntity.status(404).body(ArticlesGetRes.of(404, "조회에 실패하였습니다.", null, null));
         }
     }
 
