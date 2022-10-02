@@ -75,7 +75,7 @@ function WriteLetter() {
   };
 
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col mb-40">
       <Header text={"꽃에 담은 편지"} />
       <div className="h-28">
         {/* <img
@@ -97,10 +97,10 @@ function WriteLetter() {
 
       {/* 편지 작성하기 */}
       {!clickBtn ? (
-        <form onSubmit={handleLetterSubmit} className="font-sans mt-2">
+        <form onSubmit={handleLetterSubmit} className="font-sans mt-2 bg-white">
           <div>
             <div className="mt-4 ml-8">
-              FROM.{" "}
+              <span className="text-font1">FROM. </span>
               <input
                 onChange={handleFrom}
                 className="focus:outline-none"
@@ -117,7 +117,7 @@ function WriteLetter() {
               ></textarea>
             </div>
             <div className="mt-4 ml-8">
-              TO.{" "}
+              <span className="text-font1">TO. </span>
               <input
                 onChange={handleTo}
                 className="focus:outline-none"
@@ -163,8 +163,8 @@ function WriteLetter() {
       ) : (
         <div>
           <div>{to + letter + from + selected}</div>
-          {(subjectName.length == 0 || subjectLanguage.length == 0) && (
-            <div>추천 못해줘요</div>
+          {subjectName.length == 0 && subjectLanguage.length == 0 && (
+            <div>loading...</div>
           )}
           <div>{subjectName}</div>
           <div>{subjectLanguage}</div>
@@ -181,15 +181,6 @@ function WriteLetter() {
             >
               다시 추천 받기
             </button>
-            {/* {!clickBtn && (
-            <button
-              onClick={handleClickBtn}
-              type="submit"
-              className="bg-sub1 text-font3 w-52 py-2 pt-2.5 rounded-md"
-            >
-              꽃 추천 받기
-            </button>
-          )} */}
           </div>
         </div>
       )}

@@ -5,7 +5,7 @@ import Router from "next/router";
 function RecommendMain() {
   const router = Router;
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col mb-36">
       <Header text={"꽃에 담은 편지"} />
       {/* <img
           className="opacity-80 h-full w-full object-cover object-bottom"
@@ -24,7 +24,7 @@ function RecommendMain() {
         />
       </div>
 
-      <div className="font-gangwon text-font1 text-center text-lg mt-4">
+      <div className="font-gangwon text-font1 text-center text-lg">
         &quot;편지로는 표현할 수 없는 감정 <br /> 꽃으로 선물했어요&quot;
       </div>
       <br />
@@ -40,7 +40,7 @@ function RecommendMain() {
         주세요.
       </div>
 
-      <div className="flex justify-center">
+      <div className="flex justify-center mt-2">
         <button
           onClick={() => router.push("/recommend/letter")}
           className="mt-6 font-gangwon bg-sub2 rounded-md w-52 py-2 pt-2.5 pb-1.5 text-font3"

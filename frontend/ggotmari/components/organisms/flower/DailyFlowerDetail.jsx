@@ -32,6 +32,7 @@ function DailyFlowerDetail({}) {
         width={500}
         height={500}
         layout="responsive"
+        objectFit="cover"
         priority
       />
       <div className="my-10 text-center font-gangwon text-font1 text-md">
