@@ -2,7 +2,7 @@ import { apiInstance, fileApiInstance } from "./index";
 
 const api = apiInstance();
 const fileApi = fileApiInstance();
-const isLocal = true;
+const isLocal = false;
 
 async function getFlowerKind(success, fail) {
   await api.get(`/community/article`).then(success).catch(fail);
