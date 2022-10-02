@@ -1,6 +1,6 @@
 import { useRouter } from "next/router";
 
-function notFound() {
+function NotFound() {
   const router = useRouter();
   return (
     <div>
@@ -19,4 +19,4 @@ function notFound() {
   );
 }
 
-export default notFound;
+export default NotFound;
