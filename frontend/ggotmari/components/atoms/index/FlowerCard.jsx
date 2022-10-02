@@ -4,12 +4,13 @@ import Image from "next/image";
 function FlowerCard({ info: { subjectId, kindId, flowerName, imgUrl } }) {
   const router = useRouter();
   const handlePostClick = () => {
-    router.push(
-      {
-        pathname: `flower/${subjectId}`,
-      },
-      `flower/${subjectId}`
-    );
+    // router.push(
+    //   {
+    //     pathname: `flower/${subjectId}`,
+    //   },
+    //   `flower/${subjectId}`
+    // );
+    router.push(`/floower/${kindId}`);
   };
   return (
     <div
