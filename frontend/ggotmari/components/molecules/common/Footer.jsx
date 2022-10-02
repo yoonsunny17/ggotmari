@@ -66,7 +66,7 @@ function Footer() {
           <IoHomeOutline className="text-main text-2xl" />
         </a>
       </Link>
-      <Link href="/flower/search/all">
+      <Link href="/flower/search">
         <a>
           <IoFlowerOutline className="text-main text-2xl" />
         </a>
