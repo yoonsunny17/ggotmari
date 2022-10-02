@@ -11,7 +11,7 @@ function LikeImage({ articleId, articleImage, userName, likes, articleTitle }) {
           alt={`${articleTitle} 대표 이미지입니다.`}
           className="article-image w-full h-full object-cover rounded-md"
           onClick={() => {
-            router.push(`/coummunity/${articleId}`);
+            router.push(`/community/${articleId}`);
           }}
         />
       </div>
