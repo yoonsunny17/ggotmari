@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import Image from "next/image";
 import Swal from "sweetalert2/dist/sweetalert2.js";
@@ -21,22 +21,9 @@ import {
 } from "react-icons/ai";
 import { IoIosArrowUp } from "react-icons/io";
 
-export async function getServerSideProps({ params }) {
-  var article;
-  await getArticleDetail(
-    params.articleId,
-    (res) => {
-      article = res.data;
-      delete article.status;
-      delete article.message;
-      article.articleId = params.articleId;
-    },
-    (err) => {
-      console.log(err);
-    },
-  );
+export async function getServerSideProps(context) {
   return {
-    props: { article },
+    props: {},
   };
 }
 
@@ -49,16 +36,64 @@ const deleteConfirmAlert = Swal.mixin({
   cancelButtonText: `취소`,
 });
 
-function ArticleDetail({ article }) {
+function ArticleDetail() {
   const router = useRouter();
+
   const [isOpen, setIsOpen] = useState(false);
   const [isClicked, setIsClicked] = useState(false);
-  const [isLike, setIsLike] = useState(article.isLike);
-  const [likeCount, setLikeCount] = useState(article.likeCount);
-  const [commentCount, setCommentCount] = useState(article.commentCount);
-  const [comments, setComments] = useState(article.comments);
+  const [isLike, setIsLike] = useState();
+  const [likeCount, setLikeCount] = useState();
+  const [commentCount, setCommentCount] = useState();
+  const [comments, setComments] = useState([]);
+  const [article, setArticle] = useState({
+    user: {
+      userId: 0,
+      userName: "",
+      userImage:
+        "https://ggotmari.s3.ap-northeast-2.amazonaws.com/profile/defualt.jpg",
+      follower: 0,
+      following: 0,
+      isFollow: false,
+      isMe: false,
+    },
+    loginUserImage:
+      "https://ggotmari.s3.ap-northeast-2.amazonaws.com/profile/defualt.jpg",
+    articleTitle: "",
+    articleContent: "",
+    articleImages: [],
+    articleDate: "",
+    tags: [],
+    isLike: false,
+    likeCount: 0,
+    commentCount: 0,
+    comments: [],
+  });
 
-  const handleWriterClick = () => {
+  useEffect(() => {
+    getArticleDetail(
+      router.query.articleId,
+      (res) => {
+        console.log(res.data);
+        const article = res.data;
+        delete article.status;
+        delete article.message;
+        article.articleId = router.query.articleId;
+        setArticle(article);
+      },
+      (err) => {
+        console.log(err);
+      },
+    );
+  }, []);
+
+  useEffect(() => {
+    setIsLike(article.isLike);
+    setLikeCount(article.likeCount);
+    setCommentCount(article.commentCount);
+    setComments(article.comments);
+  }, [article]);
+
+  const handleUserClick = () => {
     console.log("click");
     router.push(`/profile/${article.user.userName}`);
   };
@@ -124,8 +159,8 @@ function ArticleDetail({ article }) {
     <div className="flex flex-col">
       <div className="flex flex-row justify-between items-center h-20 px-4">
         <div
-          className="flex flex-row h-2/3 items-center grow"
-          onClick={handleWriterClick}
+          className="flex flex-row h-2/3 items-center grow hover:bg-font3"
+          onClick={handleUserClick}
         >
           <div className="h-full aspect-square">
             <ProfileImg imgSrc={article.user.userImage} />

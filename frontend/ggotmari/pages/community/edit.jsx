@@ -14,26 +14,21 @@ import {
 } from "react-icons/io5";
 
 export async function getServerSideProps(context) {
-  var flowerKinds;
-
-  await getFlowerKind(
-    (res) => (flowerKinds = res.data.subjects),
-    (error) => {
-      console.log(error);
-    },
-  );
-
   return {
-    props: { flowerKinds },
+    props: {},
   };
 }
 
-function EditArticle({ flowerKinds }) {
+function EditArticle() {
   const router = useRouter();
-  const flowerKindList = flowerKinds;
 
-  const [title, setTitle] = useState(router.query.title);
-  const [content, setContent] = useState(router.query.content);
+  const [flowerKindList, setFlowerKindList] = useState([]);
+  const [title, setTitle] = useState(
+    router.query.title ? router.query.title : "",
+  );
+  const [content, setContent] = useState(
+    router.query.content ? router.query.content : "",
+  );
   const [flowerTags, setFlowerTags] = useState(
     router.query.tags ? JSON.parse(router.query.tags) : [],
   );
@@ -46,7 +41,7 @@ function EditArticle({ flowerKinds }) {
       ? JSON.parse(router.query.tags).map((tag) => tag.subjectId)
       : [],
   );
-  const [filteredList, setFilteredList] = useState(flowerKinds);
+  const [filteredList, setFilteredList] = useState([]);
   const [dropDownOpen, setDropDownOpen] = useState(false);
   const [imageFiles, setImageFiles] = useState();
 
@@ -61,6 +56,18 @@ function EditArticle({ flowerKinds }) {
       toast.addEventListener("mouseleave", Swal.resumeTimer);
     },
   });
+
+  useEffect(() => {
+    getFlowerKind(
+      (res) => {
+        setFlowerKindList(res.data.subjects);
+        setFilteredList(res.data.subjects);
+      },
+      (error) => {
+        console.log(error);
+      },
+    );
+  }, []);
 
   useEffect(() => {
     setFilteredList(
