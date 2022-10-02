@@ -11,13 +11,16 @@ function LongClickFlowerCard(props) {
   const [flowerSubjectName, setSubjectName] = useState();
   const [flowerKindName, setKindName] = useState();
   useEffect(() => {
-    console.log(props);
-    const flowerName = props.info.kindName;
-    console.log(flowerName);
-    console.log(props.info.kindImage);
-    const blank = flowerName.indexOf(" ");
-    setSubjectName(flowerName.slice(0, blank));
-    setKindName(flowerName.slice(blank));
+    // console.log(props);
+    // const flowerName = props.info.kindName;
+    // console.log(flowerName);
+    // console.log("=========== 내가 원하는 image ================");
+    // console.log(props.info.kindImage);
+    // const blank = flowerName.indexOf(" ");
+    // setSubjectName(flowerName.slice(0, blank));
+    // // setSubjectName(blank[0]);
+    // console.log(blank);
+    // setKindName(flowerName.slice(blank));
   }, []);
 
   const router = useRouter();
@@ -49,7 +52,9 @@ function LongClickFlowerCard(props) {
 
   const openSwal = () => {
     Swal.fire({
-      title: `정말 ${flowerKindName} 추천을 그만 받으시겠습니까?`,
+      title: `정말 ${
+        props.info.kindName.split(" ")[1]
+      } 추천을 그만 받으시겠습니까?`,
       // title: `정말 꽃 추천을 그만 받으시겠습니까?`,
       text: "추천을 그만 받으면 앞으로 해당 꽃이 표시 되지 않습니다.",
       width: 300,
@@ -140,11 +145,12 @@ function LongClickFlowerCard(props) {
         {/* // FIXME: 사진 에러 고칠 것  */}
         <Image
           src={props.info.kindImage}
-          alt={props.info.kindId}
+          alt={props.info.kindImage}
           layout="responsive"
           width={200}
           height={200}
           objectFit="cover"
+          priority
         />
       </div>
 
