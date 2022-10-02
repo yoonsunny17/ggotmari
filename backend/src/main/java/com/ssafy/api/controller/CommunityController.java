@@ -85,7 +85,7 @@ public class CommunityController {
     })
     public ResponseEntity<? extends ArticlePostRes> updateArticle(@PathVariable("articleId") Long articleId,
                                                                   @RequestPart(value = "articleInfo") ArticleCreatePostReq articleInfo,
-                                                                  @RequestPart(value = "images") List<MultipartFile> multipartFiles,
+                                                                  @RequestPart(value = "images", required = false) List<MultipartFile> multipartFiles,
                                                                   HttpServletRequest request){
 
         String jwtToken = request.getHeader("Authorization");
