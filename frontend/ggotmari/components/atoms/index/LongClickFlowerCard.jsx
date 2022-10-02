@@ -24,18 +24,18 @@ function LongClickFlowerCard(props) {
   };
 
   const handleClickDislike = (e) => {
-    // const formData = new FormData();
     const kindId = {
       kindId: props.info.kindId,
     };
 
-    console.log(`kindId: ${kindId}`);
+    // console.log(`kindId: ${props.info.kindId}`);
 
     postDislikeRecomm(
       kindId,
       (res) => {
         console.log(res);
         router.push(`/`);
+        window.location.reload();
       },
       (err) => {
         console.log(err);
@@ -60,20 +60,6 @@ function LongClickFlowerCard(props) {
       showLoaderOnConfirm: true,
       allowOutsideClick: () => !Swal.isLoading(),
       // TODO: 추천 안받기 API 연동 수정하기
-      // preConfirm: () => {
-      //   return fetch(`https://j7a303.p.ssafy.io/api/recommend/dislike`, {
-      //     method: "POST",
-      //     body: {
-      //       kindId: `${kindId}`,
-      //     },
-      //   })
-      //     .then((response) => {
-      //       console.log(response);
-      //     })
-      //     .catch((error) => {
-      //       Swal.showValidationMessage(`Request failed: ${error}`);
-      //     });
-      // },
     }).then((result) => {
       if (result.isConfirmed) {
         Swal.fire("Deleted!", "Your file has been deleted.", "success");
@@ -144,12 +130,19 @@ function LongClickFlowerCard(props) {
         onTouchEnd={handleOnTouchEnd}
         className=" cursor-pointer rounded-lg aspect-square overflow-hidden relative brightness-96"
       >
-        <img
+        {/* <img
           className="w-full h-full object-cover"
           src={props.info.kindImage}
           alt={props.info.kindId}
+        /> */}
+        <Image
+          src={props.info.kindImage}
+          alt={props.info.kindId}
+          layout="responsive"
+          width={200}
+          height={200}
+          objectFit="cover"
         />
-        {/* <Image src={imgUrl} alt={flowerName} layout="fill" objectFit="cover" /> */}
       </div>
 
       <div>
