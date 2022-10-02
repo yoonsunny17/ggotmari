@@ -26,6 +26,8 @@ public class ArticleGetRes extends BaseResponseBody {
     String articleContent;
     @ApiModelProperty(name = "게시글 작성 날짜")
     String articleDate;
+    @ApiModelProperty(name = "로그인 유저 프로필 이미지")
+    String loginUserImage;
     @ApiModelProperty(name = "태그")
     List<SubjectRes> tags = new ArrayList<>();
 
@@ -57,6 +59,7 @@ public class ArticleGetRes extends BaseResponseBody {
             res.setArticleTitle(article.getTitle());
             res.setArticleContent(article.getContent());
             res.setArticleDate(article.getDate().toString());
+            res.setLoginUserImage(loginUser.getProfileImage());
             res.setTags(article.getHashtags());
             res.setLike(isLike);
             res.setLikeCount(article.getLikes().size());
