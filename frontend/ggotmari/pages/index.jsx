@@ -1,5 +1,6 @@
 import Router from "next/router";
 import Link from "next/link";
+import { useRouter } from "next/router";
 
 import Header from "../components/atoms/common/Header";
 import CommunityCard from "../components/atoms/index/CommunityCard";
@@ -7,6 +8,8 @@ import ArticleItem from "../components/molecules/community/ArticleItem";
 import SpecialDayRecomm from "../components/organisms/main/SpecialDayRecomm";
 
 import { getPopularList } from "../api/community";
+import { getArticleRecomm } from "../api/recommend";
+import { getUserName } from "../api/user";
 
 import { useEffect, useState } from "react";
 import { FaRegPaperPlane } from "react-icons/fa";
@@ -16,10 +19,27 @@ import { IoFlowerOutline } from "react-icons/io5";
 import kakao_channel from "../assets/id_type.png";
 
 function Home() {
-  const username = "sangchuman";
+  const router = useRouter();
   const [popularPosts, setPopularPosts] = useState([]);
 
+  // 유저 정보 받아오기
+  const [username, setUsername] = useState("");
+
+  const success = (res) => {
+    setUsername(res.data.userName);
+    console.log(res);
+  };
+  const fail = (err) => console.log(err);
+
+  const getInfo = async () => {
+    await getUserName(success, fail);
+  };
+
   useEffect(() => {
+    if (localStorage.getItem("accessToken")) {
+      getInfo();
+    }
+
     getPopularList(
       (res) => {
         setPopularPosts(res.data.articles);
@@ -29,6 +49,8 @@ function Home() {
       }
     );
   }, []);
+
+  console.log(username);
 
   return (
     <div className="flex flex-col w-screen">
@@ -118,21 +140,24 @@ function Home() {
         {/* 인기 이야기 TOP10 */}
         <div className="pt-6 font-sans w-full">
           <div className="mb-3">
-            <div className="flex justify-between">
+            <div className="flex justify-between mb-3">
               <p>인기 이야기 TOP10</p>
-              <Link href="/community/popular">
+              <p className="flex cursor-pointer">
+                <IoIosArrowForward />
+              </p>
+              {/* <Link href="/community/popular">
                 <a>
                   <p className="flex items-center cursor-pointer">
                     <IoIosArrowForward />
                   </p>
                 </a>
-              </Link>
+              </Link> */}
             </div>
             <div className="carousel w-full">
               {popularPosts.map((article, idx) => {
                 return (
                   <div
-                    className="carousel-item relative w-full px-0.5"
+                    className="carousel-item relative w-full px-0.5 mb-2"
                     key={idx}
                   >
                     <ArticleItem article={article} />
