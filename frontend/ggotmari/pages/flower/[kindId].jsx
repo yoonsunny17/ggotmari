@@ -1,7 +1,9 @@
 import { useRouter } from "next/router";
 import { useState, useEffect } from "react";
+import Image from "next/image";
 
 import { getFlowerDetail } from "../../api/flower";
+import { postDislikeRecomm } from "../../api/recommend";
 
 import RelatedPosts from "../../components/molecules/flower/RelatedPosts";
 import SimilarFlowers from "../../components/molecules/flower/SimilarFlowers";
@@ -12,12 +14,15 @@ function FlowerDetail() {
     subjectId: "",
     subjectName: "",
     subjectLanguage: "",
+    kindId: "",
+    kindName: "",
+    kindImage: "",
     kinds: [
       {
         kindId: "",
         kindName: "",
         kindImage: "",
-        kinds: [
+        tags: [
           {
             tagId: "",
             tagName: "",
@@ -56,10 +61,10 @@ function FlowerDetail() {
       path,
       (res) => {
         // console.log(res);
-        // setFlowerInfo(res.data);
-        console.log("품종 정보");
-        console.log(res.data);
-        console.log(res.data.kinds[0].kindImage);
+        setFlowerInfo(res.data);
+        // console.log("품종 정보");
+        // console.log(res.data);
+        // console.log(res.data.kindImage);
         // console.log(res)
       },
       (err) => {
@@ -67,6 +72,8 @@ function FlowerDetail() {
       }
     );
   }, []);
+
+  console.log(flowerInfo);
 
   const handleDuplicated = (e) => {
     console.log(e.target.innerText);
@@ -87,20 +94,28 @@ function FlowerDetail() {
 
   return (
     <div className="mb-10">
-      <img
+      {/* <img
         className="w-full aspect-square object-cover"
-        // src={flowerInfo.flower.kinds[0].kindImage}
+        src={flowerInfo.kindImage}
         alt="flower image"
+      /> */}
+      <Image
+        src={flowerInfo.kindImage}
+        alt={flowerInfo.kindName + ", " + flowerInfo.subjectName}
+        layout="responsive"
+        width={500}
+        height={500}
+        objectFit="cover"
       />
       <div className="px-6 pt-6 divide-y divide-sub1 divide-opacity-60">
         {/* 품종명, 품목명, 꽃말 */}
         <div>
-          <div className="font-gangwon text-2xl font-medium mb-1">
+          <div className="font-gangwon text-2xl font-medium mb-2">
             {/* 품종명, 품목명 */}
-            {flowerInfo.kinds[0].kindName}, {flowerInfo.kinds[0].subjectName}
+            {flowerInfo.kindName}, {flowerInfo.subjectName}
           </div>
           {/* 꽃말 */}
-          <div className="font-sans text-font2 text-base mb-4">
+          <div className="font-sanslight text-font2 text-sm mb-4">
             {flowerInfo.subjectName}의 꽃말은 {/* 꽃말 부분만 bold 강조 */}
             <span className="font-bold">{flowerInfo.subjectLanguage}</span>{" "}
             입니다
@@ -135,8 +150,9 @@ function FlowerDetail() {
             {flowerInfo.subjectName}의 다른 품종
           </div>
 
+          {/* // FIXME: carousel 고쳐! */}
           <div className="carousel w-full mb-2">
-            {similarFlowerArr.map((info, idx) => {
+            {/* {flowerInfo.kinds.map((info, idx) => {
               return (
                 <div
                   className="carousel-item relative w-1/4 h-fit px-1"
@@ -145,7 +161,7 @@ function FlowerDetail() {
                   <SimilarFlowers info={info} key={idx} />
                 </div>
               );
-            })}
+            })} */}
           </div>
         </div>
 
@@ -156,9 +172,12 @@ function FlowerDetail() {
           </div>
 
           <div className="grid grid-cols-3 gap-x-3 gap-y-2.5">
-            {relatedPostArr.map((info, idx) => {
+            {flowerInfo.articles.map((info, idx) => {
               return <RelatedPosts info={info} key={idx} />;
             })}
+            {/* {relatedPostArr.map((info, idx) => {
+              return <RelatedPosts info={info} key={idx} />;
+            })} */}
           </div>
         </div>
       </div>
