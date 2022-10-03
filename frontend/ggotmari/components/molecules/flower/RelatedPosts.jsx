@@ -11,7 +11,6 @@ function RelatedPosts({
   const postClickHandler = () => {
     router.push(`/community/${articleId}`);
   };
-  console.log(articleId + userName);
   return (
     <div onClick={postClickHandler} className="font-sans">
       <div className="">
