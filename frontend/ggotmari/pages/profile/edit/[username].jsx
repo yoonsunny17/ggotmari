@@ -1,4 +1,3 @@
-import YJ from "../../../assets/YJ.png";
 import { BsCamera } from "react-icons/bs";
 import { IoRefreshOutline } from "react-icons/io5";
 import { useState, useEffect } from "react";
@@ -118,23 +117,113 @@ function Edit() {
   const onSubmit = (event) => {
     event.preventDefault();
 
+    // 유효성 검사
+    // if (userName.length > 15) {
+    //   alert("닉네임은 최대 15글자입니다.");
+    //   return;
+    // }
+    // if (
+    //   userBirthday.length !== 0 ||
+    //   userBirthday.length > 8 ||
+    //   isNaN(userBirthday) ||
+    //   +userBirthday.substring(0, 4) < 1900 ||
+    //   +userBirthday.substring(0, 4) > 2022 ||
+    //   +userBirthday.substring(4, 6) < 1 ||
+    //   +userBirthday.substring(4, 6) > 12
+    // ) {
+    //   alert("생년월일이 잘못되었습니다.");
+    //   return;
+    // }
+    // switch (+userBirthday.substring(4, 6)) {
+    //   case 1:
+    //     if (+userBirthday.substring(6) < 1 || +userBirthday.substring(6) > 31) {
+    //       alert("생년월일이 잘못되었습니다.");
+    //       return;
+    //     }
+    //   case 2:
+    //     if (+userBirthday.substring(6) < 1 || +userBirthday.substring(6) > 29) {
+    //       alert("생년월일이 잘못되었습니다.");
+    //       return;
+    //     }
+    //   case 3:
+    //     if (+userBirthday.substring(6) < 1 || +userBirthday.substring(6) > 31) {
+    //       alert("생년월일이 잘못되었습니다.");
+    //       return;
+    //     }
+    //   case 4:
+    //     if (+userBirthday.substring(6) < 1 || +userBirthday.substring(6) > 30) {
+    //       alert("생년월일이 잘못되었습니다.");
+    //       return;
+    //     }
+    //   case 5:
+    //     if (+userBirthday.substring(6) < 1 || +userBirthday.substring(6) > 31) {
+    //       alert("생년월일이 잘못되었습니다.");
+    //       return;
+    //     }
+    //   case 6:
+    //     if (+userBirthday.substring(6) < 1 || +userBirthday.substring(6) > 30) {
+    //       alert("생년월일이 잘못되었습니다.");
+    //       return;
+    //     }
+    //   case 7:
+    //     if (+userBirthday.substring(6) < 1 || +userBirthday.substring(6) > 31) {
+    //       alert("생년월일이 잘못되었습니다.");
+    //       return;
+    //     }
+    //   case 8:
+    //     if (+userBirthday.substring(6) < 1 || +userBirthday.substring(6) > 31) {
+    //       alert("생년월일이 잘못되었습니다.");
+    //       return;
+    //     }
+    //   case 9:
+    //     if (+userBirthday.substring(6) < 1 || +userBirthday.substring(6) > 30) {
+    //       alert("생년월일이 잘못되었습니다.");
+    //       return;
+    //     }
+    //   case 10:
+    //     if (+userBirthday.substring(6) < 1 || +userBirthday.substring(6) > 31) {
+    //       alert("생년월일이 잘못되었습니다.");
+    //       return;
+    //     }
+    //   case 11:
+    //     if (+userBirthday.substring(6) < 1 || +userBirthday.substring(6) > 30) {
+    //       alert("생년월일이 잘못되었습니다.");
+    //       return;
+    //     }
+    //   case 12:
+    //     if (+userBirthday.substring(6) < 1 || +userBirthday.substring(6) > 31) {
+    //       alert("생년월일이 잘못되었습니다.");
+    //       return;
+    //     }
+    // }
+    let userPutReq = {};
+    if (userBirthday === "") {
+      userPutReq = {
+        userName: userName,
+        // 생일 '-' 추가
+        birthday: "",
+        sex: userSex,
+        profile: userImage ? "" : userImagePreview,
+      };
+    } else {
+      userPutReq = {
+        userName: userName,
+        // 생일 '-' 추가
+        birthday:
+          userBirthday.substring(0, 4) +
+          "-" +
+          userBirthday.substring(4, 6) +
+          "-" +
+          userBirthday.substring(6, 8),
+        sex: userSex,
+        profile: userImage ? "" : userImagePreview,
+      };
+    }
+
     const formData = new FormData();
 
-    const userPutReq = {
-      userName: userName,
-      // 생일 '-' 추가
-      birthday:
-        userBirthday.substring(0, 4) +
-        "-" +
-        userBirthday.substring(4, 6) +
-        "-" +
-        userBirthday.substring(6, 8),
-      sex: userSex,
-      profile: userImage ? "" : userImagePreview,
-    };
-
     const json = JSON.stringify(userPutReq);
-    console.log(json);
+    // console.log(json);
     const blob = new Blob([json], { type: "application/json" });
     formData.append("userPutReq", blob);
     if (userImage) {
