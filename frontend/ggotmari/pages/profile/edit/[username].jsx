@@ -18,7 +18,7 @@ function Edit() {
   const [userName, setUserName] = useState("");
   const [userImage, setUserImage] = useState("");
   const [userImagePreview, setUserImagePreview] = useState(
-    "https://ggotmari.s3.ap-northeast-2.amazonaws.com/profile/defualt.jpg"
+    "https://ggotmari.s3.ap-northeast-2.amazonaws.com/profile/default.svg"
   );
   const [userSex, setUserSex] = useState(false);
   const [userBirthday, setUserBirthday] = useState("");
@@ -399,7 +399,7 @@ function Edit() {
   const resetUserImage = () => {
     setUserImage("");
     setUserImagePreview(
-      "https://ggotmari.s3.ap-northeast-2.amazonaws.com/profile/defualt.jpg"
+      "https://ggotmari.s3.ap-northeast-2.amazonaws.com/profile/default.svg"
     );
   };
 
