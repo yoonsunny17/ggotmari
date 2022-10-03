@@ -1,7 +1,10 @@
 import { useState } from "react";
+import Image from "next/image";
 
 import Header from "../../components/atoms/common/Header";
 import SearchBar from "../../components/atoms/common/SearchBar";
+
+import defaultImage from "../../assets/profile/collection/noFlowerImg.jpg";
 
 import { getSearchFlower } from "../../api/flower";
 import FlowerCard from "../../components/molecules/flower/FlowerCard";
@@ -60,6 +63,18 @@ function SearchFlowerList() {
           />
         ))}
       </div>
+      {!flowerList.length && !keyword.length && (
+        <div className="font-gangwon">
+          <Image
+            src={defaultImage.src}
+            alt="default image"
+            layout="responsive"
+            width={500}
+            height={500}
+          />
+          <p className="text-center text-xl">꽃을 검색해 보세요</p>
+        </div>
+      )}
     </div>
   );
 }
