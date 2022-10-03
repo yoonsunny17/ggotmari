@@ -135,7 +135,7 @@ def article(request):
     article_len = Article.objects.all().count()
     user_len = User.objects.all().count()
 
-    matrix = np.zeros((user_len, article_len))  # [[0,0,0...], [0,0,0,...], ...]
+    matrix = np.zeros((user_len, 1000))  # [[0,0,0...], [0,0,0,...], ...]
 
     for like in all_user_like_serializer:
         matrix[like['user']-1][like['article']-1] = 1
