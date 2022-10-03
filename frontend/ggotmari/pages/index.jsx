@@ -197,7 +197,7 @@ function Home() {
                 <img className="w-20" src={kakao_channel.src} alt="" />
               </a>
             </Link>
-            <Link href="https://www.notion.so/a303-princess/8c05c0267b2742d3a6ea9cc4435267c7">
+            <Link href="https://a303-princess.notion.site/8c05c0267b2742d3a6ea9cc4435267c7">
               <a target="_blank">
                 <div className="flex">
                   <img
