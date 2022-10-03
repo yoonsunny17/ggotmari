@@ -125,21 +125,25 @@ function FlowerDetail() {
         <div>
           <div className="font-gangwon text-lg pt-4 pb-3">컬렉션에 담기</div>
           <div className="grid grid-cols-6 mb-5">
-            {tabContArr.map(({ category }, idx) => (
-              <div key={category} className="col-span-1 px-[2px]">
-                <button
-                  onClick={handleDuplicated}
-                  key={idx}
-                  className={`${
-                    duplicated.includes(`${category}`)
-                      ? "bg-main"
-                      : "bg-extra4 hover:cursor-pointer hover:bg-sub1"
-                  } w-full rounded-md h-full py-1 font-sans`}
-                >
-                  <span className="text-white text-xs">{category}</span>
-                </button>
-              </div>
-            ))}
+            {tabContArr.map(({ category }, idx) => {
+              if (idx >= 1) {
+                return (
+                  <div key={category} className="col-span-1 px-[2px]">
+                    <button
+                      onClick={handleDuplicated}
+                      key={idx}
+                      className={`${
+                        duplicated.includes(`${category}`)
+                          ? "bg-main"
+                          : "bg-extra4 hover:cursor-pointer hover:bg-sub1"
+                      } w-full rounded-md h-full py-1 font-sans`}
+                    >
+                      <span className="text-white text-xs">{category}</span>
+                    </button>
+                  </div>
+                );
+              }
+            })}
           </div>
         </div>
 
@@ -389,11 +393,12 @@ const relatedPostArr = [
 ];
 
 const tabContArr = [
+  { category: "전체" },
   { category: "가족" },
   { category: "연인" },
+  { category: "직장동료" },
   { category: "친구" },
   { category: "선생님" },
-  { category: "직장동료" },
   { category: "기타" },
 ];
 
