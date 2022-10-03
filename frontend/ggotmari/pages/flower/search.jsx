@@ -1,10 +1,14 @@
 import { useState } from "react";
+import Image from "next/image";
 
 import Header from "../../components/atoms/common/Header";
 import SearchBar from "../../components/atoms/common/SearchBar";
 
+import defaultImage from "../../assets/profile/collection/noFlowerImg.jpg";
+
 import { getSearchFlower } from "../../api/flower";
 import FlowerCard from "../../components/molecules/flower/FlowerCard";
+import EasterEgg from "./easterEgg";
 
 function SearchFlowerList() {
   const [searchKeyword, setSearchKeyword] = useState("");
@@ -21,7 +25,7 @@ function SearchFlowerList() {
         },
         (err) => {
           console.log(err);
-        },
+        }
       );
     }
   };
@@ -49,7 +53,8 @@ function SearchFlowerList() {
           </select>
         </div>
       </div>
-      <div className="flex flex-wrap justify-evenly items-center">
+      <div className="flex flex-wrap justify-evenly items-center gap-y-1">
+        {/* <div className="grid grid-cols-2 justify-items-center gap-y-1"> */}
         {flowerList.map((flower, idx) => (
           <FlowerCard
             kindImage={flower.kindImage}
@@ -59,7 +64,20 @@ function SearchFlowerList() {
             key={idx}
           />
         ))}
+        <EasterEgg keyword={keyword} />
       </div>
+      {!flowerList.length && !keyword.length && (
+        <div className="font-gangwon">
+          <Image
+            src={defaultImage.src}
+            alt="default image"
+            layout="responsive"
+            width={500}
+            height={500}
+          />
+          <p className="text-center text-xl">꽃을 검색해 보세요</p>
+        </div>
+      )}
     </div>
   );
 }

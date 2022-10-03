@@ -3,6 +3,8 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import Image from "next/image";
 
+import noImage from "../../../assets/profile/collection/noFlowerImg.jpg";
+
 function DailyFlowerDetail({}) {
   const [dailyFlower, setDailyFlower] = useState([]);
 
@@ -27,7 +29,11 @@ function DailyFlowerDetail({}) {
         alt="flower luck"
       /> */}
       <Image
-        src={dailyFlower.dailyFlowerImage}
+        src={
+          dailyFlower.dailyFlowerImage
+            ? dailyFlower.dailyFlowerImage
+            : noImage.src
+        }
         alt=""
         width={500}
         height={500}
