@@ -6,6 +6,7 @@ import { postLetterRecomm } from "../../api/recommend";
 
 import Image from "next/image";
 import noFlower from "../../assets/profile/collection/noFlowerImg.jpg";
+import flowerLoading from "../../assets/flower/flower.gif";
 
 function WriteLetter() {
   const router = useRouter();
@@ -181,9 +182,8 @@ function WriteLetter() {
         <div className="">
           {subjectName.length === 0 && subjectLanguage.length === 0 && (
             <div>
-              <div>loading...</div>
               <Image
-                src={noFlower.src}
+                src={flowerLoading.src}
                 alt={subjectName}
                 width={500}
                 height={500}
@@ -191,6 +191,7 @@ function WriteLetter() {
                 objectFit="cover"
                 priority
               />
+              <div>loading...</div>
             </div>
           )}
           {subjectName.length > 0 && subjectLanguage.length > 0 && (
