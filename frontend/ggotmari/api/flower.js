@@ -15,7 +15,7 @@ async function getFlowerDetail(subjectId, success, fail) {
     .catch(fail);
 }
 
-async function postFlowerCollection(kindId, info, success, fail) {
+async function postFlowerCollection(info, success, fail) {
   await api
     .post(`flower`, info, {
       headers: {

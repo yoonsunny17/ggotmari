@@ -59,7 +59,6 @@ function FlowerDetail() {
 
   const handleCollectionClick = (tabIdx) => {
     postFlowerCollection(
-      selectedKind.kindId,
       {
         kindId: selectedKind.kindId,
         tagId: tabIdx + 1,
