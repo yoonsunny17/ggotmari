@@ -8,7 +8,7 @@ function CollectionBtn({ category, activeTab, index, onClick }) {
       } w-full rounded-md h-full py-1 font-sans`}
       onClick={onClick}
     >
-      <span className="text-white text-sm">{category}</span>
+      <span className="text-white text-sm font-sanslight">{category}</span>
     </button>
   );
 }
