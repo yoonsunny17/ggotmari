@@ -21,7 +21,7 @@ function SearchFlowerList() {
         },
         (err) => {
           console.log(err);
-        },
+        }
       );
     }
   };
@@ -49,7 +49,7 @@ function SearchFlowerList() {
           </select>
         </div>
       </div>
-      <div className="flex flex-wrap justify-evenly items-center">
+      <div className="flex flex-wrap justify-evenly items-center gap-y-1">
         {flowerList.map((flower, idx) => (
           <FlowerCard
             kindImage={flower.kindImage}
