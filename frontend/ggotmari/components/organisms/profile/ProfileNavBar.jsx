@@ -57,7 +57,7 @@ function ProfileNavBar({ activeTab, onActiveTab }) {
           </div>
         )}
       </div>
-      <div className="about mt-4 mx-4 mb-2 text-lg text-font1 font-maru font-medium">
+      <div className="about mt-4 mx-4 mb-2 text-xl text-font1 font-gangwon">
         {activeTab === 0 ? (
           <p>전체 이야기</p>
         ) : activeTab === 1 ? (
