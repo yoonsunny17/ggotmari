@@ -30,6 +30,10 @@ module.exports = {
         // updated font styles
         gangwon: ["GangwonEdu_OTFBoldA"],
         gangwonlight: ["GangwonEdu_OTFLightA"],
+
+        nanum: ["NanumSquare"],
+        nanumbold: ["NanumSquareBold"],
+        nanumlight: ["NanumSquareLight"],
       },
       backgroundImage: {
         login:
