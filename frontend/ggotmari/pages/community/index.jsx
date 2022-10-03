@@ -25,7 +25,7 @@ export default function Community() {
       },
       (err) => {
         console.log(err);
-      },
+      }
     );
 
     getPopularList(
@@ -34,7 +34,7 @@ export default function Community() {
       },
       (err) => {
         console.log(err);
-      },
+      }
     );
   }, []);
 
@@ -59,7 +59,7 @@ export default function Community() {
         pathname: "/community/edit",
         query: { mode: "write" },
       },
-      "/community",
+      "/community"
     );
   };
 
