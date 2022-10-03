@@ -58,7 +58,7 @@ async function postArticleLike(articleId, isLike, success, fail) {
             ? localStorage.getItem("accessToken")
             : "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE2NjQyNDMzMDEsImV4cCI6MTY2NTUzOTMwMSwiZW1haWwiOiJqam9vbjAzMDZAbmF2ZXIuY29tIn0.xLkGTIv-3kEvz9VGxO9PVAGlskSiwF8fPGAwr6FlHiOP17htzEaVbickaNcgcN8ac4zWYIZ7fsuDjrtM7Nb5CQ",
         },
-      },
+      }
     )
     .then(success)
     .catch(fail);
@@ -75,7 +75,7 @@ async function postArticleComment(articleId, comment, success, fail) {
             ? localStorage.getItem("accessToken")
             : "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE2NjQyNDMzMDEsImV4cCI6MTY2NTUzOTMwMSwiZW1haWwiOiJqam9vbjAzMDZAbmF2ZXIuY29tIn0.xLkGTIv-3kEvz9VGxO9PVAGlskSiwF8fPGAwr6FlHiOP17htzEaVbickaNcgcN8ac4zWYIZ7fsuDjrtM7Nb5CQ",
         },
-      },
+      }
     )
     .then(success)
     .catch(fail);

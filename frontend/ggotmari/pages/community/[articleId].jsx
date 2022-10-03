@@ -73,7 +73,6 @@ function ArticleDetail() {
     getArticleDetail(
       router.query.articleId,
       (res) => {
-        console.log(res.data);
         const article = res.data;
         delete article.status;
         delete article.message;
@@ -82,7 +81,7 @@ function ArticleDetail() {
       },
       (err) => {
         console.log(err);
-      },
+      }
     );
   }, []);
 
@@ -92,6 +91,13 @@ function ArticleDetail() {
     setCommentCount(article.commentCount);
     setComments(article.comments);
   }, [article]);
+
+  const handleFlowerTagClick = (flowerTag) => {
+    router.push({
+      pathname: `/flower/${flowerTag.subjectId}`,
+      query: { kindId: flowerTag.kindId },
+    });
+  };
 
   const handleUserClick = () => {
     console.log("click");
@@ -108,7 +114,7 @@ function ArticleDetail() {
       },
       (err) => {
         console.log(err);
-      },
+      }
     );
   };
 
@@ -125,7 +131,7 @@ function ArticleDetail() {
           mode: "edit",
         },
       },
-      "/community",
+      "/community"
     );
   };
 
@@ -149,7 +155,7 @@ function ArticleDetail() {
               icon: "error",
               title: "삭제에 실패하였습니다",
             });
-          },
+          }
         );
       }
     });
@@ -223,7 +229,7 @@ function ArticleDetail() {
               <FlowerTag
                 flowerName={flowerTag.subjectName}
                 key={flowerTag.subjectName}
-                onClick={() => router.push(`/flower/${flowerTag.kindId}`)}
+                onClick={() => handleFlowerTagClick(flowerTag)}
               />
             ))}
           </div>

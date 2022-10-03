@@ -5,14 +5,10 @@ function SimilarFlowers({
   info: { kindImage, kindId, kindName, subjectId, subjectName },
 }) {
   const router = useRouter();
-  const handlePostClick = () => {
-    router.push(`/flower/${kindId}`);
-  };
 
   return (
     <div className="w-screen">
       <Image
-        onClick={handlePostClick}
         src={kindImage}
         alt={`${kindName + "-" + subjectName}`}
         // layout="fill"
