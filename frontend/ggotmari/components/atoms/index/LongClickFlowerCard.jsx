@@ -2,6 +2,8 @@ import { useRouter } from "next/router";
 import { useState, useRef, useEffect } from "react";
 import Image from "next/image";
 
+import noImg from "../../../assets/flower/square.png";
+
 // import { getFlowerDetail } from "../../../api/flower";
 import { postDislikeRecomm } from "../../../api/recommend";
 
@@ -147,7 +149,7 @@ function LongClickFlowerCard(props) {
         /> */}
         {/* // FIXME: 사진 에러 고칠 것  */}
         <Image
-          src={props.info.kindImage}
+          src={props.info.kindImage ? props.info.kindImage : noImg.src}
           alt={props.info.kindImage}
           layout="responsive"
           width={200}
