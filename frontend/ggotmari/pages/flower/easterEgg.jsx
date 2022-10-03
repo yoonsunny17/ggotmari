@@ -1,10 +1,12 @@
 import FlowerCard from "../../components/molecules/flower/FlowerCard";
 
+// FIXME: 사진 고칠거야!!!
+// TODO: 각자 상세 페이지 클릭하면 자기소개 써두면 좋을듯??
 function EasterEgg(props) {
   console.log("easterEgg");
   console.log(props);
   return (
-    <div className="grid grid-cols-2 gap-x-6">
+    <div className="grid grid-cols-2 gap-x-6 mb-14">
       {props.keyword === "꽃마리" &&
         ggotmari.map((flower, idx) => {
           console.log(flower);
