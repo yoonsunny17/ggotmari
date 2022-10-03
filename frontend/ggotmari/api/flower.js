@@ -27,7 +27,7 @@ async function postFlowerDetail(kindId, info, success, fail) {
         headers: {
           Authorization: localStorage.getItem("accessToken"),
         },
-      },
+      }
     )
     .then(success)
     .catch(fail);
