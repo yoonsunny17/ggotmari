@@ -8,6 +8,7 @@ import defaultImage from "../../assets/profile/collection/noFlowerImg.jpg";
 
 import { getSearchFlower } from "../../api/flower";
 import FlowerCard from "../../components/molecules/flower/FlowerCard";
+import EasterEgg from "./easterEgg";
 
 function SearchFlowerList() {
   const [searchKeyword, setSearchKeyword] = useState("");
@@ -53,6 +54,7 @@ function SearchFlowerList() {
         </div>
       </div>
       <div className="flex flex-wrap justify-evenly items-center gap-y-1">
+        {/* <div className="grid grid-cols-2 justify-items-center gap-y-1"> */}
         {flowerList.map((flower, idx) => (
           <FlowerCard
             kindImage={flower.kindImage}
@@ -62,6 +64,7 @@ function SearchFlowerList() {
             key={idx}
           />
         ))}
+        <EasterEgg keyword={keyword} />
       </div>
       {!flowerList.length && !keyword.length && (
         <div className="font-gangwon">
