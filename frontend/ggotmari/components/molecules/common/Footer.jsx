@@ -38,6 +38,7 @@ function Footer() {
   const onCheck = async () => {
     if (localStorage.getItem("accessToken")) {
       await getInfo();
+      console.log(username);
       router.push(`/profile/${username}`);
     } else {
       router.push("/login");
