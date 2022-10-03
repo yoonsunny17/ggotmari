@@ -18,8 +18,13 @@ function Footer() {
 
   const success = (res) => {
     // console.log(res);
-    setUsername(()=>res.data.userName);
+    setUsername(res.data.userName);
+    moveProfile(res.data.userName);
   };
+  
+  const moveProfile = async (user) => {
+    await router.push(`/profile/${user}`);
+  }
 
   const fail = (err) => console.log(err);
 
@@ -33,13 +38,10 @@ function Footer() {
     }
   }, []);
 
-  // console.log(username);
-
   const onCheck = async () => {
     if (localStorage.getItem("accessToken")) {
       await getInfo();
-      // console.log(username);
-      router.push(`/profile/${username}`);
+      // router.push(`/profile/${username}`);
     } else {
       router.push("/login");
     }
