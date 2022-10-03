@@ -198,7 +198,8 @@ function Home() {
               </a>
             </Link>
             <Link href="https://a303-princess.notion.site/8c05c0267b2742d3a6ea9cc4435267c7">
-              <a target="_blank">
+              <a>
+                {/* <a target="_blank"> */}
                 <div className="flex">
                   <img
                     className="w-6"
