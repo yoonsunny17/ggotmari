@@ -43,7 +43,7 @@ public class UserService {
                 .email(email)
                 .loginCount(0L)
                 .name(createName())
-                .profileImage("https://ggotmari.s3.ap-northeast-2.amazonaws.com/profile/defualt.jpg")
+                .profileImage("https://ggotmari.s3.ap-northeast-2.amazonaws.com/profile/default.svg")
                 .isActive(true)
                 .build();
 
