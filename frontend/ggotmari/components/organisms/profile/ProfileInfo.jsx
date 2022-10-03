@@ -39,9 +39,9 @@ function ProfileInfo({ userInfo, setUserInfo }) {
   };
 
   return (
-    <div className="profile-head grid grid-cols-5">
+    <div className="profile-head grid grid-cols-5 mt-3">
       {/* 좌측 */}
-      <div className="profile-img col-span-2 flex justify-center mx-2">
+      <div className="profile-img col-span-2 flex justify-center mx-6">
         <div className="img-box rounded-full aspect-square w-4/5 my-6 relative">
           <Image
             src={userInfo.user.userImage}
