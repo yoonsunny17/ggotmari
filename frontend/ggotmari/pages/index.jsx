@@ -41,8 +41,8 @@ function Home() {
       getInfo();
       getArticleRecomm(
         (res) => {
-          console.log(res);
-          // setRecommArticles()
+          // console.log(res.data);
+          setRecommArticles(res.data.articles);
         },
         (err) => {
           console.log(err);
@@ -60,7 +60,7 @@ function Home() {
     );
   }, []);
 
-  console.log(username);
+  // console.log(username);
 
   return (
     <div className="flex flex-col w-screen">
@@ -141,9 +141,12 @@ function Home() {
             <div className="text-xs">요즘 이런 꽃 좋아하시더라구요 :)</div>
           </div>
           <div className="w-full grid grid-cols-2 gap-x-3 gap-y-3">
-            {recommPost.map((info, idx) => {
+            {recommArticles.map((info, idx) => {
               return <CommunityCard info={info} key={idx} />;
             })}
+            {/* {recommPost.map((info, idx) => {
+              return <CommunityCard info={info} key={idx} />;
+            })} */}
           </div>
         </div>
 
@@ -214,38 +217,38 @@ function Home() {
   );
 }
 
-const recommPost = [
-  {
-    articleId: 1,
-    username: "sangchuman",
-    articleImage:
-      "https://images.unsplash.com/photo-1496483648148-47c686dc86a8?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1173&q=80",
-    likeCount: 13,
-  },
-  {
-    articleId: 2,
+// const recommPost = [
+//   {
+//     articleId: 1,
+//     username: "sangchuman",
+//     articleImage:
+//       "https://images.unsplash.com/photo-1496483648148-47c686dc86a8?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1173&q=80",
+//     likeCount: 13,
+//   },
+//   {
+//     articleId: 2,
 
-    username: "hot_bubbletea",
-    articleImage:
-      "https://images.unsplash.com/photo-1530092285049-1c42085fd395?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80",
-    likeCount: 32,
-  },
-  {
-    articleId: 3,
+//     username: "hot_bubbletea",
+//     articleImage:
+//       "https://images.unsplash.com/photo-1530092285049-1c42085fd395?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80",
+//     likeCount: 32,
+//   },
+//   {
+//     articleId: 3,
 
-    username: "princess_yo",
-    articleImage:
-      "https://images.unsplash.com/photo-1561181286-d3fee7d55364?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80",
-    likeCount: 6,
-  },
-  {
-    articleId: 4,
+//     username: "princess_yo",
+//     articleImage:
+//       "https://images.unsplash.com/photo-1561181286-d3fee7d55364?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80",
+//     likeCount: 6,
+//   },
+//   {
+//     articleId: 4,
 
-    username: "sleepy_ssuny",
-    articleImage:
-      "https://images.unsplash.com/photo-1510894399130-57dfa8dcc45d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1083&q=80",
-    likeCount: 123,
-  },
-];
+//     username: "sleepy_ssuny",
+//     articleImage:
+//       "https://images.unsplash.com/photo-1510894399130-57dfa8dcc45d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1083&q=80",
+//     likeCount: 123,
+//   },
+// ];
 
 export default Home;
