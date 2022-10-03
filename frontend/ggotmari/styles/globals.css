@@ -172,3 +172,44 @@ a {
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* .swal2-popup {
+  font-size: 12px !important;
+  font-family: "NanumBarunGothic", "sans-serif" !important;
+  width: 22em !important;
+} */
+/* 
+.swal2-title {
+  font-size: 20px !important;
+  
+} */
+
+.swal2-popup {
+  font-family: "NanumSquare" !important;
+  width: 16em !important;
+  padding-bottom: 10px !important;
+}
+
+.swal2-title {
+  font-size: 18px !important;
+}
+
+.swal2-html-container {
+  font-size: 14px !important;
+}
+
+.swal2-styled.swal2-confirm {
+  padding: 6px 15px;
+}
+
+.swal2-styled.swal2-deny {
+  padding: 6px 15px;
+}
+
+.swal2-styled.swal2-cancel {
+  padding: 6px 15px;
+}
+
+.swal2-actions {
+  margin: 0.25em !important;
+}
