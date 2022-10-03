@@ -18,7 +18,7 @@ function Footer() {
 
   const success = (res) => {
     // console.log(res);
-    setUsername(res.data.userName);
+    setUsername(()=>res.data.userName);
   };
 
   const fail = (err) => console.log(err);
@@ -38,7 +38,7 @@ function Footer() {
   const onCheck = async () => {
     if (localStorage.getItem("accessToken")) {
       await getInfo();
-      console.log(username);
+      // console.log(username);
       router.push(`/profile/${username}`);
     } else {
       router.push("/login");
