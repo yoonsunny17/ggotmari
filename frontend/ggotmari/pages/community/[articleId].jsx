@@ -73,7 +73,6 @@ function ArticleDetail() {
     getArticleDetail(
       router.query.articleId,
       (res) => {
-        console.log(res.data);
         const article = res.data;
         delete article.status;
         delete article.message;

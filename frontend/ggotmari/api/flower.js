@@ -2,11 +2,13 @@ import { apiInstance } from "./index";
 
 const api = apiInstance();
 
-async function getFlowerDetail(kindId, success, fail) {
+async function getFlowerDetail(subjectId, success, fail) {
   await api
-    .get(`flower/${kindId}`, {
+    .get(`flower/${subjectId}`, {
       headers: {
-        Authorization: localStorage.getItem("accessToken"),
+        // Authorization: localStorage.getItem("accessToken"),
+        Authorization:
+          "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE2NjQyNDMzMDEsImV4cCI6MTY2NTUzOTMwMSwiZW1haWwiOiJqam9vbjAzMDZAbmF2ZXIuY29tIn0.xLkGTIv-3kEvz9VGxO9PVAGlskSiwF8fPGAwr6FlHiOP17htzEaVbickaNcgcN8ac4zWYIZ7fsuDjrtM7Nb5CQ",
       },
     })
     .then(success)
@@ -27,7 +29,7 @@ async function postFlowerDetail(kindId, info, success, fail) {
         headers: {
           Authorization: localStorage.getItem("accessToken"),
         },
-      }
+      },
     )
     .then(success)
     .catch(fail);

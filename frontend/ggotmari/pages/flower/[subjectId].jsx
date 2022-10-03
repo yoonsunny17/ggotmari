@@ -8,87 +8,71 @@ import { postDislikeRecomm } from "../../api/recommend";
 import RelatedPosts from "../../components/molecules/flower/RelatedPosts";
 import SimilarFlowers from "../../components/molecules/flower/SimilarFlowers";
 
+export async function getServerSideProps(context) {
+  return {
+    props: {},
+  };
+}
+
 function FlowerDetail() {
   const router = useRouter();
-  const [flowerInfo, setFlowerInfo] = useState({
-    subjectId: "",
-    subjectName: "",
-    subjectLanguage: "",
-    kindId: "",
+
+  const tabContArr = [
+    "전체",
+    "가족",
+    "연인",
+    "직장동료",
+    "친구",
+    "선생님",
+    "기타",
+  ];
+  const [subjectId, setSubjectId] = useState(0);
+  const [subjectName, setSubjectName] = useState("");
+  const [subjectLanguage, setSubjectLanguage] = useState("");
+  const [kindList, setKindList] = useState([]);
+  const [articles, setArticles] = useState([]);
+
+  const [selectedKind, setSelectedKind] = useState({
+    kindId: 0,
     kindName: "",
     kindImage: "",
-    kinds: [
-      {
-        kindId: "",
-        kindName: "",
-        kindImage: "",
-        tags: [
-          {
-            tagId: "",
-            tagName: "",
-            tagStatus: "",
-          },
-        ],
-      },
-    ],
-
-    articles: [
-      {
-        articleId: "",
-        articleImage: "",
-        userName: "",
-        likeCount: "",
-      },
-    ],
+    tags: [],
   });
 
-  const [duplicated, setDuplicated] = useState(["없음"]);
   useEffect(() => {
-    if (duplicated.length === 7 || duplicated.length === 0) {
-      setDuplicated(["없음"]);
-    }
-  }, [duplicated]);
-
-  useEffect(() => {
-    console.log(router.query.kindId);
-    const path = window.location.pathname.substring(8);
-    // const username = window.location.pathname.substring(20);
     getFlowerDetail(
-      // router.query.subjectId,
-      path,
+      router.query.subjectId,
       (res) => {
-        // console.log(res);
-        setFlowerInfo(res.data);
-        // console.log("품종 정보");
-        // console.log(res.data);
-        // console.log(res.data.kindImage);
-        // console.log(res)
+        setSubjectId(res.data.subjectId);
+        setSubjectName(res.data.subjectName);
+        setSubjectLanguage(res.data.subjectLanguage);
+        setKindList(res.data.kinds);
+        setArticles(res.data.articles);
+        setSelectedKind(kindList[0]);
       },
       (err) => {
         console.log(err);
-      }
+      },
     );
   }, []);
 
-  console.log(flowerInfo);
+  // const handleDuplicated = (e) => {
+  //   console.log(e);
+  //   // console.log(e.target.innerText);
+  //   const isIncludes = duplicated.find((el) => el === e.target.innerText);
 
-  const handleDuplicated = (e) => {
-    console.log(e);
-    // console.log(e.target.innerText);
-    const isIncludes = duplicated.find((el) => el === e.target.innerText);
-
-    if (e.target.value === "없음") {
-      setDuplicated(["없음"]);
-    } else if (isIncludes) {
-      setDuplicated(duplicated.filter((el) => el !== e.target.innerText));
-    } else if (duplicated.length > 0) {
-      setDuplicated([
-        ...duplicated.filter((el) => el !== "없음"),
-        e.target.innerText,
-      ]);
-    }
-    console.log(duplicated);
-  };
+  //   if (e.target.value === "없음") {
+  //     setDuplicated(["없음"]);
+  //   } else if (isIncludes) {
+  //     setDuplicated(duplicated.filter((el) => el !== e.target.innerText));
+  //   } else if (duplicated.length > 0) {
+  //     setDuplicated([
+  //       ...duplicated.filter((el) => el !== "없음"),
+  //       e.target.innerText,
+  //     ]);
+  //   }
+  //   console.log(duplicated);
+  // };
 
   return (
     <div className="mb-10 w-screen">
@@ -98,8 +82,8 @@ function FlowerDetail() {
         alt="flower image"
       /> */}
       <Image
-        src={flowerInfo.kindImage}
-        alt={flowerInfo.kindName + ", " + flowerInfo.subjectName}
+        src={selectedKind.kindImage}
+        alt={selectedKind.kindName}
         layout="responsive"
         width={500}
         height={500}
@@ -111,13 +95,12 @@ function FlowerDetail() {
         <div>
           <div className="font-gangwon text-2xl font-medium mb-4">
             {/* 품종명, 품목명 */}
-            {flowerInfo.kindName}, {flowerInfo.subjectName}
+            {selectedKind.kindName}, {subjectName}
           </div>
           {/* 꽃말 */}
           <div className="font-sanslight text-font2 text-sm mb-5">
-            {flowerInfo.subjectName}의 꽃말은 {/* 꽃말 부분만 bold 강조 */}
-            <span className="font-bold">{flowerInfo.subjectLanguage}</span>{" "}
-            입니다
+            {subjectName}의 꽃말은 {/* 꽃말 부분만 bold 강조 */}
+            <span className="font-bold">{subjectLanguage}</span> 입니다
           </div>
         </div>
 
@@ -125,21 +108,14 @@ function FlowerDetail() {
         <div>
           <div className="font-gangwon text-lg pt-4 pb-3">컬렉션에 담기</div>
           <div className="grid grid-cols-6 mb-5">
-            {tabContArr.map(({ category }, idx) => {
+            {tabContArr.map((tab, idx) => {
               if (idx >= 1) {
                 return (
-                  <div key={category} className="col-span-1 px-[2px]">
-                    <button
-                      onClick={handleDuplicated}
-                      key={idx}
-                      className={`${
-                        duplicated.includes(`${category}`)
-                          ? "bg-main"
-                          : "bg-extra4 hover:cursor-pointer hover:bg-sub1"
-                      } w-full rounded-md h-full py-1 font-sans`}
-                    >
-                      <span className="text-white text-xs">{category}</span>
-                    </button>
+                  <div
+                    key={idx}
+                    className="col-span-1 px-0.5 py-1 rounded-md bg-extra4 font-sans text-white text-xs"
+                  >
+                    {tab}
                   </div>
                 );
               }
@@ -150,11 +126,11 @@ function FlowerDetail() {
         {/* 다른 품종 보기 */}
         <div>
           <div className="font-gangwon text-lg pt-4 pb-4">
-            {flowerInfo.subjectName}의 다른 품종
+            {subjectName}의 다른 품종
           </div>
 
           <div className="carousel w-full">
-            {flowerInfo.kinds.map((info, idx) => {
+            {kindList.map((info, idx) => {
               return (
                 <div className="carousel-item w-1/4 px-1" key={idx}>
                   <SimilarFlowers info={info} key={idx} />
@@ -167,11 +143,11 @@ function FlowerDetail() {
         {/* 연관 게시물 보기 */}
         <div className="mb-16">
           <div className="font-gangwon text-lg pb-3 pt-4">
-            {flowerInfo.subjectName}를 담은 이야기
+            {subjectName}를 담은 이야기
           </div>
 
           <div className="grid grid-cols-3 gap-x-3 gap-y-2.5">
-            {flowerInfo.articles.map((info, idx) => {
+            {articles.map((info, idx) => {
               return <RelatedPosts info={info} key={idx} />;
             })}
             {/* {relatedPostArr.map((info, idx) => {
