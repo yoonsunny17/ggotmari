@@ -62,7 +62,7 @@ public class FlowerService {
         return kindRepository.findById(kindId).get();
     }
 
-    public List<KindDetailRes> getFlowerKinds(String email, Long subjectId, Long kindId){
+    public List<KindDetailRes> getFlowerKinds(String email, Long subjectId){
         Subject subject = subjectRepository.findById(subjectId).get();
         User user = userRepository.findByEmail(email);
 
@@ -70,10 +70,6 @@ public class FlowerService {
 
         List<KindDetailRes> flowers = new ArrayList<>();
         for(Kind kind : kinds){
-
-            if(kind.getId().equals(kindId)){
-                continue;
-            }
 
             KindDetailRes detail = new KindDetailRes();
             detail.setKindId(kind.getId());

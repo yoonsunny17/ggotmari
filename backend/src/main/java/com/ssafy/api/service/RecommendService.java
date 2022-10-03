@@ -62,17 +62,17 @@ public class RecommendService {
 
         User user = userRepository.findByEmail(email);
 
-        List<FlowerLike> flowerLikes = user.getFlowers();
-        int cnt = 0;
-        for(FlowerLike flowerLike : flowerLikes){
-            if(flowerLike.getTag().getId() == tagId){
-                cnt++;
-            }
-        }
-
-        if(cnt < 10){
-            return null;
-        }
+//        List<FlowerLike> flowerLikes = user.getFlowers();
+//        int cnt = 0;
+//        for(FlowerLike flowerLike : flowerLikes){
+//            if(flowerLike.getTag().getId() == tagId){
+//                cnt++;
+//            }
+//        }
+//
+//        if(cnt < 10){
+//            return null;
+//        }
 
         List<Long> kindIds = connectSituation(user.getId(), tagId).getResult();
 
@@ -88,18 +88,18 @@ public class RecommendService {
             flowers.add(kindRes);
         }
 
-        if(flowers.size()%9 != 0){
-            int left = 9 - flowers.size()%9;
-            for(int j=0; j<left; j++){
-                KindRes kindRes = new KindRes();
-                kindRes.setKindId(0L);
-                kindRes.setKindImage("https://ggotmari.s3.ap-northeast-2.amazonaws.com/kind/default.jpg");
-                kindRes.setSubjectId(0L);
-                kindRes.setKindName("default");
-
-                flowers.add(kindRes);
-            }
-        }
+//        if(flowers.size()%9 != 0){
+//            int left = 9 - flowers.size()%9;
+//            for(int j=0; j<left; j++){
+//                KindRes kindRes = new KindRes();
+//                kindRes.setKindId(0L);
+//                kindRes.setKindImage("https://ggotmari.s3.ap-northeast-2.amazonaws.com/kind/default.jpg");
+//                kindRes.setSubjectId(0L);
+//                kindRes.setKindName("default");
+//
+//                flowers.add(kindRes);
+//            }
+//        }
 
         return flowers;
     }
@@ -108,9 +108,9 @@ public class RecommendService {
 
         User user = userRepository.findByEmail(email);
 
-        if(user.getLikes().size() < 5){
-            return null;
-        }
+//        if(user.getLikes().size() < 5){
+//            return null;
+//        }
 
         List<Long> articleIds = connectArticle(user.getId()).getResult();
 
