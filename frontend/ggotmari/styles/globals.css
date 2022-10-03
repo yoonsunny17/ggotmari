@@ -206,6 +206,10 @@ a {
   padding: 6px 15px;
 }
 
+.swal2-styled.swal2-cancel {
+  padding: 6px 15px;
+}
+
 .swal2-actions {
   margin: 0.25em !important;
 }
