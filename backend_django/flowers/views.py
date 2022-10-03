@@ -2,7 +2,7 @@ from django.shortcuts import get_object_or_404, get_list_or_404
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework import status
-from .models import Kind, User, FlowerLike, FlowerDislike, ArticleLike, Article, Subject
+from .models import Kind, User, FlowerLike, FlowerDislike, ArticleLike, Article, Subject, Popular
 from .serializers import UserSerializer, FlowerLikeSerializer, FlowerDislikeSerializer, ArticleLikeSerializer
 import numpy as np
 from dateutil.relativedelta import *
@@ -45,9 +45,15 @@ def situation(request):
     all_user_like_serializer = FlowerLikeSerializer(all_user_like, many=True).data
 
     kind_len = Kind.objects.all().count()
-    user_len = User.objects.all().count()
+    # user_len = User.objects.all().count()
 
-    matrix = np.zeros((user_len, kind_len))  # [[0,0,0...], [0,0,0,...], ...]
+    tmp = User.objects.all().values('user_id')
+    user_lst = []
+    for user in tmp:
+        user_lst.append(user['user_id'])
+    user_last = max(user_lst)  # 마지막 유저의 pk
+
+    matrix = np.zeros((user_last, kind_len))  # [[0,0,0...], [0,0,0,...], ...]
 
     for like in all_user_like_serializer:
         matrix[like['user']-1][like['kind']-1] = 1
@@ -132,10 +138,19 @@ def article(request):
     all_user_like = ArticleLike.objects.all()
     all_user_like_serializer = ArticleLikeSerializer(all_user_like, many=True).data
 
-    article_len = Article.objects.all().count()
-    user_len = User.objects.all().count()
+    tmp = Article.objects.all().values('article_id')
+    article_lst = []
+    for article in tmp:
+        article_lst.append(article['article_id'])
+    article_last = max(article_lst)  # 마지막 글의 pk
+    
+    tmp2 = User.objects.all().values('user_id')
+    user_lst = []
+    for user in tmp2:
+        user_lst.append(user['user_id'])
+    user_last = max(user_lst)  # 마지막 유저의 pk
 
-    matrix = np.zeros((user_len, 1000))  # [[0,0,0...], [0,0,0,...], ...]
+    matrix = np.zeros((user_last, article_last))  # [[0,0,0...], [0,0,0,...], ...]
 
     for like in all_user_like_serializer:
         matrix[like['user']-1][like['article']-1] = 1
@@ -174,6 +189,15 @@ def article(request):
             cnt += 1
         if cnt == 4:  # 4개까지 추천
             break
+
+    result_cnt = len(result)
+    if result_cnt < 4:
+        today = datetime.now().strftime('%Y-%m-%d')
+
+        popular_articles = Popular.objects.filter(popular_date=today).values('article_id')[:4-result_cnt]
+
+        for article in popular_articles:
+            result.append(article['article_id'])
 
     return Response({'time': time.time() - start, 'result': result}, status=status.HTTP_200_OK)
 
