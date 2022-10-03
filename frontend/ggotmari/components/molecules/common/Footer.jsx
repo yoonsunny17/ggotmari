@@ -19,9 +19,13 @@ function Footer() {
   const success = (res) => {
     // console.log(res);
     setUsername(res.data.userName);
-    moveProfile(res.data.userName);
   };
   
+  const clickSuccess = (res) => {
+    // console.log(res);
+    setUsername(res.data.userName);
+    moveProfile(res.data.userName);
+  };
   const moveProfile = async (user) => {
     await router.push(`/profile/${user}`);
   }
@@ -30,6 +34,10 @@ function Footer() {
 
   const getInfo = async () => {
     await getUserName(success, fail);
+  };
+  
+  const clickInfo = async () => {
+    await getUserName(clickSuccess, fail);
   };
 
   useEffect(() => {
@@ -40,7 +48,7 @@ function Footer() {
 
   const onCheck = async () => {
     if (localStorage.getItem("accessToken")) {
-      await getInfo();
+      await clickInfo();
       // router.push(`/profile/${username}`);
     } else {
       router.push("/login");
