@@ -57,19 +57,19 @@ function SpecialDayRecomm() {
 
   const router = useRouter();
 
-  useEffect(() => {
-    getSituationTag(
-      1,
-      (res) => {
-        console.log(res);
-        // console.log(res.data.message);
-        setIsRecommended(res.data);
-      },
-      (err) => {
-        console.log(err);
-      }
-    ); // default value
-  }, []);
+  // useEffect(() => {
+  //   getSituationTag(
+  //     1,
+  //     (res) => {
+  //       console.log(res);
+  //       // console.log(res.data.message);
+  //       setIsRecommended(res.data);
+  //     },
+  //     (err) => {
+  //       console.log(err);
+  //     }
+  //   ); // default value
+  // }, []);
 
   return (
     <div>
