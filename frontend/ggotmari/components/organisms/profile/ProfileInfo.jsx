@@ -1,7 +1,7 @@
 import { BsShare } from "react-icons/bs";
 import { useRouter } from "next/router";
 import { follow } from "../../../api/profile";
-import { useEffect } from "react";
+import Image from "next/image";
 
 function ProfileInfo({ userInfo, setUserInfo }) {
   // 로그인했고, 방문한 페이지의 url과 username이 같은 경우를 찾기 위해
@@ -42,12 +42,18 @@ function ProfileInfo({ userInfo, setUserInfo }) {
     <div className="profile-head grid grid-cols-5">
       {/* 좌측 */}
       <div className="profile-img col-span-2 flex justify-center">
-        <div className="img-box aspect-square w-4/5 my-6">
-          <img
+        <div className="img-box rounded-full aspect-square w-4/5 my-6 relative">
+          <Image
             src={userInfo.user.userImage}
-            alt=""
-            className="w-full h-full object-cover rounded-full"
+            alt={`${userInfo.user.userName} 프로필 이미지입니다.`}
+            layout="fill"
+            objectFit="cover"
           />
+          {/* <img
+            src={userInfo.user.userImage}
+            alt={`${userInfo.user.userName} 프로필 이미지입니다.`}
+            className="w-full h-full object-cover rounded-full"
+          /> */}
         </div>
       </div>
       {/* 우측 */}

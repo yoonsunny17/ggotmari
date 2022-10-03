@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import Image from "next/image";
 import CollectionBtn from "../../atoms/profile/CollectionBtn";
 import CollectionImage from "../../atoms/profile/CollectionImage";
 import noFlower from "../../../assets/profile/collection/noFlowerImg.jpg";
@@ -73,11 +74,11 @@ function ProfileCollection({ likeFlowers }) {
         })}
       </div>
       {/* 사진 및 내용들 */}
-      <div className="colletion-items grid grid-cols-3 mt-3 mb-14">
+      <div className="colletion-items grid grid-cols-3 mt-3 mb-14 mx-4">
         {collectionItems.length > 0 ? (
           collectionItems.map((item, index) => {
             return (
-              <div className="collection-item p-1.5 text-xs" key={index}>
+              <div className="collection-item px-1 py-0.5 text-xs" key={index}>
                 <CollectionImage
                   flowerImage={item.flowerImage}
                   kindId={item.kindId}
@@ -87,14 +88,24 @@ function ProfileCollection({ likeFlowers }) {
             );
           })
         ) : (
-          <div className="col-span-3 flex justify-center">
+          <div className="col-span-3 flex justify-center mx-10">
             <div className="content-box w-full">
-              <div className="img-box flex justify-center my-10">
+              {/* <div className="img-box flex justify-center my-10">
                 <img
                   src={noFlower.src}
                   alt="조회할 꽃이 없습니다."
                   className="w-2/3"
                 />
+              </div> */}
+              <div className="img-box-1 my-10 w-full relative">
+                <div className="img-box-2 aspect-square flex justify-center">
+                  <Image
+                    src={noFlower.src}
+                    alt="조회할 꽃이 없음"
+                    layout="fill"
+                    objectFit="cover"
+                  />
+                </div>
               </div>
               <div className="text-box flex justify-center font-gangwon text-font4">
                 <span>컬렉션에 추가한 꽃이 없습니다</span>
