@@ -4,6 +4,7 @@ import { IoRefreshOutline } from "react-icons/io5";
 import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import { getUser, editUser, signout } from "../../../api/profile.js";
+import Image from "next/image";
 
 function Edit() {
   const router = useRouter();
@@ -321,11 +322,18 @@ function Edit() {
       <form action="">
         <div className="profile-edit">
           <div className="image-box flex justify-center">
-            <div className="w-2/5 aspect-square">
-              <img
+            <div className="w-2/5 aspect-square relative">
+              {/* <img
                 src={userImagePreview}
                 alt=""
                 className="image w-full h-full rounded-full"
+              /> */}
+              <Image
+                src={userImagePreview}
+                alt="프로필 미리보기 이미지입니다."
+                layout="fill"
+                className="image w-full h-full rounded-full"
+                objectFit="cover"
               />
             </div>
           </div>

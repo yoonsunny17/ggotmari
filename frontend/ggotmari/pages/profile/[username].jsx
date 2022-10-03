@@ -1,5 +1,6 @@
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
+import Image from "next/image";
 
 import { getUser } from "../../api/profile.js";
 
@@ -12,6 +13,7 @@ import LikeImage from "../../components/atoms/profile/LikeImage";
 
 import noStory from "../../assets/profile/main/noStoryImg.jpg";
 import noLikeStory from "../../assets/profile/like/noLikeStoryImg.jpg";
+import noFlower from "../../assets/profile/collection/noFlowerImg.jpg";
 
 export default function Profile() {
   const router = useRouter();
@@ -23,7 +25,7 @@ export default function Profile() {
       userName: "",
       followingCount: "",
       followerCount: "",
-      userImage: "",
+      userImage: noFlower.src,
       userBirthday: "",
       userSex: "",
       isFollow: "",
@@ -32,7 +34,7 @@ export default function Profile() {
       {
         articleId: "",
         articleTitle: "",
-        articleImage: "",
+        articleImage: noStory.src,
       },
     ],
     likeFlowers: [
@@ -40,7 +42,7 @@ export default function Profile() {
         tag: "",
         flowers: [
           {
-            flowerImage: "",
+            flowerImage: noFlower.src,
             subjectId: "",
             kindId: "",
             kindName: "",
@@ -51,7 +53,7 @@ export default function Profile() {
     likeArticles: [
       {
         articleId: "",
-        articleImage: "",
+        articleImage: noLikeStory.src,
         articleTitle: "",
         userName: "",
         likes: "",
@@ -95,7 +97,9 @@ export default function Profile() {
         {/* 하단 */}
       </div>
       {activeTab === 0 && (
-        <div className={"content grid grid-cols-3 mt-3 mb-14"}>
+        <div
+          className={"content grid grid-cols-3 mt-3 mb-14 gap-x-2 gap-y-2 mx-3"}
+        >
           {userInfo.articles.length > 0 ? (
             userInfo.articles.map((item, index) => {
               return (
@@ -108,14 +112,22 @@ export default function Profile() {
               );
             })
           ) : (
-            <div className="col-span-3 flex justify-center">
+            <div className="col-span-3 flex justify-center mx-10">
               <div className="content-box w-full">
-                <div className="img-box flex justify-center my-10">
-                  <img
+                <div className="img-box-1 my-10 w-full relative">
+                  <div className="img-box-2 aspect-square flex justify-center">
+                    <Image
+                      src={noStory.src}
+                      alt="조회할 꽃 이야기가 없음"
+                      layout="fill"
+                      objectFit="cover"
+                    />
+                  </div>
+                  {/* <img
                     src={noStory.src}
                     alt="조회할 꽃이 없음"
                     className="w-2/3"
-                  />
+                  /> */}
                 </div>
                 <div className="text-box flex justify-center font-gangwon text-font4">
                   <span>작성한 꽃 이야기가 없습니다</span>
@@ -129,7 +141,7 @@ export default function Profile() {
         <ProfileCollection likeFlowers={userInfo.likeFlowers} />
       )}
       {activeTab === 2 && (
-        <div className="content grid grid-cols-3 mt-3 mb-14">
+        <div className="content grid grid-cols-3 mt-3 mb-14  mx-3">
           {userInfo.likeArticles.length > 0 ? (
             userInfo.likeArticles.map((item, index) => {
               return (
@@ -144,14 +156,22 @@ export default function Profile() {
               );
             })
           ) : (
-            <div className="col-span-3 flex justify-center">
+            <div className="col-span-3 flex justify-center mx-10">
               <div className="content-box w-full">
-                <div className="img-box flex justify-center my-10">
-                  <img
+                <div className="img-box-1 my-10 w-full relative">
+                  <div className="img-box-2 aspect-square flex justify-center">
+                    <Image
+                      src={noLikeStory.src}
+                      alt="조회할 꽃 이야기가 없음"
+                      layout="fill"
+                      objectFit="cover"
+                    />
+                  </div>
+                  {/* <img
                     src={noLikeStory.src}
                     alt="조회할 꽃 이야기가 없음"
                     className="w-2/3"
-                  />
+                  /> */}
                 </div>
                 <div className="text-box flex justify-center font-gangwon text-font4">
                   <span>좋아요를 누른 꽃 이야기가 없습니다</span>
