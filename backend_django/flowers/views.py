@@ -26,6 +26,7 @@ def situation(request):
 
     # 추천 요청한 유저가 태그별 좋아하는 꽃과 싫어하는 꽃 목록
     user_like = FlowerLike.objects.filter(tag=tag, user=user_pk)
+
     user_like_serializer = FlowerLikeSerializer(user_like, many=True).data
 
     like_lst = []
@@ -44,8 +45,9 @@ def situation(request):
     all_user_like = get_list_or_404(FlowerLike, tag=tag)
     all_user_like_serializer = FlowerLikeSerializer(all_user_like, many=True).data
 
+
+    # 품종 수, 유저 수
     kind_len = Kind.objects.all().count()
-    # user_len = User.objects.all().count()
 
     tmp = User.objects.all().values('user_id')
     user_lst = []
@@ -71,7 +73,8 @@ def situation(request):
     yesterday_one_year_ago = str(int(yesterday[0:4])-1) + yesterday[4:]
     yesterday_two_years_ago = str(int(yesterday[0:4])-2) + yesterday[4:]
 
-    with redis.StrictRedis(host='172.17.0.1', port=6379, db=2, charset='utf-8', decode_responses=True, password=my_settings.mysql_password) as connect:
+    # with redis.StrictRedis(host='172.17.0.1', port=6379, db=2, charset='utf-8', decode_responses=True, password=my_settings.mysql_password) as connect:
+    with redis.StrictRedis(host='j7a303.p.ssafy.io', port=6379, db=2, charset='utf-8', decode_responses=True, password=my_settings.mysql_password) as connect:
         subject_sales = connect.hgetall(yesterday)
         subject_sales_one_year_ago = connect.hgetall(yesterday_one_year_ago)
         subject_sales_two_years_ago = connect.hgetall(yesterday_two_years_ago)
@@ -115,6 +118,25 @@ def situation(request):
             cnt += 1
         if cnt == 18:  # 18개까지 추천
             break
+
+    
+    popular_flowers_dic = dict()
+
+    for flower in all_user_like_serializer:
+        if popular_flowers_dic.get(flower['kind']) == None:
+            popular_flowers_dic[flower['kind']] = 1
+        else:
+            popular_flowers_dic[flower['kind']] += 1
+
+    popular_flowers_lst = list(popular_flowers_dic.items())
+
+    popular_flowers_lst.sort(key=lambda x: (x[1], -x[0]), reverse=True)
+
+    idx = 0
+    while len(result) < 18:
+        result.append(popular_flowers_lst[idx][0])
+        idx += 1
+        
 
     return Response({'time': time.time() - start, 'result': result}, status=status.HTTP_200_OK)
 
