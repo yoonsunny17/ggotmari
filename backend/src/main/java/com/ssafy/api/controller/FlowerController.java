@@ -67,36 +67,33 @@ public class FlowerController {
         }
     }
 
-    @GetMapping("/{kindId}")
+    @GetMapping("/{subjectId}")
     @ApiOperation(value = "품목 상세 페이지 조회", notes = "품목 상세 내역을 반환한다.")
     @ApiResponses({
             @ApiResponse(code = 201, message = "품목 조회 성공"),
             @ApiResponse(code = 404, message = "품목 조회 실패"),
             @ApiResponse(code = 401, message = "로그인 필요")
     })
-    public ResponseEntity<? extends FlowerDetailGetRes> getFlowerDetail(@PathVariable("kindId") Long kindId,
+    public ResponseEntity<? extends FlowerDetailGetRes> getFlowerDetail(@PathVariable("subjectId") Long subjectId,
                                                                         HttpServletRequest request){
 
         String jwtToken = request.getHeader("Authorization");
 
         if(jwtToken == null){
-            return ResponseEntity.status(401).body(FlowerDetailGetRes.of(401, "로그인이 필요합니다.", null, null, null, null));
+            return ResponseEntity.status(401).body(FlowerDetailGetRes.of(401, "로그인이 필요합니다.", null,  null, null));
         }
 
         String email = jwtTokenUtil.getUserEmailFromToken(jwtToken);
 
-        Long subjectId = flowerService.getSubjectByKindId(kindId);
-
         Subject subject = flowerService.getFlowerDetail(subjectId);
 
         if(subject == null){
-            return ResponseEntity.status(404).body(FlowerDetailGetRes.of(404, "조회실패.", null,  null, null, null));
+            return ResponseEntity.status(404).body(FlowerDetailGetRes.of(404, "조회실패.", null,   null, null));
         }else{
-            List<KindDetailRes> kinds = flowerService.getFlowerKinds(email, subjectId, kindId);
+            List<KindDetailRes> kinds = flowerService.getFlowerKinds(email, subjectId);
             List<Article> articles = flowerService.getSubjectArticles(subjectId);
-            Kind kind = flowerService.getKindDetail(kindId);
 
-            return ResponseEntity.status(201).body(FlowerDetailGetRes.of(201, "정상적으로 조회되었습니다.", subject, kind, kinds, articles));
+            return ResponseEntity.status(201).body(FlowerDetailGetRes.of(201, "정상적으로 조회되었습니다.", subject, kinds, articles));
         }
     }
 
