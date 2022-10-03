@@ -21,6 +21,7 @@ import kakao_channel from "../assets/id_type.png";
 function Home() {
   const router = useRouter();
   const [popularPosts, setPopularPosts] = useState([]);
+  const [recommArticles, setRecommArticles] = useState([]);
 
   // 유저 정보 받아오기
   const [username, setUsername] = useState("");
@@ -38,6 +39,15 @@ function Home() {
   useEffect(() => {
     if (localStorage.getItem("accessToken")) {
       getInfo();
+      getArticleRecomm(
+        (res) => {
+          console.log(res);
+          // setRecommArticles()
+        },
+        (err) => {
+          console.log(err);
+        }
+      );
     }
 
     getPopularList(
