@@ -73,8 +73,8 @@ def situation(request):
     yesterday_one_year_ago = str(int(yesterday[0:4])-1) + yesterday[4:]
     yesterday_two_years_ago = str(int(yesterday[0:4])-2) + yesterday[4:]
 
-    # with redis.StrictRedis(host='172.17.0.1', port=6379, db=2, charset='utf-8', decode_responses=True, password=my_settings.mysql_password) as connect:
-    with redis.StrictRedis(host='j7a303.p.ssafy.io', port=6379, db=2, charset='utf-8', decode_responses=True, password=my_settings.mysql_password) as connect:
+    with redis.StrictRedis(host='172.17.0.1', port=6379, db=2, charset='utf-8', decode_responses=True, password=my_settings.mysql_password) as connect:
+    # with redis.StrictRedis(host='j7a303.p.ssafy.io', port=6379, db=2, charset='utf-8', decode_responses=True, password=my_settings.mysql_password) as connect:
         subject_sales = connect.hgetall(yesterday)
         subject_sales_one_year_ago = connect.hgetall(yesterday_one_year_ago)
         subject_sales_two_years_ago = connect.hgetall(yesterday_two_years_ago)
@@ -82,7 +82,7 @@ def situation(request):
     for flower in like_flower:
         if flower[1] != user_pk:  # flower[0]==품종pk, flower[1]==유저pk
 
-            if cosine_sim[flower[1]-1] >= 0.5:  # 유사도 0.5 이상
+            if cosine_sim[flower[1]-1] >= 0.3:  # 유사도 0.3 이상
 
 
                 # 판매점수
@@ -186,7 +186,7 @@ def article(request):
     for article in like_article:
         if article[1] != user_pk:  # article[0]==게시글pk, article[1]==유저pk
 
-            if cosine_sim[article[1]-1] >= 0.5:  # 유사도 0.5 이상
+            if cosine_sim[article[1]-1] >= 0.3:  # 유사도 0.3 이상
 
                 if article_dic.get(article[0]) == None:
                     article_dic[article[0]] = [cosine_sim[article[1]-1]]
@@ -242,7 +242,7 @@ def letter(request):
 
         text_list.append(flower_language)
 
-    text_nouns_list = [' '.join(okt.nouns(text)) for text in text_list]
+    text_nouns_list = [' '.join(okt.morphs(text)) for text in text_list]
 
     tfidf_vectorizer = TfidfVectorizer(min_df=1)
     tfidf_matrix = tfidf_vectorizer.fit_transform(text_nouns_list)

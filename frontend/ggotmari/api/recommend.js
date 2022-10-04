@@ -57,10 +57,15 @@ async function getSituationTag(tagId, success, fail) {
     .catch(fail);
 }
 
+async function getOcrRecommend(formdata, success, fail) {
+  await api.post("recommend/ocr", formdata).then(success).catch(fail);
+}
+
 export {
   postLetterRecomm,
   getSituationRecomm,
   getArticleRecomm,
   postDislikeRecomm,
   getSituationTag,
+  getOcrRecommend,
 };

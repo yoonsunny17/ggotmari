@@ -20,7 +20,7 @@ function Footer() {
     // console.log(res);
     setUsername(res.data.userName);
   };
-  
+
   const clickSuccess = (res) => {
     // console.log(res);
     setUsername(res.data.userName);
@@ -28,14 +28,14 @@ function Footer() {
   };
   const moveProfile = async (user) => {
     await router.push(`/profile/${user}`);
-  }
+  };
 
   const fail = (err) => console.log(err);
 
   const getInfo = async () => {
     await getUserName(success, fail);
   };
-  
+
   const clickInfo = async () => {
     await getUserName(clickSuccess, fail);
   };
@@ -52,6 +52,7 @@ function Footer() {
       // router.push(`/profile/${username}`);
     } else {
       router.push("/login");
+      // router.push("/main");
     }
   };
 
@@ -62,25 +63,25 @@ function Footer() {
           <IoArrowBack className="text-main text-2xl" />
         </a>
       </Link> */}
-      <button onClick={() => router.back()}>
+      <button aria-label="go-back" onClick={() => router.back()}>
         <IoArrowBack className="text-main text-2xl" />
       </button>
       <Link href="/community">
-        <a>
+        <a aria-label="community">
           <IoChatbubblesOutline className="text-main text-2xl" />
         </a>
       </Link>
       <Link href="/">
-        <a>
+        <a aria-label="home">
           <IoHomeOutline className="text-main text-2xl" />
         </a>
       </Link>
       <Link href="/flower/search">
-        <a>
+        <a aria-label="flower">
           <IoFlowerOutline className="text-main text-2xl" />
         </a>
       </Link>
-      <button onClick={onCheck}>
+      <button aria-label="profile" onClick={onCheck}>
         <IoPersonCircleOutline className="text-main text-3xl" />
       </button>
     </div>

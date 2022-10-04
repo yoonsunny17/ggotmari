@@ -2,8 +2,10 @@ package com.ssafy.api.controller;
 
 import com.ssafy.api.request.DislikePostReq;
 import com.ssafy.api.request.LetterPostReq;
+import com.ssafy.api.request.RecommendOcrReq;
 import com.ssafy.api.response.Flower.TagPostRes;
 import com.ssafy.api.response.Recommend.*;
+import com.ssafy.api.service.NaverClovaService;
 import com.ssafy.api.service.RecommendService;
 import com.ssafy.api.service.UserService;
 import com.ssafy.common.util.JwtTokenUtil;
@@ -16,6 +18,7 @@ import io.swagger.annotations.ApiResponses;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
@@ -31,6 +34,8 @@ public class RecommendController {
     private JwtTokenUtil jwtTokenUtil;
     @Autowired
     UserService userService;
+    @Autowired
+    NaverClovaService naverClovaService;
 
     @PostMapping("/dislike")
     @ApiOperation(value = "컬랙션(태그) 추가/삭제", notes = "컬렉션 전환 성공 여부를 반환한다.")
@@ -131,5 +136,19 @@ public class RecommendController {
         }else{
             return ResponseEntity.status(201).body(RecommendLetterRes.of(201, "정상적으로 추천되었습니다.", subject));
         }
+    }
+
+    @PostMapping("/ocr")
+    @ApiOperation(value = "손편지 ocr", notes = "손편지 내용 텍스트 추출")
+    @ApiResponses({
+            @ApiResponse(code = 201, message = "정상적으로 텍스트를 추출했습니다.")
+    })
+    public ResponseEntity<? extends RecommendOcrRes> getTextByOCR(@RequestPart(value = "recommendOcrInfo")RecommendOcrReq recommendOcrInfo,
+                                                                     @RequestPart(value = "image") MultipartFile multipartFile){
+
+        String content = naverClovaService.getOcrText(multipartFile,recommendOcrInfo);
+
+        return ResponseEntity.status(201).body(RecommendOcrRes.of(201, "정상적으로 텍스트를 추출했습니다.", content));
+
     }
 }

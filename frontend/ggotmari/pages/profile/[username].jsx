@@ -1,6 +1,7 @@
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import Image from "next/image";
+import Head from "next/head";
 
 import { getUser } from "../../api/profile.js";
 
@@ -85,12 +86,21 @@ export default function Profile() {
       const username = window.location.pathname.substring(9);
       getInfo(username);
     } else {
-      router.push("/login");
+      // router.push("/login");
+      router.push("/main");
     }
   }, []);
 
   return (
     <>
+      <Head>
+        <title>Profile | GGOTMARI</title>
+        <meta property="og:title" content="Profile page" key="profile" />
+        <meta
+          name="description"
+          content="It gives stories user wrote, flowers scrapped, and stories liked."
+        />
+      </Head>
       <div className="profile">
         <ProfileInfo userInfo={userInfo} setUserInfo={setUserInfo} />
         <ProfileNavBar activeTab={activeTab} onActiveTab={onActiveTab} />
@@ -114,8 +124,8 @@ export default function Profile() {
           ) : (
             <div className="col-span-3 flex justify-center mx-10">
               <div className="content-box w-full">
-                <div className="img-box-1 my-10 w-full relative">
-                  <div className="img-box-2 aspect-square flex justify-center">
+                <div className="img-box-1 my-10 w-full">
+                  <div className="img-box-2 aspect-square flex justify-center relative">
                     <Image
                       src={noStory.src}
                       alt="조회할 꽃 이야기가 없음"

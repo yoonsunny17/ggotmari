@@ -2,6 +2,7 @@ import { BsCamera } from "react-icons/bs";
 import { IoRefreshOutline } from "react-icons/io5";
 import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
+import Head from "next/head";
 import { getUser, editUser, signout } from "../../../api/profile.js";
 import Image from "next/image";
 
@@ -99,7 +100,8 @@ function Edit() {
       getInfo(username);
     } else {
       alert("로그인이 필요한 서비스입니다.");
-      router.push("/login");
+      // router.push("/login");
+      router.push("/main");
     }
   }, []);
 
@@ -235,7 +237,8 @@ function Edit() {
   // 회원탈퇴 통신
   const onSignoutSuccess = () => {
     localStorage.removeItem("accessToken");
-    router.push("/login");
+    // router.push("/login");
+    router.push("/main");
     alert("성공적으로 탈퇴되었습니다.");
   };
 
@@ -405,6 +408,11 @@ function Edit() {
 
   return (
     <>
+      <Head>
+        <title>Edit | GGOTMARI</title>
+        <meta property="og:title" content="Profile Edit" key="edit" />
+        <meta name="description" content="User can change their info here." />
+      </Head>
       <div className="title flex justify-center">
         <span className="my-8 font-maru text-2xl text-main">프로필 수정</span>
       </div>
@@ -528,8 +536,8 @@ function Edit() {
           className="logout mr-2 hover:text-font1"
           onClick={() => {
             localStorage.removeItem("accessToken");
+            router.push("/main");
             alert("로그아웃 되었습니다.");
-            router.push("/login");
           }}
         >
           로그아웃

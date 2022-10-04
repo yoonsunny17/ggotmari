@@ -1,9 +1,33 @@
 import Header from "../../../components/atoms/common/Header";
 import Image from "next/image";
 import Router from "next/router";
+import {getOcrRecommend} from "../../../api/recommend"
 
 function RecommendMain() {
   const router = Router;
+  
+  const success = (res) => {
+    console.log(res);
+  }
+
+  const fail = (error) => {
+    console.log(error);
+  }
+
+  const handleImageUpload = (e) => {
+    const letterImage = e.target.files[0];
+    console.log(letterImage);
+    const recommendOcrInfo = { format: letterImage.name.split(".")[1], name: letterImage.name.split(".")[0] };
+    console.log(recommendOcrInfo);
+    const formdata = new FormData();
+    const json = JSON.stringify(recommendOcrInfo);
+    formdata.append("recommendOcrInfo",
+      new Blob([json], { type: "application/json" }));
+    formdata.append("image", letterImage); 
+
+    getOcrRecommend(formdata, success, fail);
+  };
+
   return (
     <div className="flex flex-col mb-36">
       <Header text={"꽃에 담은 편지"} />
@@ -40,23 +64,27 @@ function RecommendMain() {
         주세요.
       </div>
 
-      <div className="flex justify-center mt-2">
-        <button
+      <div className="flex justify-center my-6">
+        <div
           onClick={() => router.push("/recommend/letter")}
-          className="mt-6 font-gangwon bg-sub2 rounded-md w-52 py-2 pt-2.5 pb-1.5 text-font3"
+          className="text-center font-gangwon bg-sub2 rounded-md w-52 py-2 pt-2.5 pb-1.5 text-font3"
         >
           편지 작성하기
-        </button>
+        </div>
       </div>
-      <div className="flex justify-center mt-2">
-      <label className="mt-6 font-gangwon bg-sub2 rounded-md w-52 py-2 pt-2.5 pb-1.5 text-font3" htmlFor="handLatter">
-        손편지로 추천받기
-      </label>
+      <div className="flex justify-center text-center">
+        <label
+          className="font-gangwon bg-sub2 rounded-md w-52 py-2 pt-2.5 pb-1.5 text-font3"
+          htmlFor="handLetter"
+        >
+          손편지로 추천받기
+        </label>
         <input
           type="file"
           accept="image/*;capture=camera"
           className="absolute w-0 h-0 p-0 overflow-hidden border-0"
-          id="handLatter"
+          id="handLetter"
+          onChange={handleImageUpload}
         />
       </div>
     </div>

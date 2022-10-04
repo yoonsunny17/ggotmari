@@ -24,22 +24,22 @@ function EditArticle() {
 
   const [flowerKindList, setFlowerKindList] = useState([]);
   const [title, setTitle] = useState(
-    router.query.title ? router.query.title : "",
+    router.query.title ? router.query.title : ""
   );
   const [content, setContent] = useState(
-    router.query.content ? router.query.content : "",
+    router.query.content ? router.query.content : ""
   );
   const [flowerTags, setFlowerTags] = useState(
-    router.query.tags ? JSON.parse(router.query.tags) : [],
+    router.query.tags ? JSON.parse(router.query.tags) : []
   );
   const [imagePreviews, setImagePreviews] = useState(
-    router.query.images ? JSON.parse(router.query.images) : [],
+    router.query.images ? JSON.parse(router.query.images) : []
   );
   const [tagSearch, setTagSearch] = useState("");
   const [flowerTagIds, setFlowerTagIds] = useState(
     router.query.tags
       ? JSON.parse(router.query.tags).map((tag) => tag.subjectId)
-      : [],
+      : []
   );
   const [filteredList, setFilteredList] = useState([]);
   const [dropDownOpen, setDropDownOpen] = useState(false);
@@ -65,15 +65,15 @@ function EditArticle() {
       },
       (error) => {
         console.log(error);
-      },
+      }
     );
   }, []);
 
   useEffect(() => {
     setFilteredList(
       flowerKindList.filter((flowerKind) =>
-        flowerKind.subjectName.startsWith(tagSearch),
-      ),
+        flowerKind.subjectName.startsWith(tagSearch)
+      )
     );
   }, [tagSearch]);
 
@@ -148,7 +148,7 @@ function EditArticle() {
       const json = JSON.stringify(article);
       formData.append(
         "articleInfo",
-        new Blob([json], { type: "application/json" }),
+        new Blob([json], { type: "application/json" })
       );
 
       if (imageFiles != undefined) {
@@ -165,7 +165,7 @@ function EditArticle() {
             Toast.fire({
               title: "게시글 등록에 실패하였습니다",
             });
-          },
+          }
         );
       } else if (mode == "edit") {
         editArticle(
@@ -178,7 +178,7 @@ function EditArticle() {
             Toast.fire({
               title: "게시글 수정에 실패하였습니다",
             });
-          },
+          }
         );
       }
     }
@@ -237,7 +237,7 @@ function EditArticle() {
           <input
             type="text"
             id="articleTitle"
-            className="shadow-md w-full text-sm focus:outline-none px-3 py-2"
+            className="rounded-md shadow-sm w-full text-sm focus:outline-none focus:shadow-sub1 color-delay px-3 py-2"
             placeholder="제목을 입력하세요"
             onFocus={() => setDropDownOpen(false)}
             onChange={handleTitleChange}
@@ -247,10 +247,10 @@ function EditArticle() {
           <label htmlFor="flowerTags" className="pl-2 text-sm">
             꽃 태그
           </label>
-          <div className="w-full shadow-md">
+          <div className="w-full shadow-sm rounded-md">
             {/* 추가된 꽃 태그 컨테이너 */}
             <div>
-              <div className="flex flex-row flex-wrap px-5 py-3 text-sub1 text-sm">
+              <div className="flex flex-row flex-wrap px-4 py-3 text-sub1 text-sm">
                 {flowerTags.length > 0
                   ? flowerTags.map((flower) => (
                       <FlowerTag
@@ -301,7 +301,7 @@ function EditArticle() {
           <textarea
             id="articleContent"
             rows="5"
-            className="shadow-md w-full text-sm focus:outline-none p-3"
+            className="shadow-sm rounded-md focus:shadow-sub1 color-delay w-full text-sm focus:outline-none p-3"
             placeholder="내용을 입력하세요"
             onFocus={() => setDropDownOpen(false)}
             value={content}
