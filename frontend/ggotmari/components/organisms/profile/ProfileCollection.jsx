@@ -31,7 +31,7 @@ function ProfileCollection({ likeFlowers }) {
           setCollectionItems(likeFlower.flowers);
         }
       } else {
-        setCollectionItems();
+        setCollectionItems([]);
       }
     }
   };
