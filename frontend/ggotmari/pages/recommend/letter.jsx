@@ -3,6 +3,8 @@ import { useRouter, withRouter } from "next/router";
 
 import { postLetterRecomm } from "../../api/recommend";
 
+import Head from "next/head";
+
 import Image from "next/image";
 import noFlower from "../../assets/profile/collection/noFlowerImg.jpg";
 import flowerLoading from "../../assets/flower/flower.gif";
@@ -106,6 +108,11 @@ function WriteLetter() {
 
   return (
     <div className="flex flex-col mb-40">
+      <Head>
+        <title>Write Letter | GGOTMARI</title>
+        <meta property="og:title" content="Write Letter" key="Write Letter" />
+        <meta name="description" content="Write Letter" />
+      </Head>
       {/* <Header text={"꽃에 담은 편지"} /> */}
 
       {/* 편지 작성하기 */}

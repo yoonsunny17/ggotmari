@@ -3,6 +3,7 @@ import Image from "next/image";
 import Router from "next/router";
 import { useState } from "react";
 import { getOcrRecommend } from "../../api/recommend";
+import Head from "next/head";
 
 import WriteLetter from "./letter";
 import NotFound from "./notFound";
@@ -65,6 +66,15 @@ function RecommendMain() {
 
   return (
     <div className="flex flex-col mb-36">
+      <Head>
+        <title>Recommend by Letter | GGOTMARI</title>
+        <meta
+          property="og:title"
+          content="Recommend by Letter"
+          key="Recommend by Letter"
+        />
+        <meta name="description" content="Recommend by Letter" />
+      </Head>
       <Header text={"꽃에 담은 편지"} />
       {/* <img
           className="opacity-80 h-full w-full object-cover object-bottom"
