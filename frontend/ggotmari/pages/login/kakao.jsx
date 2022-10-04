@@ -2,6 +2,7 @@ import { useRouter } from "next/router";
 import { useState, useEffect } from "react";
 import { doLogin } from "../../api/user";
 import kakaoLogin from "../../assets/login/login.gif";
+import Head from "next/head";
 
 export default function Kakao() {
   const router = useRouter();
@@ -21,6 +22,15 @@ export default function Kakao() {
 
   return (
     <div className="login h-screen bg-login bg-cover bg-center">
+      <Head>
+        <title>Login In Process | GGOTMARI</title>
+        <meta
+          property="og:title"
+          content="Login in process"
+          key="login in process"
+        />
+        <meta name="description" content="Login in process." />
+      </Head>
       <div className="login-img-box mx-10 pt-40 flex justify-center">
         <img
           src={kakaoLogin.src}
