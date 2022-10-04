@@ -1,6 +1,5 @@
-import Header from "../../components/atoms/common/Header";
 import { useState, useEffect } from "react";
-import { useRouter } from "next/router";
+import { useRouter, withRouter } from "next/router";
 
 import { postLetterRecomm } from "../../api/recommend";
 
@@ -10,6 +9,10 @@ import flowerLoading from "../../assets/flower/flower.gif";
 
 function WriteLetter() {
   const router = useRouter();
+  // console.log(router.query.ocrLetter);
+
+  const ocrLetter = router.query.ocrLetter;
+  // console.log(ocrLetter);
 
   const [letter, setLetter] = useState("");
   const [from, setFrom] = useState("");
@@ -20,6 +23,9 @@ function WriteLetter() {
   const [subjectLanguage, setSubjectLanguage] = useState("");
   const [kindImage, setKindImage] = useState("");
 
+  useEffect(() => {
+    setLetter(ocrLetter);
+  }, []);
   const handleWrite = (e) => {
     setLetter(e.target.value);
     console.log(letter);
@@ -66,7 +72,7 @@ function WriteLetter() {
         setSubjectName(res.data.subjectName);
         setSubjectLanguage(res.data.subjectLanguage);
         setKindImage(res.data.kindImage);
-        router.push(`/recommend/letter`);
+        // router.push(`/recommend/letter`);
       },
       (err) => {
         console.log(err);
@@ -100,7 +106,7 @@ function WriteLetter() {
 
   return (
     <div className="flex flex-col mb-40">
-      <Header text={"꽃에 담은 편지"} />
+      {/* <Header text={"꽃에 담은 편지"} /> */}
 
       {/* 편지 작성하기 */}
       {!clickBtn ? (
@@ -120,6 +126,7 @@ function WriteLetter() {
               objectFit="cover"
               objectPosition="bottom"
               className="opacity-80"
+              priority
             />
           </div>
           <form onSubmit={handleLetterSubmit} className="font-sans mt-2">
@@ -140,6 +147,8 @@ function WriteLetter() {
                   placeholder="회원님의 마음을 담아 편지를 써주세요."
                   onChange={handleWrite}
                   maxLength="180"
+                  value={letter}
+                  // value={ocrLetter === undefined ? undefined : ocrLetter}
                 ></textarea>
               </div>
               <div className="mt-4 ml-8">
