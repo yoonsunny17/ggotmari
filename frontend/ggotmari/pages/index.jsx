@@ -37,6 +37,13 @@ function Home() {
   };
 
   useEffect(() => {
+    if (!localStorage.getItem("accessToken")) {
+      // router.push("/login");
+      router.push("/main");
+    }
+  }, []);
+
+  useEffect(() => {
     if (localStorage.getItem("accessToken")) {
       getInfo();
       getArticleRecomm(
