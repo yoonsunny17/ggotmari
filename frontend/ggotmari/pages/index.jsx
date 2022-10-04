@@ -136,7 +136,7 @@ function Home() {
 
         {/* 추천 이야기 */}
         <div className="pt-6 pb-3 font-sans mb-4 w-full">
-          <div className="mb-3">
+          <div className="mb-3 text-font1 pb-1">
             <div>{username} 님을 위한 추천 이야기</div>
             <div className="text-xs">요즘 이런 꽃 좋아하시더라구요 :)</div>
           </div>
@@ -153,11 +153,13 @@ function Home() {
         {/* 인기 이야기 TOP10 */}
         <div className="pt-6 font-sans w-full">
           <div className="mb-3">
-            <div className="flex justify-between mb-3">
+            <div className="flex justify-between mb-3 text-font1">
               <p>인기 이야기 TOP10</p>
-              <p className="flex cursor-pointer">
-                <IoIosArrowForward />
-              </p>
+              <Link href="/community">
+                <p className="flex cursor-pointer">
+                  <IoIosArrowForward />
+                </p>
+              </Link>
               {/* <Link href="/community/popular">
                 <a>
                   <p className="flex items-center cursor-pointer">
@@ -183,23 +185,23 @@ function Home() {
 
         {/* 특별한 날 선물하기 좋은 꽃 */}
         <div className="pt-6 font-sans w-full">
-          <p className="mb-3">특별한 날 선물하기 좋은 꽃</p>
+          <p className="mb-3 text-font1">특별한 날 선물하기 좋은 꽃</p>
           <SpecialDayRecomm />
         </div>
 
         {/* 도움을 원하시나요? */}
         <div className="mb-16 w-full font-sans pt-6">
-          <div className="pb-4">도움을 원하시나요?</div>
-          {/* <div className="flex justify-between text-sm text-font2"> */}
-          <div className="text-sm text-font2 grid grid-cols gap-y-1">
+          <div className="pb-4 text-font1">도움을 원하시나요?</div>
+          <div className="flex justify-between text-sm text-font2">
+            {/* <div className="text-sm text-font2 grid grid-cols gap-y-1"> */}
             <Link href="https://pf.kakao.com/_VKECxj">
               <a target="_blank">
                 <img className="w-20" src={kakao_channel.src} alt="" />
               </a>
             </Link>
             <Link href="https://a303-princess.notion.site/690dcc0e597b4a7886754f98b493371d">
-              <a>
-                {/* <a target="_blank"> */}
+              {/* <a> */}
+              <a target="_blank">
                 <div className="flex">
                   <img
                     className="w-6"
