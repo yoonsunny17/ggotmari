@@ -139,24 +139,16 @@ public class RecommendController {
     }
 
     @PostMapping("/ocr")
-    @ApiOperation(value = "손편지 추천", notes = "손편지 내용 기반 꽃 추천")
+    @ApiOperation(value = "손편지 ocr", notes = "손편지 내용 텍스트 추출")
     @ApiResponses({
-            @ApiResponse(code = 201, message = "꽃 추천 성공"),
-            @ApiResponse(code = 404, message = "꽃 추천 실패")
+            @ApiResponse(code = 201, message = "정상적으로 텍스트를 추출했습니다.")
     })
-    public ResponseEntity<? extends RecommendLetterRes> getTextByOCR(@RequestPart(value = "recommendOcrInfo")RecommendOcrReq recommendOcrInfo,
+    public ResponseEntity<? extends RecommendOcrRes> getTextByOCR(@RequestPart(value = "recommendOcrInfo")RecommendOcrReq recommendOcrInfo,
                                                                      @RequestPart(value = "image") MultipartFile multipartFile){
 
-        LetterPostReq letterInfo = new LetterPostReq();
         String content = naverClovaService.getOcrText(multipartFile,recommendOcrInfo);
-        letterInfo.setContent(content);
 
-        Subject subject= recommendService.recommendByLetter(letterInfo);
+        return ResponseEntity.status(201).body(RecommendOcrRes.of(201, "정상적으로 텍스트를 추출했습니다.", content));
 
-        if(subject == null){
-            return ResponseEntity.status(404).body(RecommendLetterRes.of(404, "편지 추천에 실패했습니다.", null));
-        }else{
-            return ResponseEntity.status(201).body(RecommendLetterRes.of(201, "정상적으로 추천되었습니다.", subject));
-        }
     }
 }
