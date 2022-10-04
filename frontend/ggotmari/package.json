@@ -26,6 +26,5 @@
     "eslint-config-next": "12.3.0",
     "postcss": "^8.4.16",
     "tailwindcss": "^3.1.8"
-  },
-  "proxy": "https://j7a303.p.ssafy.io"
+  }
 }
