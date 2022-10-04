@@ -1,5 +1,7 @@
 import { useRouter } from "next/router";
 import { useState, useEffect } from "react";
+import Head from "next/head";
+
 import Image from "next/image";
 
 import kakao_oauth from "../../assets/kakao_login_large_narrow.png";
@@ -16,6 +18,11 @@ export default function Login() {
 
   return (
     <div className="flex justify-center items-center h-screen bg-login bg-cover bg-center">
+      <Head>
+        <title>Login | GGOTMARI</title>
+        <meta property="og:title" content="Login" key="login" />
+        <meta name="description" content="user can login to GGOTMARI here." />
+      </Head>
       <div className="text-center mb-52">
         <div className="font-sansbold text-2xl pb-2">로그인</div>
         <div className="font-sans pb-12">
