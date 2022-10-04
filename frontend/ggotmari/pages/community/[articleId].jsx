@@ -93,10 +93,13 @@ function ArticleDetail() {
   }, [article]);
 
   const handleFlowerTagClick = (flowerTag) => {
-    router.push({
-      pathname: `/flower/${flowerTag.subjectId}`,
-      query: { kindId: flowerTag.kindId },
-    });
+    router.push(
+      {
+        pathname: `/flower/${flowerTag.subjectId}`,
+        query: { kindId: flowerTag.kindId },
+      },
+      `/flower/${flowerTag.subjectId}`
+    );
   };
 
   const handleUserClick = () => {

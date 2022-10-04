@@ -2,7 +2,7 @@ import { apiInstance, fileApiInstance } from "./index";
 
 const api = apiInstance();
 const fileApi = fileApiInstance();
-const isLocal = false;
+const isLocal = true;
 
 async function getFlowerKind(success, fail) {
   await api.get(`/community/article`).then(success).catch(fail);
@@ -115,6 +115,36 @@ async function deleteArticle(articleId, success, fail) {
     .catch(fail);
 }
 
+async function editComment(articleId, comment, success, fail) {
+  await api
+    .put(`/community/article/${articleId}/comment`, comment, {
+      headers: {
+        Authorization: !isLocal
+          ? localStorage.getItem("accessToken")
+          : "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE2NjQyNDMzMDEsImV4cCI6MTY2NTUzOTMwMSwiZW1haWwiOiJqam9vbjAzMDZAbmF2ZXIuY29tIn0.xLkGTIv-3kEvz9VGxO9PVAGlskSiwF8fPGAwr6FlHiOP17htzEaVbickaNcgcN8ac4zWYIZ7fsuDjrtM7Nb5CQ",
+      },
+    })
+    .then(success)
+    .catch(fail);
+}
+
+async function deleteComment(articleId, commentId, success, fail) {
+  await api
+    .delete(
+      `/community/article/${articleId}/comment`,
+      { commentId: commentId },
+      {
+        headers: {
+          Authorization: !isLocal
+            ? localStorage.getItem("accessToken")
+            : "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE2NjQyNDMzMDEsImV4cCI6MTY2NTUzOTMwMSwiZW1haWwiOiJqam9vbjAzMDZAbmF2ZXIuY29tIn0.xLkGTIv-3kEvz9VGxO9PVAGlskSiwF8fPGAwr6FlHiOP17htzEaVbickaNcgcN8ac4zWYIZ7fsuDjrtM7Nb5CQ",
+        },
+      }
+    )
+    .then(success)
+    .catch(fail);
+}
+
 export {
   getFlowerKind,
   postArticle,
@@ -125,5 +155,7 @@ export {
   getArticleIds,
   getArticleDetail,
   deleteArticle,
+  editComment,
+  deleteComment,
   getPopularList,
 };

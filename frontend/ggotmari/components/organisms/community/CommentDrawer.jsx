@@ -4,7 +4,12 @@ import { useState } from "react";
 import ProfileImg from "../../atoms/common/ProfileImg";
 import CommentItem from "../../molecules/community/CommentItem";
 
-import { getArticleDetail, postArticleComment } from "../../../api/community";
+import {
+  getArticleDetail,
+  postArticleComment,
+  editComment,
+  deleteComment,
+} from "../../../api/community";
 
 import { IoIosArrowDown } from "react-icons/io";
 
@@ -33,7 +38,7 @@ function CommentDrawer({
         },
         (err) => {
           console.log(err);
-        },
+        }
       );
     }
 
@@ -45,7 +50,22 @@ function CommentDrawer({
       },
       (err) => {
         console.log(err);
+      }
+    );
+  };
+
+  const handleEditClick = () => {};
+
+  const handleDeleteClick = (commentId) => {
+    deleteComment(
+      articleId,
+      commentId,
+      (res) => {
+        console.log(res);
       },
+      (err) => {
+        console.log(err);
+      }
     );
   };
 
@@ -81,6 +101,8 @@ function CommentDrawer({
                   userImage={comment.userImage}
                   key={comment.commentId}
                   isMe={comment.isMe}
+                  handleDeleteClick={() => handleDeleteClick(comment.commentId)}
+                  handleEditClick={() => handleEditClick(comment.commentId)}
                 />
               ))}
             </div>
