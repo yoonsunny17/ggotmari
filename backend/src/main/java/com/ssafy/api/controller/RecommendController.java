@@ -2,8 +2,10 @@ package com.ssafy.api.controller;
 
 import com.ssafy.api.request.DislikePostReq;
 import com.ssafy.api.request.LetterPostReq;
+import com.ssafy.api.request.RecommendOcrReq;
 import com.ssafy.api.response.Flower.TagPostRes;
 import com.ssafy.api.response.Recommend.*;
+import com.ssafy.api.service.NaverClovaService;
 import com.ssafy.api.service.RecommendService;
 import com.ssafy.api.service.UserService;
 import com.ssafy.common.util.JwtTokenUtil;
@@ -16,6 +18,7 @@ import io.swagger.annotations.ApiResponses;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
@@ -31,6 +34,8 @@ public class RecommendController {
     private JwtTokenUtil jwtTokenUtil;
     @Autowired
     UserService userService;
+    @Autowired
+    NaverClovaService naverClovaService;
 
     @PostMapping("/dislike")
     @ApiOperation(value = "컬랙션(태그) 추가/삭제", notes = "컬렉션 전환 성공 여부를 반환한다.")
@@ -123,6 +128,28 @@ public class RecommendController {
             @ApiResponse(code = 404, message = "꽃 추천 실패")
     })
     public ResponseEntity<? extends RecommendLetterRes> recommendFlowerByLetter(@RequestBody LetterPostReq letterInfo){
+
+        Subject subject= recommendService.recommendByLetter(letterInfo);
+
+        if(subject == null){
+            return ResponseEntity.status(404).body(RecommendLetterRes.of(404, "편지 추천에 실패했습니다.", null));
+        }else{
+            return ResponseEntity.status(201).body(RecommendLetterRes.of(201, "정상적으로 추천되었습니다.", subject));
+        }
+    }
+
+    @PostMapping("/ocr")
+    @ApiOperation(value = "손편지 추천", notes = "손편지 내용 기반 꽃 추천")
+    @ApiResponses({
+            @ApiResponse(code = 201, message = "꽃 추천 성공"),
+            @ApiResponse(code = 404, message = "꽃 추천 실패")
+    })
+    public ResponseEntity<? extends RecommendLetterRes> getTextByOCR(@RequestPart(value = "recommendOcrInfo")RecommendOcrReq recommendOcrInfo,
+                                                                     @RequestPart(value = "image") MultipartFile multipartFile){
+
+        LetterPostReq letterInfo = new LetterPostReq();
+        String content = naverClovaService.getOcrText(multipartFile,recommendOcrInfo);
+        letterInfo.setContent(content);
 
         Subject subject= recommendService.recommendByLetter(letterInfo);
 
