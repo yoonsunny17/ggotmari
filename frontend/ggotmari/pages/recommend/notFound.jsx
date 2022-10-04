@@ -2,11 +2,13 @@ import { useRouter } from "next/router";
 import Image from "next/image";
 
 import noFlower from "../../assets/profile/collection/noFlowerImg.jpg";
+import Header from "../../components/atoms/common/Header";
 
 function NotFound() {
   const router = useRouter();
   return (
     <div className="font-gangwon">
+      <Header text={"오늘의 꽃"} />
       <div>
         <Image
           src={noFlower.src}
