@@ -25,7 +25,9 @@ function CollectionImage({ flowerImage, kindId, kindName }) {
           }}
         />
       </div>
-      <div className="flower-title cursor-pointer">{kindName}</div>
+      <div className="flower-title cursor-pointer font-sans pt-0.5 text-font2 text-xs overflow-hidden text-ellipsis">
+        {kindName}
+      </div>
     </>
   );
 }
