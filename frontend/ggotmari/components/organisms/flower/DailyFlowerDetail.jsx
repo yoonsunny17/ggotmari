@@ -42,10 +42,22 @@ function DailyFlowerDetail({}) {
         priority
       />
       <div className="my-10 text-center font-gangwon text-font1 text-md">
-        {dailyFlower.dailyFlowerName}의 꽃말은 <br />
-        &apos;{dailyFlower.dailyFlowerLanguage}&apos; 입니다.
+        오늘의 꽃은{" "}
+        <span className="text-xl bg-extra2/60">
+          {dailyFlower.dailyFlowerName}
+        </span>{" "}
+        입니다
         <br />
-        <div className="mt-5 px-6">{dailyFlower.dailyFlowerContent}</div>
+        {dailyFlower.dailyFlowerName}의 꽃말은 &apos;
+        <span className="text-xl bg-sub1/60">
+          {dailyFlower.dailyFlowerLanguage}
+        </span>
+        &apos; 입니다.
+        <br />
+        <div className="mt-6 px-6">
+          <p className="">- 오늘의 꽃점 -</p>
+          <div className="py-1 px-1">{dailyFlower.dailyFlowerContent}</div>
+        </div>
       </div>
     </div>
   );
