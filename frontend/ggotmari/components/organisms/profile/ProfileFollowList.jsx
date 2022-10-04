@@ -2,8 +2,10 @@ import FollowUser from "../../molecules/profile/FollowUser";
 import SearchBar from "../../atoms/common/SearchBar";
 import { useEffect, useState } from "react";
 import { getUserFollow } from "../../../api/profile.js";
+import { useRouter } from "next/router";
 
 function ProfileFollowList() {
+  const router = useRouter();
   // 여기서 서버로 통신
   // 초기값 세팅
   const [followInfo, setFollowInfo] = useState({
@@ -34,7 +36,8 @@ function ProfileFollowList() {
       getInfo(username);
     } else {
       alert("로그인이 필요한 서비스입니다.");
-      router.push("/login");
+      // router.push("/login");
+      router.push("/main");
     }
   }, []);
 

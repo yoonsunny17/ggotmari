@@ -86,7 +86,8 @@ export default function Profile() {
       const username = window.location.pathname.substring(9);
       getInfo(username);
     } else {
-      router.push("/login");
+      // router.push("/login");
+      router.push("/main");
     }
   }, []);
 

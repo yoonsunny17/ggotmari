@@ -51,7 +51,8 @@ function Footer() {
       await clickInfo();
       // router.push(`/profile/${username}`);
     } else {
-      router.push("/login");
+      // router.push("/login");
+      router.push("/main");
     }
   };
 
