@@ -8,7 +8,7 @@ function NotFound() {
   const router = useRouter();
   return (
     <div className="font-gangwon">
-      <Header text={"오늘의 꽃"} />
+      <Header text={"꽃에 담은 편지"} />
       <div>
         <Image
           src={noFlower.src}
