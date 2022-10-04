@@ -191,7 +191,9 @@ function WriteLetter() {
                 objectFit="cover"
                 priority
               />
-              <div>loading...</div>
+              <div className="text-lg text-center mt-6 font-gangwon">
+                잠시만 기다려 주세요
+              </div>
             </div>
           )}
           {subjectName.length > 0 && subjectLanguage.length > 0 && (
@@ -222,7 +224,7 @@ function WriteLetter() {
               </div>
               <div className="my-6 mx-4 text-center text-font2">
                 <div>
-                  <span className="text-font1 text-lg">{subjectName}</span>의
+                  <span className="text-lg text-font1">{subjectName}</span>의
                   꽃말은
                 </div>
                 <div className="whitespace-pre-line">

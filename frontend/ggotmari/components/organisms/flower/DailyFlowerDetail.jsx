@@ -41,7 +41,7 @@ function DailyFlowerDetail({}) {
         objectFit="cover"
         priority
       />
-      <div className="my-10 text-center font-gangwon text-font1 text-md">
+      <div className="my-10 text-center font-gangwon text-font1">
         오늘의 꽃은{" "}
         <span className="text-xl bg-extra2/60">
           {dailyFlower.dailyFlowerName}
