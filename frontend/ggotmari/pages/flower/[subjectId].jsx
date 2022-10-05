@@ -8,6 +8,8 @@ import { postDislikeRecomm } from "../../api/recommend";
 import RelatedPosts from "../../components/molecules/flower/RelatedPosts";
 import SimilarFlowers from "../../components/molecules/flower/SimilarFlowers";
 
+import Loading from "../../assets/flower/loading.gif";
+
 export async function getServerSideProps(context) {
   return {
     props: {},
@@ -82,7 +84,12 @@ function FlowerDetail() {
   };
 
   return collectionStatus == undefined ? (
-    <div>로딩중</div>
+    <div className="h-screen w-screen flex justify-center items-center">
+      <div className="flex flex-col items-center space-y-5">
+        <Image src={Loading.src} width={200} height={200} />
+        <div className="text-main font-maru text-xl">꽃 DB 가져오는 중...</div>
+      </div>
+    </div>
   ) : (
     <div className="mb-10 w-screen">
       {/* <img

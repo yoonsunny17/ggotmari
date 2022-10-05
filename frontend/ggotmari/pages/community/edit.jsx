@@ -119,7 +119,6 @@ function EditArticle() {
   };
 
   const handleArticleSubmit = (e) => {
-    e.preventDefault();
     const mode = router.query.mode;
 
     if (!isSubmit) {
@@ -194,6 +193,16 @@ function EditArticle() {
     }
   };
 
+  const handleCancleClick = () => {
+    const mode = router.query.mode;
+
+    if (mode == "write") {
+      router.push("/community");
+    } else if (mode == "edit") {
+      router.back();
+    }
+  };
+
   return (
     <div className="flex flex-col items-center w-screen">
       <div className="w-full aspect-square bg-font3">
@@ -206,9 +215,12 @@ function EditArticle() {
             ))}
           </div>
         ) : (
-          <div className="flex justify-center items-center h-full">
+          <label
+            className="w-full h-full flex justify-center items-center"
+            htmlFor="flowerImg"
+          >
             <IoImagesOutline className="text-9xl text-sub1" />
-          </div>
+          </label>
         )}
       </div>
       <div className="flex flex-row space-x-3 justify-center my-3">
@@ -320,11 +332,20 @@ function EditArticle() {
             value={content}
             onChange={handleContentChange}
           ></textarea>
-          <input
-            type="submit"
-            className="bg-main text-font3 py-3 leading-normal rounded-lg hover:bg-sub1"
-            value={router.query.mode == "write" ? "등록하기" : "수정하기"}
-          />
+          <div className="flex flex-row-reverse">
+            <div
+              className="px-3 py-2 bg-font3 rounded-lg mx-4"
+              onClick={handleCancleClick}
+            >
+              취소
+            </div>
+            <div
+              className="bg-main text-font3 px-3 py-2 leading-normal rounded-lg hover:bg-sub1"
+              onClick={handleArticleSubmit}
+            >
+              {router.query.mode == "write" ? "등록하기" : "수정하기"}
+            </div>
+          </div>
         </form>
       </div>
       <div className="h-14"></div>
