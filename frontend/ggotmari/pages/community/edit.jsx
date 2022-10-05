@@ -44,6 +44,7 @@ function EditArticle() {
   const [filteredList, setFilteredList] = useState([]);
   const [dropDownOpen, setDropDownOpen] = useState(false);
   const [imageFiles, setImageFiles] = useState();
+  var isSubmit = false;
 
   const Toast = Swal.mixin({
     toast: true,
@@ -121,65 +122,74 @@ function EditArticle() {
     e.preventDefault();
     const mode = router.query.mode;
 
-    // 유효성 검사
-    if (imagePreviews.length == 0) {
-      Toast.fire({
-        title: "사진을 최소 1장 이상 업로드해주세요",
-      });
-    } else if (title == "") {
-      Toast.fire({
-        title: "제목을 입력해주세요",
-      });
-    } else if (flowerTags.length == 0) {
-      Toast.fire({
-        title: "꽃 태그를 최소 1개 이상 추가해주세요",
-      });
-    } else if (content == "") {
-      Toast.fire({
-        title: "내용을 입력해주세요",
-      });
-    } else {
-      const formData = new FormData();
-      const article = {
-        title: title,
-        content: content,
-        subjects: flowerTagIds,
-      };
-      const json = JSON.stringify(article);
-      formData.append(
-        "articleInfo",
-        new Blob([json], { type: "application/json" })
-      );
-
-      if (imageFiles != undefined) {
-        [...imageFiles].forEach((file) => formData.append("images", file));
-      }
-
-      if (mode == "write") {
-        postArticle(
-          formData,
-          (res) => {
-            router.push(`/community/${res.data.articleId}`);
-          },
-          (err) => {
-            Toast.fire({
-              title: "게시글 등록에 실패하였습니다",
-            });
-          }
+    if (!isSubmit) {
+      isSubmit = true;
+      // 유효성 검사
+      if (imagePreviews.length == 0) {
+        Toast.fire({
+          title: "사진을 최소 1장 이상 업로드해주세요",
+        });
+        isSubmit = false;
+      } else if (title == "") {
+        Toast.fire({
+          title: "제목을 입력해주세요",
+        });
+        isSubmit = false;
+      } else if (flowerTags.length == 0) {
+        Toast.fire({
+          title: "꽃 태그를 최소 1개 이상 추가해주세요",
+        });
+        isSubmit = false;
+      } else if (content == "") {
+        Toast.fire({
+          title: "내용을 입력해주세요",
+        });
+        isSubmit = false;
+      } else {
+        const formData = new FormData();
+        const article = {
+          title: title,
+          content: content,
+          subjects: flowerTagIds,
+        };
+        const json = JSON.stringify(article);
+        formData.append(
+          "articleInfo",
+          new Blob([json], { type: "application/json" })
         );
-      } else if (mode == "edit") {
-        editArticle(
-          router.query.articleId,
-          formData,
-          (res) => {
-            router.push(`/community/${res.data.articleId}`);
-          },
-          (err) => {
-            Toast.fire({
-              title: "게시글 수정에 실패하였습니다",
-            });
-          }
-        );
+
+        if (imageFiles != undefined) {
+          [...imageFiles].forEach((file) => formData.append("images", file));
+        }
+
+        if (mode == "write") {
+          postArticle(
+            formData,
+            (res) => {
+              router.push(`/community/${res.data.articleId}`);
+            },
+            (err) => {
+              Toast.fire({
+                title: "게시글 등록에 실패하였습니다",
+              });
+              isSubmit = false;
+            }
+          );
+        } else if (mode == "edit") {
+          editArticle(
+            router.query.articleId,
+            formData,
+            (res) => {
+              router.push(`/community/${res.data.articleId}`);
+            },
+            (err) => {
+              Toast.fire({
+                title: "게시글 수정에 실패하였습니다",
+              });
+              isSubmit = false;
+            }
+          );
+        }
       }
     }
   };

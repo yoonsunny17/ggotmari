@@ -83,6 +83,7 @@ function ProfileCollection({ likeFlowers }) {
                   flowerImage={item.flowerImage}
                   kindId={item.kindId}
                   kindName={item.kindName}
+                  subjectId={item.subjectId}
                 />
               </div>
             );
