@@ -1,3 +1,5 @@
+import Head from "next/head";
+
 import Header from "../../components/atoms/common/Header";
 import DailyFlowerDetail from "../../components/organisms/flower/DailyFlowerDetail";
 
