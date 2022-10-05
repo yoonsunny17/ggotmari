@@ -19,6 +19,7 @@ import {
   AiFillHeart,
   AiOutlineComment,
 } from "react-icons/ai";
+import { BsChatDots } from "react-icons/bs";
 import { IoIosArrowUp } from "react-icons/io";
 
 export async function getServerSideProps(context) {
@@ -233,13 +234,13 @@ function ArticleDetail() {
               />
             ))}
           </div>
-          <div className="flex flex-row justify-between items-end">
+          <div className="flex flex-row justify-between items-end font-sans text-sm">
             <div>
               <div className="inline" onClick={handleLikeClick}>
                 {isLike ? (
-                  <AiFillHeart className="inline text-red-600" />
+                  <AiFillHeart size={16} className="inline text-red-600" />
                 ) : (
-                  <AiOutlineHeart className="inline text-red-600" />
+                  <AiOutlineHeart size={16} className="inline text-red-600" />
                 )}{" "}
                 {likeCount >= 100 ? "99+" : likeCount}
               </div>
@@ -247,7 +248,7 @@ function ArticleDetail() {
                 className="inline hover:text-font2"
                 onClick={() => setIsOpen(true)}
               >
-                <AiOutlineComment className="inline ml-2" />{" "}
+                <BsChatDots size={14} className="inline ml-2" />{" "}
                 {commentCount >= 100 ? "99+" : commentCount}
               </div>
             </div>
@@ -257,12 +258,12 @@ function ArticleDetail() {
           </div>
         </div>
         <hr />
-        <div className="p-4 text-black">{article.articleContent}</div>
+        <div className="font-sans p-4 text-black">{article.articleContent}</div>
         <div
           className="h-14 p-4 hover:bg-gray-100"
           onClick={() => setIsOpen(true)}
         >
-          <div className="flex flex-row justify-between items-center">
+          <div className="flex flex-row font-sans text-font2 justify-between items-center">
             <div>댓글 {commentCount}</div>
             <IoIosArrowUp className="text-xl" />
           </div>

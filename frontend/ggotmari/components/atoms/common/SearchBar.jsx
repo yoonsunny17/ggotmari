@@ -11,7 +11,7 @@ function SearchBar({ placeholder, onChange, searchTerm, handleEnterEvent }) {
   };
 
   return (
-    <div className="form-control bg-font3 w-5/6 h-8 rounded-md">
+    <div className="mt-1 form-control bg-font3 w-5/6 h-9 rounded-md">
       <label className="input-group h-full items-center px-3">
         <AiOutlineSearch />
         <input

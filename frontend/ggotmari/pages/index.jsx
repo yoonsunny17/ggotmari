@@ -109,7 +109,7 @@ function Home() {
                   <p className="ml-3 pt-[6px]">
                     <FaRegPaperPlane size={22} />
                   </p>
-                  <p className="pr-2 pt-4">꽃에 담은 편지</p>
+                  <p className="font-gangwon pr-2 pt-4">꽃에 담은 편지</p>
                 </div>
               </button>
 
@@ -123,7 +123,7 @@ function Home() {
                     <IoFlowerOutline size={25} />
                     {/* <AiOutlineSearch size={25} /> */}
                   </p>
-                  <p className="pr-2 pt-4">꽃 사전</p>
+                  <p className="font-gangwon pr-2 pt-4">꽃 사전</p>
                 </div>
               </button>
             </div>

@@ -38,10 +38,10 @@ function SearchFlowerList() {
         <meta property="og:title" content="Flower Search" key="Flower Search" />
         <meta name="description" content="Search All Flowers" />
       </Head>
-      <Header text="꽃 찾기" />
-      <div className="font-sans flex justify-center mb-4">
+      <Header text="꽃 사전" />
+      <div className="font-sans text-font1 flex justify-center mb-4">
         <SearchBar
-          placeholder={"꽃 찾기"}
+          placeholder={"꽃을 검색해 보세요"}
           onChange={(e) => setSearchKeyword(e.target.value)}
           searchTerm={searchKeyword}
           handleEnterEvent={getSearchedList}

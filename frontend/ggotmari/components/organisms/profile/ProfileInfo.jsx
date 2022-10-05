@@ -76,7 +76,7 @@ function ProfileInfo({ userInfo, setUserInfo }) {
           </div>
           {/* onClick */}
           {/* numFollow */}
-          <div className="box-follow-info font-sansultralight text-xs text-font2 my-0.5">
+          <div className="box-follow-info font-sanslight text-xs text-font2 my-0.5">
             <span
               className="cursor-pointer"
               onClick={() => {
@@ -89,7 +89,7 @@ function ProfileInfo({ userInfo, setUserInfo }) {
           </div>
           {/* Link */}
           {userInfo.isMe ? (
-            <div className="box-btns font-sansultralight text-xs text-sub2 underline underline-offset-2 my-1">
+            <div className="box-btns font-sanslight text-xs text-sub2 underline underline-offset-2 my-1">
               <span
                 className="cursor-pointer"
                 onClick={() => {
