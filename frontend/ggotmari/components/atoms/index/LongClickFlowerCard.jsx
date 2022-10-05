@@ -27,13 +27,10 @@ function LongClickFlowerCard(props) {
 
   const router = useRouter();
   const handlePostClick = () => {
-    router.push(
-      {
-        pathname: `/flower/${props.info.subjectId}`,
-        query: { kindId: props.info.kindId },
-      },
-      `/flower/${props.info.subjectId}`
-    );
+    router.push({
+      pathname: `/flower/${props.info.subjectId}`,
+      query: { kindId: props.info.kindId },
+    });
   };
 
   const handleClickDislike = (e) => {
