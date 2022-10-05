@@ -131,6 +131,7 @@ export default function Profile() {
                       alt="조회할 꽃 이야기가 없음"
                       layout="fill"
                       objectFit="cover"
+                      priority
                     />
                   </div>
                   {/* <img
@@ -175,6 +176,7 @@ export default function Profile() {
                       alt="조회할 꽃 이야기가 없음"
                       layout="fill"
                       objectFit="cover"
+                      priority
                     />
                   </div>
                   {/* <img

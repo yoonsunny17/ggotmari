@@ -49,6 +49,7 @@ function FollowUser({ item, followInfo, setFollowInfo }) {
             alt={`${item.userName}님의 프로필 사진입니다.`}
             layout="fill"
             objectFit="cover"
+            priority
             className="rounded-full cursor-pointer"
             onClick={() => {
               router.push(`/profile/${item.userName}`);

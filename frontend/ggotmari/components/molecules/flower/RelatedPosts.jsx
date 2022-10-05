@@ -25,6 +25,7 @@ function RelatedPosts({
             alt={articleId}
             layout="fill"
             objectFit="cover"
+            priority
           />
         </div>
         <div className="relative">

@@ -25,6 +25,7 @@ function FlowerCard({ info: { subjectId, kindId, flowerName, imgUrl } }) {
         alt={flowerName}
         layout="fill"
         objectFit="cover"
+        priority
         // className="w-full h-full object-cover"
       />
     </div>

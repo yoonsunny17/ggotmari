@@ -105,6 +105,7 @@ function ProfileCollection({ likeFlowers }) {
                     alt="조회할 꽃이 없음"
                     layout="fill"
                     objectFit="cover"
+                    priority
                   />
                 </div>
               </div>

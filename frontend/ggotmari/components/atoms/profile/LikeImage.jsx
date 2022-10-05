@@ -21,6 +21,7 @@ function LikeImage({ articleId, articleImage, userName, likes, articleTitle }) {
           layout="fill"
           className="article-image w-full h-full object-cover rounded-md"
           objectFit="cover"
+          priority
           onClick={() => {
             router.push(`/community/${articleId}`);
           }}
