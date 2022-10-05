@@ -147,86 +147,10 @@ function Edit() {
   const onSubmit = (event) => {
     event.preventDefault();
 
+    const regex = /^[ㄱ-ㅎ|가-힣|a-z|A-Z|0-9|]+$/;
+
     // 유효성 검사
-    // if (userName.length > 15) {
-    //   alert("닉네임은 최대 15글자입니다.");
-    //   return;
-    // }
-    // if (
-    //   userBirthday.length !== 0 ||
-    //   userBirthday.length > 8 ||
-    //   isNaN(userBirthday) ||
-    //   +userBirthday.substring(0, 4) < 1900 ||
-    //   +userBirthday.substring(0, 4) > 2022 ||
-    //   +userBirthday.substring(4, 6) < 1 ||
-    //   +userBirthday.substring(4, 6) > 12
-    // ) {
-    //   alert("생년월일이 잘못되었습니다.");
-    //   return;
-    // }
-    // switch (+userBirthday.substring(4, 6)) {
-    //   case 1:
-    //     if (+userBirthday.substring(6) < 1 || +userBirthday.substring(6) > 31) {
-    //       alert("생년월일이 잘못되었습니다.");
-    //       return;
-    //     }
-    //   case 2:
-    //     if (+userBirthday.substring(6) < 1 || +userBirthday.substring(6) > 29) {
-    //       alert("생년월일이 잘못되었습니다.");
-    //       return;
-    //     }
-    //   case 3:
-    //     if (+userBirthday.substring(6) < 1 || +userBirthday.substring(6) > 31) {
-    //       alert("생년월일이 잘못되었습니다.");
-    //       return;
-    //     }
-    //   case 4:
-    //     if (+userBirthday.substring(6) < 1 || +userBirthday.substring(6) > 30) {
-    //       alert("생년월일이 잘못되었습니다.");
-    //       return;
-    //     }
-    //   case 5:
-    //     if (+userBirthday.substring(6) < 1 || +userBirthday.substring(6) > 31) {
-    //       alert("생년월일이 잘못되었습니다.");
-    //       return;
-    //     }
-    //   case 6:
-    //     if (+userBirthday.substring(6) < 1 || +userBirthday.substring(6) > 30) {
-    //       alert("생년월일이 잘못되었습니다.");
-    //       return;
-    //     }
-    //   case 7:
-    //     if (+userBirthday.substring(6) < 1 || +userBirthday.substring(6) > 31) {
-    //       alert("생년월일이 잘못되었습니다.");
-    //       return;
-    //     }
-    //   case 8:
-    //     if (+userBirthday.substring(6) < 1 || +userBirthday.substring(6) > 31) {
-    //       alert("생년월일이 잘못되었습니다.");
-    //       return;
-    //     }
-    //   case 9:
-    //     if (+userBirthday.substring(6) < 1 || +userBirthday.substring(6) > 30) {
-    //       alert("생년월일이 잘못되었습니다.");
-    //       return;
-    //     }
-    //   case 10:
-    //     if (+userBirthday.substring(6) < 1 || +userBirthday.substring(6) > 31) {
-    //       alert("생년월일이 잘못되었습니다.");
-    //       return;
-    //     }
-    //   case 11:
-    //     if (+userBirthday.substring(6) < 1 || +userBirthday.substring(6) > 30) {
-    //       alert("생년월일이 잘못되었습니다.");
-    //       return;
-    //     }
-    //   case 12:
-    //     if (+userBirthday.substring(6) < 1 || +userBirthday.substring(6) > 31) {
-    //       alert("생년월일이 잘못되었습니다.");
-    //       return;
-    //     }
-    // }
-    if (userName.trim() === "") {
+    if (userName.trim() === "" || !regex.test(userName)) {
       // alert("닉네임을 입력해주세요");
       ArticleToast.fire({
         customClass: {
@@ -234,7 +158,7 @@ function Edit() {
         },
         icon: "error",
         width: 340,
-        title: "닉네임을 입력해주세요",
+        title: "닉네임이 잘못되었습니다.",
       });
       return;
     }
