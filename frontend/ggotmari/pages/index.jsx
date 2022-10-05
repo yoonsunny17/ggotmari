@@ -1,6 +1,7 @@
 import Router from "next/router";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import Head from "next/head";
 
 import Header from "../components/atoms/common/Header";
 import CommunityCard from "../components/atoms/index/CommunityCard";
@@ -70,6 +71,11 @@ function Home() {
 
   return (
     <div className="flex flex-col w-screen">
+      <Head>
+        <title>Home | GGOTMARI</title>
+        <meta property="og:title" content="Home" key="Home" />
+        <meta name="description" content="Home" />
+      </Head>
       <Header text={"꽃마리"} />
       <hr />
       <div className="flex flex-col items-center w-screen px-6 divide-y divide-sub1 divide-opacity-60">

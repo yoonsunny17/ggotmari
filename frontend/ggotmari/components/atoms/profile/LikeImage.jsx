@@ -33,7 +33,7 @@ function LikeImage({ articleId, articleImage, userName, likes, articleTitle }) {
             {likes > 99 ? "99+" : `${likes}`}
           </p>
         </div>
-        <p className="username text-font2 font-sansultralight text-[0.5rem] overflow-hidden text-ellipsis">
+        <p className="username cursor-pointer font-sans text-xs pt-0.5 text-font2 overflow-hidden text-ellipsis">
           @{userName}
         </p>
       </div>

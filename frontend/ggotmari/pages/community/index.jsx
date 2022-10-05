@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
+import Head from "next/head";
 
 import ArticleItem from "../../components/molecules/community/ArticleItem";
 import SearchBar from "../../components/atoms/common/SearchBar";
@@ -65,6 +66,11 @@ export default function Community() {
 
   return (
     <div className="flex flex-col">
+      <Head>
+        <title>Community | GGOTMARI</title>
+        <meta property="og:title" content="Community" key="Community" />
+        <meta name="description" content="Community" />
+      </Head>
       <div className="flex flex-col items-center mb-6">
         <Header text={"우리들의 꽃 이야기"} />
         {/* <SearchBar placeholder={"꽃 이야기 찾기"} /> */}

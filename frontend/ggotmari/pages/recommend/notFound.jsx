@@ -1,5 +1,6 @@
 import { useRouter } from "next/router";
 import Image from "next/image";
+import Head from "next/head";
 
 import noFlower from "../../assets/profile/collection/noFlowerImg.jpg";
 import Header from "../../components/atoms/common/Header";
@@ -8,6 +9,15 @@ function NotFound() {
   const router = useRouter();
   return (
     <div className="font-gangwon">
+      <Head>
+        <title>No Flower for Recommend | GGOTMARI</title>
+        <meta
+          property="og:title"
+          content="No Flower for Recommend"
+          key="No Flower for Recommend"
+        />
+        <meta name="description" content="No Flower for Recommend" />
+      </Head>
       <Header text={"꽃에 담은 편지"} />
       <div>
         <Image

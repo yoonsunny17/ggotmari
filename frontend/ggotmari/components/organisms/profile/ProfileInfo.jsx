@@ -1,4 +1,5 @@
 import { BsShare } from "react-icons/bs";
+import { FiShare } from "react-icons/fi";
 import { useRouter } from "next/router";
 import { follow } from "../../../api/profile";
 import Image from "next/image";
@@ -60,16 +61,18 @@ function ProfileInfo({ userInfo, setUserInfo }) {
       {/* 우측 */}
       <div className="profile-info col-span-3 grid content-center">
         <div className="profile-info-box">
-          <div className="box-username font-sans font-bold flex flex-start my-1">
+          <div className="box-username font-sans font-bold flex items-center flex-start my-1">
+            {/* <div className="box-username font-sans font-bold flex flex-start my-1"> */}
             {/* {username} */}
-            <span className="mr-3 text-font1">{userInfo.user.userName}</span>
+            <span className="mr-2.5 text-font1">{userInfo.user.userName}</span>
             {/* onClick */}
-            <span className="grid content-center">
-              <BsShare
-                className="icon-share cursor-pointer"
-                onClick={copyURL}
-              />
-            </span>
+            {/* <span className="grid content-center"> */}
+            <FiShare
+              size={15}
+              className="icon-share cursor-pointer text-font4 mb-1"
+              onClick={copyURL}
+            />
+            {/* </span> */}
           </div>
           {/* onClick */}
           {/* numFollow */}
@@ -86,7 +89,7 @@ function ProfileInfo({ userInfo, setUserInfo }) {
           </div>
           {/* Link */}
           {userInfo.isMe ? (
-            <div className="box-btns font-sansultralight text-xs text-sub2 underline my-0.5">
+            <div className="box-btns font-sansultralight text-xs text-sub2 underline underline-offset-2 my-1">
               <span
                 className="cursor-pointer"
                 onClick={() => {

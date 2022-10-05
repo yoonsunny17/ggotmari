@@ -5,6 +5,11 @@ import DailyFlowerDetail from "../../components/organisms/flower/DailyFlowerDeta
 function DailyFlower() {
   return (
     <div className="flex flex-col">
+      <Head>
+        <title>Daily Flower | GGOTMARI</title>
+        <meta property="og:title" content="Daily Flower" key="Daily Flower" />
+        <meta name="description" content="Daily Flower" />
+      </Head>
       <div>
         <Header text={"오늘의 꽃"} />
       </div>
