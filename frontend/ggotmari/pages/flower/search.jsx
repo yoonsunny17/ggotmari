@@ -1,5 +1,6 @@
 import { useState } from "react";
 import Image from "next/image";
+import Head from "next/head";
 
 import Header from "../../components/atoms/common/Header";
 import SearchBar from "../../components/atoms/common/SearchBar";
@@ -32,6 +33,11 @@ function SearchFlowerList() {
 
   return (
     <div className="flex flex-col w-screen">
+      <Head>
+        <title>Flower Search | GGOTMARI</title>
+        <meta property="og:title" content="Flower Search" key="Flower Search" />
+        <meta name="description" content="Search All Flowers" />
+      </Head>
       <Header text="꽃 찾기" />
       <div className="font-sans flex justify-center mb-4">
         <SearchBar

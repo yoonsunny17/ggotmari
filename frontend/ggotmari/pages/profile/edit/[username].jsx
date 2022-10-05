@@ -5,6 +5,7 @@ import { useRouter } from "next/router";
 import Head from "next/head";
 import { getUser, editUser, signout } from "../../../api/profile.js";
 import Image from "next/image";
+import Header from "../../../components/atoms/common/Header.jsx";
 
 function Edit() {
   const router = useRouter();
@@ -407,19 +408,17 @@ function Edit() {
   };
 
   return (
-    <>
+    <div className="w-screen">
       <Head>
         <title>Edit | GGOTMARI</title>
         <meta property="og:title" content="Profile Edit" key="edit" />
         <meta name="description" content="User can change their info here." />
       </Head>
-      <div className="title flex justify-center">
-        <span className="my-8 font-maru text-2xl text-main">프로필 수정</span>
-      </div>
+      <Header text={"프로필 수정"} />
       <form action="">
         <div className="profile-edit">
           <div className="image-box flex justify-center">
-            <div className="w-2/5 aspect-square relative">
+            <div className="w-1/3 aspect-square relative">
               {/* <img
                 src={userImagePreview}
                 alt=""
@@ -436,8 +435,8 @@ function Edit() {
           </div>
           <div className="image-change flex justify-center items-center my-5 text-font1 font-sanslight mb-5">
             <label htmlFor="profile-pic">
-              <span className="mr-2 text-sm flex items-center cursor-pointer">
-                <BsCamera size={20} className="mr-2" />
+              <span className="mr-2 text-sm font-sans flex items-center cursor-pointer">
+                <BsCamera size={18} className="mr-1 mb-0.5" />
                 사진변경
               </span>
             </label>
@@ -450,15 +449,15 @@ function Edit() {
             />
             <span className="text-xl">|</span>
             <span
-              className="ml-2 text-sm flex items-center cursor-pointer"
+              className="ml-2 text-sm font-sans flex items-center cursor-pointer"
               onClick={resetUserImage}
             >
-              <IoRefreshOutline size={20} className="mr-1" />
+              <IoRefreshOutline size={18} className="mr-0.5 mb-0.5" />
               초기화
             </span>
           </div>
-          <div className="info-box mx-10  border-t-sub1 border-t-[1px] text-md">
-            <div className="id-box border-b-sub1 border-b-[0.5px] py-5 text-font1 font-sanslight ">
+          <div className="info-box mx-10 border-t-sub1 border-t-[1px] text-md">
+            <div className="id-box border-b-sub1 border-b-[0.5px] py-5 text-font1 font-sans">
               <div className="grid grid-cols-3 mx-3">
                 <div className="category col-span-1 flex items-center">
                   <span>닉네임</span>
@@ -474,7 +473,7 @@ function Edit() {
                 </div>
               </div>
             </div>
-            <div className="birthday-box border-b-sub1 border-b-[0.5px] py-5 text-font1 font-sanslight ">
+            <div className="birthday-box border-b-sub1 border-b-[0.5px] py-5 text-font1 font-sans ">
               <div className="grid grid-cols-3 mx-3">
                 <div className="category col-span-1 flex items-center">
                   <span>생년월일</span>
@@ -490,7 +489,7 @@ function Edit() {
                 </div>
               </div>
             </div>
-            <div className="sex-box border-b-sub1 border-b-[1px] py-5 text-font1 font-sanslight ">
+            <div className="sex-box border-b-sub1 border-b-[1px] py-5 text-font1 font-sans">
               <div className="grid grid-cols-3 mx-3">
                 <div className="category col-span-1 flex items-center">
                   <span>성별</span>
@@ -509,10 +508,10 @@ function Edit() {
               </div>
             </div>
           </div>
-          <div className="btns-box mx-10 mt-8 flex justify-end font-sansultralight text-white text-sm">
+          <div className="btns-box mx-12 mt-8 flex justify-end font-sans text-white text-sm">
             <div className="save-box">
               <button
-                className="mr-2 bg-main w-full h-full px-4 py-1 rounded-md hover:bg-sub1 cursor-pointer"
+                className="mr-2 bg-main w-full h-full px-5 py-2 rounded-md hover:bg-sub1 cursor-pointer"
                 onClick={onSubmit}
               >
                 저장
@@ -520,7 +519,7 @@ function Edit() {
             </div>
             <div className="cancel-box">
               <button
-                className="ml-2 bg-font2 w-full h-full px-4 py-1 rounded-md hover:bg-sub1 cursor-pointer"
+                className="ml-2 bg-font2 w-full h-full px-5 py-2 rounded-md hover:bg-sub1 cursor-pointer"
                 onClick={() => {
                   router.push(`/profile/${router.query.username}`);
                 }}
@@ -531,7 +530,7 @@ function Edit() {
           </div>
         </div>
       </form>
-      <div className="logout-signout-box flex justify-end mx-10 mt-20 font-sansultralight text-xs mb-14">
+      <div className="logout-signout-box flex justify-end mx-10 mt-16 font-sans text-font2 text-xs mb-14">
         <button
           className="logout mr-2 hover:text-font1"
           onClick={() => {
@@ -548,7 +547,7 @@ function Edit() {
           회원탈퇴
         </button>
       </div>
-    </>
+    </div>
   );
 }
 
