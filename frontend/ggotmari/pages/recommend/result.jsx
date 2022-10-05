@@ -8,7 +8,7 @@ function LetterResult() {
   return (
     <div>
       <Head>
-        <title>Letter Based Recommended Flower | GGOTMARI</title>
+        <title>Letter | GGOTMARI</title>
         <meta
           property="og:title"
           content="Letter Based Recommended Flower"
