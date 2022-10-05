@@ -207,6 +207,9 @@ function Edit() {
     //       return;
     //     }
     // }
+    if (userName === "") {
+      alert("닉네임을 입력해주세요");
+    }
     let userPutReq = {};
     if (userBirthday === "") {
       userPutReq = {
