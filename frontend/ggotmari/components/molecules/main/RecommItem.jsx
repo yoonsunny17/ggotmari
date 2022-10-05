@@ -1,5 +1,6 @@
 import { useRouter } from "next/router";
 import { AiOutlineHeart, AiFillHeart, AiOutlineComment } from "react-icons/ai";
+import { BsChatDots } from "react-icons/bs";
 import FlowerTag from "../../atoms/common/FlowerTag";
 import ImageSquare from "../../atoms/common/ImageSquare";
 
@@ -50,7 +51,7 @@ function RecommItem({ article }) {
         <div className="text-xs text-font2 w-full">
           <AiFillHeart className="inline text-red-600" />{" "}
           {`${likeCount >= 100 ? "99+" : likeCount} `}
-          <AiOutlineComment className="inline ml-2" />{" "}
+          <BsChatDots className="inline ml-2" />{" "}
           {commentCount >= 100 ? "99+" : commentCount}
         </div>
       </div>
