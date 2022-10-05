@@ -100,8 +100,8 @@ function Edit() {
       getInfo(username);
     } else {
       alert("로그인이 필요한 서비스입니다.");
-      // router.push("/login");
-      router.push("/main");
+      router.push("/login");
+      // router.push("/main");
     }
   }, []);
 
@@ -237,8 +237,8 @@ function Edit() {
   // 회원탈퇴 통신
   const onSignoutSuccess = () => {
     localStorage.removeItem("accessToken");
-    // router.push("/login");
-    router.push("/main");
+    router.push("/login");
+    // router.push("/main");
     alert("성공적으로 탈퇴되었습니다.");
   };
 
@@ -536,7 +536,8 @@ function Edit() {
           className="logout mr-2 hover:text-font1"
           onClick={() => {
             localStorage.removeItem("accessToken");
-            router.push("/main");
+            // router.push("/main");
+            router.push("/login");
             alert("로그아웃 되었습니다.");
           }}
         >

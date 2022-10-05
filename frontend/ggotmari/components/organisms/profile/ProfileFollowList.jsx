@@ -36,8 +36,8 @@ function ProfileFollowList() {
       getInfo(username);
     } else {
       alert("로그인이 필요한 서비스입니다.");
-      // router.push("/login");
-      router.push("/main");
+      router.push("/login");
+      // router.push("/main");
     }
   }, []);
 

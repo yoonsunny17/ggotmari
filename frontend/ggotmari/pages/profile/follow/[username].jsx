@@ -8,8 +8,8 @@ function ProfileFollow() {
 
   useEffect(() => {
     if (!localStorage.getItem("accessToken")) {
-      // router.push("/login");
-      router.push("/main");
+      router.push("/login");
+      // router.push("/main");
     }
   }, []);
 
