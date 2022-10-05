@@ -4,6 +4,8 @@ import { useRouter } from "next/router";
 import { follow } from "../../../api/profile";
 import Image from "next/image";
 
+import { Toast } from "../../atoms/common/Toast";
+
 function ProfileInfo({ userInfo, setUserInfo }) {
   // 로그인했고, 방문한 페이지의 url과 username이 같은 경우를 찾기 위해
   const router = useRouter();
@@ -13,7 +15,15 @@ function ProfileInfo({ userInfo, setUserInfo }) {
     const url = window.location.href;
     // console.log(url);
     await navigator.clipboard.writeText(url);
-    alert("프로필이 복사되었습니다.");
+    // alert("프로필이 복사되었습니다.");
+    Toast.fire({
+      customClass: {
+        title: "toast-title",
+      },
+      icon: "success",
+      title: "프로필이 복사되었습니다.",
+      timer: 1000,
+    });
   };
 
   const success = () => {

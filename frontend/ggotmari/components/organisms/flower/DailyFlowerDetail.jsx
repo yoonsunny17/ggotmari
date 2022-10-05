@@ -56,7 +56,9 @@ function DailyFlowerDetail({}) {
         <br />
         <div className="mt-6 px-6">
           <p className="">- 오늘의 꽃점 -</p>
-          <div className="py-1 px-1">{dailyFlower.dailyFlowerContent}</div>
+          <div className="py-1 px-1 mb-24">
+            {dailyFlower.dailyFlowerContent}
+          </div>
         </div>
       </div>
     </div>

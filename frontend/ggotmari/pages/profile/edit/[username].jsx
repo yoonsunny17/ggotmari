@@ -6,6 +6,7 @@ import Head from "next/head";
 import { getUser, editUser, signout } from "../../../api/profile.js";
 import Image from "next/image";
 import Header from "../../../components/atoms/common/Header.jsx";
+import { Toast } from "../../../components/atoms/common/Toast.jsx";
 
 function Edit() {
   const router = useRouter();
@@ -109,7 +110,14 @@ function Edit() {
   // 제출 통신
   const onSubmitSuccess = () => {
     // console.log(res);
-    alert("성공적으로 변경되었습니다");
+    Toast.fire({
+      customClass: {
+        title: "toast-title",
+      },
+      icon: "success",
+      title: "성공적으로 변경되었습니다.",
+      timer: 1500,
+    });
     router.push(`/profile/${userName}`);
   };
 
