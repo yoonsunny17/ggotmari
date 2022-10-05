@@ -22,7 +22,7 @@ function ProfileInfo({ userInfo, setUserInfo }) {
       },
       icon: "success",
       title: "프로필이 복사되었습니다.",
-      timer: 1000,
+      timer: 1500,
     });
   };
 
