@@ -213,7 +213,12 @@ function ArticleDetail() {
           {article.articleImages.map((imgSrc, idx) => {
             return (
               <div className="carousel-item relative w-full" key={idx}>
-                <Image src={imgSrc} className="object-cover" layout="fill" />
+                <Image
+                  src={imgSrc}
+                  className="object-cover"
+                  layout="fill"
+                  priority
+                />
               </div>
             );
           })}

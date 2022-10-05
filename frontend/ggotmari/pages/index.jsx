@@ -159,7 +159,7 @@ function Home() {
         {/* 추천 이야기 */}
         <div className="pt-6 pb-3 font-sans mb-4 w-full">
           <div className="mb-3 text-font1 pb-1">
-            <div>{username} 님을 위한 추천 이야기</div>
+            <div className="font-bold">{username} 님을 위한 추천 이야기</div>
             <div className="text-xs">요즘 이런 꽃 좋아하시더라구요 :)</div>
           </div>
           <div className="w-full grid grid-cols-2 gap-x-3 gap-y-3">
@@ -172,7 +172,7 @@ function Home() {
         {/* 인기 이야기 TOP10 */}
         <div className="pt-6 font-sans w-full">
           <div className="mb-3">
-            <div className="flex justify-between mb-3 text-font1">
+            <div className="flex justify-between mb-3 text-font1 font-bold">
               <p>인기 이야기 TOP10</p>
               <Link href="/community">
                 <p className="flex cursor-pointer">
@@ -199,7 +199,9 @@ function Home() {
         <div className="pt-6 font-sans w-full">
           <div className="mb-1">
             <div className="flex items-center">
-              <p className=" text-font1">특별한 날 선물하기 좋은 꽃</p>
+              <p className=" text-font1 font-bold">
+                특별한 날 선물하기 좋은 꽃
+              </p>
               <p className="px-2 text-font2" onClick={handleOnTooltip}>
                 <AiOutlineExclamationCircle size={14} />
               </p>
@@ -217,8 +219,8 @@ function Home() {
         </div>
 
         {/* 도움을 원하시나요? */}
-        <div className="mb-16 w-full font-sans pt-6">
-          <div className="pb-4 text-font1">도움을 원하시나요?</div>
+        <div className="mb-16 w-full font-sans pt-6 pb-14">
+          <div className="pb-4 text-font1 font-bold">도움을 원하시나요?</div>
           <div className="flex justify-between text-sm text-font2">
             {/* <div className="text-sm text-font2 grid grid-cols gap-y-1"> */}
             <Link href="https://pf.kakao.com/_VKECxj">
@@ -246,39 +248,5 @@ function Home() {
     </div>
   );
 }
-
-// const recommPost = [
-//   {
-//     articleId: 1,
-//     username: "sangchuman",
-//     articleImage:
-//       "https://images.unsplash.com/photo-1496483648148-47c686dc86a8?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1173&q=80",
-//     likeCount: 13,
-//   },
-//   {
-//     articleId: 2,
-
-//     username: "hot_bubbletea",
-//     articleImage:
-//       "https://images.unsplash.com/photo-1530092285049-1c42085fd395?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80",
-//     likeCount: 32,
-//   },
-//   {
-//     articleId: 3,
-
-//     username: "princess_yo",
-//     articleImage:
-//       "https://images.unsplash.com/photo-1561181286-d3fee7d55364?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80",
-//     likeCount: 6,
-//   },
-//   {
-//     articleId: 4,
-
-//     username: "sleepy_ssuny",
-//     articleImage:
-//       "https://images.unsplash.com/photo-1510894399130-57dfa8dcc45d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1083&q=80",
-//     likeCount: 123,
-//   },
-// ];
 
 export default Home;

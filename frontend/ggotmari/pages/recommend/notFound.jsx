@@ -10,7 +10,7 @@ function NotFound() {
   return (
     <div className="font-gangwon">
       <Head>
-        <title>No Flower for Recommend | GGOTMARI</title>
+        <title>Not Found | GGOTMARI</title>
         <meta
           property="og:title"
           content="No Flower for Recommend"

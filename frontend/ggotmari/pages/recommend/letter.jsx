@@ -110,7 +110,7 @@ function WriteLetter() {
   return (
     <div className="flex flex-col mb-40">
       <Head>
-        <title>Write Letter | GGOTMARI</title>
+        <title>Letter for Flower | GGOTMARI</title>
         <meta property="og:title" content="Write Letter" key="Write Letter" />
         <meta name="description" content="Write Letter" />
       </Head>

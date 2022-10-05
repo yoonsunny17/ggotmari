@@ -25,6 +25,7 @@ function Page404() {
           alt="404페이지 꽃"
           layout="fill"
           objectFit="cover"
+          priority
         />
       </div>
       <div className="404-btn flex justify-center mt-20 cursor-pointer font-sans text-white h-10">

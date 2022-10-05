@@ -537,6 +537,7 @@ function Edit() {
                 layout="fill"
                 className="image w-full h-full rounded-full"
                 objectFit="cover"
+                priority
               />
             </div>
           </div>

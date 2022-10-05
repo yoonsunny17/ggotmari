@@ -233,7 +233,12 @@ function EditArticle() {
           <div className="carousel w-full aspect-square">
             {imagePreviews.map((imgSrc, idx) => (
               <div className="carousel-item relative w-full h-full" key={idx}>
-                <Image src={imgSrc} className="object-cover" layout="fill" />
+                <Image
+                  src={imgSrc}
+                  className="object-cover"
+                  layout="fill"
+                  priority
+                />
               </div>
             ))}
           </div>

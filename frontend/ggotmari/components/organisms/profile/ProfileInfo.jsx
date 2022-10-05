@@ -60,6 +60,7 @@ function ProfileInfo({ userInfo, setUserInfo }) {
             layout="fill"
             objectFit="cover"
             className="rounded-full"
+            priority
           />
           {/* <img
             src={userInfo.user.userImage}
