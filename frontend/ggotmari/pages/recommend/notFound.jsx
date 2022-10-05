@@ -36,7 +36,7 @@ function NotFound() {
       <div className="flex justify-center mt-4">
         <button
           onClick={() => {
-            router.push("/recommend/letter");
+            router.push("/recommend/");
           }}
           className="text-font2 w-52 py-2 pt-2.5 rounded-md text-sm"
         >

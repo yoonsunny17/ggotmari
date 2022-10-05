@@ -3,6 +3,7 @@ import { useRouter, withRouter } from "next/router";
 
 import { postLetterRecomm } from "../../api/recommend";
 
+import Header from "../../components/atoms/common/Header";
 import Head from "next/head";
 
 import Image from "next/image";
@@ -113,7 +114,7 @@ function WriteLetter() {
         <meta property="og:title" content="Write Letter" key="Write Letter" />
         <meta name="description" content="Write Letter" />
       </Head>
-      {/* <Header text={"꽃에 담은 편지"} /> */}
+      <Header text={"꽃에 담은 편지"} />
 
       {/* 편지 작성하기 */}
       {!clickBtn ? (
@@ -248,8 +249,8 @@ function WriteLetter() {
                 </div>
                 <br />
                 <div className="text-center">
-                  {subjectName}을 통해 편지에 담은 마음을 <br /> 함께 전달하는
-                  건 어떨까요?
+                  {subjectName}의 꽃말을 통해 편지에 담은 마음을 <br /> 함께
+                  전달하는 건 어떨까요?
                 </div>
               </div>
             </div>
@@ -258,8 +259,7 @@ function WriteLetter() {
             <button
               onClick={() => {
                 setClickBtn(false);
-                router.push("/recommend/letter");
-                window.location.reload();
+                router.push("/recommend/");
               }}
               type="submit"
               // className="mt-7 font-gangwon bg-sub1 rounded-md w-52 py-2 pt-2.5 pb-1.5 text-font3"
