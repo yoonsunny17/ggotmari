@@ -39,7 +39,7 @@ function ArticleItem({ article }) {
             {articleTitle}
           </p>
         </div>
-        <div className="row-start-2 row-end-3 flex items-center font-sans">
+        <div className="row-start-2 row-end-3 flex items-center">
           <div>
             {tags.map((tag, idx) =>
               idx < 2 ? (
