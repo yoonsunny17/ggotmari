@@ -78,14 +78,6 @@ function Home() {
     }, 2000);
   }
 
-  function handleOnMouseDown() {
-    handleOnTooltip();
-  }
-
-  function handleOnMouseUp() {
-    clearTimeout(timerRef.current);
-  }
-
   return (
     <div className="flex flex-col w-screen">
       <Head>
