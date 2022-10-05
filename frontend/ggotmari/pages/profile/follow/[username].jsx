@@ -6,10 +6,10 @@ import Head from "next/head";
 function ProfileFollow() {
   const router = useRouter().query.username;
 
+  const arr = undefined;
   useEffect(() => {
-    if (!localStorage.getItem("accessToken")) {
-      router.push("/login");
-      // router.push("/main");
+    if (!localStorage.getItem("accessToken") && !arr?.push) {
+      console.log("error by undefined push");
     }
   }, []);
 

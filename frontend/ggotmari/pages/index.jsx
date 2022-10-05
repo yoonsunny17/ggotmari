@@ -12,10 +12,11 @@ import { getPopularList } from "../api/community";
 import { getArticleRecomm } from "../api/recommend";
 import { getUserName } from "../api/user";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { FaRegPaperPlane } from "react-icons/fa";
 import { IoIosArrowForward } from "react-icons/io";
 import { IoFlowerOutline } from "react-icons/io5";
+import { AiOutlineExclamationCircle } from "react-icons/ai";
 
 import kakao_channel from "../assets/id_type.png";
 
@@ -67,7 +68,23 @@ function Home() {
     );
   }, []);
 
-  // console.log(username);
+  const [tooltip, setTooltip] = useState(false);
+  const timerRef = useRef();
+
+  function handleOnTooltip() {
+    setTooltip(true);
+    timerRef.current = setTimeout(() => {
+      setTooltip(false);
+    }, 2000);
+  }
+
+  function handleOnMouseDown() {
+    handleOnTooltip();
+  }
+
+  function handleOnMouseUp() {
+    clearTimeout(timerRef.current);
+  }
 
   return (
     <div className="flex flex-col w-screen">
@@ -87,6 +104,7 @@ function Home() {
             className="cursor-pointer flex justify-center mb-3"
           >
             <div className="rounded-md w-full h-32 overflow-hidden">
+              {/* // FIXME: image 태그로 바꿔 */}
               <img
                 className="w-full h-full brightness-90 object-cover"
                 src="https://images.unsplash.com/photo-1490750967868-88aa4486c946?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
@@ -156,9 +174,6 @@ function Home() {
             {recommArticles.map((info, idx) => {
               return <CommunityCard info={info} key={idx} />;
             })}
-            {/* {recommPost.map((info, idx) => {
-              return <CommunityCard info={info} key={idx} />;
-            })} */}
           </div>
         </div>
 
@@ -172,13 +187,6 @@ function Home() {
                   <IoIosArrowForward />
                 </p>
               </Link>
-              {/* <Link href="/community/popular">
-                <a>
-                  <p className="flex items-center cursor-pointer">
-                    <IoIosArrowForward />
-                  </p>
-                </a>
-              </Link> */}
             </div>
             <div className="carousel w-full">
               {popularPosts.map((article, idx) => {
@@ -197,7 +205,22 @@ function Home() {
 
         {/* 특별한 날 선물하기 좋은 꽃 */}
         <div className="pt-6 font-sans w-full">
-          <p className="mb-3 text-font1">특별한 날 선물하기 좋은 꽃</p>
+          <div className="mb-1">
+            <div className="flex items-center">
+              <p className=" text-font1">특별한 날 선물하기 좋은 꽃</p>
+              <p className="px-2 text-font2" onClick={handleOnTooltip}>
+                <AiOutlineExclamationCircle size={14} />
+              </p>
+            </div>
+            {/* <div className="mb-2 text-xs"> */}
+            <div
+              className={`${
+                tooltip ? "text-font2" : "text-white"
+              } mb-2 text-xs`}
+            >
+              더이상 추천받고 싶지 않다면 꽃을 꾹 눌러보세요!
+            </div>
+          </div>
           <SpecialDayRecomm />
         </div>
 

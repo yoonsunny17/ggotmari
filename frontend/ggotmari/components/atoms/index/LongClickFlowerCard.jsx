@@ -10,21 +10,6 @@ import { postDislikeRecomm } from "../../../api/recommend";
 import Swal from "sweetalert2";
 
 function LongClickFlowerCard(props) {
-  const [flowerSubjectName, setSubjectName] = useState();
-  const [flowerKindName, setKindName] = useState();
-  useEffect(() => {
-    // console.log(props);
-    // const flowerName = props.info.kindName;
-    // console.log(flowerName);
-    // console.log("=========== 내가 원하는 image ================");
-    // console.log(props.info.kindImage);
-    // const blank = flowerName.indexOf(" ");
-    // setSubjectName(flowerName.slice(0, blank));
-    // // setSubjectName(blank[0]);
-    // console.log(blank);
-    // setKindName(flowerName.slice(blank));
-  }, []);
-
   const router = useRouter();
   const handlePostClick = () => {
     router.push({
@@ -92,7 +77,7 @@ function LongClickFlowerCard(props) {
     timerRef.current = setTimeout(() => {
       isLongPress.current = true;
       setAction("longpress");
-    }, 500);
+    }, 1000);
   }
 
   function handleOnClick(e) {
@@ -134,7 +119,6 @@ function LongClickFlowerCard(props) {
   return (
     <div>
       <div
-        // onClick={handlePostClick}
         onClick={handleOnClick}
         onMouseDown={handleOnMouseDown}
         onMouseUp={handleOnMouseUp}
@@ -142,12 +126,6 @@ function LongClickFlowerCard(props) {
         onTouchEnd={handleOnTouchEnd}
         className=" cursor-pointer rounded-lg aspect-square overflow-hidden relative brightness-96"
       >
-        {/* <img
-          className="w-full h-full object-cover"
-          src={props.info.kindImage}
-          alt={props.info.kindId}
-        /> */}
-        {/* // FIXME: 사진 에러 고칠 것  */}
         <Image
           src={props.info.kindImage ? props.info.kindImage : noImg.src}
           alt={props.info.kindImage}

@@ -186,6 +186,10 @@ a {
   padding-bottom: 10px !important;
 }
 
+.swal2-toast.swal2-title {
+  font-size: 14px !important;
+}
+
 .swal2-title {
   font-size: 18px !important;
 }
@@ -208,4 +212,13 @@ a {
 
 .swal2-actions {
   margin: 0.25em !important;
+}
+
+.toast-title {
+  font-size: 14px !important;
+  margin: 10px 10px 1px !important;
+}
+
+.swal2-show {
+  padding: 10px !important;
 }

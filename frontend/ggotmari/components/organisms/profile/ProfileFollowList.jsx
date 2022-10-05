@@ -1,5 +1,7 @@
 import FollowUser from "../../molecules/profile/FollowUser";
 import SearchBar from "../../atoms/common/SearchBar";
+import { Toast } from "../../atoms/common/Toast";
+
 import { useEffect, useState } from "react";
 import { getUserFollow } from "../../../api/profile.js";
 import { useRouter } from "next/router";
@@ -30,15 +32,24 @@ function ProfileFollowList() {
   const getInfo = (username) => {
     getUserFollow(username, success, fail);
   };
+
+  const arr = undefined;
   useEffect(() => {
     if (localStorage.getItem("accessToken")) {
       const username = window.location.pathname.substring(16);
       getInfo(username);
-    } else {
-      alert("로그인이 필요한 서비스입니다.");
-      router.push("/login");
-      // router.push("/main");
+    } else if (arr?.push) {
+      Toast.fire({
+        icon: "error",
+        title: "로그인이 필요한 서비스입니다.",
+      });
+      // router.push("/login");
     }
+
+    // else {
+    //   // alert("로그인이 필요한 서비스입니다.");
+    //   // router.push("/main");
+    // }
   }, []);
 
   // 팔로우와 팔로잉 탭이 바뀔 때마다 showList 갈아 끼어넣기
