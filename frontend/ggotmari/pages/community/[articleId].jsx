@@ -103,7 +103,6 @@ function ArticleDetail() {
   };
 
   const handleUserClick = () => {
-    console.log("click");
     router.push(`/profile/${article.user.userName}`);
   };
 

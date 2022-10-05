@@ -1,7 +1,7 @@
 import { useRouter } from "next/router";
 import Image from "next/image";
 
-function CollectionImage({ flowerImage, kindId, kindName }) {
+function CollectionImage({ flowerImage, kindId, kindName, subjectId }) {
   const router = useRouter();
   return (
     <>
@@ -21,7 +21,10 @@ function CollectionImage({ flowerImage, kindId, kindName }) {
           className="flower-img w-full h-full rounded-md cursor-pointer"
           objectFit="cover"
           onClick={() => {
-            router.push(`/flower/${kindId}`);
+            router.push({
+              pathname: `/flower/${subjectId}`,
+              query: { kindId: kindId },
+            });
           }}
         />
       </div>

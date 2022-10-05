@@ -42,27 +42,14 @@ function SearchFlowerList() {
         />
       </div>
       <hr />
-      <div className="flex items-end justify-between px-9 py-4">
+      <div className="flex px-9 py-4">
         <div className="font-gangwon text-xl">
           {keyword ? `{ ${keyword} } 검색 결과` : ""}
         </div>
-        <div className="">
-          <select className="text-xs select select-sm w-fit max-w-xs focus:outline-none bg-font3 border-0">
-            <option>가나다순</option>
-            <option>스크랩순</option>
-          </select>
-        </div>
       </div>
       <div className="flex flex-wrap justify-evenly items-center gap-y-1">
-        {/* <div className="grid grid-cols-2 justify-items-center gap-y-1"> */}
         {flowerList.map((flower, idx) => (
-          <FlowerCard
-            kindImage={flower.kindImage}
-            kindName={flower.kindName}
-            subjectName={flower.subjectName}
-            kindId={flower.kindId}
-            key={idx}
-          />
+          <FlowerCard flower={flower} key={idx} />
         ))}
         <EasterEgg keyword={keyword} />
       </div>
@@ -78,6 +65,7 @@ function SearchFlowerList() {
           <p className="text-center text-xl">꽃을 검색해 보세요</p>
         </div>
       )}
+      <div className="h-16"></div>
     </div>
   );
 }
