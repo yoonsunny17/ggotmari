@@ -72,7 +72,7 @@ export default function Community() {
         <meta name="description" content="Community" />
       </Head>
       <div className="flex flex-col items-center mb-6">
-        <Header text={"우리들의 꽃 이야기"} />
+        <Header text={"꽃 이야기"} />
         {/* <SearchBar placeholder={"꽃 이야기 찾기"} /> */}
       </div>
       <div className="flex flex-row border-b-2 border-font3">

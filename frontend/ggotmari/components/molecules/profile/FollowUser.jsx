@@ -57,7 +57,7 @@ function FollowUser({ item, followInfo, setFollowInfo }) {
         </div>
         <div className="username-box col-span-4 pl-3 grid items-center">
           <span
-            className="username cursor-pointer text-font1 font-sanslight text-sm w-fit"
+            className="username cursor-pointer text-font1 font-sans text-sm w-fit"
             onClick={() => {
               router.push(`/profile/${item.userName}`);
             }}
@@ -65,7 +65,7 @@ function FollowUser({ item, followInfo, setFollowInfo }) {
             {item.userName}
           </span>
         </div>
-        <div className="follow-btn col-span-1 grid items-center font-sansultralight text-xs">
+        <div className="follow-btn col-span-1 grid items-center font-sanslight text-xs">
           {item.isMe && null}
           {!item.isMe && item.isFollowing && (
             <div>

@@ -202,7 +202,10 @@ function EditArticle() {
         )}
       </div>
       <div className="flex flex-row space-x-3 justify-center my-3">
-        <label className="inline text-font2 cursor-pointer" htmlFor="flowerImg">
+        <label
+          className="inline font-sans text-font2 cursor-pointer"
+          htmlFor="flowerImg"
+        >
           <IoCameraOutline className="inline" /> 사진 업로드
         </label>
         <input
@@ -215,13 +218,13 @@ function EditArticle() {
         />
         <p> | </p>
         <div
-          className="inline text-font2 cursor-pointer"
+          className="inline text-font2 cursor-pointer font-sans"
           onClick={() => {
             setImagePreviews([]);
             setImageFiles();
           }}
         >
-          <IoRefreshOutline className="inline" /> 초기화
+          <IoRefreshOutline size={18} className="inline mb-0.5" /> 초기화
         </div>
       </div>
       <div className="w-full p-3">

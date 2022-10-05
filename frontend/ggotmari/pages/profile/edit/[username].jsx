@@ -433,7 +433,7 @@ function Edit() {
               />
             </div>
           </div>
-          <div className="image-change flex justify-center items-center my-5 text-font1 font-sanslight mb-5">
+          <div className="text-font2 image-change flex justify-center items-center my-5 text-font1 font-sanslight mb-5">
             <label htmlFor="profile-pic">
               <span className="mr-2 text-sm font-sans flex items-center cursor-pointer">
                 <BsCamera size={18} className="mr-1 mb-0.5" />

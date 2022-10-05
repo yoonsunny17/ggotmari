@@ -113,7 +113,7 @@ function ProfileFollowList() {
   return (
     <>
       {/* 팔로워 팔로우 선택 */}
-      <div className="follow-nav flex justify-center font-sanslight mb-3">
+      <div className="follow-nav flex justify-center font-sans mb-3">
         {toShow ? (
           <>
             <div className="followers border-b-[2px] border-b-main w-1/2 text-main flex justify-center pb-1">
@@ -138,7 +138,7 @@ function ProfileFollowList() {
           </>
         )}
       </div>
-      <div className="searchbar flex justify-center mb-5">
+      <div className="searchbar flex justify-center mb-5 font-sans">
         <SearchBar
           placeholder={"유저 검색"}
           onChange={(event) => {
@@ -151,7 +151,7 @@ function ProfileFollowList() {
         {showList.length > 0 ? (
           showList.map((item, index) => {
             return (
-              <div className="followers" key={index}>
+              <div className="followers my-4" key={index}>
                 <FollowUser
                   item={item}
                   followInfo={followInfo}
