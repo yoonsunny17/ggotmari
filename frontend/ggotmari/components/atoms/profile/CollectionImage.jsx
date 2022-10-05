@@ -20,6 +20,7 @@ function CollectionImage({ flowerImage, kindId, kindName, subjectId }) {
           layout="fill"
           className="flower-img w-full h-full rounded-md cursor-pointer"
           objectFit="cover"
+          priority
           onClick={() => {
             router.push({
               pathname: `/flower/${subjectId}`,

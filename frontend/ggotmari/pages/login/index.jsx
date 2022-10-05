@@ -38,6 +38,7 @@ export default function Login() {
               layout="fixed"
               width={192}
               height={48}
+              priority
             />
           </button>
         </div>

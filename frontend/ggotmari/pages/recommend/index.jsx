@@ -90,6 +90,7 @@ function RecommendMain() {
           width="500"
           height="200"
           objectPosition="bottom"
+          priority
           className="opacity-80 h-full w-full"
         />
       </div>

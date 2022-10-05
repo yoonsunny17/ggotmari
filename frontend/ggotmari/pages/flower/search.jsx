@@ -67,6 +67,7 @@ function SearchFlowerList() {
             layout="responsive"
             width={500}
             height={500}
+            priority
           />
           <p className="text-center text-xl">꽃을 검색해 보세요</p>
         </div>

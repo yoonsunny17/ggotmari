@@ -17,7 +17,14 @@ function LetterResult() {
         <meta name="description" content="Letter Based Recommended Flower" />
       </Head>
       <Header text={"꽃에 담은 편지"} />
-      <Image src="" alt="" width="500" height="500" layout="responsive" />
+      <Image
+        src=""
+        alt=""
+        width="500"
+        height="500"
+        layout="responsive"
+        priority
+      />
       <div>recommend result page</div>
     </div>
   );
