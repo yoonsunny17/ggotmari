@@ -16,6 +16,7 @@ function StoryImage({ url, title, id }) {
         alt={`${title} 대표 이미지입니다.`}
         layout="fill"
         objectFit="cover"
+        priority
         className="object-cover rounded-md cursor-pointer"
         onClick={() => router.push(`/community/${id}`)}
       />

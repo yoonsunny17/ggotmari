@@ -6,6 +6,10 @@ import Head from "next/head";
 import { getUser, editUser, signout } from "../../../api/profile.js";
 import Image from "next/image";
 import Header from "../../../components/atoms/common/Header.jsx";
+import {
+  Toast,
+  ArticleToast,
+} from "../../../components/atoms/common/Toast.jsx";
 
 function Edit() {
   const router = useRouter();
@@ -87,8 +91,16 @@ function Edit() {
 
   const getUserFail = (err) => {
     console.log(err);
-    alert("잘못된 접근입니다.");
+    // alert("잘못된 접근입니다.");
     router.push("/");
+    ArticleToast.fire({
+      customClass: {
+        title: "toast-title",
+      },
+      icon: "error",
+      width: 340,
+      title: "잘못된 접근입니다.",
+    });
   };
 
   const getInfo = (username) => {
@@ -100,7 +112,15 @@ function Edit() {
       const username = window.location.pathname.substring(14);
       getInfo(username);
     } else {
-      alert("로그인이 필요한 서비스입니다.");
+      // alert("로그인이 필요한 서비스입니다.");
+      ArticleToast.fire({
+        customClass: {
+          title: "toast-title",
+        },
+        icon: "error",
+        width: 340,
+        title: "로그인이 필요한 서비스입니다",
+      });
       router.push("/login");
       // router.push("/main");
     }
@@ -109,7 +129,14 @@ function Edit() {
   // 제출 통신
   const onSubmitSuccess = () => {
     // console.log(res);
-    alert("성공적으로 변경되었습니다");
+    Toast.fire({
+      customClass: {
+        title: "toast-title",
+      },
+      icon: "success",
+      title: "성공적으로 변경되었습니다",
+      timer: 1500,
+    });
     router.push(`/profile/${userName}`);
   };
 
@@ -120,85 +147,21 @@ function Edit() {
   const onSubmit = (event) => {
     event.preventDefault();
 
+    const regex = /^[ㄱ-ㅎ|가-힣|a-z|A-Z|0-9|]+$/;
+
     // 유효성 검사
-    // if (userName.length > 15) {
-    //   alert("닉네임은 최대 15글자입니다.");
-    //   return;
-    // }
-    // if (
-    //   userBirthday.length !== 0 ||
-    //   userBirthday.length > 8 ||
-    //   isNaN(userBirthday) ||
-    //   +userBirthday.substring(0, 4) < 1900 ||
-    //   +userBirthday.substring(0, 4) > 2022 ||
-    //   +userBirthday.substring(4, 6) < 1 ||
-    //   +userBirthday.substring(4, 6) > 12
-    // ) {
-    //   alert("생년월일이 잘못되었습니다.");
-    //   return;
-    // }
-    // switch (+userBirthday.substring(4, 6)) {
-    //   case 1:
-    //     if (+userBirthday.substring(6) < 1 || +userBirthday.substring(6) > 31) {
-    //       alert("생년월일이 잘못되었습니다.");
-    //       return;
-    //     }
-    //   case 2:
-    //     if (+userBirthday.substring(6) < 1 || +userBirthday.substring(6) > 29) {
-    //       alert("생년월일이 잘못되었습니다.");
-    //       return;
-    //     }
-    //   case 3:
-    //     if (+userBirthday.substring(6) < 1 || +userBirthday.substring(6) > 31) {
-    //       alert("생년월일이 잘못되었습니다.");
-    //       return;
-    //     }
-    //   case 4:
-    //     if (+userBirthday.substring(6) < 1 || +userBirthday.substring(6) > 30) {
-    //       alert("생년월일이 잘못되었습니다.");
-    //       return;
-    //     }
-    //   case 5:
-    //     if (+userBirthday.substring(6) < 1 || +userBirthday.substring(6) > 31) {
-    //       alert("생년월일이 잘못되었습니다.");
-    //       return;
-    //     }
-    //   case 6:
-    //     if (+userBirthday.substring(6) < 1 || +userBirthday.substring(6) > 30) {
-    //       alert("생년월일이 잘못되었습니다.");
-    //       return;
-    //     }
-    //   case 7:
-    //     if (+userBirthday.substring(6) < 1 || +userBirthday.substring(6) > 31) {
-    //       alert("생년월일이 잘못되었습니다.");
-    //       return;
-    //     }
-    //   case 8:
-    //     if (+userBirthday.substring(6) < 1 || +userBirthday.substring(6) > 31) {
-    //       alert("생년월일이 잘못되었습니다.");
-    //       return;
-    //     }
-    //   case 9:
-    //     if (+userBirthday.substring(6) < 1 || +userBirthday.substring(6) > 30) {
-    //       alert("생년월일이 잘못되었습니다.");
-    //       return;
-    //     }
-    //   case 10:
-    //     if (+userBirthday.substring(6) < 1 || +userBirthday.substring(6) > 31) {
-    //       alert("생년월일이 잘못되었습니다.");
-    //       return;
-    //     }
-    //   case 11:
-    //     if (+userBirthday.substring(6) < 1 || +userBirthday.substring(6) > 30) {
-    //       alert("생년월일이 잘못되었습니다.");
-    //       return;
-    //     }
-    //   case 12:
-    //     if (+userBirthday.substring(6) < 1 || +userBirthday.substring(6) > 31) {
-    //       alert("생년월일이 잘못되었습니다.");
-    //       return;
-    //     }
-    // }
+    if (userName.trim() === "" || !regex.test(userName)) {
+      // alert("닉네임을 입력해주세요");
+      ArticleToast.fire({
+        customClass: {
+          title: "toast-title",
+        },
+        icon: "error",
+        width: 340,
+        title: "닉네임이 잘못되었습니다.",
+      });
+      return;
+    }
     let userPutReq = {};
     if (userBirthday === "") {
       userPutReq = {
@@ -240,7 +203,15 @@ function Edit() {
     localStorage.removeItem("accessToken");
     router.push("/login");
     // router.push("/main");
-    alert("성공적으로 탈퇴되었습니다.");
+    // alert("성공적으로 탈퇴되었습니다.");
+    Toast.fire({
+      customClass: {
+        title: "toast-title",
+      },
+      icon: "success",
+      title: "성공적으로 탈퇴되었습니다",
+      timer: 1500,
+    });
   };
 
   const onSignoutFail = (err) => {
@@ -260,7 +231,15 @@ function Edit() {
 
   const onUsernameChange = (event) => {
     if (event.target.value.length > 15) {
-      alert("닉네임은 최대 15글자입니다.");
+      ArticleToast.fire({
+        customClass: {
+          title: "toast-title",
+        },
+        icon: "error",
+        width: 340,
+        title: "닉네임은 최대 15글자입니다.",
+      });
+      // alert("닉네임은 최대 15글자입니다.");
       return;
     } else {
       setUserName(event.target.value);
@@ -269,12 +248,28 @@ function Edit() {
 
   const onUserBirthdayChange = (event) => {
     if (isNaN(event.target.value)) {
-      alert("생년월일은 숫자만 입력가능합니다. 다시 입력해주세요");
+      // alert("생년월일은 숫자만 입력가능합니다. 다시 입력해주세요");
+      ArticleToast.fire({
+        customClass: {
+          title: "toast-title",
+        },
+        icon: "error",
+        width: 340,
+        title: "생년월일은 숫자만 입력가능합니다. 다시 입력해주세요",
+      });
       return;
     }
     if (event.target.value.length === 4) {
       if (+event.target.value < 1900 || event.target.value > 2022) {
-        alert("생년은 1900년과 2022년 사이만 입력해주세요.");
+        // alert("생년은 1900년과 2022년 사이만 입력해주세요.");
+        ArticleToast.fire({
+          customClass: {
+            title: "toast-title",
+          },
+          icon: "error",
+          width: 340,
+          title: "생년은 1900년과 2022년 사이만 입력해주세요",
+        });
         return;
       }
     }
@@ -284,7 +279,15 @@ function Edit() {
         +event.target.value.substring(4) < 1 ||
         +event.target.value.substring(4) > 12
       ) {
-        alert("생월은 1월부터 12월 사이입니다.");
+        // alert("생월은 1월부터 12월 사이입니다.");
+        ArticleToast.fire({
+          customClass: {
+            title: "toast-title",
+          },
+          icon: "error",
+          width: 340,
+          title: "생월은 1월부터 12월 사이입니다",
+        });
         return;
       }
     }
@@ -296,7 +299,15 @@ function Edit() {
             +event.target.value.substring(6) < 1 ||
             +event.target.value.substring(6) > 31
           ) {
-            alert("날짜가 잘못되었습니다.");
+            // alert("날짜가 잘못되었습니다.");
+            ArticleToast.fire({
+              customClass: {
+                title: "toast-title",
+              },
+              icon: "error",
+              width: 340,
+              title: "날짜가 잘못되었습니다",
+            });
             return;
           }
         case 2:
@@ -304,7 +315,15 @@ function Edit() {
             +event.target.value.substring(6) < 1 ||
             +event.target.value.substring(6) > 29
           ) {
-            alert("날짜가 잘못되었습니다.");
+            // alert("날짜가 잘못되었습니다.");
+            ArticleToast.fire({
+              customClass: {
+                title: "toast-title",
+              },
+              icon: "error",
+              width: 340,
+              title: "날짜가 잘못되었습니다",
+            });
             return;
           }
         case 3:
@@ -312,7 +331,15 @@ function Edit() {
             +event.target.value.substring(6) < 1 ||
             +event.target.value.substring(6) > 31
           ) {
-            alert("날짜가 잘못되었습니다.");
+            // alert("날짜가 잘못되었습니다.");
+            ArticleToast.fire({
+              customClass: {
+                title: "toast-title",
+              },
+              icon: "error",
+              width: 340,
+              title: "날짜가 잘못되었습니다",
+            });
             return;
           }
         case 4:
@@ -320,7 +347,15 @@ function Edit() {
             +event.target.value.substring(6) < 1 ||
             +event.target.value.substring(6) > 30
           ) {
-            alert("날짜가 잘못되었습니다.");
+            // alert("날짜가 잘못되었습니다.");
+            ArticleToast.fire({
+              customClass: {
+                title: "toast-title",
+              },
+              icon: "error",
+              width: 340,
+              title: "날짜가 잘못되었습니다",
+            });
             return;
           }
         case 5:
@@ -328,7 +363,15 @@ function Edit() {
             +event.target.value.substring(6) < 1 ||
             +event.target.value.substring(6) > 31
           ) {
-            alert("날짜가 잘못되었습니다.");
+            // alert("날짜가 잘못되었습니다.");
+            ArticleToast.fire({
+              customClass: {
+                title: "toast-title",
+              },
+              icon: "error",
+              width: 340,
+              title: "날짜가 잘못되었습니다",
+            });
             return;
           }
         case 6:
@@ -336,7 +379,15 @@ function Edit() {
             +event.target.value.substring(6) < 1 ||
             +event.target.value.substring(6) > 30
           ) {
-            alert("날짜가 잘못되었습니다.");
+            // alert("날짜가 잘못되었습니다.");
+            ArticleToast.fire({
+              customClass: {
+                title: "toast-title",
+              },
+              icon: "error",
+              width: 340,
+              title: "날짜가 잘못되었습니다",
+            });
             return;
           }
         case 7:
@@ -344,7 +395,15 @@ function Edit() {
             +event.target.value.substring(6) < 1 ||
             +event.target.value.substring(6) > 31
           ) {
-            alert("날짜가 잘못되었습니다.");
+            // alert("날짜가 잘못되었습니다.");
+            ArticleToast.fire({
+              customClass: {
+                title: "toast-title",
+              },
+              icon: "error",
+              width: 340,
+              title: "날짜가 잘못되었습니다",
+            });
             return;
           }
         case 8:
@@ -352,7 +411,15 @@ function Edit() {
             +event.target.value.substring(6) < 1 ||
             +event.target.value.substring(6) > 31
           ) {
-            alert("날짜가 잘못되었습니다.");
+            // alert("날짜가 잘못되었습니다.");
+            ArticleToast.fire({
+              customClass: {
+                title: "toast-title",
+              },
+              icon: "error",
+              width: 340,
+              title: "날짜가 잘못되었습니다",
+            });
             return;
           }
         case 9:
@@ -360,7 +427,15 @@ function Edit() {
             +event.target.value.substring(6) < 1 ||
             +event.target.value.substring(6) > 30
           ) {
-            alert("날짜가 잘못되었습니다.");
+            // alert("날짜가 잘못되었습니다.");
+            ArticleToast.fire({
+              customClass: {
+                title: "toast-title",
+              },
+              icon: "error",
+              width: 340,
+              title: "날짜가 잘못되었습니다",
+            });
             return;
           }
         case 10:
@@ -368,7 +443,15 @@ function Edit() {
             +event.target.value.substring(6) < 1 ||
             +event.target.value.substring(6) > 31
           ) {
-            alert("날짜가 잘못되었습니다.");
+            // alert("날짜가 잘못되었습니다.");
+            ArticleToast.fire({
+              customClass: {
+                title: "toast-title",
+              },
+              icon: "error",
+              width: 340,
+              title: "날짜가 잘못되었습니다",
+            });
             return;
           }
         case 11:
@@ -376,7 +459,15 @@ function Edit() {
             +event.target.value.substring(6) < 1 ||
             +event.target.value.substring(6) > 30
           ) {
-            alert("날짜가 잘못되었습니다.");
+            // alert("날짜가 잘못되었습니다.");
+            ArticleToast.fire({
+              customClass: {
+                title: "toast-title",
+              },
+              icon: "error",
+              width: 340,
+              title: "날짜가 잘못되었습니다",
+            });
             return;
           }
         case 12:
@@ -384,13 +475,29 @@ function Edit() {
             +event.target.value.substring(6) < 1 ||
             +event.target.value.substring(6) > 31
           ) {
-            alert("날짜가 잘못되었습니다.");
+            // alert("날짜가 잘못되었습니다.");
+            ArticleToast.fire({
+              customClass: {
+                title: "toast-title",
+              },
+              icon: "error",
+              width: 340,
+              title: "날짜가 잘못되었습니다",
+            });
             return;
           }
       }
     }
     if (event.target.value.length > 8) {
-      alert("생년월일은 최대 8자리 숫자입니다.");
+      // alert("생년월일은 최대 8자리 숫자입니다.");
+      ArticleToast.fire({
+        customClass: {
+          title: "toast-title",
+        },
+        icon: "error",
+        width: 340,
+        title: "생년월일은 최대 8자리 숫자입니다",
+      });
       return;
     }
     setUserBirthday(event.target.value);
@@ -430,6 +537,7 @@ function Edit() {
                 layout="fill"
                 className="image w-full h-full rounded-full"
                 objectFit="cover"
+                priority
               />
             </div>
           </div>
@@ -532,18 +640,26 @@ function Edit() {
       </form>
       <div className="logout-signout-box flex justify-end mx-10 mt-16 font-sans text-font2 text-xs mb-14">
         <button
-          className="logout mr-2 hover:text-font1"
+          className="logout mr-2"
           onClick={() => {
             localStorage.removeItem("accessToken");
             // router.push("/main");
             router.push("/login");
-            alert("로그아웃 되었습니다.");
+            // alert("로그아웃 되었습니다.");
+            Toast.fire({
+              customClass: {
+                title: "toast-title",
+              },
+              icon: "success",
+              title: "로그아웃 되었습니다",
+              timer: 1500,
+            });
           }}
         >
           로그아웃
         </button>
         <span>|</span>
-        <button className="signout ml-2 hover:text-font1" onClick={onSignout}>
+        <button className="signout ml-2" onClick={onSignout}>
           회원탈퇴
         </button>
       </div>

@@ -175,7 +175,7 @@ function ArticleDetail() {
             <p className="text-base font-sans text-black">
               {article.user.userName}
             </p>
-            <p className="text-sm font-sans text-font2">
+            <p className="text-sm font-sans text- text-font2">
               팔로워 {article.user.follower} 팔로잉 {article.user.following}
             </p>
           </div>
@@ -192,7 +192,7 @@ function ArticleDetail() {
       <div className="w-full aspect-square">
         <div
           className={
-            "absolute z-10 top -6 right-0 bg-white text-black " +
+            "absolute z-10 top -6 right-0 bg-white font-sans text-black " +
             (isClicked ? "" : "hidden")
           }
         >
@@ -213,7 +213,12 @@ function ArticleDetail() {
           {article.articleImages.map((imgSrc, idx) => {
             return (
               <div className="carousel-item relative w-full" key={idx}>
-                <Image src={imgSrc} className="object-cover" layout="fill" />
+                <Image
+                  src={imgSrc}
+                  className="object-cover"
+                  layout="fill"
+                  priority
+                />
               </div>
             );
           })}
@@ -257,7 +262,7 @@ function ArticleDetail() {
           </div>
         </div>
         <hr />
-        <div className="font-sans p-4 text-black">{article.articleContent}</div>
+        <div className="font-sans p-4 text-font1">{article.articleContent}</div>
         <div
           className="h-14 p-4 hover:bg-gray-100"
           onClick={() => setIsOpen(true)}

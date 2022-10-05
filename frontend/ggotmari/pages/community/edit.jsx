@@ -1,7 +1,8 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useRouter } from "next/router";
 import Image from "next/image";
 import Swal from "sweetalert2";
+import { ArticleToast } from "../../components/atoms/common/Toast";
 
 import FlowerTag from "../../components/atoms/common/FlowerTag";
 
@@ -12,6 +13,7 @@ import {
   IoRefreshOutline,
   IoImagesOutline,
 } from "react-icons/io5";
+import { AiOutlineExclamationCircle } from "react-icons/ai";
 
 export async function getServerSideProps(context) {
   return {
@@ -44,19 +46,22 @@ function EditArticle() {
   const [filteredList, setFilteredList] = useState([]);
   const [dropDownOpen, setDropDownOpen] = useState(false);
   const [imageFiles, setImageFiles] = useState();
+  const [tooltip, setTooltip] = useState(false);
+  const timerRef = useRef();
+
   var isSubmit = false;
 
-  const Toast = Swal.mixin({
-    toast: true,
-    position: "top",
-    showConfirmButton: false,
-    timer: 3000,
-    icon: "error",
-    didOpen: (toast) => {
-      toast.addEventListener("mouseenter", Swal.stopTimer);
-      toast.addEventListener("mouseleave", Swal.resumeTimer);
-    },
-  });
+  // const Toast = Swal.mixin({
+  //   toast: true,
+  //   position: "top",
+  //   showConfirmButton: false,
+  //   timer: 3000,
+  //   icon: "error",
+  //   didOpen: (toast) => {
+  //     toast.addEventListener("mouseenter", Swal.stopTimer);
+  //     toast.addEventListener("mouseleave", Swal.resumeTimer);
+  //   },
+  // });
 
   useEffect(() => {
     getFlowerKind(
@@ -125,22 +130,42 @@ function EditArticle() {
       isSubmit = true;
       // 유효성 검사
       if (imagePreviews.length == 0) {
-        Toast.fire({
-          title: "사진을 최소 1장 이상 업로드해주세요",
+        ArticleToast.fire({
+          customClass: {
+            title: "toast-title",
+          },
+          icon: "error",
+          width: 340,
+          title: "사진을 최소 1장 이상 업로드해주세요.",
         });
         isSubmit = false;
       } else if (title == "") {
-        Toast.fire({
+        ArticleToast.fire({
+          customClass: {
+            title: "toast-title",
+          },
+          icon: "error",
+          width: 340,
           title: "제목을 입력해주세요",
         });
         isSubmit = false;
       } else if (flowerTags.length == 0) {
-        Toast.fire({
+        ArticleToast.fire({
+          customClass: {
+            title: "toast-title",
+          },
+          icon: "error",
+          width: 340,
           title: "꽃 태그를 최소 1개 이상 추가해주세요",
         });
         isSubmit = false;
       } else if (content == "") {
-        Toast.fire({
+        ArticleToast.fire({
+          customClass: {
+            title: "toast-title",
+          },
+          icon: "error",
+          width: 340,
           title: "내용을 입력해주세요",
         });
         isSubmit = false;
@@ -195,13 +220,19 @@ function EditArticle() {
 
   const handleCancleClick = () => {
     const mode = router.query.mode;
-
     if (mode == "write") {
       router.push("/community");
     } else if (mode == "edit") {
       router.back();
     }
   };
+
+  function handleOnTooltip() {
+    setTooltip(true);
+    timerRef.current = setTimeout(() => {
+      setTooltip(false);
+    }, 2000);
+  }
 
   return (
     <div className="flex flex-col items-center w-screen">
@@ -210,7 +241,12 @@ function EditArticle() {
           <div className="carousel w-full aspect-square">
             {imagePreviews.map((imgSrc, idx) => (
               <div className="carousel-item relative w-full h-full" key={idx}>
-                <Image src={imgSrc} className="object-cover" layout="fill" />
+                <Image
+                  src={imgSrc}
+                  className="object-cover"
+                  layout="fill"
+                  priority
+                />
               </div>
             ))}
           </div>
@@ -269,9 +305,23 @@ function EditArticle() {
             value={title}
           />
           {/* 꽃 태그 */}
-          <label htmlFor="flowerTags" className="pl-2 text-sm">
-            꽃 태그
-          </label>
+          <div>
+            <div className="flex items-center">
+              <label htmlFor="flowerTags" className="pl-2 text-sm">
+                꽃 태그
+              </label>
+              <p className="px-1" onClick={handleOnTooltip}>
+                <AiOutlineExclamationCircle size={14} />
+              </p>
+            </div>
+            <p
+              className={`${
+                tooltip ? "text-font2" : "text-white"
+              } text-xs ml-2 mt-0.5`}
+            >
+              태그를 누르면 태그가 제거됩니다
+            </p>
+          </div>
           <div className="w-full shadow-sm rounded-md">
             {/* 추가된 꽃 태그 컨테이너 */}
             <div>

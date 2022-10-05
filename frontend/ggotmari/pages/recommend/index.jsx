@@ -67,7 +67,7 @@ function RecommendMain() {
   return (
     <div className="flex flex-col mb-36">
       <Head>
-        <title>Recommend by Letter | GGOTMARI</title>
+        <title>Letter for Flower | GGOTMARI</title>
         <meta
           property="og:title"
           content="Recommend by Letter"
@@ -90,6 +90,7 @@ function RecommendMain() {
           width="500"
           height="200"
           objectPosition="bottom"
+          priority
           className="opacity-80 h-full w-full"
         />
       </div>

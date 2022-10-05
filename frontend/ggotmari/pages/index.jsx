@@ -12,10 +12,11 @@ import { getPopularList } from "../api/community";
 import { getArticleRecomm } from "../api/recommend";
 import { getUserName } from "../api/user";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { FaRegPaperPlane } from "react-icons/fa";
 import { IoIosArrowForward } from "react-icons/io";
 import { IoFlowerOutline } from "react-icons/io5";
+import { AiOutlineExclamationCircle } from "react-icons/ai";
 
 import kakao_channel from "../assets/id_type.png";
 
@@ -67,7 +68,15 @@ function Home() {
     );
   }, []);
 
-  // console.log(username);
+  const [tooltip, setTooltip] = useState(false);
+  const timerRef = useRef();
+
+  function handleOnTooltip() {
+    setTooltip(true);
+    timerRef.current = setTimeout(() => {
+      setTooltip(false);
+    }, 2000);
+  }
 
   return (
     <div className="flex flex-col w-screen">
@@ -87,6 +96,7 @@ function Home() {
             className="cursor-pointer flex justify-center mb-3"
           >
             <div className="rounded-md w-full h-32 overflow-hidden">
+              {/* // FIXME: image 태그로 바꿔 */}
               <img
                 className="w-full h-full brightness-90 object-cover"
                 src="https://images.unsplash.com/photo-1490750967868-88aa4486c946?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
@@ -149,36 +159,26 @@ function Home() {
         {/* 추천 이야기 */}
         <div className="pt-6 pb-3 font-sans mb-4 w-full">
           <div className="mb-3 text-font1 pb-1">
-            <div>{username} 님을 위한 추천 이야기</div>
+            <div className="font-bold">{username} 님을 위한 추천 이야기</div>
             <div className="text-xs">요즘 이런 꽃 좋아하시더라구요 :)</div>
           </div>
           <div className="w-full grid grid-cols-2 gap-x-3 gap-y-3">
             {recommArticles.map((info, idx) => {
               return <CommunityCard info={info} key={idx} />;
             })}
-            {/* {recommPost.map((info, idx) => {
-              return <CommunityCard info={info} key={idx} />;
-            })} */}
           </div>
         </div>
 
         {/* 인기 이야기 TOP10 */}
         <div className="pt-6 font-sans w-full">
           <div className="mb-3">
-            <div className="flex justify-between mb-3 text-font1">
+            <div className="flex justify-between mb-3 text-font1 font-bold">
               <p>인기 이야기 TOP10</p>
               <Link href="/community">
                 <p className="flex cursor-pointer">
                   <IoIosArrowForward />
                 </p>
               </Link>
-              {/* <Link href="/community/popular">
-                <a>
-                  <p className="flex items-center cursor-pointer">
-                    <IoIosArrowForward />
-                  </p>
-                </a>
-              </Link> */}
             </div>
             <div className="carousel w-full">
               {popularPosts.map((article, idx) => {
@@ -197,13 +197,30 @@ function Home() {
 
         {/* 특별한 날 선물하기 좋은 꽃 */}
         <div className="pt-6 font-sans w-full">
-          <p className="mb-3 text-font1">특별한 날 선물하기 좋은 꽃</p>
+          <div className="mb-1">
+            <div className="flex items-center">
+              <p className=" text-font1 font-bold">
+                특별한 날 선물하기 좋은 꽃
+              </p>
+              <p className="px-2 text-font2" onClick={handleOnTooltip}>
+                <AiOutlineExclamationCircle size={14} />
+              </p>
+            </div>
+            {/* <div className="mb-2 text-xs"> */}
+            <div
+              className={`${
+                tooltip ? "text-font2" : "text-white"
+              } mb-2 text-xs`}
+            >
+              더이상 추천받고 싶지 않다면 꽃을 꾹 눌러보세요!
+            </div>
+          </div>
           <SpecialDayRecomm />
         </div>
 
         {/* 도움을 원하시나요? */}
-        <div className="mb-16 w-full font-sans pt-6">
-          <div className="pb-4 text-font1">도움을 원하시나요?</div>
+        <div className="mb-16 w-full font-sans pt-6 pb-14">
+          <div className="pb-4 text-font1 font-bold">도움을 원하시나요?</div>
           <div className="flex justify-between text-sm text-font2">
             {/* <div className="text-sm text-font2 grid grid-cols gap-y-1"> */}
             <Link href="https://pf.kakao.com/_VKECxj">
@@ -231,39 +248,5 @@ function Home() {
     </div>
   );
 }
-
-// const recommPost = [
-//   {
-//     articleId: 1,
-//     username: "sangchuman",
-//     articleImage:
-//       "https://images.unsplash.com/photo-1496483648148-47c686dc86a8?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1173&q=80",
-//     likeCount: 13,
-//   },
-//   {
-//     articleId: 2,
-
-//     username: "hot_bubbletea",
-//     articleImage:
-//       "https://images.unsplash.com/photo-1530092285049-1c42085fd395?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80",
-//     likeCount: 32,
-//   },
-//   {
-//     articleId: 3,
-
-//     username: "princess_yo",
-//     articleImage:
-//       "https://images.unsplash.com/photo-1561181286-d3fee7d55364?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80",
-//     likeCount: 6,
-//   },
-//   {
-//     articleId: 4,
-
-//     username: "sleepy_ssuny",
-//     articleImage:
-//       "https://images.unsplash.com/photo-1510894399130-57dfa8dcc45d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1083&q=80",
-//     likeCount: 123,
-//   },
-// ];
 
 export default Home;

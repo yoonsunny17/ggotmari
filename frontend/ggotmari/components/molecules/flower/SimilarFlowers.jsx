@@ -16,6 +16,7 @@ function SimilarFlowers({
         width={200}
         height={200}
         objectFit="cover"
+        priority
         className="cursor-pointer rounded-md aspect-square"
       />
 

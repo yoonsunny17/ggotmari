@@ -1,29 +1,34 @@
 import Header from "../../../components/atoms/common/Header";
 import Image from "next/image";
 import Router from "next/router";
-import {getOcrRecommend} from "../../../api/recommend"
+import { getOcrRecommend } from "../../../api/recommend";
 
 function RecommendMain() {
   const router = Router;
-  
+
   const success = (res) => {
     console.log(res);
-  }
+  };
 
   const fail = (error) => {
     console.log(error);
-  }
+  };
 
   const handleImageUpload = (e) => {
     const letterImage = e.target.files[0];
     console.log(letterImage);
-    const recommendOcrInfo = { format: letterImage.name.split(".")[1], name: letterImage.name.split(".")[0] };
+    const recommendOcrInfo = {
+      format: letterImage.name.split(".")[1],
+      name: letterImage.name.split(".")[0],
+    };
     console.log(recommendOcrInfo);
     const formdata = new FormData();
     const json = JSON.stringify(recommendOcrInfo);
-    formdata.append("recommendOcrInfo",
-      new Blob([json], { type: "application/json" }));
-    formdata.append("image", letterImage); 
+    formdata.append(
+      "recommendOcrInfo",
+      new Blob([json], { type: "application/json" })
+    );
+    formdata.append("image", letterImage);
 
     getOcrRecommend(formdata, success, fail);
   };
@@ -44,6 +49,7 @@ function RecommendMain() {
           width="500"
           height="200"
           objectPosition="bottom"
+          priority
           className="opacity-80 h-full w-full"
         />
       </div>
