@@ -19,8 +19,10 @@ function SpecialDayRecomm() {
       },
     ],
   });
+  const [waiting, setWaiting] = useState(false);
 
   const tabClickHandler = (index) => {
+    setWaiting(true);
     setActiveIndex(index);
   };
 
@@ -35,6 +37,10 @@ function SpecialDayRecomm() {
       }
     );
   }, [activeIndex]);
+
+  useEffect(() => {
+    setWaiting(false);
+  }, [isRecommended]);
 
   // TODO: pagination
   const limit = 9;
@@ -67,31 +73,15 @@ function SpecialDayRecomm() {
 
       {/* // TODO: 각 카테고리 나중에 채워넣을 것 */}
       {/* Content */}
+      {/* {waiting ? (
+        <div>사진 불러오는 중...</div>
+      ) : (
+        <div>
+          <SpecialDayFlower isRecommended={isRecommended} />
+        </div>
+      )} */}
       <div>
-        {/* 가족 */}
-        {activeIndex === 1 && (
-          <SpecialDayFlower isRecommended={isRecommended} />
-        )}
-        {/* 연인 */}
-        {activeIndex === 2 && (
-          <SpecialDayFlower isRecommended={isRecommended} />
-        )}
-        {/* 직장동료 */}
-        {activeIndex === 3 && (
-          <SpecialDayFlower isRecommended={isRecommended} />
-        )}
-        {/* 친구 */}
-        {activeIndex === 4 && (
-          <SpecialDayFlower isRecommended={isRecommended} />
-        )}
-        {/* 선생님 */}
-        {activeIndex === 5 && (
-          <SpecialDayFlower isRecommended={isRecommended} />
-        )}
-        {/* 기타 */}
-        {activeIndex === 6 && (
-          <SpecialDayFlower isRecommended={isRecommended} />
-        )}
+        <SpecialDayFlower isRecommended={isRecommended} waiting={waiting} />
       </div>
     </div>
   );
