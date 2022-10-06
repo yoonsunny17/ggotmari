@@ -108,25 +108,6 @@ function WriteLetter() {
           <form onSubmit={handleLetterSubmit} className="font-sans mt-2">
             <div>
               <div className="mt-4 ml-8">
-                <span className="text-font1">FROM. </span>
-                <input
-                  onChange={handleFrom}
-                  className="focus:outline-none"
-                  type="text"
-                  placeholder="보내는 사람"
-                />
-              </div>
-              <div className="flex justify-center mt-3 font-sans">
-                <textarea
-                  rows="9"
-                  className="textarea bg-white w-5/6 shadow-md focus:outline-none resize-none focus:shadow-sub1 color-delay"
-                  placeholder="회원님의 마음을 담아 편지를 써주세요."
-                  onChange={handleWrite}
-                  maxLength="180"
-                  value={letter}
-                ></textarea>
-              </div>
-              <div className="mt-4 ml-8">
                 <span className="text-font1">TO. </span>
                 <input
                   onChange={handleTo}
@@ -148,6 +129,25 @@ function WriteLetter() {
                     ))}
                   </select>
                 </div>
+              </div>
+              <div className="flex justify-center mt-3 font-sans">
+                <textarea
+                  rows="9"
+                  className="textarea bg-white w-5/6 shadow-md focus:outline-none resize-none focus:shadow-sub1 color-delay"
+                  placeholder="회원님의 마음을 담아 편지를 써주세요."
+                  onChange={handleWrite}
+                  maxLength="180"
+                  value={letter}
+                ></textarea>
+              </div>
+              <div className="mt-4 ml-8">
+                <span className="text-font1">FROM. </span>
+                <input
+                  onChange={handleFrom}
+                  className="focus:outline-none"
+                  type="text"
+                  placeholder="보내는 사람"
+                />
               </div>
             </div>
             <div className="flex justify-center mt-8">
@@ -182,15 +182,15 @@ function WriteLetter() {
             <div className="font-gangwon">
               <div className="relative">
                 <div className="absolute z-10 text-lg text-font3 mx-6 mt-6">
-                  <span className="">{from ? "From." + " " + from : from}</span>
-                  {/* From. {from} */}
-                  <br />
-                  <span className="">{letter}</span>
-                  <br />
+                  {/* To. 나의 {selected}, {to} */}
                   <span className="">
                     {to ? "To. 나의 " + selected + ", " + to : to}
                   </span>
-                  {/* To. 나의 {selected}, {to} */}
+                  <br />
+                  <span className="">{letter}</span>
+                  <br />
+                  {/* From. {from} */}
+                  <span className="">{from ? "From." + " " + from : from}</span>
                   <br />
                 </div>
                 <Image
