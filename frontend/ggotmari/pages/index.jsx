@@ -85,7 +85,7 @@ function Home() {
         <meta property="og:title" content="Home" key="Home" />
         <meta name="description" content="Home" />
       </Head>
-      <Header text={"꽃마리"} />
+      <Header text={"꽃마리"} onClick={() => router.reload()} />
       <hr />
       <div className="flex flex-col items-center w-screen px-6 divide-y divide-sub1 divide-opacity-60">
         {/* 오늘의 꽃, 꽃 이야기, 꽃에 담은 편지 */}

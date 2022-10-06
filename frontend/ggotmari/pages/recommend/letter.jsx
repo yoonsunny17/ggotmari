@@ -87,7 +87,7 @@ function WriteLetter() {
         <meta property="og:title" content="Write Letter" key="Write Letter" />
         <meta name="description" content="Write Letter" />
       </Head>
-      <Header text={"꽃에 담은 편지"} />
+      <Header text={"꽃에 담은 편지"} onClick={() => router.reload()} />
 
       {/* 편지 작성하기 */}
       {!clickBtn ? (

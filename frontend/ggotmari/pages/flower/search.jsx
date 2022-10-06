@@ -44,7 +44,7 @@ function SearchFlowerList() {
         <meta property="og:title" content="Flower Search" key="Flower Search" />
         <meta name="description" content="Search All Flowers" />
       </Head>
-      <Header text="꽃 사전" />
+      <Header text="꽃 사전" onClick={() => router.reload()} />
       <div className="font-sans text-font1 flex justify-center mb-4">
         <SearchBar
           placeholder={"꽃을 검색해 보세요"}

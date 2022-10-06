@@ -41,30 +41,8 @@ function ArticleDetail() {
   const [isLike, setIsLike] = useState();
   const [likeCount, setLikeCount] = useState();
   const [commentCount, setCommentCount] = useState();
-  const [comments, setComments] = useState([]);
-  const [article, setArticle] = useState({
-    user: {
-      userId: 0,
-      userName: "",
-      userImage:
-        "https://ggotmari.s3.ap-northeast-2.amazonaws.com/profile/defualt.jpg",
-      follower: 0,
-      following: 0,
-      isFollow: false,
-      isMe: false,
-    },
-    loginUserImage:
-      "https://ggotmari.s3.ap-northeast-2.amazonaws.com/profile/defualt.jpg",
-    articleTitle: "",
-    articleContent: "",
-    articleImages: [],
-    articleDate: "",
-    tags: [],
-    isLike: false,
-    likeCount: 0,
-    commentCount: 0,
-    comments: [],
-  });
+  const [comments, setComments] = useState();
+  const [article, setArticle] = useState();
 
   useEffect(() => {
     getArticleDetail(
@@ -83,10 +61,12 @@ function ArticleDetail() {
   }, []);
 
   useEffect(() => {
-    setIsLike(article.isLike);
-    setLikeCount(article.likeCount);
-    setCommentCount(article.commentCount);
-    setComments(article.comments);
+    if (article != undefined) {
+      setIsLike(article.isLike);
+      setLikeCount(article.likeCount);
+      setCommentCount(article.commentCount);
+      setComments(article.comments);
+    }
   }, [article]);
 
   const handleFlowerTagClick = (flowerTag) => {
@@ -157,7 +137,32 @@ function ArticleDetail() {
     });
   };
 
-  return (
+  return comments == undefined ? (
+    <div className="h-screen w-screen flex justify-center items-center">
+      <div className="flex flex-col items-center space-y-5">
+        <svg
+          className="animate-spin h-10 w-10 text-main"
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+        >
+          <circle
+            className="opacity-25"
+            cx={12}
+            cy={12}
+            r={10}
+            stroke="currentColor"
+            strokeWidth={4}
+          />
+          <path
+            fill="currentColor"
+            d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962"
+          ></path>
+        </svg>
+        <div className="font-sans text-xl text-main">게시글 불러오는 중...</div>
+      </div>
+    </div>
+  ) : (
     <div className="flex flex-col">
       <Head>
         <title>STORY | GGOTMARI</title>

@@ -97,7 +97,7 @@ function FlowerDetail() {
             cy={12}
             r={10}
             stroke="currentColor"
-            stroke-width={4}
+            strokeWidth={4}
           />
           <path
             fill="currentColor"
@@ -126,7 +126,7 @@ function FlowerDetail() {
             {selectedKind.kindName}, {subjectName}
           </div>
           {/* 꽃말 */}
-          <div className="font-sanslight text-font2 text-sm mb-5">
+          <div className="font-sans text-font2 text-sm mb-5">
             {subjectName}의 꽃말은 {/* 꽃말 부분만 bold 강조 */}
             <div className="whitespace-pre-line">
               <span className="text-font1">{replacedText}</span> 입니다
@@ -176,19 +176,19 @@ function FlowerDetail() {
         </div>
 
         {/* 연관 게시물 보기 */}
-        <div className="mb-16">
+        <div className="mb-20">
           <div className="font-gangwon text-lg pb-3 pt-4">
-            {subjectName}를 담은 이야기
+            {subjectName} 이야기
           </div>
-
-          <div className="grid grid-cols-3 gap-x-3 gap-y-2.5">
-            {articles.map((info, idx) => {
-              return <RelatedPosts info={info} key={idx} />;
-            })}
-            {/* {relatedPostArr.map((info, idx) => {
-            return <RelatedPosts info={info} key={idx} />;
-          })} */}
-          </div>
+          {articles.length == 0 ? (
+            <div className="text-font2 font-sans">아직 이야기가 없습니다</div>
+          ) : (
+            <div className="grid grid-cols-3 gap-x-3 gap-y-2.5">
+              {articles.map((info, idx) => {
+                return <RelatedPosts info={info} key={idx} />;
+              })}
+            </div>
+          )}
         </div>
       </div>
     </div>

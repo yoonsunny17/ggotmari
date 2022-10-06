@@ -18,6 +18,7 @@ export default function Community() {
   const [articleList, setArticleList] = useState([]);
   const [followingList, setFollowingList] = useState([]);
   const [popularList, setPopularList] = useState([]);
+  const [searchKeyword, setSearchKeyword] = useState("");
 
   useEffect(() => {
     if (!localStorage.getItem("accessToken")) {
@@ -60,6 +61,38 @@ export default function Community() {
     }
   }, [tab]);
 
+  const getSearchedList = () => {
+    if (searchKeyword) {
+      if (tab == "전체") {
+        setCurrList(
+          articleList.filter((article) =>
+            article.articleTitle.includes(searchKeyword)
+          )
+        );
+      } else if (tab == "팔로잉") {
+        setCurrList(
+          followingList.filter((article) =>
+            article.articleTitle.includes(searchKeyword)
+          )
+        );
+      } else if (tab == "인기글") {
+        setCurrList(
+          popularList.filter((article) =>
+            article.articleTitle.includes(searchKeyword)
+          )
+        );
+      }
+    } else {
+      if (tab == "전체") {
+        setCurrList(articleList);
+      } else if (tab == "팔로잉") {
+        setCurrList(followingList);
+      } else if (tab == "인기글") {
+        setCurrList(popularList);
+      }
+    }
+  };
+
   const handleAddClick = () => {
     router.push(
       {
@@ -78,8 +111,13 @@ export default function Community() {
         <meta name="description" content="User can get articlelist." />
       </Head>
       <div className="flex flex-col items-center mb-6">
-        <Header text={"꽃 이야기"} />
-        {/* <SearchBar placeholder={"꽃 이야기 찾기"} /> */}
+        <Header text={"꽃 이야기"} onClick={() => router.reload()} />
+        <SearchBar
+          placeholder={"꽃 이야기 찾기"}
+          onChange={(e) => setSearchKeyword(e.target.value)}
+          searchTerm={searchKeyword}
+          handleEnterEvent={getSearchedList}
+        />
       </div>
       <div className="flex flex-row border-b-2 border-font3">
         {tabs.map((tabName) => (
