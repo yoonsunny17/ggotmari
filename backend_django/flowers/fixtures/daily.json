@@ -1,0 +1,4028 @@
+[
+{
+    "model": "flowers.dailyflower",
+    "pk": 1,
+    "fields": {
+        "flower_name": "스노우드롭",
+        "flower_content": "1월1일에 태어난 당신은 눈이 내려도 찬바람이 불어도 결코 굴하지 않는 스노드롭처럼 인내심이 강한 성격을 갖고 있습니다.",
+        "flower_date": "1월 1일",
+        "flower_image": "daily/스노우드롭.jpg",
+        "flower_language": "깊은애정"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 2,
+    "fields": {
+        "flower_name": "노랑 수선화",
+        "flower_content": "당신은 추진력이 강한 운명을 타고 났습니다. 따라서 아무리 불가능해 보이는 사랑도 활짝 꽃 피울 수 있는 사람입니다.",
+        "flower_date": "1월 2일",
+        "flower_image": "daily/노랑+수선화.jpg",
+        "flower_language": "사랑에 답하여"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 3,
+    "fields": {
+        "flower_name": "사프란",
+        "flower_content": "사랑도 인생도 후회없이 사는 사람입니다. 약삭 빠른 계산은 당신에게 전혀 어울리지 않습니다.",
+        "flower_date": "1월 3일",
+        "flower_image": "daily/사프란.jpg",
+        "flower_language": "후회 없는 청춘"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 4,
+    "fields": {
+        "flower_name": "흰 히아신스",
+        "flower_content": "봄이 찾아올 때마다 포근한 향기와 함께 피는 히야신스를 탄생화로 갖는 당신은 상냥하고 유유자적한 사람입니다.",
+        "flower_date": "1월 4일",
+        "flower_image": "daily/흰+히아신스.jpg",
+        "flower_language": "차분한 사랑"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 5,
+    "fields": {
+        "flower_name": "노루귀",
+        "flower_content": "당신은 인내심이 강하고 아부를 싫어해 누구에게나 신뢰를 받지만 연애는 수동적인 사람입니다.",
+        "flower_date": "1월 5일",
+        "flower_image": "daily/노루귀.jpg",
+        "flower_language": "인내"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 6,
+    "fields": {
+        "flower_name": "흰 제비꽃",
+        "flower_content": "당신은 내성적이고 고상한 매력이 있지만 은밀한 사랑에 쉽게 빠지는 사람입니다.",
+        "flower_date": "1월 6일",
+        "flower_image": "daily/흰+제비꽃.jpg",
+        "flower_language": "순진무구한 사랑"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 7,
+    "fields": {
+        "flower_name": "튤립",
+        "flower_content": "튤립을 탄생화로 태어난 당신은 사랑을 여러번 거듭합니다. 그러나 슬픔은 당신보다도 연인편에 있으니 신성한 사랑을 하는게 당신답습니다.",
+        "flower_date": "1월 7일",
+        "flower_image": "daily/튤립.jpg",
+        "flower_language": "실연"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 8,
+    "fields": {
+        "flower_name": "보랏빛 제비꽃",
+        "flower_content": "당신은 사려깊고 지혜가 있는 것이 매력이니 승부에 연연하는 것은 어울리지 않습니다.",
+        "flower_date": "1월 8일",
+        "flower_image": "daily/보랏빛+제비꽃.jpg",
+        "flower_language": "사랑"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 9,
+    "fields": {
+        "flower_name": "노랑 제비꽃",
+        "flower_content": "노랑제비꽃을 탄생화로 태어난 당신은 용기, 사랑, 헌신을 갖고 있으니 겁쟁이나 소심한 사람이 되어서는 안됩니다.",
+        "flower_date": "1월 9일",
+        "flower_image": "daily/노랑+제비꽃.jpg",
+        "flower_language": "수줍은 사랑"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 10,
+    "fields": {
+        "flower_name": "회양목",
+        "flower_content": "무욕, 담백함의 대표 선수와도 같은 당신. 깔끔한 성격의 사람이라고 모두에게 호감을 받습니다.",
+        "flower_date": "1월 10일",
+        "flower_image": "daily/회양목.jpg",
+        "flower_language": "참고 견뎌냄"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 11,
+    "fields": {
+        "flower_name": "측백나무",
+        "flower_content": "당신은 우정을 소중히 여기는 사람이어서 당신을 사모하여 진심으로 친구가 되고 싶어하는 사람이 주위에 많이 있습니다.",
+        "flower_date": "1월 11일",
+        "flower_image": "daily/측백나무.jpg",
+        "flower_language": "견고한 우정"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 12,
+    "fields": {
+        "flower_name": "향기 알리섬",
+        "flower_content": "당신은 자기 내부의 우아함을 자각함으로써 주위 사람들에게 기품있는 인상을 줍니다.",
+        "flower_date": "1월 12일",
+        "flower_image": "daily/향기+알리섬.jpg",
+        "flower_language": "뛰어난 아름다움"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 13,
+    "fields": {
+        "flower_name": "수선화",
+        "flower_content": "당신은 상처받는 것이 두려워 뒤로 물러서는 타입입니다. 이제는 용기가 필요한 당신입니다.",
+        "flower_date": "1월 13일",
+        "flower_image": "daily/수선화.jpg",
+        "flower_language": "신비"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 14,
+    "fields": {
+        "flower_name": "시클라멘",
+        "flower_content": "시클라멘을 탄생화로 태어난 당신은 따뜻한 마음의 소유자이지만 때때로 합리성을 잃고 시기심이 두드러지게 나타나는 일이 있습니다.",
+        "flower_date": "1월 14일",
+        "flower_image": "daily/시클라멘.jpg",
+        "flower_language": "내성적 성격"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 15,
+    "fields": {
+        "flower_name": "가시",
+        "flower_content": "가시나무를 탄생화로 가진 당신은 지나치게 엄격한 사람입니다. 제발 연인에게만이라도 좀 부드럽게 대하시길 바랍니다.",
+        "flower_date": "1월 15일",
+        "flower_image": "daily/가시.jpg",
+        "flower_language": "엄격"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 16,
+    "fields": {
+        "flower_name": "노랑 히아신스",
+        "flower_content": "당신은 언제나 엄격하지 않으면 못견뎌 하는 성격입니다. 엄격히 하는 것도 시간과 경우에 따라서는 유연하게 할 필요가 있습니다.",
+        "flower_date": "1월 16일",
+        "flower_image": "daily/노랑+히아신스.jpg",
+        "flower_language": "승부"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 17,
+    "fields": {
+        "flower_name": "수영",
+        "flower_content": "당신은 첫눈에 띠기 보다는 상대편을 만날때마다 상냥한 사람이 되어가는 타입입니다.",
+        "flower_date": "1월 17일",
+        "flower_image": "daily/수영.jpg",
+        "flower_language": "친근한 정"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 18,
+    "fields": {
+        "flower_name": "어저귀",
+        "flower_content": "당신은 무엇이건 억측을 일삼는 타입이기 때문에 존경할만한 사람을 찾아 그 사람의 삶과 사고방식에 대해 배우는 것이 필요합니다.",
+        "flower_date": "1월 18일",
+        "flower_image": "daily/어저귀.jpg",
+        "flower_language": "억측"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 19,
+    "fields": {
+        "flower_name": "소나무",
+        "flower_content": "당신은 자연스럽게 행동해도 충분히 멋지므로 자신에 대한 과신과 자부심은 당신의 적이 됩니다.",
+        "flower_date": "1월 19일",
+        "flower_image": "daily/소나무.jpg",
+        "flower_language": "불로장수"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 20,
+    "fields": {
+        "flower_name": "미나리아재비",
+        "flower_content": "부귀에 대한 욕망이 남들보다 월등히 강한당신은 자존심이 강해 다른 사람들 속에 묻혀있는 것을 좋아합니다.",
+        "flower_date": "1월 20일",
+        "flower_image": "daily/미나리아재비.jpg",
+        "flower_language": "천진난만"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 21,
+    "fields": {
+        "flower_name": "담쟁이덩굴",
+        "flower_content": "우애가 깊고 성실한 당신은 애착심도 다른사람보다 월등히 강해 때때로 상대를 잘못보거나 고리타분한 사람에게도 쉽게 빠집니다.",
+        "flower_date": "1월 21일",
+        "flower_image": "daily/담쟁이덩굴.jpg",
+        "flower_language": "우정"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 22,
+    "fields": {
+        "flower_name": "이끼",
+        "flower_content": "주위를 포근하게 감싸는 듯한 분위기를 갖고 있는 당신은 사람들 속에 묻혀있는 것을 좋아합니다.",
+        "flower_date": "1월 22일",
+        "flower_image": "daily/이끼.jpg",
+        "flower_language": "모성애"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 23,
+    "fields": {
+        "flower_name": "부들",
+        "flower_content": "차분히 있지 못하고 성급히 판단을 내리고 마는 것이 장점이기도 하고 결점이기도 합니다.",
+        "flower_date": "1월 23일",
+        "flower_image": "daily/부들.jpg",
+        "flower_language": "순종"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 24,
+    "fields": {
+        "flower_name": "사프란",
+        "flower_content": "사명감을 갖고 살고 있는 당신은 사치를 금하고 절도를 지킨다면 반드시 기회가 올 것입니다.",
+        "flower_date": "1월 24일",
+        "flower_image": "daily/사프란.jpg",
+        "flower_language": "절도의 미"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 25,
+    "fields": {
+        "flower_name": "점나도나물",
+        "flower_content": "사랑해서는 안될 사람을 사랑하는게 당신의 운명입니다. 좀 더 세상을 폭넓게 보는 것이 선결과제 입니다.",
+        "flower_date": "1월 25일",
+        "flower_image": "daily/점나도나물.jpg",
+        "flower_language": "순진"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 26,
+    "fields": {
+        "flower_name": "미모사",
+        "flower_content": "미모사를 탄생화로 가진 당신은 솔직하고 예민한 감각의 소유자여서 때때로 심약한 면을 드러냅니다.",
+        "flower_date": "1월 26일",
+        "flower_image": "daily/미모사.jpg",
+        "flower_language": "예민한 마음"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 27,
+    "fields": {
+        "flower_name": "마가목",
+        "flower_content": "자신감에 차있는 당신은 다른 사람이 볼 때 세심한 주의를 쏟고 있는 사람으로 큰일을 이룰 사람입니다.",
+        "flower_date": "1월 27일",
+        "flower_image": "daily/마가목.jpg",
+        "flower_language": "게으름을 모르는 마음"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 28,
+    "fields": {
+        "flower_name": "검은 포플라",
+        "flower_content": "당신은 용기가 있어 주위 사람들도 당신을 의지하고 있습니다. 그렇다고 해서 자기만족에 빠지는 것은 금물입니다.",
+        "flower_date": "1월 28일",
+        "flower_image": "daily/검은+포플라.jpg",
+        "flower_language": "용기"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 29,
+    "fields": {
+        "flower_name": "이끼",
+        "flower_content": "굼벵이라는 소리를 듣더라도 착실하게 노력해야 하는 것이 당신의 운명이므로 급격한 변화는 피해야합니다.",
+        "flower_date": "1월 29일",
+        "flower_image": "daily/이끼.jpg",
+        "flower_language": "모성애"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 30,
+    "fields": {
+        "flower_name": "메리골드",
+        "flower_content": "주변 사람들이 행복해지면 자신도 역시 미소 지을 날이 옵니다. 초조해 하지 말고 차분히 기다리는 것이 중요합니다.",
+        "flower_date": "1월 30일",
+        "flower_image": "daily/메리골드.jpg",
+        "flower_language": "반드시 오고야 말 행복"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 31,
+    "fields": {
+        "flower_name": "노랑 사프란",
+        "flower_content": "밝고 발랄한 것이 당신의 운명입니다. 비탄은 어울리지 않으므로 항상 밝게 생활한다면 빛나는 사랑을 얻게 될 것입니다.",
+        "flower_date": "1월 31일",
+        "flower_image": "daily/노랑+사프란.jpg",
+        "flower_language": "청춘의 즐거움"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 32,
+    "fields": {
+        "flower_name": "앵초",
+        "flower_content": "앵초를 탄생화로 갖는 당신은 성공하는 것은 확실하니까 좌절해서는 안됩니다.",
+        "flower_date": "2월 1일",
+        "flower_image": "daily/앵초.jpg",
+        "flower_language": "젊은 시절과 고뇌"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 33,
+    "fields": {
+        "flower_name": "모과",
+        "flower_content": "당신은 유혹하기 보다는 유혹받기를 마음 한 구석에 갈망하는 타입 입니다.",
+        "flower_date": "2월 2일",
+        "flower_image": "daily/모과.jpg",
+        "flower_language": "평범"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 34,
+    "fields": {
+        "flower_name": "황새 냉이",
+        "flower_content": " 정열적이고 불굴의 힘이 있지만 때때로 에너지 부족에 빠져들기 쉬운 당신입니다.",
+        "flower_date": "2월 3일",
+        "flower_image": "daily/황새+냉이.jpg",
+        "flower_language": "그대에게 바친다"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 35,
+    "fields": {
+        "flower_name": "빨간 앵초",
+        "flower_content": "지금 당신에게 필요한 것은 의욕입니다. 의욕적으로 인생을 밀고 나가세요.",
+        "flower_date": "2월 4일",
+        "flower_image": "daily/빨간+앵초.jpg",
+        "flower_language": "돌보지 않는 아름다움"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 36,
+    "fields": {
+        "flower_name": "양치",
+        "flower_content": "당신은 성실해 다른 사람들의 기분을 상쾌하게 만들어 주는 타입 입니다.",
+        "flower_date": "2월 5일",
+        "flower_image": "daily/양치.jpg",
+        "flower_language": "사랑스러움"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 37,
+    "fields": {
+        "flower_name": "바위솔",
+        "flower_content": "당신은 항상 명랑하고 쾌활하지만 계획성이 부족하므로 유의해야 합니다.",
+        "flower_date": "2월 6일",
+        "flower_image": "daily/바위솔.jpg",
+        "flower_language": "가사에 근면 함"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 38,
+    "fields": {
+        "flower_name": "물망초",
+        "flower_content": "참된 사랑을 찾는 낭만파로 신경이 예민하고 순수하며 감성이 풍부한 사람입니다.",
+        "flower_date": "2월 7일",
+        "flower_image": "daily/물망초.jpg",
+        "flower_language": "날 잊지 말아요"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 39,
+    "fields": {
+        "flower_name": "범의귀",
+        "flower_content": "당신은 조용하고 소극적이며 내성적인 성격이어서 눈에 띄는 타입은 아닙니다.",
+        "flower_date": "2월 8일",
+        "flower_image": "daily/범의귀.jpg",
+        "flower_language": "절실한 애정"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 40,
+    "fields": {
+        "flower_name": "은매화",
+        "flower_content": " 당신은 속된 타입과 어울리면 상처받기 쉬운 타입 입니다.",
+        "flower_date": "2월 9일",
+        "flower_image": "daily/은매화.jpg",
+        "flower_language": "사랑의 속삭임"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 41,
+    "fields": {
+        "flower_name": "서향",
+        "flower_content": "빛나는 전도가 보장된 당신이지만 놀기 좋아하는 것이 단점입니다",
+        "flower_date": "2월 10일",
+        "flower_image": "daily/서향.jpg",
+        "flower_language": "영광"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 42,
+    "fields": {
+        "flower_name": "멜리사",
+        "flower_content": "박애주의자인 당신은 항상 다른사람의 편에 서서 만사를 생각하는 사람입니다.",
+        "flower_date": "2월 11일",
+        "flower_image": "daily/멜리사.jpg",
+        "flower_language": "동정"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 43,
+    "fields": {
+        "flower_name": "쥐꼬리망초",
+        "flower_content": "당신을 지켜주는 늠름한 사람이 바로 평생의 반려자입니다.",
+        "flower_date": "2월 12일",
+        "flower_image": "daily/쥐꼬리망초.jpg",
+        "flower_language": "가련미의 극치"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 44,
+    "fields": {
+        "flower_name": "갈풀",
+        "flower_content": "당신은 어떤 것에 빠지면 다른 것은 전혀 신경도 쓰지 않는 타입 입니다.",
+        "flower_date": "2월 13일",
+        "flower_image": "daily/갈풀.jpg",
+        "flower_language": "끈기"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 45,
+    "fields": {
+        "flower_name": "카모밀레",
+        "flower_content": "지성이 넘치는 이성주의자로 주위의 것이 모두 못마땅하게 보이는 타입 입니다.",
+        "flower_date": "2월 14일",
+        "flower_image": "daily/카모밀레.jpg",
+        "flower_language": "역경에 굴하지 않는 강인함"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 46,
+    "fields": {
+        "flower_name": "삼나무",
+        "flower_content": "당신은 지도자 타입입니다.",
+        "flower_date": "2월 15일",
+        "flower_image": "daily/삼나무.jpg",
+        "flower_language": "그대를 위해 살다"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 47,
+    "fields": {
+        "flower_name": "월계수",
+        "flower_content": "누구못지 않는 지식과 재능 그리고 행동력을 갖고 있어 주위에서 지도자적인 존재로 간주되는 당신입니다.",
+        "flower_date": "2월 16일",
+        "flower_image": "daily/월계수.jpg",
+        "flower_language": "명예"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 48,
+    "fields": {
+        "flower_name": "야생화",
+        "flower_content": "사람이 좋은 만큼 고뇌가 끊이지 않는 당신입니다.",
+        "flower_date": "2월 17일",
+        "flower_image": "daily/야생화.jpg",
+        "flower_language": "친숙한 자연"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 49,
+    "fields": {
+        "flower_name": "미나리아재비",
+        "flower_content": "주위의 신임을 한 몸에 받고 있는 당신이지만 자만해서는 안됩니다.",
+        "flower_date": "2월 18일",
+        "flower_image": "daily/미나리아재비.jpg",
+        "flower_language": "천진난만"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 50,
+    "fields": {
+        "flower_name": "떡갈나무",
+        "flower_content": "쾌활하고 자유분방한 당신은 지적인 매력만 더해진다면 누구에게나 인정받는 존재가 될 것입니다",
+        "flower_date": "2월 19일",
+        "flower_image": "daily/떡갈나무.jpg",
+        "flower_language": "붙임성의 좋음"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 51,
+    "fields": {
+        "flower_name": "칼미아",
+        "flower_content": "만나고 싶은 기분은 사랑의 기초가 되므로 피해서는 안됩니다. 용기가 필요한 타입 입니다.",
+        "flower_date": "2월 20일",
+        "flower_image": "daily/칼미아.jpg",
+        "flower_language": "커다란 희망"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 52,
+    "fields": {
+        "flower_name": "네모필라",
+        "flower_content": "당신은 매사 일이 잘 풀릴 운을 갖고 있습니다. 그렇다고 해서 감사하는 마음이 없으면 연인과 이별수가 있습니다.",
+        "flower_date": "2월 21일",
+        "flower_image": "daily/네모필라.jpg",
+        "flower_language": "애국심"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 53,
+    "fields": {
+        "flower_name": "무궁화",
+        "flower_content": "무궁화를 탄생화로 갖는 당신은 신비한 매력을 지니고 있습니다.",
+        "flower_date": "2월 22일",
+        "flower_image": "daily/무궁화.jpg",
+        "flower_language": "미묘한 아름다움"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 54,
+    "fields": {
+        "flower_name": "살구꽃",
+        "flower_content": "당신은 일에는 프로이지만 연애에는 쩔쩔매는 타입 입니다. 사랑하는 사람을 찾기 위해서는 수줍음에서 졸업해야 합니다.",
+        "flower_date": "2월 23일",
+        "flower_image": "daily/살구꽃.jpg",
+        "flower_language": "아가씨의 수줍움"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 55,
+    "fields": {
+        "flower_name": "빙카",
+        "flower_content": "당신의 첫사랑의 추억을 죽을 때까지도 간직하는 로맨티스트이기도 합니다.",
+        "flower_date": "2월 24일",
+        "flower_image": "daily/빙카.jpg",
+        "flower_language": "즐거운 추억"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 56,
+    "fields": {
+        "flower_name": "사향 장미",
+        "flower_content": "당신은 사랑의 예감 때문에 변덕스런 사랑으로 치닫기 쉬운 사람입니다.",
+        "flower_date": "2월 25일",
+        "flower_image": "daily/사향+장미.jpg",
+        "flower_language": "변덕스런 사랑"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 57,
+    "fields": {
+        "flower_name": "아도니스",
+        "flower_content": "사랑의 항해를 막 시작하려는 당신 앞에는 영원한 행복이 약속되어 있습니다.",
+        "flower_date": "2월 26일",
+        "flower_image": "daily/아도니스.jpg",
+        "flower_language": "추억"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 58,
+    "fields": {
+        "flower_name": "아라비아의 별",
+        "flower_content": "순수하기 때문에 오해를 받는 당신입니다.",
+        "flower_date": "2월 27일",
+        "flower_image": "daily/아라비아의+별.jpg",
+        "flower_language": "순수"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 59,
+    "fields": {
+        "flower_name": "보리",
+        "flower_content": "지도력 통솔력이 뛰어난 당신은 어떤 집단에서도 반드시 두각을 나타낼 것입니다.",
+        "flower_date": "2월 28일",
+        "flower_image": "daily/보리.jpg",
+        "flower_language": "일치단결"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 60,
+    "fields": {
+        "flower_name": "아르메리아",
+        "flower_content": "세심한 배려심이 있는 사람. 당신에게는 당연한 일이라도 다른 사람은 흉내 낼 수 없습니다.",
+        "flower_date": "2월 29일",
+        "flower_image": "daily/아르메리아.jpg",
+        "flower_language": "배려"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 61,
+    "fields": {
+        "flower_name": "흑종초",
+        "flower_content": "감미로운 사랑을 꿈꾸면서도 상처받는 것을 무서워하고 있는 것은 아닙니까? 시간은 기다려 주지 않습니다.",
+        "flower_date": "3월 31일",
+        "flower_image": "daily/흑종초.jpg",
+        "flower_language": "꿈길의 애정"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 62,
+    "fields": {
+        "flower_name": "금작화",
+        "flower_content": "청렴결백한 것이 당신의 최대 장점입니다.",
+        "flower_date": "3월 30일",
+        "flower_image": "daily/금작화.jpg",
+        "flower_language": "청초"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 63,
+    "fields": {
+        "flower_name": "우엉",
+        "flower_content": "우엉을 탄생화로 갖는 당신은 불평도 없고 눈물도 없이 그저 묵묵히 노력하는 타입입니다.",
+        "flower_date": "3월 29일",
+        "flower_image": "daily/우엉.jpg",
+        "flower_language": "괴롭히지 마세요"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 64,
+    "fields": {
+        "flower_name": "아카시아나무",
+        "flower_content": "열등감은 당신의 최대 적입니다. \"그 사람을 불행하게 할 뿐\"이라는 지나치게 고귀한 생각은 평생의 후회로 남을 수 있습니다.",
+        "flower_date": "3월 28일",
+        "flower_image": "daily/아카시아나무.jpg",
+        "flower_language": "품위"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 65,
+    "fields": {
+        "flower_name": "칼세올라리아",
+        "flower_content": "변심. 그것은 누구에게라도 어느날 문득 일어날 수 있는 것인데도 당신의 한결같은 성격은 그러한 사실을 받아들이기 힘들게 하는군요.",
+        "flower_date": "3월 27일",
+        "flower_image": "daily/칼세올라리아.jpg",
+        "flower_language": "도움"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 66,
+    "fields": {
+        "flower_name": "흰 앵초",
+        "flower_content": "첫사랑의 추억때문에 현실의 사랑을 바라보지 못하고 있지는 않습니까? 아련한 추억은 가슴 속 깊이 묻어 두십시오.",
+        "flower_date": "3월 26일",
+        "flower_image": "daily/흰+앵초.jpg",
+        "flower_language": "첫 사랑"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 67,
+    "fields": {
+        "flower_name": "덩굴성 식물",
+        "flower_content": "인연은 적극적으로 구해야 되는 것인데 당신은 그런 기회를 멀리하고 있는 것이 아닙니까? 적극성이 필요한 당신입니다.",
+        "flower_date": "3월 25일",
+        "flower_image": "daily/덩굴성+식물.jpg",
+        "flower_language": "아름다움"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 68,
+    "fields": {
+        "flower_name": "금영화",
+        "flower_content": "자기 감정에 솔직해 져야만 비로소 참된 사랑을 만날 수 있습니다.",
+        "flower_date": "3월 24일",
+        "flower_image": "daily/금영화.jpg",
+        "flower_language": "희망"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 69,
+    "fields": {
+        "flower_name": "글라디올러스",
+        "flower_content": "정열적이긴 하지만 그로 인해 문제가 다반사로 일어나니 신중한 태도가 필요한 타입 입니다.",
+        "flower_date": "3월 23일",
+        "flower_image": "daily/글라디올러스.jpg",
+        "flower_language": "정열적 사랑"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 70,
+    "fields": {
+        "flower_name": "당아욱",
+        "flower_content": "온후한 성격의 당신은 신념이 강한 사람과 만났을 때보다 충실한 인생을 걸어갈 수 있겠군요.",
+        "flower_date": "3월 22일",
+        "flower_image": "daily/당아욱.jpg",
+        "flower_language": "은혜"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 71,
+    "fields": {
+        "flower_name": "벚꽃난",
+        "flower_content": "말만 번지르한 당신 솔직함을 내세운다면 외로움과는 거리가 멀어질 것입니다.",
+        "flower_date": "3월 21일",
+        "flower_image": "daily/벚꽃난.jpg",
+        "flower_language": "인생의 출발"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 72,
+    "fields": {
+        "flower_name": "보라색 튤립",
+        "flower_content": "튤립을 탄생화로 갖는 당신은 둘만의 영원한 세계를 찾아 헤매는 우주의 방랑자입니다",
+        "flower_date": "3월 20일",
+        "flower_image": "daily/보라색 튤립.jpg",
+        "flower_language": "영원한 애정"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 73,
+    "fields": {
+        "flower_name": "치자나무",
+        "flower_content": "당신은 고귀한 이미지의 소유자입니다. 사악한 생각이 들지 않도록 신경을 쓰며 살기를 바랍니다.",
+        "flower_date": "3월 19일",
+        "flower_image": "daily/치자나무.jpg",
+        "flower_language": "한없는 즐거움"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 74,
+    "fields": {
+        "flower_name": "아스파라거스",
+        "flower_content": "운명을 탓하는 당신은 쉽게 상처받는 사람입니다. 하지만 슬퍼하면 슬퍼할수록 당신은 성장해갈 것입니다.",
+        "flower_date": "3월 18일",
+        "flower_image": "daily/아스파라거스.jpg",
+        "flower_language": "무변화"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 75,
+    "fields": {
+        "flower_name": "콩꽃",
+        "flower_content": " 콩꽃을 탄생화로 갖는 당신은 개방적이고 낙천적이며 무슨 일이건 흥미를 갖는 타입 입니다.",
+        "flower_date": "3월 17일",
+        "flower_image": "daily/콩꽃.jpg",
+        "flower_language": "반드시 오고야 말 행복"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 76,
+    "fields": {
+        "flower_name": "박하",
+        "flower_content": "무슨 일에서건 우쭐대지 않은 겸허함이 당신의 장점이지만 때로는 손해보는 일도 있습니다.",
+        "flower_date": "3월 16일",
+        "flower_image": "daily/박하.jpg",
+        "flower_language": "미덕"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 77,
+    "fields": {
+        "flower_name": "당근",
+        "flower_content": "사랑하는 사람을 위해서는 죽음도 마다하지 않을 정도로 한결같은 당신입니다.",
+        "flower_date": "3월 15일",
+        "flower_image": "daily/당근.jpg",
+        "flower_language": "죽음도 아깝지 않음"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 78,
+    "fields": {
+        "flower_name": "아몬드",
+        "flower_content": "지적 호기심이 많은 당신은 지나치게 냉정하여 상대방을 비판하기 쉬운 결점이 있습니다. 조금쯤은 감정에 빠져 보는 것도 좋을 것입니다.",
+        "flower_date": "3월 14일",
+        "flower_image": "daily/아몬드.jpg",
+        "flower_language": "희망"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 79,
+    "fields": {
+        "flower_name": "산옥잠화",
+        "flower_content": "사랑하는 사람에게 교태를 부리거나 끈질기게 따라다니는 경향이 있습니다. 결국은 이용당하고 말 위험도 없지 않으므로 자신있게 만나는 것이 중요합니다.",
+        "flower_date": "3월 13일",
+        "flower_image": "daily/산옥잠화.jpg",
+        "flower_language": "사랑의 망각"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 80,
+    "fields": {
+        "flower_name": "수양버들",
+        "flower_content": "사소한 일로 가슴앓이를 하는 당신. 현실을 보는 안목을 키우고 어른다운 사랑을 하겠다는 용기를 가지십시오.",
+        "flower_date": "3월 12일",
+        "flower_image": "daily/수양버들.jpg",
+        "flower_language": "사랑의 슬픔"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 81,
+    "fields": {
+        "flower_name": "씀바귀",
+        "flower_content": "인내심이 강하고 신중한 타입입니다. 그렇지만 사랑은 신비한 것입니다. 사랑까지도 냉정하게 계산하면 실패하기 쉽습니다.",
+        "flower_date": "3월 11일",
+        "flower_image": "daily/씀바귀.jpg",
+        "flower_language": "순박함"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 82,
+    "fields": {
+        "flower_name": "느릅나무",
+        "flower_content": "사랑하는 사람을 만나기까지는 시간이 좀 걸리는 타입입니다. 그래도 언젠가는 반드시 만나기 마련이므로 초조해 하지말고 기다리세요.",
+        "flower_date": "3월 10일",
+        "flower_image": "daily/느릅나무.jpg",
+        "flower_language": "고귀함"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 83,
+    "fields": {
+        "flower_name": "낙엽송",
+        "flower_content": "쾌활하고 놀기 좋아하는 사람으로 보이기 쉽습니다만 사실은 사랑하는 사람을 절실히 찾아 다니는 낭만주의자 입니다.",
+        "flower_date": "3월 9일",
+        "flower_image": "daily/낙엽송.jpg",
+        "flower_language": "대담"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 84,
+    "fields": {
+        "flower_name": "밤꽃",
+        "flower_content": "지나치게 사리 분명하기 때문에 오해를 사기 쉬운 경향이 있습니다. 그래도 진심을 갖고 성심 성의껏 사람을 대한다면 굳은 신회를 쌓을 수 있습니다.",
+        "flower_date": "3월 8일",
+        "flower_image": "daily/밤꽃.jpg",
+        "flower_language": "진심"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 85,
+    "fields": {
+        "flower_name": "황새냉이",
+        "flower_content": "소극적이고 조용한 성격이지만 내면적으로는 뜨거운 열정을 갖고 있어 타오르기 시작하면 자칫 경솔한 행동으로 나타나기 쉬우므로 주의해야 합니다.",
+        "flower_date": "3월 7일",
+        "flower_image": "daily/황새냉이.jpg",
+        "flower_language": "사무치는 그리움"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 86,
+    "fields": {
+        "flower_name": "데이지",
+        "flower_content": "천진난만한 것이 당신의 매력이지만 때로는 의심할 줄도 알아야 합니다.",
+        "flower_date": "3월 6일",
+        "flower_image": "daily/데이지.jpg",
+        "flower_language": "명랑"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 87,
+    "fields": {
+        "flower_name": "수레국화",
+        "flower_content": "찬란히 빛나는 정열의 소유자입니다. 때문에 이상한데? 하는 느낌이 들때는 신중히 처신하도록 노력해야 합니다.",
+        "flower_date": "3월 5일",
+        "flower_image": "daily/수레국화.jpg",
+        "flower_language": "행복함"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 88,
+    "fields": {
+        "flower_name": "나무딸기",
+        "flower_content": "주변의 인심을 얻고 있는 당신입니다. 타인을 소중하게 돌보는 마음과 배려심을 항상 잃지 않는 마음이 중요합니다.",
+        "flower_date": "3월 4일",
+        "flower_image": "daily/나무딸기.jpg",
+        "flower_language": "애정"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 89,
+    "fields": {
+        "flower_name": "자운영",
+        "flower_content": "정열감이 흘러 넘치고 사려심이 깊지만 어른스러운 매력은 조금 부족한 당신입니다.",
+        "flower_date": "3월 3일",
+        "flower_image": "daily/자운영.jpg",
+        "flower_language": "나의 행복"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 90,
+    "fields": {
+        "flower_name": "미나리아재비",
+        "flower_content": "당신은 매혹적이지만 때로는 연인에게 응석부리는 타입니다.",
+        "flower_date": "3월 2일",
+        "flower_image": "daily/미나리아재비.jpg",
+        "flower_language": "아름다운 인격"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 91,
+    "fields": {
+        "flower_name": "수선화",
+        "flower_content": "수선화를 탄생화로 갖는 당신은 자기자신만을 사랑하는 사람을 사랑하기 쉽습니다.",
+        "flower_date": "3월 1일",
+        "flower_image": "daily/수선화.jpg",
+        "flower_language": "자존심"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 92,
+    "fields": {
+        "flower_name": "금사슬나무",
+        "flower_content": "빈틈이없는 만큼 상대방이 다가서기 어려우므로 좀더 본심을 드러내는 것이 필요합니다.",
+        "flower_date": "4월 30일",
+        "flower_image": "daily/금사슬나무.jpg",
+        "flower_language": "슬픈 아름다움"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 93,
+    "fields": {
+        "flower_name": "동백나무",
+        "flower_content": "혼자서 무슨일이든 해내고 말기 때문에 다른 사람앞에서 장점을 발휘할 기회가 너무 없습니다.",
+        "flower_date": "4월 29일",
+        "flower_image": "daily/동백나무.jpg",
+        "flower_language": "매력"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 94,
+    "fields": {
+        "flower_name": "빨간 앵초",
+        "flower_content": "혼자서 무슨 일이든 해내고 말기 때문에 다른 사람앞에서 장점을 발휘할 기회가 너무 없습니다.",
+        "flower_date": "4월 28일",
+        "flower_image": "daily/빨간+앵초.jpg",
+        "flower_language": "비할바 없는 아름다움"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 95,
+    "fields": {
+        "flower_name": "수련",
+        "flower_content": "스스로를 연마하는 시련같은 것을 잘 이겨 넘긴다면 훌륭한 인생이 기다리고 있습니다.",
+        "flower_date": "4월 27일",
+        "flower_image": "daily/수련.jpg",
+        "flower_language": "청순한 마음"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 96,
+    "fields": {
+        "flower_name": "논 냉이",
+        "flower_content": "당신은 마음은 뜨겁게 타오르는데도 결단이 늦기 때문에 사랑을 얻기 어려운 경향도 없지 않습니다.",
+        "flower_date": "4월 26일",
+        "flower_image": "daily/논+냉이.jpg",
+        "flower_language": "불타는 애정"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 97,
+    "fields": {
+        "flower_name": "중국 패모",
+        "flower_content": "너무 격렬한 사랑은 당신에게 조금 위험할 지도 모릅니다.",
+        "flower_date": "4월 25일",
+        "flower_image": "daily/중국+패모.jpg",
+        "flower_language": "위엄"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 98,
+    "fields": {
+        "flower_name": "제라늄",
+        "flower_content": "매사 신중한 당신. 누군가를 좋아할때는 경솔해져 보는 것도 좋습니다.",
+        "flower_date": "4월 24일",
+        "flower_image": "daily/제라늄.jpg",
+        "flower_language": "결심"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 99,
+    "fields": {
+        "flower_name": "도라지",
+        "flower_content": "사람을 보는 안목이 필요한 당신입니다. 그것이 행복의 지름길 입니다.",
+        "flower_date": "4월 23일",
+        "flower_image": "daily/도라지.jpg",
+        "flower_language": "상냥하고 따뜻함"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 100,
+    "fields": {
+        "flower_name": "과꽃",
+        "flower_content": "사랑의 승리는 반드시 당신의 것입니다.",
+        "flower_date": "4월 22일",
+        "flower_image": "daily/과꽃.jpg",
+        "flower_language": "믿음직한 사랑"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 101,
+    "fields": {
+        "flower_name": "수양버들",
+        "flower_content": "섬세한 마음의 소유자여서 상처받기 쉬운 사람입니다. 수양버들식으로 받아 넘길 수 있는 역량이 필요합니다.",
+        "flower_date": "4월 21일",
+        "flower_image": "daily/수양버들.jpg",
+        "flower_language": "내 가슴의 슬픔"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 102,
+    "fields": {
+        "flower_name": "배나무",
+        "flower_content": "본인은 자신감이 없어하지만 지금 그대로도 연인을 기쁘게 할 수 있습니다.",
+        "flower_date": "4월 20일",
+        "flower_image": "daily/배나무.jpg",
+        "flower_language": "온화한 애정"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 103,
+    "fields": {
+        "flower_name": "참제비고깔",
+        "flower_content": "자신감과 긍지에 차 있는 당신, 흠집을 잡을데가 없군요.",
+        "flower_date": "4월 19일",
+        "flower_image": "daily/참제비고깔.jpg",
+        "flower_language": "청명"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 104,
+    "fields": {
+        "flower_name": "자운영",
+        "flower_content": "보수적 그리고 책임이 강한 사람이어서 냉정한 사람이라는 이미지가 강합니다.친구들 속에서 자신의 부족한 점을 발견해야 합니다.",
+        "flower_date": "4월 18일",
+        "flower_image": "daily/자운영.jpg",
+        "flower_language": "감화"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 105,
+    "fields": {
+        "flower_name": "독일 창포",
+        "flower_content": "지금부터라도 정신을 똑바로 차리면 행복은 반드시 찾아 올겁니다.",
+        "flower_date": "4월 17일",
+        "flower_image": "daily/독일+창포.jpg",
+        "flower_language": "멋진결혼"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 106,
+    "fields": {
+        "flower_name": "튤립",
+        "flower_content": "들에 핀 꽃처럼 아름다운 당신. 사랑하는 사람을 실망시키지 않도록 마음을 순결하게 갖고 감성을 길러주세요.",
+        "flower_date": "4월 16일",
+        "flower_image": "daily/튤립.jpg",
+        "flower_language": "아름다운 눈동자"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 107,
+    "fields": {
+        "flower_name": "펜 오키드",
+        "flower_content": "행복한 사랑에 대해 초조해 하지 않는다면 실패는 없습니다.",
+        "flower_date": "4월 15일",
+        "flower_image": "daily/펜+오키드.jpg",
+        "flower_language": "훌륭함"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 108,
+    "fields": {
+        "flower_name": "흰 나팔꽃",
+        "flower_content": "용기와 힘이 넘치는 당신. 사랑하는 사람을 만나 멋진 인생을 사는 사람입니다",
+        "flower_date": "4월 14일",
+        "flower_image": "daily/흰+나팔꽃.jpg",
+        "flower_language": "넘치는 기쁨"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 109,
+    "fields": {
+        "flower_name": "페르시아 국화",
+        "flower_content": "눈이 높아 첫눈에 반할 만큼 아름다운 사람을 찾기가 쉽지 않겠죠.",
+        "flower_date": "4월 13일",
+        "flower_image": "daily/페르시아+국화.jpg",
+        "flower_language": "경쟁심"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 110,
+    "fields": {
+        "flower_name": "복사꽃",
+        "flower_content": "성격이 좋고 표정이 풍부한 당신이지만 때로는 감정에 치우치는 것이 약점입니다.",
+        "flower_date": "4월 12일",
+        "flower_image": "daily/복사꽃.jpg",
+        "flower_language": "복숭아꽃"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 111,
+    "fields": {
+        "flower_name": "꽃 고비",
+        "flower_content": "슬플 때, 쓸쓸할 때 별이 지듯 마음속으로 눈물이 흐릅니다. 그러나 어딘가에서 당신을 지켜보는 이가있습니다.",
+        "flower_date": "4월 11일",
+        "flower_image": "daily/꽃+고비.jpg",
+        "flower_language": "와 주세요"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 112,
+    "fields": {
+        "flower_name": "빙카",
+        "flower_content": "연인에게 정성을 다해 대한다면 좋은 결과가 있을 것입니다.",
+        "flower_date": "4월 10일",
+        "flower_image": "daily/빙카.jpg",
+        "flower_language": "즐거운 추억"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 113,
+    "fields": {
+        "flower_name": "벚나무",
+        "flower_content": "당신은 인간적인 배려심과 대담한 행동력을 겸비한 사람입니다.",
+        "flower_date": "4월 9일",
+        "flower_image": "daily/벚나무.jpg",
+        "flower_language": "정신미"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 114,
+    "fields": {
+        "flower_name": "금작화",
+        "flower_content": "온화한 당신은 사랑하는 사람과 결혼할 수 있습니다.",
+        "flower_date": "4월 8일",
+        "flower_image": "daily/금작화.jpg",
+        "flower_language": "박애"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 115,
+    "fields": {
+        "flower_name": "공작 고사리",
+        "flower_content": "장난기어린 당신은 좀더 절도를 지킬려고 노력한다면 지금보다 더욱 매력적으로 보일 것입니다.",
+        "flower_date": "4월 7일",
+        "flower_image": "daily/공작+고사리.jpg",
+        "flower_language": "신명"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 116,
+    "fields": {
+        "flower_name": "아도니스",
+        "flower_content": "연인이 없는 당신. 힘차게 밀고 나갈때만이 연인이 생길 것입니다.",
+        "flower_date": "4월 6일",
+        "flower_image": "daily/아도니스.jpg",
+        "flower_language": "영원한 행복"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 117,
+    "fields": {
+        "flower_name": "무화과",
+        "flower_content": "담화를 좋아하는 당신은 원만한 타입이지만 이상한 것에 집착성이 강한 것이 옥에 티입니다.",
+        "flower_date": "4월 5일",
+        "flower_image": "daily/무화과.jpg",
+        "flower_language": "풍부"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 118,
+    "fields": {
+        "flower_name": "빨강 아네모네",
+        "flower_content": "매사에 소극적인 당신은 적극적이지 않으면 연애도 누군가에게 빼앗길 수도 있습니다.",
+        "flower_date": "4월 4일",
+        "flower_image": "daily/빨강+아네모네.jpg",
+        "flower_language": "그대를 사랑해"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 119,
+    "fields": {
+        "flower_name": "나팔 수선화",
+        "flower_content": "활동적이고 성실하고 연애에서도 격렬하게 타오르는 타입입니다. 그러나 실연하면 낙담도 큰 타입이므로 연애는 신중해야 합니다.",
+        "flower_date": "4월 3일",
+        "flower_image": "daily/나팔+수선화.jpg",
+        "flower_language": "존경"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 120,
+    "fields": {
+        "flower_name": "아네모네",
+        "flower_content": "당신은 고독에 빠지기 쉬운 사람이므로 적극적으로 교제의 범위를 넓혀 가는 것도 중요합니다.",
+        "flower_date": "4월 2일",
+        "flower_image": "daily/아네모네.jpg",
+        "flower_language": "기대"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 121,
+    "fields": {
+        "flower_name": "아몬드",
+        "flower_content": "지적 호기심이 많은 당신은 지나치게 냉정하여 상대방을 비판하기 쉬운 결점이 있습니다. 조금쯤은 감정에 빠져 보는 것도 좋을 것입니다.",
+        "flower_date": "4월 1일",
+        "flower_image": "daily/아몬드.jpg",
+        "flower_language": "진실한 사랑"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 122,
+    "fields": {
+        "flower_name": "무릇",
+        "flower_content": "마음이 연약하고 쉽게 고독해지는 당신 연인은 그런 당신을 이해하고 상냥하게 받아줄 수 있는 사람이 좋겠군요.",
+        "flower_date": "5월 31일",
+        "flower_image": "daily/무릇.jpg",
+        "flower_language": "강한 자제력"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 123,
+    "fields": {
+        "flower_name": "라일락",
+        "flower_content": "추억에 빠지기 쉬운 당신 이젠 그만 두세요. 모처럼 연인을 만났는데도 과거에 사로 잡히면 앞으로 발전할 수가 없으니까요.",
+        "flower_date": "5월 30일",
+        "flower_image": "daily/라일락.jpg",
+        "flower_language": "사랑의 싹"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 124,
+    "fields": {
+        "flower_name": "토끼풀",
+        "flower_content": "밝고 명랑하고 게다가 성실한 사람이므로 주변의 신뢰는 이만 저만하지 않겠군요 .당신의 연인도 틀림없이 마찬가지 일 것입니다.",
+        "flower_date": "5월 29일",
+        "flower_image": "daily/토끼풀.jpg",
+        "flower_language": "쾌활"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 125,
+    "fields": {
+        "flower_name": "박하",
+        "flower_content": "우쭐대지 않은 태도가 당신의 매력이므로 끝까지 자신의 장점을 지키는 것이 중요합니다",
+        "flower_date": "5월 28일",
+        "flower_image": "daily/박하.jpg",
+        "flower_language": "미덕"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 126,
+    "fields": {
+        "flower_name": "데이지",
+        "flower_content": "순수하고 깨끗한 이미지의 당신은 당신과 같은 사람을 만나면 당신의 인생은 행복이라는 말 외에는 달리 표현할 수가 없군요.",
+        "flower_date": "5월 27일",
+        "flower_image": "daily/데이지.jpg",
+        "flower_language": "순수한 마음"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 127,
+    "fields": {
+        "flower_name": "올리브나무",
+        "flower_content": "당신은 고민하고 있는 사람을 보면 도와주고 싶어하는 상냥한 사람입니다. 때문에 정작 자기에게는 여유가 없는 경우도 있지만 언젠가는 사랑을 준 만큼 돌려 받을 것 입니다.",
+        "flower_date": "5월 26일",
+        "flower_image": "daily/올리브나무.jpg",
+        "flower_language": "평화"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 128,
+    "fields": {
+        "flower_name": "삼색 제비꽃",
+        "flower_content": "뒤로 한 발 물러나 생각에 잠기는 태도가 두드러지는 당신은 너무 주변에 신경을 많이 쓰는 것 같습니다.",
+        "flower_date": "5월 25일",
+        "flower_image": "daily/삼색+제비꽃.jpg",
+        "flower_language": "순애"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 129,
+    "fields": {
+        "flower_name": "헬리오토로프",
+        "flower_content": "업무에 헌신하게 되면 혼기를 늦추게 됩니다. 자, 사랑의 달콤함을 무시하지 마세요.",
+        "flower_date": "5월 24일",
+        "flower_image": "daily/헬리오토로프.jpg",
+        "flower_language": "사랑이여 영원하라"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 130,
+    "fields": {
+        "flower_name": "풀의 싹",
+        "flower_content": "추억을 가슴속에 소중하게 간직하고 있는 당신 그것을 날개 삼아 미래로 날아 오르려고 하나요? 자기중심적 틀에서 벗어나 좀더 마음의 문을 열어 보세요.",
+        "flower_date": "5월 23일",
+        "flower_image": "daily/풀의+싹.jpg",
+        "flower_language": "첫사랑의 추억"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 131,
+    "fields": {
+        "flower_name": "귀걸이꽃",
+        "flower_content": "당신은 찾아낸 사랑을 신성하고도 소중히 여기며 한눈 파는 일이 없이 푹 빠져드는 사람입니다.",
+        "flower_date": "5월 22일",
+        "flower_image": "daily/귀걸이꽃.jpg",
+        "flower_language": "열렬한 마음"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 132,
+    "fields": {
+        "flower_name": "참제비고깔",
+        "flower_content": "당신은 싫은 일이 있어도 궁시렁대지 않는 성격입니다. 깊이 생각치 않고 자유롭게 살아가는 것이 숙명입니다.",
+        "flower_date": "5월 21일",
+        "flower_image": "daily/참제비고깔.jpg",
+        "flower_language": "자유"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 133,
+    "fields": {
+        "flower_name": "괭이밥",
+        "flower_content": "기쁨을 얻기 위해서는 빛나지 않고서는 안됩니다. 마음을 비우고 노력해야겠군요.",
+        "flower_date": "5월 20일",
+        "flower_image": "daily/괭이밥.jpg",
+        "flower_language": "빛나는 마음"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 134,
+    "fields": {
+        "flower_name": "아리스타타",
+        "flower_content": "남모르게 노력하고 있기 때문에 남에게 사랑받을 분위기를 갖고 있습니다. 앞으로도 지금처럼 나아간다면 성공이 기다릴 것입니다.",
+        "flower_date": "5월 19일",
+        "flower_image": "daily/아리스타타.jpg",
+        "flower_language": "아름다움의 소유자"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 135,
+    "fields": {
+        "flower_name": "앵초",
+        "flower_content": "다른 사람의 호감을 사는 타입이면서도 사랑에 관해서는 소심한게 흠이군요. 적극적이고 활동적이라면 만인이 당신을 부러워하겠군요.",
+        "flower_date": "5월 18일",
+        "flower_image": "daily/앵초.jpg",
+        "flower_language": "첫 사랑"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 136,
+    "fields": {
+        "flower_name": "노랑 튤립",
+        "flower_content": "상대방을 사랑의 늪에 빠뜨려 놓고 모른체 하는 고약한 면이 있군요. 당신 자신한테 좀더 신경을 쓰지 않으면 자칫 오해를 받기 쉬우므로 주의해야겠군요.",
+        "flower_date": "5월 17일",
+        "flower_image": "daily/노랑+튤립.jpg",
+        "flower_language": "사랑의 표시"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 137,
+    "fields": {
+        "flower_name": "조팝나무",
+        "flower_content": "예민한 관찰력의 소유자인 당신은 눈에 보이는 부분에 관해서는 당신의 생각대로 입니다. 하지만 눈에 보이지 않는 부분은 그리 간단한 것이 아니므로 섣부른 판단은 금물입니다.",
+        "flower_date": "5월 16일",
+        "flower_image": "daily/조팝나무.jpg",
+        "flower_language": "선언"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 138,
+    "fields": {
+        "flower_name": "물망초",
+        "flower_content": "사랑하고 사랑받으면 훨훨 타버리는.... 그런 정열적인 사랑을 갖고 있군요. 그런만큼 사랑도 기다리기보다는 찾아 나서야 겠군요",
+        "flower_date": "5월 15일",
+        "flower_image": "daily/물망초.jpg",
+        "flower_language": "진실한 사랑"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 139,
+    "fields": {
+        "flower_name": "매발톱꽃",
+        "flower_content": "당신의 사전에는 실연,패배라는 말이 없군요. 오직 승리만이 있는 인생. 그러나 바로 그 때문에 남 모르는 고생을 하고 있습니다.",
+        "flower_date": "5월 14일",
+        "flower_image": "daily/매발톱꽃.jpg",
+        "flower_language": "승리의 맹세"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 140,
+    "fields": {
+        "flower_name": "산사나무",
+        "flower_content": "당신은 실력파입니다. 사랑도 인연을 기다리는 것은 어울리지 않습니다. 사랑의 매파는 바로 당신입니다.",
+        "flower_date": "5월 13일",
+        "flower_image": "daily/산사나무.jpg",
+        "flower_language": "유일한 사랑"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 141,
+    "fields": {
+        "flower_name": "라일락",
+        "flower_content": "운명적인 만남에 가슴을 졸인 일이 벌써 여러 번 있겠군요. 그래서 또 다시 운명적인 만남이 있다면 푹 빠지겠군요. 그것이 당신의 운명이니 어쩔 수 없군요",
+        "flower_date": "5월 12일",
+        "flower_image": "daily/라일락.jpg",
+        "flower_language": "사랑의 싹"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 142,
+    "fields": {
+        "flower_name": "사과",
+        "flower_content": "주위를 둘러보면 참으로 당신을 사랑하는 사람을 발견할 수 있을 것입니다. 사랑받기에 당신은 최고의 능력을 발휘할 수 있겠군요.",
+        "flower_date": "5월 11일",
+        "flower_image": "daily/사과.jpg",
+        "flower_language": "유혹"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 143,
+    "fields": {
+        "flower_name": "꽃창포",
+        "flower_content": "선천적으로 기품을 가지고 있으나 그 기쁨을 후천적으로 이끌어 내려는 노력이 부족하군요.",
+        "flower_date": "5월 10일",
+        "flower_image": "daily/꽃창포.jpg",
+        "flower_language": "우아한 마음"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 144,
+    "fields": {
+        "flower_name": "겹 벚꽃",
+        "flower_content": "수줍음이 많아 이성의 인기는 그다지 끌지 못합니다. 그러나 마음속 깊숙한 곳에는 한 사람만을 사랑하고 있군요.",
+        "flower_date": "5월 9일",
+        "flower_image": "daily/겹+벚꽃.jpg",
+        "flower_language": "정숙 단아함"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 145,
+    "fields": {
+        "flower_name": "수련",
+        "flower_content": "순수함으로 가득찬 당신이지만 유혹의 손길이 끊임없으므로, 자신을 똑바로 보고 다른 사람의 유혹에 걸려들지 말아야 합니다.",
+        "flower_date": "5월 8일",
+        "flower_image": "daily/수련.jpg",
+        "flower_language": "청순한 마음"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 146,
+    "fields": {
+        "flower_name": "딸기",
+        "flower_content": "지적수준도 높고 교양도 있지만 본질적으로는 소극적입니다. 당신에게 적극성이 더해진다면 어떤 망이라도 당신 생각대로 될 것입니다.",
+        "flower_date": "5월 7일",
+        "flower_image": "daily/딸기.jpg",
+        "flower_language": "사랑과 존경"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 147,
+    "fields": {
+        "flower_name": "비단향 꽃무",
+        "flower_content": "당신은 어떠한 역경이라도 극복하는 강인한 사람입니다. 그것은 외로움을 안고 있기에 그렇게 강인해질 수 있는 것입니다.",
+        "flower_date": "5월 6일",
+        "flower_image": "daily/비단향+꽃무.jpg",
+        "flower_language": "영원한 아름다움"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 148,
+    "fields": {
+        "flower_name": "은방울꽃",
+        "flower_content": "자기표현에 자신이 없는 사람이군요. 그렇지만 신념을 갖고 행동을 하면 크나큰 행복이 찾아 들 것입니다.",
+        "flower_date": "5월 5일",
+        "flower_image": "daily/은방울꽃.jpg",
+        "flower_language": "섬세함"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 149,
+    "fields": {
+        "flower_name": "딸기",
+        "flower_content": "당신은 사랑에 푹 빠지기 쉬운 타입입니다. 절제와 인내심을 갖고 일을 처리 할 때 사람들로부터 존경을 받을 것입니다.",
+        "flower_date": "5월 4일",
+        "flower_image": "daily/딸기.jpg",
+        "flower_language": "존중과 애정"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 150,
+    "fields": {
+        "flower_name": "민들레",
+        "flower_content": "두뇌가 명석한 당신은 사물을 볼때도 어렵게 보아 때로는 좋은 기회를 놓치기 쉬운 구석이 있습니다.",
+        "flower_date": "5월 3일",
+        "flower_image": "daily/민들레.jpg",
+        "flower_language": "신탁"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 151,
+    "fields": {
+        "flower_name": "미나리아재비",
+        "flower_content": "당신은 담백한 매력이 넘치는 사람입니다.애정운과 금전운은 좋으나 자칫 스캔들에 휘말리기 쉽겠군요.",
+        "flower_date": "5월 2일",
+        "flower_image": "daily/미나리아재비.jpg",
+        "flower_language": "천진난만함"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 152,
+    "fields": {
+        "flower_name": "앵초",
+        "flower_content": "젊은 시절 사랑의 아픈 가슴을 잘 이겨내야만 앞으로 만날 연인과 참되게 사랑할 수가 있겠군요.행복이란 괴로움을 뛰어 넘을 때 찾아드는 것입니다.",
+        "flower_date": "5월 1일",
+        "flower_image": "daily/앵초.jpg",
+        "flower_language": "젊은 날의 슬픔"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 153,
+    "fields": {
+        "flower_name": "인동",
+        "flower_content": "관대한 마음씨와 헌신적인 애정을 갖고 있는 당신. 사람들에게 경애 받고 있습니다.",
+        "flower_date": "6월 30일",
+        "flower_image": "daily/인동.jpg",
+        "flower_language": "사랑의 인연"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 154,
+    "fields": {
+        "flower_name": "빨강 제라늄",
+        "flower_content": "재능이 많고 사교성이 있으므로 도를 넘지 않도록 감정조절만 잘 한다면 무슨일에서든 성공할 것입니다.",
+        "flower_date": "6월 29일",
+        "flower_image": "daily/빨강+제라늄.jpg",
+        "flower_language": "그대가 있어 사랑이 있네"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 155,
+    "fields": {
+        "flower_name": "제라늄",
+        "flower_content": "지금 그대로의 당신 모습으로도 자신과 꼭 어울릴 만한 사람을 찾을 수 있겠군요. 용기를 찾으세요.",
+        "flower_date": "6월 28일",
+        "flower_image": "daily/제라늄.jpg",
+        "flower_language": "그대가 있기에 행복이 있네"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 156,
+    "fields": {
+        "flower_name": "시계꽃",
+        "flower_content": "성스러운 사랑에 사로잡히기 쉽군요. 그래서는 통속적인 사랑을 받아들일 수가 없으므로 주의해야 겠군요.",
+        "flower_date": "6월 27일",
+        "flower_image": "daily/시계꽃.jpg",
+        "flower_language": "성스러운 사랑"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 157,
+    "fields": {
+        "flower_name": "흰 라일락",
+        "flower_content": "언제까지나 갓난아이처럼 사랑에도 순진한 마음을 갖고 있군요. 상처받지 않기 위해서라도 참된 사랑을 빨리 키우도록 하십시오.",
+        "flower_date": "6월 26일",
+        "flower_image": "daily/흰+라일락.jpg",
+        "flower_language": "아름다운 맹세"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 158,
+    "fields": {
+        "flower_name": "나팔꽃",
+        "flower_content": "자부심과 자신감이 넘치는 당신이지만 무의식 중에 잘 어울리는 연인을 찾고 있군요.",
+        "flower_date": "6월 25일",
+        "flower_image": "daily/나팔꽃.jpg",
+        "flower_language": "덧 없는 사랑"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 159,
+    "fields": {
+        "flower_name": "버베나",
+        "flower_content": "감미로운 유혹에 약한 당신. \"좋아하니까\" 하며 쉽게 자신을 합리화하고 마는군요. 그러나 거기에 져서는 안됩니다.",
+        "flower_date": "6월 24일",
+        "flower_image": "daily/버베나.jpg",
+        "flower_language": "가족의 화합"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 160,
+    "fields": {
+        "flower_name": "접시꽃",
+        "flower_content": "너무나도 진지하고 순진해 실패하리라고 지례짐작하고 약해지기 쉬운 당신이군요.",
+        "flower_date": "6월 23일",
+        "flower_image": "daily/접시꽃.jpg",
+        "flower_language": "열렬한 연애"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 161,
+    "fields": {
+        "flower_name": "가막살나무",
+        "flower_content": "사랑은 투쟁이라고 생각하기 쉬운 당신이군요. 사랑은 오로지 계속 주는 것입니다.",
+        "flower_date": "6월 22일",
+        "flower_image": "daily/가막살나무.jpg",
+        "flower_language": "사랑은 죽음보다 강하다"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 162,
+    "fields": {
+        "flower_name": "달맞이꽃",
+        "flower_content": "마음이 고운 당신은 자유스러운 마음으로 많은 사람들과 교제하려 하는군요. 하지만 상대방은 당신을 쉽게 변하는 사람으로 볼 수도 있으므로 주의가 필요하군요.",
+        "flower_date": "6월 21일",
+        "flower_image": "daily/달맞이꽃.jpg",
+        "flower_language": "자유스러운 마음"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 163,
+    "fields": {
+        "flower_name": "꼬리풀",
+        "flower_content": "순결한 연애관의 소유자이군요. 좋지않은 유혹에 걸려들면 시간이 좀 걸리지만 정신을 똑바로 차리면 문제가 없습니다.",
+        "flower_date": "6월 20일",
+        "flower_image": "daily/꼬리풀.jpg",
+        "flower_language": "달성"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 164,
+    "fields": {
+        "flower_name": "장미",
+        "flower_content": "자기 중심적인 취향으로 애정도 쉽게 식어버리는 타입이군요. 사랑은 참고 기다리는 것입니다.",
+        "flower_date": "6월 19일",
+        "flower_image": "daily/장미.jpg",
+        "flower_language": "사랑"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 165,
+    "fields": {
+        "flower_name": "백리향",
+        "flower_content": "이지적이고 자존심이 강한 당신. 억지로 웃어 주어야만 하는 상대는 그만두고 자연스레 웃을 수 있는 연인을 찾아 봅시다.",
+        "flower_date": "6월 18일",
+        "flower_image": "daily/백리향.jpg",
+        "flower_language": "용기"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 166,
+    "fields": {
+        "flower_name": "토끼풀",
+        "flower_content": "사랑에 아픈 추억을 갖고 있군요. 아픈 추억이 있더라도 굳건히 전진할 때보다 성장할 것입니다.",
+        "flower_date": "6월 17일",
+        "flower_image": "daily/토끼풀.jpg",
+        "flower_language": "감화"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 167,
+    "fields": {
+        "flower_name": "튜베 로즈",
+        "flower_content": "위험을 좋아합니다. 자극을 추구하고 즐거운 일에 탐닉하는 타입입니다.",
+        "flower_date": "6월 16일",
+        "flower_image": "daily/튜베+로즈.jpg",
+        "flower_language": "위험한 쾌락"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 168,
+    "fields": {
+        "flower_name": "카네이션",
+        "flower_content": "사교가이며 재능이 풍부하지만 사랑에는 거절당하기 쉽군요. 서투른 표현이라도 좋습니다. 진심을 전하는게 중요합니다.",
+        "flower_date": "6월 15일",
+        "flower_image": "daily/카네이션.jpg",
+        "flower_language": "정열"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 169,
+    "fields": {
+        "flower_name": "뚜껑 별꽃",
+        "flower_content": "고독을 사랑하고 성실한 당신이지만 사랑에는 너무 조심스럽군요.",
+        "flower_date": "6월 14일",
+        "flower_image": "daily/뚜껑+별꽃.jpg",
+        "flower_language": "추상"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 170,
+    "fields": {
+        "flower_name": "디기탈리스",
+        "flower_content": "거짓 사랑으로 곤혹스러워 하고 있지는 않나요? 정말로 사랑하고 있는 사람은 다른 사람일 것입니다.",
+        "flower_date": "6월 13일",
+        "flower_image": "daily/디기탈리스.jpg",
+        "flower_language": "가슴속의 생각"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 171,
+    "fields": {
+        "flower_name": "레제다 오도라타",
+        "flower_content": "많은 이성이 당신을 생각하고 있지만 당신은 그것도 모르고 있군요. 자 누군가를 유혹해 봅시다.",
+        "flower_date": "6월 12일",
+        "flower_image": "daily/레제다+오도라타.jpg",
+        "flower_language": "매력"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 172,
+    "fields": {
+        "flower_name": "중국 패모",
+        "flower_content": "예의 바르고 성실하고 희생적이지만 정작 자기일은 어떻게 해야 좋을지 모르겠군요. 자신의 일도 좀 더 소중히 하는게 필요합니다.",
+        "flower_date": "6월 11일",
+        "flower_image": "daily/중국+패모.jpg",
+        "flower_language": "위엄"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 173,
+    "fields": {
+        "flower_name": "수염패랭이꽃",
+        "flower_content": "투쟁심, 정의감, 미적 센스가 풍부한 사람이지만 의사표현이 풍부한 사람입니다. 그 때문에 까다로운 사람으로 비쳐서 사랑의 기회를 놓치고 마는 수도 있습니다.",
+        "flower_date": "6월 10일",
+        "flower_image": "daily/수염패랭이꽃.jpg",
+        "flower_language": "의협심"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 174,
+    "fields": {
+        "flower_name": "스위트피",
+        "flower_content": "정이 많고 헌신적인 사람이지만 상대를 잘 파악하고 자신을 지키는 것도 필요합니다.",
+        "flower_date": "6월 9일",
+        "flower_image": "daily/스위트피.jpg",
+        "flower_language": "우아한 추억"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 175,
+    "fields": {
+        "flower_name": "자스민",
+        "flower_content": "순수하고 청순하고 관능적인 당신. 감수성이 강한 당신입니다",
+        "flower_date": "6월 8일",
+        "flower_image": "daily/자스민.jpg",
+        "flower_language": "사랑스러움"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 176,
+    "fields": {
+        "flower_name": "슈미트티아나",
+        "flower_content": "의사표현이 서툴군요. 생각만 하는 것은 시간낭비입니다. 사모하는 마음은 상대에게 강하게 전달되어야 행복이 찾아드는 것입니다.",
+        "flower_date": "6월 7일",
+        "flower_image": "daily/슈미트티아나.jpg",
+        "flower_language": "사모하는 마음"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 177,
+    "fields": {
+        "flower_name": "노랑 붓꽃",
+        "flower_content": "화염처럼 정열을 불태우기를 마다하지 않는 사람이군요.",
+        "flower_date": "6월 6일",
+        "flower_image": "daily/노랑+붓꽃.jpg",
+        "flower_language": "믿는 자의 행복"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 178,
+    "fields": {
+        "flower_name": "메리골드",
+        "flower_content": "누군가를 좋아하면 일편단심입니다. 일편단심도 좋지만 지나치게 집착하면 새로운 연인과의 만남도 늦어지고 맙니다.",
+        "flower_date": "6월 5일",
+        "flower_image": "daily/메리골드.jpg",
+        "flower_language": "가련한 애정"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 179,
+    "fields": {
+        "flower_name": "장미",
+        "flower_content": "지적인 감각이 뛰어나고 세련된 삶입니다만 사랑에는 외모만을 찾는 타입이고 상대에게 주문도 많은 사람입니다.",
+        "flower_date": "6월 4일",
+        "flower_image": "daily/장미.jpg",
+        "flower_language": "아름답게 빛나는 얼굴모습"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 180,
+    "fields": {
+        "flower_name": "아마",
+        "flower_content": "손재주가 많군요. 플라워 디자인쪽에 인생의 승부수를 던져 보시지 않겠어요?",
+        "flower_date": "6월 3일",
+        "flower_image": "daily/아마.jpg",
+        "flower_language": "감사"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 181,
+    "fields": {
+        "flower_name": "매발톱꽃",
+        "flower_content": "연인이 뭔가를 지적하면 좋게 생각하고 솔직하게 받아 들이는 자세가 더욱 더 필요한 당신이군요.",
+        "flower_date": "6월 2일",
+        "flower_image": "daily/매발톱꽃.jpg",
+        "flower_language": "솔직"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 182,
+    "fields": {
+        "flower_name": "장미",
+        "flower_content": "장미꽃을 탄생화로 갖는 당신은 소극적이면서도 이상이 드높은 사람이군요. 용감한 자만이 미인을 얻는 법. 지나친 자존심은 사랑에 방해만 됩니다.",
+        "flower_date": "6월 1일",
+        "flower_image": "daily/장미.jpg",
+        "flower_language": "내 마음 그대만이 아네"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 183,
+    "fields": {
+        "flower_name": "호박",
+        "flower_content": "당신은 스케일이 큰 사람이므로 상대방도 반드시 같은 스타일이 좋겠군요.만약 그렇게 된다면 훌륭한 꿈이 꿈만으로 끝나지 않겠군요.",
+        "flower_date": "7월 31일",
+        "flower_image": "daily/호박.jpg",
+        "flower_language": "광대함"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 184,
+    "fields": {
+        "flower_name": "서양종 보리수",
+        "flower_content": "사랑과 꿈으로 채색된 당신의 인생. 훌륭한 파트너를 얻어 더 없이 행복해지겠군요.",
+        "flower_date": "7월 30일",
+        "flower_image": "daily/서양종+보리수.jpg",
+        "flower_language": "부부애"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 185,
+    "fields": {
+        "flower_name": "선인장",
+        "flower_content": "세상의 거친 파도를 견뎌내는 내성적인 당신. 겉모습과는 달리 불타는 듯한 사랑을 원하고 있습니다. 그 정열을 일하는데서도 살려 보세요.",
+        "flower_date": "7월 29일",
+        "flower_image": "daily/선인장.jpg",
+        "flower_language": "불타는 마음"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 186,
+    "fields": {
+        "flower_name": "패랭이꽃",
+        "flower_content": "꿀벌이 다른 곤충하고는 살수 없습니다. 순결한 애정이야말로 당신 그 자체라는 것을 자각해야 합니다. 난잡한 사랑은 어울리지 않습니다.",
+        "flower_date": "7월 28일",
+        "flower_image": "daily/패랭이꽃.jpg",
+        "flower_language": "언제나 사랑해"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 187,
+    "fields": {
+        "flower_name": "제라늄",
+        "flower_content": "물건이나 돈에 구애받지 않고 사랑을 간파하는 힘이 있습니다. 훌륭한 연애를 몇번 반복하다가 만혼하게 되지만 행복한 인생을 보내게 될 것입니다.",
+        "flower_date": "7월 27일",
+        "flower_image": "daily/제라늄.jpg",
+        "flower_language": "진실한 애정"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 188,
+    "fields": {
+        "flower_name": "향쑥",
+        "flower_content": "내가 뭔가 부족한 점이 있는걸까? 하고 자문자답을 거듭하기도 하는 당신. 그러나 부족한 점은 없습니다. 좀 더 자신을 가지면 어떨까요?",
+        "flower_date": "7월 26일",
+        "flower_image": "daily/향쑥.jpg",
+        "flower_language": "평화"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 189,
+    "fields": {
+        "flower_name": "말오줌나무",
+        "flower_content": "타협하지 않는 완고함이 있습니다. 연인에게는 질투도 잘 하는 편입니다. 그것을 조금만 자제를 한다면 좀 더 사랑받을 수 있을텐데…",
+        "flower_date": "7월 25일",
+        "flower_image": "daily/말오줌나무.jpg",
+        "flower_language": "열심"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 190,
+    "fields": {
+        "flower_name": "연령초",
+        "flower_content": "사랑고백에 서투른 당신. 행복을 위해서는 사랑을 표현하는 방식에 대한 연구가 필요하군요.",
+        "flower_date": "7월 24일",
+        "flower_image": "daily/연령초.jpg",
+        "flower_language": "그윽한 마음"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 191,
+    "fields": {
+        "flower_name": "장미",
+        "flower_content": "박애주의자인 당신. 누구나 호감을 느끼지만 결혼 상대는 신중하게 고르는게 좋겠군요.",
+        "flower_date": "7월 23일",
+        "flower_image": "daily/장미.jpg",
+        "flower_language": "아름다움"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 192,
+    "fields": {
+        "flower_name": "패랭이꽃",
+        "flower_content": "참하고 순수하고 신중한 사람이군요. 지금의 그모습 그대로 있는 한 어떠한 사랑도 당신 것입니다.",
+        "flower_date": "7월 22일",
+        "flower_image": "daily/패랭이꽃.jpg",
+        "flower_language": "사모"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 193,
+    "fields": {
+        "flower_name": "노랑 장미",
+        "flower_content": "너무 명랑해서 연애가 쉽지 않은 편이군요. 남들 중매는 잘섭니다만 자기기분도 소중하게 여기기를...",
+        "flower_date": "7월 21일",
+        "flower_image": "daily/노랑+장미.jpg",
+        "flower_language": "아름다움"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 194,
+    "fields": {
+        "flower_name": "가지",
+        "flower_content": "진실한 성격의 소유자군요. 진실한 사랑을 지켜갈 당신의 연인은 행복하겠군요",
+        "flower_date": "7월 20일",
+        "flower_image": "daily/가지.jpg",
+        "flower_language": "진실"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 195,
+    "fields": {
+        "flower_name": "백부자",
+        "flower_content": "키스하고 싶나요? 나를 안고싶나요? 그런 말을 아무렇지도 않게 할 수 있는 당신은 잔인한 사람이군요. 자신만만한 당신! 좀 더 자중이 필요하군요.",
+        "flower_date": "7월 19일",
+        "flower_image": "daily/백부자.jpg",
+        "flower_language": "아름답게 빛나다"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 196,
+    "fields": {
+        "flower_name": "이끼 장미",
+        "flower_content": "흐트러진 마음으로 고뇌의 밤을 거듭하는 당신. 그런 모습은 당신에게 어울리지 않습니다.",
+        "flower_date": "7월 18일",
+        "flower_image": "daily/이끼+장미.jpg",
+        "flower_language": "가련함"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 197,
+    "fields": {
+        "flower_name": "흰색 장미",
+        "flower_content": "첫사랑이 곧장 결혼으로 골인하기 쉬운 타입입니다. 만약 첫사랑이 거짓 사랑이라면 상처가 깊어지기 때문에 신중히 처신할 필요가 있겠군요.",
+        "flower_date": "7월  17일",
+        "flower_image": "daily/흰색+장미.jpg",
+        "flower_language": "존경"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 198,
+    "fields": {
+        "flower_name": "비단향 꽃무",
+        "flower_content": "고뇌로 계속된 나날에서 해방되어 마치 거짓말처럼 마음이 맑아졌을 때 가장 소중한 사람이 누구인지를 확실히 알게 되겠군요.",
+        "flower_date": "7월 16일",
+        "flower_image": "daily/비단향+꽃무.jpg",
+        "flower_language": "진정한 아름다움"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 199,
+    "fields": {
+        "flower_name": "들장미",
+        "flower_content": "아름다운 꽃에 좋은 열매가 열리지 않기 보다는 꽃도 열매도 풍성한 것을 원하듯이 행복한 인생을 꿈꾸고 있다면 사랑에도 적극성이 필요한 당신이군요.",
+        "flower_date": "7월 15일",
+        "flower_image": "daily/들장미.jpg",
+        "flower_language": "사랑스러움"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 200,
+    "fields": {
+        "flower_name": "플록스",
+        "flower_content": "조용하게 살아가고 있는 당신. 그렇지만 사랑의 감정이 불타오르더라도 얌전하기만 하면 아무것도 표현할 수 없습니다.",
+        "flower_date": "7월 14일",
+        "flower_image": "daily/플록스.jpg",
+        "flower_language": "온화"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 201,
+    "fields": {
+        "flower_name": "잡초의 꽃",
+        "flower_content": "풀은 땅바닥에 낮게 깔려서 무슨 일에서건 돋보이는 일이 없지만 사실은 세상사를 잘 알고 있습니다. 마찬가지로 당신은 현실적인 사람이군요.",
+        "flower_date": "7월 13일",
+        "flower_image": "daily/잡초의+꽃.jpg",
+        "flower_language": "실제적인 사람"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 202,
+    "fields": {
+        "flower_name": "입배풍동",
+        "flower_content": "자기발전 욕구가 강하고 노력형인 당신은 한눈 파는 일 없이 목표를 향하여 나아가는 끈질긴 면이 있습니다.",
+        "flower_date": "7월 12일",
+        "flower_image": "daily/입배풍동.jpg",
+        "flower_language": "참을 수 없어"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 203,
+    "fields": {
+        "flower_name": "아스포델",
+        "flower_content": "당신은 사랑의 시련기를 겪게 되겠군요. 그러나 시련을 뛰어 넘었을 때 두사람은 진심으로 서로 이해하고 사랑할 수 있게 되겠지요.",
+        "flower_date": "7월 11일",
+        "flower_image": "daily/아스포델.jpg",
+        "flower_language": "나는 당신의 것"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 204,
+    "fields": {
+        "flower_name": "초롱꽃",
+        "flower_content": "은혜에 보답하려는 마음이 다른사람보다 월등한 당신이지만 상대방이 너무 적극적으로 나서면 박정하게 잘라버리는 구석이 있겠군요.",
+        "flower_date": "7월 10일",
+        "flower_image": "daily/초롱꽃.jpg",
+        "flower_language": "감사"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 205,
+    "fields": {
+        "flower_name": "아이비 제라늄",
+        "flower_content": "참으로 우정이 두텁고 기민성이 넘쳐 남의 마음을 잘 읽는 타입 입니다.",
+        "flower_date": "7월 9일",
+        "flower_image": "daily/아이비+제라늄.jpg",
+        "flower_language": "진실한 애정"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 206,
+    "fields": {
+        "flower_name": "버드푸트",
+        "flower_content": "당신은 철저한 정의파, 악을 용서하지 않으며 다른이가 고통당하는 것을 보면 남모르게 도와주는 타입입니다.",
+        "flower_date": "7월 8일",
+        "flower_image": "daily/버드푸트.jpg",
+        "flower_language": "다시 만날 날까지"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 207,
+    "fields": {
+        "flower_name": "서양 까치밥나무",
+        "flower_content": "예술적인 재능이 있는 당신은 사랑하는 사람의 격려가 있다면 당신의 창조력은 한층 폭 넓어질 것입니다.",
+        "flower_date": "7월 7일",
+        "flower_image": "daily/서양+까치밥나무.jpg",
+        "flower_language": "예상"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 208,
+    "fields": {
+        "flower_name": "해바라기",
+        "flower_content": "암흑 성운속에서 나타나 찬란히 빛나는 별이 됩니다. 때문에 연애에서 결혼에 이르기까지는 오랜시간이 걸리겠군요.",
+        "flower_date": "7월 6일",
+        "flower_image": "daily/해바라기.jpg",
+        "flower_language": "애모"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 209,
+    "fields": {
+        "flower_name": "라벤더",
+        "flower_content": "말수가 적고 내성적이며 온후한 인상의 소유자군요. 하지만 사실은 의외로 밝고 향기 짙은 면이 있습니다.",
+        "flower_date": "7월 5일",
+        "flower_image": "daily/라벤더.jpg",
+        "flower_language": "풍부한 향기"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 210,
+    "fields": {
+        "flower_name": "자목련",
+        "flower_content": "방자한 사랑은 언젠가 끝장나기 마련입니다. 장엄한 사랑만이 당신에게 행복을 가져다 줄 것입니다.",
+        "flower_date": "7월 4일",
+        "flower_image": "daily/자목련.jpg",
+        "flower_language": "자연애"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 211,
+    "fields": {
+        "flower_name": "흰색 양귀비",
+        "flower_content": "사랑에 잠들어 있는 당신. 일어나세요. 그대로는 사랑을 잃고 맙니다.",
+        "flower_date": "7월 3일",
+        "flower_image": "daily/흰색+양귀비.jpg",
+        "flower_language": "망각"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 212,
+    "fields": {
+        "flower_name": "금어초",
+        "flower_content": "건방지다든가 삐쳐있다고 오해받기 쉬운 성격의 소유자군요. 좀더 자기입장을 적극적으로 설명하려는 노력이 필요하군요. 그 편이 연애에도 도움이 될테니까요.",
+        "flower_date": "7월 2일",
+        "flower_image": "daily/금어초.jpg",
+        "flower_language": "욕망"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 213,
+    "fields": {
+        "flower_name": "단양쑥부쟁이",
+        "flower_content": "남들 눈에 띄고 싶어하기도 하고 시대의 첨단을 걷는 사람이군요. 또 무엇이든 잘 할 수 있지만 깊이가 없군요.",
+        "flower_date": "7월 1일",
+        "flower_image": "daily/단양쑥부쟁이.jpg",
+        "flower_language": "태만"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 214,
+    "fields": {
+        "flower_name": "토끼풀",
+        "flower_content": "\"당신 가슴속의 슬픔은 나의 슬픔\" 이렇게 속삭여 주는 사람을 찾고 있는 당신은 사랑의 방랑자, 이제 멈추고 \"당신의 기쁨은 나의 기쁨\" 이라고 말해주는 사람을 찾으세요.",
+        "flower_date": "8월 31일",
+        "flower_image": "daily/토끼풀.jpg",
+        "flower_language": "약속"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 215,
+    "fields": {
+        "flower_name": "저먼더",
+        "flower_content": "무엇이든 간단히 생각하고 있는 듯이 보이기 쉽지만 사실은 선천적인 재능으로 직관적인 결단을 하고 있는 당신이군요.",
+        "flower_date": "8월 30일",
+        "flower_image": "daily/저먼더.jpg",
+        "flower_language": "담백"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 216,
+    "fields": {
+        "flower_name": "꽃담배",
+        "flower_content": "당신만 있다면 인생은 장미빛이라고 믿는 누군가가 있다면 꼭 붙잡으세요.",
+        "flower_date": "8월 29일",
+        "flower_image": "daily/꽃담배.jpg",
+        "flower_language": "그대 있어 외롭지 않네"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 217,
+    "fields": {
+        "flower_name": "에린지움",
+        "flower_content": "자기 표현에 서투르며 쓸쓸해 하고 고독을 사랑하는 당신. 좀 더 당신의 기분을 개방해 보세요.",
+        "flower_date": "8월 28일",
+        "flower_image": "daily/에린지움.jpg",
+        "flower_language": "비밀스런 애정"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 218,
+    "fields": {
+        "flower_name": "고비",
+        "flower_content": "조용히 생각에 빠지는 것도 좋지만 사랑하는 사람과 함께 있을 때는 너무 생각에만 빠지지 마세요.",
+        "flower_date": "8월 27일",
+        "flower_image": "daily/고비.jpg",
+        "flower_language": "몽상"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 219,
+    "fields": {
+        "flower_name": "하이포시스 오리어",
+        "flower_content": "돌다리도 두드려 보고 건너는 타입이군요. 조금은 무모하게 뭔가를 해보는 것도 필요한 당신입니다.",
+        "flower_date": "8월 26일",
+        "flower_image": "daily/하이포시스+오리어.jpg",
+        "flower_language": "빛을 찾다"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 220,
+    "fields": {
+        "flower_name": "안시륨",
+        "flower_content": "오로지 당신 한 사람의 하인이 되어 사랑의 꽃을 피우고 싶습니다. 그런 정열적인 사랑을 하는 사람이군요.",
+        "flower_date": "8월 25일",
+        "flower_image": "daily/안시륨.jpg",
+        "flower_language": "사랑에 번민하는 마음"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 221,
+    "fields": {
+        "flower_name": "금잔화",
+        "flower_content": "당신은 헤어질 때마다 격렬하게 슬퍼하는 사람이군요. 하지만 만남이 있으면 이별이 있고 헤어짐이 있기 때문에 희망도 생기는 것입니다.",
+        "flower_date": "8월 24일",
+        "flower_image": "daily/금잔화.jpg",
+        "flower_language": "이별의 슬픔"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 222,
+    "fields": {
+        "flower_name": "서양종 보리수",
+        "flower_content": "정열적인 당신. 상대가 의기 소침해지려 할 때 상대방을 잘 지켜주세요.",
+        "flower_date": "8월 8월23일",
+        "flower_image": "daily/서양종+보리수.jpg",
+        "flower_language": "부부애"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 223,
+    "fields": {
+        "flower_name": "스피리아",
+        "flower_content": "언동이 명확한 사람. 당신은 올바른 만큼 독선적이기 쉬운 경향이 있군요. 조금쯤 느슨해져 볼 필요도 있겠군요.",
+        "flower_date": "8월 22일",
+        "flower_image": "daily/스피리아.jpg",
+        "flower_language": "노력"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 224,
+    "fields": {
+        "flower_name": "짚신 나물",
+        "flower_content": "사람들을 기쁘게 하고 만족을 주는 것이 당신의 행복이군요. 틀림없이 멋진 연인이 나타날 것입니다.",
+        "flower_date": "8월 21일",
+        "flower_image": "daily/짚신+나물.jpg",
+        "flower_language": "감사"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 225,
+    "fields": {
+        "flower_name": "프리지아",
+        "flower_content": "순진함, 순정, 청순함을 그림으로 그려 놓은듯한 사람. 달콤한 거짓말에 그만 속고 맙니다. 때문에 장난스런 사랑을 해서는 안됩니다.",
+        "flower_date": "8월 20일",
+        "flower_image": "daily/프리지아.jpg",
+        "flower_language": "순결"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 226,
+    "fields": {
+        "flower_name": "로사 캠피온",
+        "flower_content": "기지가 풍부하여 재미있는 대화를 잘하는 당신 누구에게나 호감을 삽니다.",
+        "flower_date": "8월 19일",
+        "flower_image": "daily/로사+캠피온.jpg",
+        "flower_language": "성실"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 227,
+    "fields": {
+        "flower_name": "접시꽃",
+        "flower_content": "두가지 길을 앞두고 있을 때는 사랑하는 사람이 있는 길로 걷는 것이 행복을 향한 지름길입니다.",
+        "flower_date": "8월 18일",
+        "flower_image": "daily/접시꽃.jpg",
+        "flower_language": "열렬한 사랑"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 228,
+    "fields": {
+        "flower_name": "튤립나무",
+        "flower_content": "마음씨 좋기로는 천하일품. 당신이 정신적으로 고개숙여 상대방에게 맞춘다면 만사는 잘 될 것입니다.",
+        "flower_date": "8월 17일",
+        "flower_image": "daily/튤립나무.jpg",
+        "flower_language": "전원의 행복"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 229,
+    "fields": {
+        "flower_name": "타마린드",
+        "flower_content": "연애 상대에게도 기품을 요구하는 당신. 자신을 갈고 닦아서 조화로운 사람이 될 수 있도록 노력해야겠군요.",
+        "flower_date": "8월 16일",
+        "flower_image": "daily/타마린드.jpg",
+        "flower_language": "사치"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 230,
+    "fields": {
+        "flower_name": "해바라기",
+        "flower_content": "다른 사람에게 오만하게 비치는 면도 있고 그것이 장애물이 되고 있습니다. 따라서 존경하는 사람을 통해 좋은 점을 배웠으면 합니다.",
+        "flower_date": "8월 15일",
+        "flower_image": "daily/해바라기.jpg",
+        "flower_language": "아름다운 빛"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 231,
+    "fields": {
+        "flower_name": "저먼더",
+        "flower_content": "자연스러움과 기교를 겸비한 당신은 다른 사람들이 보배롭게 여기고 있습니다.",
+        "flower_date": "8월 14일",
+        "flower_image": "daily/저먼더.jpg",
+        "flower_language": "경애"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 232,
+    "fields": {
+        "flower_name": "골든 로드",
+        "flower_content": "다른 사람의 거짓말을 간파하는데 서투른 당신, 고민거리가 많은 편이군요. 인생을 좀더 쉽게 생각하고 흐름에 몸을 맡기는 것도 중요합니다.",
+        "flower_date": "8월 13일",
+        "flower_image": "daily/골든 로드.jpg",
+        "flower_language": "경계"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 233,
+    "fields": {
+        "flower_name": "협죽도",
+        "flower_content": "우정이야, 사랑이냐, 차마 결심하지 못하고 고민하는 나날을 보내게 될 것 같군요",
+        "flower_date": "8월 12일",
+        "flower_image": "daily/협죽도.jpg",
+        "flower_language": "위험"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 234,
+    "fields": {
+        "flower_name": "무늬제라늄",
+        "flower_content": "쓸쓸한 사람이나 슬픈 사람과 만나면 어떡하든 위로해주고 싶어하는 당신. 당신 자신도 쓸쓸해하는 사람이군요.",
+        "flower_date": "8월 11일",
+        "flower_image": "daily/무늬제라늄.jpg",
+        "flower_language": "위안"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 235,
+    "fields": {
+        "flower_name": "이끼",
+        "flower_content": "자극적인 사랑은 가시투성이어서 위험하기 짝이 없습니다. 지적이고 합리주의자인 당신이지만 어머니의 사랑같은 차분함을 체득한다면 정말로 매력적으로 될 것입니다",
+        "flower_date": "8월 10일",
+        "flower_image": "daily/이끼.jpg",
+        "flower_language": "모성애"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 236,
+    "fields": {
+        "flower_name": "시스터스",
+        "flower_content": "당신의 인기는 호감을 끌기 위한 테크닉이 능숙합니다. 그 테크닉에만 의지하면 자칫 팔방미인으로 보일지도 모르니 주의가 필요합니다.",
+        "flower_date": "8월 9일",
+        "flower_image": "daily/시스터스.jpg",
+        "flower_language": "인기"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 237,
+    "fields": {
+        "flower_name": "진달래",
+        "flower_content": "순정파인 당신은 많은 사람들의 마음을 사로잡고 놓아주지 않는군요. 그러나 너무 순진무구하기 때문에 외롭고 괴로운 나날을 보내고 있군요.",
+        "flower_date": "8월 8일",
+        "flower_image": "daily/진달래.jpg",
+        "flower_language": "사랑의 희열"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 238,
+    "fields": {
+        "flower_name": "석류",
+        "flower_content": "서로 사랑하고 있다면 아무리 멀리 떨어져 있어도 마음은 서로 통할 것입니다. 자부심이 필요한 당신입니다.",
+        "flower_date": "8월 7일",
+        "flower_image": "daily/석류.jpg",
+        "flower_language": "원숙한 아름다움"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 239,
+    "fields": {
+        "flower_name": "능소화",
+        "flower_content": "당신은 산다는 것의 기쁨을 알고 있는 사람입니다. 그 기쁨을 연인에게 나누어 주십시오.",
+        "flower_date": "8월 6일",
+        "flower_image": "daily/능소화.jpg",
+        "flower_language": "명예"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 240,
+    "fields": {
+        "flower_name": "엘리카",
+        "flower_content": "자신에게 엄격하고 고독을 사랑하는 당신. 파트너는 조금 응석을 부리는 사람이 잘 어울리겠군요.",
+        "flower_date": "8월 5일",
+        "flower_image": "daily/엘리카.jpg",
+        "flower_language": "고독"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 241,
+    "fields": {
+        "flower_name": "옥수수",
+        "flower_content": "당신은 비밀스런 연애는 하지 못하는 타입이군요. 당신의 파트너는 복받은 사람이군요.",
+        "flower_date": "8월 4일",
+        "flower_image": "daily/옥수수.jpg",
+        "flower_language": "재보"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 242,
+    "fields": {
+        "flower_name": "수박꽃",
+        "flower_content": "당신은 지금도 낭만주의자입니다. 상처를 받을 수도 있겠으나 그 아름다움을 잃지 않도록 하십시오. 반드시 행복이 찾아 들 것입니다.",
+        "flower_date": "8월 3일",
+        "flower_image": "daily/수박꽃.jpg",
+        "flower_language": "아가씨의 아름다운 자태"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 243,
+    "fields": {
+        "flower_name": "수레 국화",
+        "flower_content": "너무 적극적이서 실연당할 위험성도 있습니다. 하지만 그런 당신에게 열중할 수 있는 이성이 있을 것입니다.",
+        "flower_date": "8월 2일",
+        "flower_image": "daily/수레+국화.jpg",
+        "flower_language": "행복"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 244,
+    "fields": {
+        "flower_name": "양귀비",
+        "flower_content": "사랑하는 사람에게는 목숨을 다 바치는 타입이지만 금방 싫증 내겠군요.",
+        "flower_date": "8월 1일",
+        "flower_image": "daily/양귀비.jpg",
+        "flower_language": "위로"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 245,
+    "fields": {
+        "flower_name": "삼나무",
+        "flower_content": "\"당신을 위해서라면 목숨이라도 바치겠다. 그런사람이 주위에 있을 것입니다. 주위를 둘러 보아서 뜨거운 눈길이 느껴지면 우선은 친구가 되어 보세요.",
+        "flower_date": "9월 30일",
+        "flower_image": "daily/삼나무.jpg",
+        "flower_language": "웅대"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 246,
+    "fields": {
+        "flower_name": "사과",
+        "flower_content": "뒤로 내빼려고 하지 말고 정면으로 나아가십시오. 그러면 당신이 반한 사람이 곧 당신의 사람이 될 것입니다.",
+        "flower_date": "9월 29일",
+        "flower_image": "daily/사과.jpg",
+        "flower_language": "명성"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 247,
+    "fields": {
+        "flower_name": "색비름",
+        "flower_content": "단기간내에 사람을 간파할 방법은 직관밖에 없어 사랑은 직관에 의하는데도 당신은 직관력이 빈약하군요.",
+        "flower_date": "9월 28일",
+        "flower_image": "daily/색비름.jpg",
+        "flower_language": "애정"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 248,
+    "fields": {
+        "flower_name": "떡갈나무",
+        "flower_content": "떡갈나무를 탄생화로 갖는 당신은 개방적이며 낙천적인 타입이군요.",
+        "flower_date": "9월 27일",
+        "flower_image": "daily/떡갈나무.jpg",
+        "flower_language": "사랑은 영원히"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 249,
+    "fields": {
+        "flower_name": "감",
+        "flower_content": "당신의 발상은 모두 대자연과 장대한 만남에서 생겨난 것입니다. 대화에 능숙하고 실행력이 뛰어납니다.",
+        "flower_date": "9월 26일",
+        "flower_image": "daily/감.jpg",
+        "flower_language": "자연미"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 250,
+    "fields": {
+        "flower_name": "메귀리",
+        "flower_content": "당신은 매력적인 사람이지만 자신과 맞지 않은 사람을 철저하게 미워하는 경향이 있습니다. 좀더 대담해진다면 멋진 인생을 즐길 수 있겠군요.",
+        "flower_date": "9월 25일",
+        "flower_image": "daily/메귀리.jpg",
+        "flower_language": "음악을 좋아함"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 251,
+    "fields": {
+        "flower_name": "오렌지나무",
+        "flower_content": "당신과 함께있는 것만으로도 상대방은 의기 소침함을 금방 떨쳐 버릴 수 있겠군요.",
+        "flower_date": "9월 24일",
+        "flower_image": "daily/오렌지나무.jpg",
+        "flower_language": "새색시의 기쁨"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 252,
+    "fields": {
+        "flower_name": "주목",
+        "flower_content": "어딘지 사람을 가까이 접근하지 못하게 하는 분위기가 있어 사랑하는 사람도 당신의 높은 긍지에 자신감을 잃고 떠나기 쉽겠군요. 진심을 갖고 교제하는게 필요합니다.",
+        "flower_date": "9월 23일",
+        "flower_image": "daily/주목.jpg",
+        "flower_language": "고상함"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 253,
+    "fields": {
+        "flower_name": "퀘이킹 그라스",
+        "flower_content": "당신은 토론을 좋아하는 감격파. 쉽게 분위기에 빠지는 탓에 나중에 후회하는 일도 있으므로 주의가 필요합니다.",
+        "flower_date": "9월 22일",
+        "flower_image": "daily/퀘이킹+그라스.jpg",
+        "flower_language": "흥분"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 254,
+    "fields": {
+        "flower_name": "사프란",
+        "flower_content": "사랑하는 사람과 멋진 추억을 공유하도록 하세요. 그렇지 않으면 서로 다른 인생을 보내게 될지도 모릅니다.",
+        "flower_date": "9월 21일",
+        "flower_image": "daily/사프란.jpg",
+        "flower_language": "후회스런 청춘"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 255,
+    "fields": {
+        "flower_name": "로즈메리",
+        "flower_content": "당신과 이야기하는 것만으로도 가슴속의 답답함이 해소되는 것만 같습니다. 그러나 정작 자기일을 상담하는 것은 서투르군요.",
+        "flower_date": "9월 20일",
+        "flower_image": "daily/로즈메리.jpg",
+        "flower_language": "나를 생각해요"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 256,
+    "fields": {
+        "flower_name": "사초",
+        "flower_content": "감수성이 예민한 사람이군요. 좋고 싫고가 명확하여 그것을 감추는데 서투르군요. 조금쯤은 참는 것도 필요합니다.",
+        "flower_date": "9월 19일",
+        "flower_image": "daily/사초.jpg",
+        "flower_language": "자중"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 257,
+    "fields": {
+        "flower_name": "엉겅퀴",
+        "flower_content": "독립심이 왕성한 사람. 스스로에게 엄격하고 앞날을 정확하게 내다보는 사람이군요.",
+        "flower_date": "9월 18일",
+        "flower_image": "daily/엉겅퀴.jpg",
+        "flower_language": "엄격"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 258,
+    "fields": {
+        "flower_name": "에리카",
+        "flower_content": "파랑새를 찾으려면 우선 행동해야 합니다. 혼자서 고민하며 헤매기만 해서는 영원히 찾을 수 없습니다.",
+        "flower_date": "9월 17일",
+        "flower_image": "daily/에리카.jpg",
+        "flower_language": "고독"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 259,
+    "fields": {
+        "flower_name": "용담",
+        "flower_content": "당신은 정의감이 투철한 사람입니다. 설령 당신을 지지하는 사람이 없다 해도 타협하지 마세요. 그런 고독감이 감돌 때 당신의 매력은 가장 밝게 빛난답니다.",
+        "flower_date": "9월 16일",
+        "flower_image": "daily/용담.jpg",
+        "flower_language": "정의"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 260,
+    "fields": {
+        "flower_name": "다알리아",
+        "flower_content": "사랑받기를 좋아합니다. 하지만 그것은 누구나 마찬가지. 사랑받기 위한 노력을 태만히 해서는 안됩니다.",
+        "flower_date": "9월 15일",
+        "flower_image": "daily/다알리아.jpg",
+        "flower_language": "화려함"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 261,
+    "fields": {
+        "flower_name": "마르멜로",
+        "flower_content": "당신은 인기가 많은 만큼 유혹도 많이 받겠군요. 하지만 유혹에 쉽게 넘어가지 않을 때 무슨일이든 잘 되겠군요.",
+        "flower_date": "9월 14일",
+        "flower_image": "daily/마르멜로.jpg",
+        "flower_language": "유혹"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 262,
+    "fields": {
+        "flower_name": "버드나무",
+        "flower_content": "사교적이고 우연한 대응력이 있는 사람, 유쾌한 사람이어서 인기가 있군요.",
+        "flower_date": "9월 13일",
+        "flower_image": "daily/버드나무.jpg",
+        "flower_language": "솔직"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 263,
+    "fields": {
+        "flower_name": "클레마티스",
+        "flower_content": "달콤한 말에 \"이 사람이라도\" 하고 타협하면 그만 심각한 처지에 빠지기 쉬우므로 자신의 안전기준을 믿으세요.",
+        "flower_date": "9월 12일",
+        "flower_image": "daily/클레마티스.jpg",
+        "flower_language": "마음의 아름다움"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 264,
+    "fields": {
+        "flower_name": "알로에",
+        "flower_content": "정신적으로 침체되기 쉬운 당신에게 필요한 것은 망설이지 않고 자기 의지를 관철하는 것입니다.",
+        "flower_date": "9월 11일",
+        "flower_image": "daily/알로에.jpg",
+        "flower_language": "꽃도 잎새도"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 265,
+    "fields": {
+        "flower_name": "과꽃",
+        "flower_content": "당신은 서로의 인격을 존중하고 사랑하고 사랑받는 깨끗한 연애를 선호하는 타입이군요.",
+        "flower_date": "9월 10일",
+        "flower_image": "daily/과꽃.jpg",
+        "flower_language": "믿는 마음"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 266,
+    "fields": {
+        "flower_name": "갯개미취",
+        "flower_content": "옛날 일 따위는 깨끗이 잊는 사람들이 많은 가운데서도 당신은 옛 일을 어제 일처럼 생각하는 사람이군요. 이별과 만남 이것이 인생이랍니다.",
+        "flower_date": "9월 9일",
+        "flower_image": "daily/갯개미취.jpg",
+        "flower_language": "추억"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 267,
+    "fields": {
+        "flower_name": "갓",
+        "flower_content": "작은 투자로 막대한 이익을 올리는 것이 당신의 재능입니다.",
+        "flower_date": "9월 8일",
+        "flower_image": "daily/갓.jpg",
+        "flower_language": "무관심"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 268,
+    "fields": {
+        "flower_name": "오렌지",
+        "flower_content": "순수하고 관대하며 상냥한 사람입니다. 사랑스러움으로 호감을 사는 사람입니다.",
+        "flower_date": "9월 7일",
+        "flower_image": "daily/오렌지.jpg",
+        "flower_language": "새색시의 기쁨"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 269,
+    "fields": {
+        "flower_name": "한련",
+        "flower_content": "얼핏 차갑고 배려심이 없는 듯이 보이기 쉽습니다만 그것은 기품있는 인격을 갖추었기에 소소한 것에는 흥미가 없어서 이군요.",
+        "flower_date": "9월 6일",
+        "flower_image": "daily/한련.jpg",
+        "flower_language": "애국심"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 270,
+    "fields": {
+        "flower_name": "느릅나무",
+        "flower_content": "신뢰감을 중요시 하는 당신. 쓰라린 일이 있더라도 남들에 대한 믿음을 포기하지 마세요.",
+        "flower_date": "9월 5일",
+        "flower_image": "daily/느릅나무.jpg",
+        "flower_language": "신뢰"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 271,
+    "fields": {
+        "flower_name": "뱀무",
+        "flower_content": "당신은 전도 양양한 사람으로 커다란 희망을 품고서 전진하면 그만큼 충실한 인생을 살게 될 것입니다.",
+        "flower_date": "9월 4일",
+        "flower_image": "daily/뱀무.jpg",
+        "flower_language": "만족된 사랑"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 272,
+    "fields": {
+        "flower_name": "마거리트",
+        "flower_content": "스스로 자신의 사랑을 점치고 물러나기 쉬운 타입이군요. 상대방의 마음을 알더라도 좋아한다면 적극적으로 나서서 상대방을 변화시키는 용기가 필요하군요",
+        "flower_date": "9월 3일",
+        "flower_image": "daily/마거리트.jpg",
+        "flower_language": "마음속에 감춘 사랑"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 273,
+    "fields": {
+        "flower_name": "멕시칸 아이비",
+        "flower_content": "좋은 소문이건 나쁜 소문이건 구설수에 오르기 쉽겠군요. 항상 신중히 생각한 후 행동하는게 필요합니다.",
+        "flower_date": "9월 2일",
+        "flower_image": "daily/멕시칸+아이비.jpg",
+        "flower_language": "변화"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 274,
+    "fields": {
+        "flower_name": "호랑이꽃",
+        "flower_content": "당신은 사랑의 천사로 남 도와주기를 좋아하는군요. 그런데 정작 자신의 일은 서투르군요.",
+        "flower_date": "9월 1일",
+        "flower_image": "daily/호랑이꽃.jpg",
+        "flower_language": "나를 사랑해 주세요"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 275,
+    "fields": {
+        "flower_name": "카라",
+        "flower_content": "정열과 내성적인 면이 양면해 있는 당신이군요. 스스로에게 정직해지는게 중요합니다",
+        "flower_date": "10월 31일",
+        "flower_image": "daily/카라.jpg",
+        "flower_language": "열혈"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 276,
+    "fields": {
+        "flower_name": "로벨리아",
+        "flower_content": "모든이의 의견을 정확하게 정리 파악하고 옳지않은 생각은 강력하게 배제하는 당신입니다. 때로는 옳지 않아도 화보다는 이해가 필요합니다.",
+        "flower_date": "10월 30일",
+        "flower_image": "daily/로벨리아.jpg",
+        "flower_language": "악의"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 277,
+    "fields": {
+        "flower_name": "해당화",
+        "flower_content": "넓고 얕게 경험을 쌓는 타입. 연애도 서툰 듯 보이지만 사실은 능숙합니다.",
+        "flower_date": "10월 29일",
+        "flower_image": "daily/해당화.jpg",
+        "flower_language": "이끄시는 대로"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 278,
+    "fields": {
+        "flower_name": "무궁화",
+        "flower_content": "사람을 끌어당기는 자석과도 같은 사람. 신념에 기초해서 직설적인 솔직함을 그대로 유지하세요.",
+        "flower_date": "10월 28일",
+        "flower_image": "daily/무궁화.jpg",
+        "flower_language": "델리케이트한 아름다움"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 279,
+    "fields": {
+        "flower_name": "들장미",
+        "flower_content": "소박하고 내성적인 당신. 화려함을 탐탁해 하지 않습니다. 그렇다고 해서 연인의 화려함까지 탓하면 자칫 사랑에 금이 갈 수도 있습니다.",
+        "flower_date": "10월 27일",
+        "flower_image": "daily/들장미.jpg",
+        "flower_language": "시"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 280,
+    "fields": {
+        "flower_name": "수영",
+        "flower_content": "너무 우쭐대지 말고 동성에게도 신경을 좀 씁시다. 적을 만들면 연인이 생겼을 때 곤란한 일이 생길지도 모릅니다.",
+        "flower_date": "10월 26일",
+        "flower_image": "daily/수영.jpg",
+        "flower_language": "애정"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 281,
+    "fields": {
+        "flower_name": "단풍나무",
+        "flower_content": "내성적이고 자제심이 있는 사람인 당신은 견실한 사람입니다.",
+        "flower_date": "10월 25일",
+        "flower_image": "daily/단풍나무.jpg",
+        "flower_language": "염려"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 282,
+    "fields": {
+        "flower_name": "매화",
+        "flower_content": "기품있고 착한 마음씨의 당신. 티끌하나 없이 해맑게 개인 하늘과도 같은 인격이로군요.",
+        "flower_date": "10월 24일",
+        "flower_image": "daily/매화.jpg",
+        "flower_language": "고결한 마음"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 283,
+    "fields": {
+        "flower_name": "흰독말풀",
+        "flower_content": "상냥하고 귀여운 당신. 허식이나 겉모양에 현혹되지 말고 정말로 신뢰할 수 있는 사람을 사랑합시다.",
+        "flower_date": "10월 23일",
+        "flower_image": "daily/흰독말풀.jpg",
+        "flower_language": "경애"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 284,
+    "fields": {
+        "flower_name": "벗풀",
+        "flower_content": "사랑하는 마음에 의심이나 주저함이 조금이라도 있으면 그 사람과는 헤어져야 합니다. 자신의 직감을 믿는 편이 결과적으로 행복과 연결됩니다.",
+        "flower_date": "10월 22일",
+        "flower_image": "daily/벗풀.jpg",
+        "flower_language": "신뢰"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 285,
+    "fields": {
+        "flower_name": "엉겅퀴",
+        "flower_content": "당신이 만약 독립할 계획을 갖고 있다면 그 계획은 성공할 것입니다. 왜냐하면 당신은 엄격하게 관리할 수 있는 사람이니까요.",
+        "flower_date": "10월 21일",
+        "flower_image": "daily/엉겅퀴.jpg",
+        "flower_language": "독립"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 286,
+    "fields": {
+        "flower_name": "마",
+        "flower_content": "마음에 들지 않는 일은 쉽게 체념하는 당신이군요. 처세에 능한 것인지도 모르지만 사랑하는 사람과 함께 사는 경우는 그것이 통하지 않는다는 것을 명심하세요.",
+        "flower_date": "10월 20일",
+        "flower_image": "daily/마.jpg",
+        "flower_language": "운명"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 287,
+    "fields": {
+        "flower_name": "봉선화",
+        "flower_content": "명랑하고 쾌활한 성격. 성질이 급하여 금방 내팽개치고 마는 것이 결점이군요.",
+        "flower_date": "10월 19일",
+        "flower_image": "daily/봉선화.jpg",
+        "flower_language": "날 건드리지 마세요"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 288,
+    "fields": {
+        "flower_name": "넌출월귤",
+        "flower_content": "신비한 매력이 있는 당신. 상대방이 왜 말을 건네었는지 잘 간파하지 않으면 소중한 만남을 아깝게 놓치고 맙니다.",
+        "flower_date": "10월 18일",
+        "flower_image": "daily/넌출월귤.jpg",
+        "flower_language": "마음의 고통을 위로하다"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 289,
+    "fields": {
+        "flower_name": "포도",
+        "flower_content": "남에게 상냥한 당신. 남들만이 아니라 자기일도 소중히 살피세요. 특히 연인에게는…",
+        "flower_date": "10월 17일",
+        "flower_image": "daily/포도.jpg",
+        "flower_language": "신뢰"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 290,
+    "fields": {
+        "flower_name": "이끼장미",
+        "flower_content": "순진무구한 당신. 친구들도 역시 명랑한 사람들뿐입니다. 친구를 소중히 여기도록 하세요.",
+        "flower_date": "10월 16일",
+        "flower_image": "daily/이끼장미.jpg",
+        "flower_language": "순진무구"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 291,
+    "fields": {
+        "flower_name": "흰색 국화",
+        "flower_content": "널리 알려지는 지도자가 될 수 있는 사람입니다. 많은 사람들의 소망을 실현시키고자 하는 노력이 요구됩니다.",
+        "flower_date": "10월 15일",
+        "flower_image": "daily/스위트+바즐.jpg",
+        "flower_language": "좋은 희망"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 292,
+    "fields": {
+        "flower_name": "이끼장미",
+        "flower_content": "고결하고 순결한 당신. 그러나 때때로 조잡하고 유치한 또 다른 모습의 자신을 드러냅니다. 그것도 귀엽기는 하지만 지나치면 위험신호 입니다.",
+        "flower_date": "10월 14일",
+        "flower_image": "daily/흰색+국화.jpg",
+        "flower_language": "진실"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 293,
+    "fields": {
+        "flower_name": "조팝나무",
+        "flower_content": "힘껏 노력했음에도 수포로 돌아가는 경험을 하기 쉬운 사람입니다. 그렇지만 실패가 있어야 성공도 있는 것입니다.",
+        "flower_date": "10월 13일",
+        "flower_image": "daily/조팝나무.jpg",
+        "flower_language": "단정한 사랑"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 294,
+    "fields": {
+        "flower_name": "월귤",
+        "flower_content": "실연을 당해도 의기소침해하지 않는 당신은 행복을 쟁취할 수 있을 것입니다.",
+        "flower_date": "10월 12일",
+        "flower_image": "daily/월귤.jpg",
+        "flower_language": "반항심"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 295,
+    "fields": {
+        "flower_name": "부처꽃",
+        "flower_content": "꿈에서까지 눈물을 흘리는 당신. 감성보다는 좀 더 현실적인 마음자세가 필요합니다.",
+        "flower_date": "10월 11일",
+        "flower_image": "daily/부처꽃.jpg",
+        "flower_language": "사랑의 슬픔"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 296,
+    "fields": {
+        "flower_name": "멜론",
+        "flower_content": "샘처럼 솟아나는 풍부한 발상을 갖고 있는 당신. 그 발상으로 사람들을 행복하게 해주세요.",
+        "flower_date": "10월 10일",
+        "flower_image": "daily/멜론.jpg",
+        "flower_language": "포식"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 297,
+    "fields": {
+        "flower_name": "회향",
+        "flower_content": "강건한 의지로 강인하게 살고 있는 당신이지만 때때로 힘에 겨워 근심으로 가득찬 표정을 드러내고 있군요.",
+        "flower_date": "10월 9일",
+        "flower_image": "daily/회향.jpg",
+        "flower_language": "극찬"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 298,
+    "fields": {
+        "flower_name": "파슬리",
+        "flower_content": "친구들과 어울리기를 좋아하는 당신. 그것을 잘 활용하면 무슨 일에서든 성공하겠군요.",
+        "flower_date": "10월 8일",
+        "flower_image": "daily/파슬리.jpg",
+        "flower_language": "승리"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 299,
+    "fields": {
+        "flower_name": "전나무",
+        "flower_content": "깨끗한 생애를 살 사람입니다. 노력을 게을리 하면 남들과 거의 비슷하게 되므로 유의해야겠군요.",
+        "flower_date": "10월 7일",
+        "flower_image": "daily/전나무.jpg",
+        "flower_language": "고상함"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 300,
+    "fields": {
+        "flower_name": "개암나무",
+        "flower_content": "냉정한 당신은 사랑에 불타오르기 위해서는 냉정함을 버릴 각오가 필요합니다.",
+        "flower_date": "10월 6일",
+        "flower_image": "daily/개암나무.jpg",
+        "flower_language": "화해"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 301,
+    "fields": {
+        "flower_name": "종려나무",
+        "flower_content": "주변사람들이 당신에게서 승리의 영감을 느끼기 때문에 많은 축복을 받겠군요.",
+        "flower_date": "10월 5일",
+        "flower_image": "daily/종려나무.jpg",
+        "flower_language": "승리"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 302,
+    "fields": {
+        "flower_name": "호프",
+        "flower_content": "장난이 심한 당신은 개방적인 성격의 소유자로군요. 때때로 장난이 지나쳐서 인간관계를 망치는 실수도 할 수 있으니 유의해야 합니다.",
+        "flower_date": "10월 4일",
+        "flower_image": "daily/호프.jpg",
+        "flower_language": "순진무구"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 303,
+    "fields": {
+        "flower_name": "단풍나무",
+        "flower_content": "돌아오지 않은 첫사랑의 추억에 폭 빠지고 마는 당신. 새로운 사랑을 찾아야만 생활에 활기를 가져올 수 있습니다.",
+        "flower_date": "10월 3일",
+        "flower_image": "daily/단풍나무.jpg",
+        "flower_language": "자제"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 304,
+    "fields": {
+        "flower_name": "살구",
+        "flower_content": "경솔하다거나 무분별하다는 말을 아주 싫어하는 사람이어서 연애도 서툴겠군요. 자신의 기준을 잠시 제쳐 놓아 보세요.",
+        "flower_date": "10월 2일",
+        "flower_image": "daily/살구.jpg",
+        "flower_language": "아가씨의 수줍음"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 305,
+    "fields": {
+        "flower_name": "빨강 국화",
+        "flower_content": "애정면에서는 일종의 독특한 영감을 발휘하는 당신이군요.",
+        "flower_date": "10월 1일",
+        "flower_image": "daily/빨강+국화.jpg",
+        "flower_language": "사랑"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 306,
+    "fields": {
+        "flower_name": "낙엽",
+        "flower_content": "재산운은 있으나 연애에는 소질이 없군요. 연애에서는 자유스런 발상을 한다면 훌륭한 사랑을 할 수 있답니다.",
+        "flower_date": "11월 30일",
+        "flower_image": "daily/낙엽.jpg",
+        "flower_language": "기다림"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 307,
+    "fields": {
+        "flower_name": "바카리스",
+        "flower_content": "자신의 이상에 대해 주관과 추진력이 뚜렷하군요. 그 때문에 만혼이 될 수도 있겠군요.",
+        "flower_date": "11월 29일",
+        "flower_image": "daily/바카리스.jpg",
+        "flower_language": "개척"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 308,
+    "fields": {
+        "flower_name": "과꽃",
+        "flower_content": "그리운 추억에 빠져 들기쉬운 당신이군요. 과거보다는 미래가 중요한 만큼 미래에도 눈길을 주는게 필요하겠군요.",
+        "flower_date": "11월 28일",
+        "flower_image": "daily/과꽃.jpg",
+        "flower_language": "추억"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 309,
+    "fields": {
+        "flower_name": "붉나무",
+        "flower_content": "청결하고 사랑스럽고 배려심이 있는 사람이어서 때로는 불량스런 연인이 생기는 일도 있겠군요. 만약 신뢰할 수 없는 연인이 다가선다면 슬퍼도 포기할 줄 아는 용기가 필요합니다.",
+        "flower_date": "11월 27일",
+        "flower_image": "daily/붉나무.jpg",
+        "flower_language": "신앙"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 310,
+    "fields": {
+        "flower_name": "서양톱풀",
+        "flower_content": "아는 척하지 않는 겸손한 태도가 매력적이군요. 하지만 때로는 자신의 매력을 표현하는 것도 연애에 도움이 되겠군요.",
+        "flower_date": "11월 26일",
+        "flower_image": "daily/서양톱풀.jpg",
+        "flower_language": "지도"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 311,
+    "fields": {
+        "flower_name": "개옻나무",
+        "flower_content": "재능이 풍부한 사람이군요. 연인에 관해서는 자신의 이상형이 분명히 머리속에 있어서 만날 때까지시간이 좀 걸리겠군요.",
+        "flower_date": "11월 25일",
+        "flower_image": "daily/개옻나무.jpg",
+        "flower_language": "현명"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 312,
+    "fields": {
+        "flower_name": "가막살나무",
+        "flower_content": "현실을 무시하고 소망을 현실로 생각하는 경향이 있군요. 현실을 현실로 인정할 때 일도 사랑도 전진한다는 것을 기억해 두세요.",
+        "flower_date": "11월 24일",
+        "flower_image": "daily/가막살나무.jpg",
+        "flower_language": "사랑은 죽음보다 강하다"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 313,
+    "fields": {
+        "flower_name": "양치",
+        "flower_content": "새침한 태도. 그것 때문에 때로는 손해를 보겠군요. 적어도 사랑하는 사람앞에서는 그렇게 보이지 않도록 신경을 써야겠군요.",
+        "flower_date": "11월 23일",
+        "flower_image": "daily/양치.jpg",
+        "flower_language": "성실"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 314,
+    "fields": {
+        "flower_name": "매자나무",
+        "flower_content": "여러가지 일에 열중하긴 하지만 성공률이 낮은 것 같군요. 그것은 감정변화가 심하고 성질이 급한면이 작용한 결과가 아닐까요.",
+        "flower_date": "11월 22일",
+        "flower_image": "daily/매자나무.jpg",
+        "flower_language": "까다로움"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 315,
+    "fields": {
+        "flower_name": "초롱꽃",
+        "flower_content": "내성적인 당신. 사랑에 두려움을 느끼는 면이 많아 모처럼 찾아온 기회를 놓칠 수도 있겠군요. 사랑도 역시 모험입니다.",
+        "flower_date": "11월 21일",
+        "flower_image": "daily/초롱꽃.jpg",
+        "flower_language": "성실"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 316,
+    "fields": {
+        "flower_name": "뷰글라스",
+        "flower_content": "정직한 사람이 손해볼 때도 있는 것이 세상살이 입니다. 좋아하는사람이 있다면 당신의 마음을 분명히 전하세요. 그렇지 않으면 불성실한 라이벌에게 가로채일 수도 있겠군요.",
+        "flower_date": "11월 20일",
+        "flower_image": "daily/뷰글라스.jpg",
+        "flower_language": "진실"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 317,
+    "fields": {
+        "flower_name": "범의귀",
+        "flower_content": "당신은 구설수에 오를 운세도 있으므로 오해받지 않도록 하고 비밀스런 이야기는 연인과 단둘이서만 하세요.",
+        "flower_date": "11월 19일",
+        "flower_image": "daily/범의귀.jpg",
+        "flower_language": "비밀"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 318,
+    "fields": {
+        "flower_name": "산나리",
+        "flower_content": "유혹에 약한 타입이군요. 유혹에 넘어가지 말고 당당한 위엄을 갖고 살아갈 때 행복으로 가는 길이라는 것을 잊지마세요.",
+        "flower_date": "11월 18일",
+        "flower_image": "daily/산나리.jpg",
+        "flower_language": "장엄"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 319,
+    "fields": {
+        "flower_name": "머위",
+        "flower_content": "사람을 바르게 평가하는 능력의 소유자이군요. 연인을 보는 눈도 분명해 행복한 결혼생활을 보낼 수 있겠군요.",
+        "flower_date": "11월 17일",
+        "flower_image": "daily/머위.jpg",
+        "flower_language": "공평"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 320,
+    "fields": {
+        "flower_name": "크리스마스 로즈",
+        "flower_content": "신비한 매력이 있는 당신은 희망이 큰 사람이어서 결혼이 늦어지기 쉽겠군요.",
+        "flower_date": "11월 16일",
+        "flower_image": "daily/크리스마스+로즈.jpg",
+        "flower_language": "추억"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 321,
+    "fields": {
+        "flower_name": "황금싸리",
+        "flower_content": "당신의 운세는 정말로 훌륭하군요. 그렇지만 주위의 협력이 있어야만 성공하겠군요. 그 점을 잊지 마세요.",
+        "flower_date": "11월 15일",
+        "flower_image": "daily/황금싸리.jpg",
+        "flower_language": "겸손"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 322,
+    "fields": {
+        "flower_name": "소나무",
+        "flower_content": "자기 향상심이 강한 성격이군요. 오로지 밀어붙이기만 해서는 따돌림을 당하므로 때때로 늦추는 것도 필요하겠군요.",
+        "flower_date": "11월 14일",
+        "flower_image": "daily/소나무.jpg",
+        "flower_language": "불로장생"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 323,
+    "fields": {
+        "flower_name": "레몬 버베나",
+        "flower_content": "마음이 넓고 상냥한 당신이지만 좀처럼 마음을 열지 않아 연애에서 결혼까지는 오랜시간이 걸리겠군요.",
+        "flower_date": "11월 13일",
+        "flower_image": "daily/레몬+버베나.jpg",
+        "flower_language": "인내"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 324,
+    "fields": {
+        "flower_name": "레몬",
+        "flower_content": "예기치 않은 만남으로 참된 사랑이 태어날 운명입니다. 바로이 사람이구나 하고 직감이 오면 그사람이 바로 진짜 당신의 연인이 될지도 모르겠군요.",
+        "flower_date": "11월 12일",
+        "flower_image": "daily/레몬.jpg",
+        "flower_language": "진심으로 사모함"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 325,
+    "fields": {
+        "flower_name": "흰새 동백",
+        "flower_content": "가련한 마음을 가슴속에 감춘 당신이지만 비밀스럽더라도 격렬한 사랑을 하겠군요.",
+        "flower_date": "11월 11일",
+        "flower_image": "daily/흰색+동백.jpg",
+        "flower_language": "비밀스런 사랑"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 326,
+    "fields": {
+        "flower_name": "부용",
+        "flower_content": "우아한 사생활을 보내고 있는 당신은 유혹당하기 쉽겠군요. 유혹당하기 전에 사랑하는 사람을 스스로 선택하는 지혜가 필요합니다.",
+        "flower_date": "11월 10일",
+        "flower_image": "daily/부용.jpg",
+        "flower_language": "섬세한 아름다움"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 327,
+    "fields": {
+        "flower_name": "몰약의 꽃",
+        "flower_content": "남들의 부탁을 받으면 거절을 못하는 당신은 좀 더 자신을 위해 영악해질 필요가 있겠군요.",
+        "flower_date": "11월 9일",
+        "flower_image": "daily/몰약의+꽃.jpg",
+        "flower_language": "진실"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 328,
+    "fields": {
+        "flower_name": "가는 동자꽃",
+        "flower_content": "결혼에 관해서 신중한 당신은 진심으로 납득할 수 있을 때까지 기다리므로 만혼이 되겠군요.",
+        "flower_date": "11월 8일",
+        "flower_image": "daily/가는+동자꽃.jpg",
+        "flower_language": "기지"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 329,
+    "fields": {
+        "flower_name": "메리골드",
+        "flower_content": "주변 사람들 중 유독 당신에게 짖굿게 구는 사람이 있다면 혹시 미래의 파트너가 될 지 모르니 주의깊게 살펴보세요.",
+        "flower_date": "11월 7일",
+        "flower_image": "daily/메리골드.jpg",
+        "flower_language": "이별의 슬픔"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 330,
+    "fields": {
+        "flower_name": "등골나물",
+        "flower_content": "결단력, 판단력이 뛰어나 다른 사람들의 문제를 시원스럽게 해결하겠군요.그런데 정작 자신의 문제해결은 서툴군요. 자기의 일도 생각해 보는게 어떨까요?",
+        "flower_date": "11월 6일",
+        "flower_image": "daily/등골나물.jpg",
+        "flower_language": "주저"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 331,
+    "fields": {
+        "flower_name": "단양쑥부쟁이",
+        "flower_content": "햇빛을 받아 꽃이 피듯 무엇이든 잘해 나가겠군요. 다만 일이잘 풀리는 만큼 라이벌도 많겠군요.",
+        "flower_date": "11월 5일",
+        "flower_image": "daily/단양쑥부쟁이.jpg",
+        "flower_language": "공훈"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 332,
+    "fields": {
+        "flower_name": "골고사리",
+        "flower_content": "당신은 상냥하기 때문에 상처받을 위험성도 있으므로 안목을 길러 참으로 사랑해 줄 연인을 선택하세요.",
+        "flower_date": "11월 4일",
+        "flower_image": "daily/골고사리.jpg",
+        "flower_language": "진실의 위안"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 333,
+    "fields": {
+        "flower_name": "브리오니아",
+        "flower_content": "감정변화가 심하고 타협을 싫어하는 당신. 반사적으로 싫어하는 것을 줄여 나가면 어떨까요? 그렇지 않으면 외톨이가 되고 맙니다.",
+        "flower_date": "11월 3일",
+        "flower_image": "daily/브리오니아.jpg",
+        "flower_language": "거절"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 334,
+    "fields": {
+        "flower_name": "루피너스",
+        "flower_content": "다른 사람들의 마음을 온화하게 해주는 당신이지만 연인만은 좀 특별하게 대해주세요. 그렇지 않으면 연인이 질투 할 것입니다.",
+        "flower_date": "11월 2일",
+        "flower_image": "daily/루피너스.jpg",
+        "flower_language": "모성애"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 335,
+    "fields": {
+        "flower_name": "서양모과",
+        "flower_content": "당신은 겉치레에 신경을 쓰는 사람이군요. 겉치레보다는 내면의 아름다움이 중요하지 않을까요.",
+        "flower_date": "11월 1일",
+        "flower_image": "daily/서양모과.jpg",
+        "flower_language": "유일한 사랑"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 336,
+    "fields": {
+        "flower_name": "노송나무",
+        "flower_content": "인내심이 강하고 착실히 일을 해나가는 당신은 사람들에게 용기를주겠군요.",
+        "flower_date": "12월 31일",
+        "flower_image": "daily/노송나무.jpg",
+        "flower_language": "불멸"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 337,
+    "fields": {
+        "flower_name": "납매",
+        "flower_content": "현실을 직시하는 타입인 당신은 낭만주의자이고 사랑하는 사람과도 숙명적인 만남을 할 운명이군요.",
+        "flower_date": "12월 30일",
+        "flower_image": "daily/납매.jpg",
+        "flower_language": "자애"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 338,
+    "fields": {
+        "flower_name": "꽈리",
+        "flower_content": "고독하고 내성적인 당신은 사랑하는 사람도 야성적인 삶을 좋아하겠군요.",
+        "flower_date": "12월 29일",
+        "flower_image": "daily/꽈리.jpg",
+        "flower_language": "자연미"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 339,
+    "fields": {
+        "flower_name": "석류",
+        "flower_content": "지구상에서는 눈에 보이는 것 외에도 아름다움이 많은데 그것을 발견하지 못하는 당신이군요.",
+        "flower_date": "12월 28일",
+        "flower_image": "daily/석류.jpg",
+        "flower_language": "원숙미"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 340,
+    "fields": {
+        "flower_name": "매화",
+        "flower_content": "고결한 마음을 갖고 있는 당신은 결코 경거망동하지 않는 사람이군요. 연인은 당신과 비슷한 타입이거나 다른 분야에서도 뭔가 열중하고 있는 사람이 좋겠군요.",
+        "flower_date": "12월 27일",
+        "flower_image": "daily/매화.jpg",
+        "flower_language": "맑은 마음"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 341,
+    "fields": {
+        "flower_name": "크리스마스 로즈",
+        "flower_content": "너무 꿈속에서만 살고 있는 당신은 보다 현실적인 사고와 행동이 필요하겠군요.",
+        "flower_date": "12월 26일",
+        "flower_image": "daily/크리스마스+로즈.jpg",
+        "flower_language": "추억"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 342,
+    "fields": {
+        "flower_name": "서양호랑가시나무",
+        "flower_content": "계획을 갖고 대처하는 당신은 성공을 향한 길이 훤히 보이는 군요. 인생에 믿음을 갖고 정말로 하고 싶은 일에 도전해 보면 어떨까요?",
+        "flower_date": "12월 25일",
+        "flower_image": "daily/서양호랑가시나무.jpg",
+        "flower_language": "선견지명"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 343,
+    "fields": {
+        "flower_name": "겨우살이",
+        "flower_content": "끈기있고 참을 줄 알며 마음이 흔들리지 않는 당신. 사랑하는 사람을 얻었을 때 당신 마음에 기쁨과 부드러움이 더해져서 장미빛 인생이 될 것입니다.",
+        "flower_date": "12월 24일",
+        "flower_image": "daily/겨우살이.jpg",
+        "flower_language": "강한 인내심"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 344,
+    "fields": {
+        "flower_name": "플라타너스",
+        "flower_content": "뭐라 말로 형용할 수 없는 행복한 인생. 다만 너무 은혜를 많이 받아 주저하게 되면 엉뚱한 곳에서 발판이 무너질지도 모르니 유의해야 겠군요.",
+        "flower_date": "12월 23일",
+        "flower_image": "daily/플라타너스.jpg",
+        "flower_language": "천재"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 345,
+    "fields": {
+        "flower_name": "백일홍",
+        "flower_content": "세월이 흐르면서 친구는 변해가지만 우정이 두터운 당신은 친구를 생각하는 마음이 남들보다 한층 강하겠군요.",
+        "flower_date": "12월 22일",
+        "flower_image": "daily/백일홍.jpg",
+        "flower_language": "행복"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 346,
+    "fields": {
+        "flower_name": "박하",
+        "flower_content": "행복의 별점아래에서 태어난 당신은 남들의 사랑을 받으면서도 사랑하는 사람과는 인연이 쉽게 닿지 않은 비극도 있군요.",
+        "flower_date": "12월 21일",
+        "flower_image": "daily/박하.jpg",
+        "flower_language": "덕"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 347,
+    "fields": {
+        "flower_name": "파인애플",
+        "flower_content": "면학가로서 사교가로서 너무 완벽함에도 불구하고 친구가 많지 않은 당신이군요. 그것은 어딘지 마음을 열지 않기 때문입니다. 혹시 자존심 때문에 그렇지 않은지요.",
+        "flower_date": "12월 20일",
+        "flower_image": "daily/파인애플.jpg",
+        "flower_language": "완전무결"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 348,
+    "fields": {
+        "flower_name": "스노우 플레이크",
+        "flower_content": "성실하고 예의바르고 노력형인 당신은 사회에 대한 공헌도도 발군이군요.",
+        "flower_date": "12월 19일",
+        "flower_image": "daily/스노우+플레이크.jpg",
+        "flower_language": "아름다움"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 349,
+    "fields": {
+        "flower_name": "세이지",
+        "flower_content": "지성적이며 창조력이 또한 풍부한 당신은 사랑하는 사람과 함께 당신이 믿는 길을 걷는다면 반드시 성공하겠군요.",
+        "flower_date": "12월 18일",
+        "flower_image": "daily/세이지.jpg",
+        "flower_language": "가정의 덕"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 350,
+    "fields": {
+        "flower_name": "벚꽃난",
+        "flower_content": "사랑은 공유하는 것. 당신은 사랑의 본질을 너무나 잘 아는 타입이군요.",
+        "flower_date": "12월 17일",
+        "flower_image": "daily/벚꽃난.jpg",
+        "flower_language": "동감"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 351,
+    "fields": {
+        "flower_name": "오리나무",
+        "flower_content": "순수하고 정직한 인생을 걸으려 하는 당신에게 사악한 유혹이 많겠군요. 스스로에게 엄격하게 마음을 다잡고 단호한 태도를 지켜나가야 겠군요.",
+        "flower_date": "12월 16일",
+        "flower_image": "daily/오리나무.jpg",
+        "flower_language": "장업"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 352,
+    "fields": {
+        "flower_name": "서향",
+        "flower_content": "영원한 사랑을 소중히 여기는 당신 잔계산 따위는 꿈도 꾸지 않는 높은 기품은 칭찬할 만하지만 때로는 그것이 상처로 남겠군요.",
+        "flower_date": "12월 15일",
+        "flower_image": "daily/서향.jpg",
+        "flower_language": "불멸"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 353,
+    "fields": {
+        "flower_name": "소나무",
+        "flower_content": "당신은 용감하고 늠름하고 넘치는 사람이군요. 그점이 때로는 약점으로 작용하므로 가끔은 다른 사람에게 응석도 부려 본다면 지금 이상으로 인기가 있겠군요.",
+        "flower_date": "12월 14일",
+        "flower_image": "daily/소나무.jpg",
+        "flower_language": "용감"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 354,
+    "fields": {
+        "flower_name": "자홍색 국화",
+        "flower_content": "사랑한다는 말조차 제대로 못할만큼 소심한 당신이지만 영감에 따라 행동하면 생각대로 되는 신비한 힘을 갖고 있습니다.",
+        "flower_date": "12월 13일",
+        "flower_image": "daily/자홍색+국화.jpg",
+        "flower_language": "사랑"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 355,
+    "fields": {
+        "flower_name": "목화",
+        "flower_content": "학교에서나 사회에서나 주요한 역할을 맡고있는 당신은 언제나 남들을 평등하게 대하는데 길들여져 있군요. 그 때문에 당신을 사랑하는 사람과도 사랑하는 사이로까지 발전하지 못하는군요.",
+        "flower_date": "12월 12일",
+        "flower_image": "daily/목화.jpg",
+        "flower_language": "우수"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 356,
+    "fields": {
+        "flower_name": "단양쑥부쟁이",
+        "flower_content": "당신은 트러블을 무엇보다 싫어하는 타입이어서 주위 사람들로부터 사랑을 받겠군요.",
+        "flower_date": "12월 11일",
+        "flower_image": "daily/단양쑥부쟁이.jpg",
+        "flower_language": "애국심"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 357,
+    "fields": {
+        "flower_name": "빨강 동백",
+        "flower_content": "완성된 사랑이야말로 당신의 이상이지만 아직은 어딘가 부족함을 느끼고 있군요. 완전한 사랑을 위해서는 당신의 노력이 더욱 더 필요하겠군요.",
+        "flower_date": "12월 10일",
+        "flower_image": "daily/빨강+동백.jpg",
+        "flower_language": "고결한 이성"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 358,
+    "fields": {
+        "flower_name": "국화",
+        "flower_content": "고생끝에 낙이라고 어려움 속에서도 밝고 명랑하며 성실한 당신은 이제 행운을 잡겠군요.",
+        "flower_date": "12월 9일",
+        "flower_image": "daily/국화.jpg",
+        "flower_language": "고결"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 359,
+    "fields": {
+        "flower_name": "갈대",
+        "flower_content": "칭찬에 약하고 남들의 부추김에 쉬 편승하는 당신. 번지수가 틀린 사람에게 의지하는 경향이 있는 것 같군요.",
+        "flower_date": "12월 8일",
+        "flower_image": "daily/갈대.jpg",
+        "flower_language": "깊은 애정"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 360,
+    "fields": {
+        "flower_name": "양치",
+        "flower_content": "지적인 대화를 좋아하고 유니크한 발상을 갖고있는 당신은 누구에게나 사랑을 받겠군요.",
+        "flower_date": "12월 7일",
+        "flower_image": "daily/양치.jpg",
+        "flower_language": "신뢰"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 361,
+    "fields": {
+        "flower_name": "바위치",
+        "flower_content": "남들에게는 강인한 사람으로 비추고 있는 당신이지만 사실은 쓸쓸함에 힘겨워하는 당신이군요.",
+        "flower_date": "12월 6일",
+        "flower_image": "daily/바위치.jpg",
+        "flower_language": "절실한 사랑"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 362,
+    "fields": {
+        "flower_name": "앰브로시아",
+        "flower_content": "사고방식이 이론적인 당신은 감정표현에는 서툴군요. 정말로 사랑하는 사람이 있다면 일체의 계산을 버리고 사랑만 한다면 반드시 성공할 것입니다.",
+        "flower_date": "12월 5일",
+        "flower_image": "daily/앰브로시아.jpg",
+        "flower_language": "행복한 연애"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 363,
+    "fields": {
+        "flower_name": "수영",
+        "flower_content": "이지적으로 밝은 성격을 가진 당신은 마치 보물상자같은 사람이군요. 단 너무 우유부단한 것이 흠이군요.",
+        "flower_date": "12월 4일",
+        "flower_image": "daily/수영.jpg",
+        "flower_language": "애정"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 364,
+    "fields": {
+        "flower_name": "라벤더",
+        "flower_content": "당신은 조금은 제멋대로 구는 타입이어서 사랑하는 사람과도 다투는 일이 많겠군요. 좀 더 자신을 제어하는게 좋겠군요.",
+        "flower_date": "12월 3일",
+        "flower_image": "daily/라벤더.jpg",
+        "flower_language": "기대"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 365,
+    "fields": {
+        "flower_name": "이끼",
+        "flower_content": "당신은 너무 상냥해 당신에게 기대는 사람이 많겠군요. 그것이 스트레스로 작용한 만큼 당신에게 너무 응석을 부리는 사람과는 적당한 거리를 두는게 좋겠군요.",
+        "flower_date": "12월 2일",
+        "flower_image": "daily/이끼.jpg",
+        "flower_language": "모성애"
+    }
+},
+{
+    "model": "flowers.dailyflower",
+    "pk": 366,
+    "fields": {
+        "flower_name": "쑥국화",
+        "flower_content": "당신은 지금까지 몇번이나 연애할 기회가 있었는데 그것을 놓쳐왔군요. 그러면서도 인기가 없는 것으로 알고 있었는데 주위를 살펴보세요. 아마 멋진 사랑을 성취할 수 있을 겁니다.",
+        "flower_date": "12월 1일",
+        "flower_image": "daily/쑥국화.jpg",
+        "flower_language": "평화"
+    }
+}
+]

@@ -1,0 +1,44 @@
+[
+{
+    "model": "flowers.tag",
+    "pk": 1,
+    "fields": {
+        "dear": "가족"
+    }
+},
+{
+    "model": "flowers.tag",
+    "pk": 2,
+    "fields": {
+        "dear": "연인"
+    }
+},
+{
+    "model": "flowers.tag",
+    "pk": 3,
+    "fields": {
+        "dear": "직장동료"
+    }
+},
+{
+    "model": "flowers.tag",
+    "pk": 4,
+    "fields": {
+        "dear": "친구"
+    }
+},
+{
+    "model": "flowers.tag",
+    "pk": 5,
+    "fields": {
+        "dear": "선생님"
+    }
+},
+{
+    "model": "flowers.tag",
+    "pk": 6,
+    "fields": {
+        "dear": "기타"
+    }
+}
+]
