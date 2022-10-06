@@ -6,10 +6,7 @@ import { getSituationTag } from "../../../api/recommend";
 import { useRouter } from "next/router";
 
 function SpecialDayFlower(props) {
-  useEffect(() => {
-    console.log(props.isRecommended.tags);
-    console.log(typeof props.isRecommended.tags);
-  }, []);
+  useEffect(() => {}, []);
   // TODO: pagination
   const limit = 9;
   const [page, setPage] = useState(1);
@@ -23,9 +20,6 @@ function SpecialDayFlower(props) {
             .map((info, idx) => {
               return <LongClickFlowerCard info={info} key={idx} />;
             })}
-          {/* {recommFlowers.slice(offset, offset + limit).map((info, idx) => {
-            return <LongClickFlowerCard info={info} key={idx} />;
-          })} */}
         </div>
       </div>
       <FlowerPagination
