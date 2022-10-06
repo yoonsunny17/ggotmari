@@ -83,6 +83,8 @@ function FlowerDetail() {
     setSelectedKind(info);
   };
 
+  const replacedText = subjectLanguage.replaceAll("/", "\n");
+
   return collectionStatus == undefined ? (
     <div className="h-screen w-screen flex justify-center items-center">
       <div className="flex flex-col items-center space-y-5">
@@ -116,7 +118,9 @@ function FlowerDetail() {
           {/* 꽃말 */}
           <div className="font-sanslight text-font2 text-sm mb-5">
             {subjectName}의 꽃말은 {/* 꽃말 부분만 bold 강조 */}
-            <span className="font-bold">{subjectLanguage}</span> 입니다
+            <div className="whitespace-pre-line">
+              <span className="text-font1">{replacedText}</span> 입니다
+            </div>
           </div>
         </div>
 
