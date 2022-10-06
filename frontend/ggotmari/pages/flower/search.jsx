@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Image from "next/image";
 import Head from "next/head";
 
@@ -10,8 +10,15 @@ import defaultImage from "../../assets/profile/collection/noFlowerImg.jpg";
 import { getSearchFlower } from "../../api/flower";
 import FlowerCard from "../../components/molecules/flower/FlowerCard";
 import EasterEgg from "./easterEgg";
+import { useRouter } from "next/router";
 
 function SearchFlowerList() {
+  const router = useRouter();
+  useEffect(() => {
+    if (!localStorage.getItem("accessToken")) {
+      router.push("/login");
+    }
+  }, []);
   const [searchKeyword, setSearchKeyword] = useState("");
   const [keyword, setKeyword] = useState("");
   const [flowerList, setFlowerList] = useState([]);

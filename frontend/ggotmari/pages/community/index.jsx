@@ -20,6 +20,12 @@ export default function Community() {
   const [popularList, setPopularList] = useState([]);
 
   useEffect(() => {
+    if (!localStorage.getItem("accessToken")) {
+      router.push("/login");
+    }
+  }, []);
+
+  useEffect(() => {
     getArticleList(
       (res) => {
         setArticleList(res.data.articles);

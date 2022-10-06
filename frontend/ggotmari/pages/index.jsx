@@ -212,7 +212,7 @@ function Home() {
                 tooltip ? "text-font2" : "text-white"
               } mb-2 text-xs`}
             >
-              더이상 추천받고 싶지 않다면 꽃을 꾹 눌러보세요!
+              추천받고 싶지 않은 꽃이 있다면 길게 눌러주세요
             </div>
           </div>
           <SpecialDayRecomm />

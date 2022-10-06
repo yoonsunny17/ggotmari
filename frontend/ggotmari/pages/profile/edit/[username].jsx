@@ -564,7 +564,7 @@ function Edit() {
               초기화
             </span>
           </div>
-          <div className="info-box mx-10 border-t-sub1 border-t-[1px] text-md">
+          <div className="info-box mx-10 border-t-sub1 border-t-[1px] text-base">
             <div className="id-box border-b-sub1 border-b-[0.5px] py-5 text-font1 font-sans">
               <div className="grid grid-cols-3 mx-3">
                 <div className="category col-span-1 flex items-center">
