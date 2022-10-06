@@ -130,7 +130,7 @@ function WriteLetter() {
                   </select>
                 </div>
               </div>
-              <div className="flex justify-center mt-3 font-sans">
+              <div className="flex justify-center mt-4 font-sans">
                 <textarea
                   rows="9"
                   className="textarea bg-white w-5/6 shadow-md focus:outline-none resize-none focus:shadow-sub1 color-delay"
