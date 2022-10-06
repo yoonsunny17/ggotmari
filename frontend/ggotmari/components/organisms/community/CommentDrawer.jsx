@@ -130,7 +130,7 @@ function CommentDrawer({
               <div className="font-bold text-lg text-black">댓글</div>
               <IoIosArrowDown className="text-xl" />
             </div>
-            <div className="flex flex-col px-3 space-y-3">
+            <div className="flex flex-col px-3">
               {commentList.map((comment) => (
                 <CommentItem
                   userName={comment.userName}

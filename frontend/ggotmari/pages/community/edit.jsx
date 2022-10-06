@@ -8,11 +8,7 @@ import FlowerTag from "../../components/atoms/common/FlowerTag";
 
 import { editArticle, getFlowerKind, postArticle } from "../../api/community";
 
-import {
-  IoCameraOutline,
-  IoRefreshOutline,
-  IoImagesOutline,
-} from "react-icons/io5";
+import { IoRefreshOutline, IoImagesOutline } from "react-icons/io5";
 import { AiOutlineExclamationCircle } from "react-icons/ai";
 import { BsCamera } from "react-icons/bs";
 
@@ -113,6 +109,7 @@ function EditArticle() {
   };
 
   const handleArticleSubmit = (e) => {
+    e.preventDefault();
     const mode = router.query.mode;
 
     if (!isSubmit) {

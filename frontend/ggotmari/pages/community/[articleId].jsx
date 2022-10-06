@@ -263,7 +263,9 @@ function ArticleDetail() {
           </div>
         </div>
         <hr />
-        <div className="font-sans p-4 text-font1">{article.articleContent}</div>
+        <div className="font-sans p-4 text-font1 whitespace-pre-wrap">
+          {article.articleContent}
+        </div>
         <div
           className="h-14 p-4 hover:bg-gray-100"
           onClick={() => setIsOpen(true)}

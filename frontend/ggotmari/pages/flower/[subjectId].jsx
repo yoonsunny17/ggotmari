@@ -3,12 +3,9 @@ import { useState, useEffect } from "react";
 import Image from "next/image";
 
 import { getFlowerDetail, postFlowerCollection } from "../../api/flower";
-import { postDislikeRecomm } from "../../api/recommend";
 
 import RelatedPosts from "../../components/molecules/flower/RelatedPosts";
 import SimilarFlowers from "../../components/molecules/flower/SimilarFlowers";
-
-import Loading from "../../assets/flower/loading.gif";
 
 export async function getServerSideProps(context) {
   return {
@@ -86,17 +83,30 @@ function FlowerDetail() {
   return collectionStatus == undefined ? (
     <div className="h-screen w-screen flex justify-center items-center">
       <div className="flex flex-col items-center space-y-5">
-        <Image src={Loading.src} width={200} height={200} />
-        <div className="text-main font-maru text-xl">꽃 DB 가져오는 중...</div>
+        <svg
+          className="animate-spin h-10 w-10 text-main"
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+        >
+          <circle
+            className="opacity-25"
+            cx={12}
+            cy={12}
+            r={10}
+            stroke="currentColor"
+            stroke-width={4}
+          />
+          <path
+            fill="currentColor"
+            d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962"
+          ></path>
+        </svg>
+        <div className="font-sans text-xl text-main">꽃 불러오는 중...</div>
       </div>
     </div>
   ) : (
     <div className="mb-10 w-screen">
-      {/* <img
-      className="w-full aspect-square object-cover"
-      src={flowerInfo.kindImage}
-      alt="flower image"
-    /> */}
       <Image
         src={selectedKind.kindImage}
         alt={selectedKind.kindName}
