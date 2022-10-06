@@ -67,9 +67,9 @@ export default function Community() {
   return (
     <div className="flex flex-col">
       <Head>
-        <title>Community | GGOTMARI</title>
-        <meta property="og:title" content="Community" key="Community" />
-        <meta name="description" content="Community" />
+        <title>STORY | GGOTMARI</title>
+        <meta property="og:title" content="Article List" key="Community" />
+        <meta name="description" content="User can get articlelist." />
       </Head>
       <div className="flex flex-col items-center mb-6">
         <Header text={"꽃 이야기"} />

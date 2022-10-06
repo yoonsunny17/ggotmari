@@ -1,9 +1,9 @@
 import { useState, useEffect, useRef } from "react";
 import { useRouter } from "next/router";
 import Image from "next/image";
-import Swal from "sweetalert2";
-import { ArticleToast } from "../../components/atoms/common/Toast";
+import Head from "next/head";
 
+import { ArticleToast } from "../../components/atoms/common/Toast";
 import FlowerTag from "../../components/atoms/common/FlowerTag";
 
 import { editArticle, getFlowerKind, postArticle } from "../../api/community";
@@ -14,6 +14,7 @@ import {
   IoImagesOutline,
 } from "react-icons/io5";
 import { AiOutlineExclamationCircle } from "react-icons/ai";
+import { BsCamera } from "react-icons/bs";
 
 export async function getServerSideProps(context) {
   return {
@@ -50,18 +51,6 @@ function EditArticle() {
   const timerRef = useRef();
 
   var isSubmit = false;
-
-  // const Toast = Swal.mixin({
-  //   toast: true,
-  //   position: "top",
-  //   showConfirmButton: false,
-  //   timer: 3000,
-  //   icon: "error",
-  //   didOpen: (toast) => {
-  //     toast.addEventListener("mouseenter", Swal.stopTimer);
-  //     toast.addEventListener("mouseleave", Swal.resumeTimer);
-  //   },
-  // });
 
   useEffect(() => {
     getFlowerKind(
@@ -139,7 +128,7 @@ function EditArticle() {
           title: "사진을 최소 1장 이상 업로드해주세요.",
         });
         isSubmit = false;
-      } else if (title == "") {
+      } else if (title == "" || title.trim() === "") {
         ArticleToast.fire({
           customClass: {
             title: "toast-title",
@@ -159,7 +148,7 @@ function EditArticle() {
           title: "꽃 태그를 최소 1개 이상 추가해주세요",
         });
         isSubmit = false;
-      } else if (content == "") {
+      } else if (content == "" || content.trim() === "") {
         ArticleToast.fire({
           customClass: {
             title: "toast-title",
@@ -236,6 +225,11 @@ function EditArticle() {
 
   return (
     <div className="flex flex-col items-center w-screen">
+      <Head>
+        <title>STORY | GGOTMARI</title>
+        <meta property="og:title" content="Article Edit" key="edit" />
+        <meta name="description" content="User can write or edit article." />
+      </Head>
       <div className="w-full aspect-square bg-font3">
         {imagePreviews.length > 0 ? (
           <div className="carousel w-full aspect-square">
@@ -259,141 +253,159 @@ function EditArticle() {
           </label>
         )}
       </div>
-      <div className="flex flex-row space-x-3 justify-center my-3">
-        <label
-          className="inline font-sans text-font2 cursor-pointer"
-          htmlFor="flowerImg"
-        >
-          <IoCameraOutline className="inline" /> 사진 업로드
+      <div className="text-font2 image-change flex justify-center items-center font-sanslight my-3">
+        <label htmlFor="flowerImg">
+          <span className="mr-2 text-sm font-sans flex items-center cursor-pointer">
+            <BsCamera size={18} className="mr-1 mb-0.5" />
+            사진 업로드
+          </span>
         </label>
         <input
           type="file"
-          accept="image/*"
-          className="absolute w-0 h-0 p-0 overflow-hidden border-0"
           id="flowerImg"
+          accept="image/*"
           multiple
           onChange={handleImgUpload}
+          className="w-0"
         />
-        <p> | </p>
-        <div
-          className="inline text-font2 cursor-pointer font-sans"
+        <span className="text-xl">|</span>
+        <span
+          className="ml-2 text-sm font-sans flex items-center cursor-pointer"
           onClick={() => {
             setImagePreviews([]);
             setImageFiles();
           }}
         >
-          <IoRefreshOutline size={18} className="inline mb-0.5" /> 초기화
-        </div>
+          <IoRefreshOutline size={18} className="mr-0.5 mb-0.5" />
+          초기화
+        </span>
       </div>
       <div className="w-full p-3">
         {/* 게시글 입력폼 */}
         <form
-          className="flex flex-col w-full space-y-4 font-sans text-font2"
+          className="flex flex-col w-full space-y-5 font-sans text-font2"
           onSubmit={handleArticleSubmit}
         >
           {/* 글 제목 */}
-          <label htmlFor="articleTitle" className="pl-2 text-sm">
-            글 제목
-          </label>
-          <input
-            type="text"
-            id="articleTitle"
-            className="rounded-md shadow-sm w-full text-sm focus:outline-none focus:shadow-sub1 color-delay px-3 py-2"
-            placeholder="제목을 입력하세요"
-            onFocus={() => setDropDownOpen(false)}
-            onChange={handleTitleChange}
-            value={title}
-          />
+          <div>
+            <label
+              htmlFor="articleTitle"
+              className="pl-2 text-[16px] text-black"
+            >
+              글 제목
+            </label>
+            <input
+              type="text"
+              id="articleTitle"
+              className="rounded-md shadow-sm w-full text-sm focus:outline-none focus:shadow-sub1 color-delay px-3 py-2"
+              placeholder="제목을 입력하세요"
+              onFocus={() => setDropDownOpen(false)}
+              onChange={handleTitleChange}
+              value={title}
+            />
+          </div>
           {/* 꽃 태그 */}
           <div>
             <div className="flex items-center">
-              <label htmlFor="flowerTags" className="pl-2 text-sm">
+              <label
+                htmlFor="flowerTags"
+                className="pl-2 text-[16px] text-black"
+              >
                 꽃 태그
               </label>
               <p className="px-1" onClick={handleOnTooltip}>
                 <AiOutlineExclamationCircle size={14} />
               </p>
+              <p
+                className={`${
+                  tooltip ? "text-font2" : "text-white"
+                } text-xs ml-2 mt-0.5`}
+              >
+                태그를 누르면 태그가 제거됩니다
+              </p>
             </div>
-            <p
-              className={`${
-                tooltip ? "text-font2" : "text-white"
-              } text-xs ml-2 mt-0.5`}
-            >
-              태그를 누르면 태그가 제거됩니다
-            </p>
-          </div>
-          <div className="w-full shadow-sm rounded-md">
-            {/* 추가된 꽃 태그 컨테이너 */}
-            <div>
-              <div className="flex flex-row flex-wrap px-4 py-3 text-sub1 text-sm">
-                {flowerTags.length > 0
-                  ? flowerTags.map((flower) => (
-                      <FlowerTag
-                        flowerName={flower.subjectName}
-                        key={flower.subjectId}
-                        isRemovable={true}
-                        onClick={() => removeFlowerTag(flower.subjectId)}
-                      />
-                    ))
-                  : "추가된 꽃 태그가 없습니다"}
+            <div className="w-full shadow-sm rounded-md">
+              {/* 추가된 꽃 태그 컨테이너 */}
+              <div>
+                <div className="flex flex-row flex-wrap px-4 py-3 text-sub1 text-sm">
+                  {flowerTags.length > 0
+                    ? flowerTags.map((flower) => (
+                        <FlowerTag
+                          flowerName={flower.subjectName}
+                          key={flower.subjectId}
+                          isRemovable={true}
+                          onClick={() => removeFlowerTag(flower.subjectId)}
+                        />
+                      ))
+                    : "추가된 꽃 태그가 없습니다"}
+                </div>
+                <hr />
               </div>
+              {/* 꽃 검색창 */}
+              <input
+                type="text"
+                className="w-full text-sm focus:outline-none p-3"
+                placeholder="꽃을 검색하세요"
+                onClick={() => setDropDownOpen(true)}
+                onChange={handleFlowerSearchChange}
+                value={tagSearch}
+              />
               <hr />
-            </div>
-            {/* 꽃 검색창 */}
-            <input
-              type="text"
-              className="w-full text-sm focus:outline-none p-3"
-              placeholder="꽃을 검색하세요"
-              onClick={() => setDropDownOpen(true)}
-              onChange={handleFlowerSearchChange}
-              value={tagSearch}
-            />
-            <hr />
-            <div
-              className={
-                "max-h-32 z-10 overflow-auto " +
-                (dropDownOpen ? "relative" : "hidden")
-              }
-            >
-              {/* 꽃 드롭다운 */}
-              <div className="">
-                {filteredList.map((flower, idx) => (
-                  <div
-                    className="p-2 font-sans hover:bg-font3"
-                    onClick={() => addFlowerTag(flower)}
-                    key={idx}
-                  >
-                    {flower.subjectName}
-                  </div>
-                ))}
+              <div
+                className={
+                  "max-h-32 z-10 overflow-auto " +
+                  (dropDownOpen ? "relative" : "hidden")
+                }
+              >
+                {/* 꽃 드롭다운 */}
+                <div className="">
+                  {filteredList.map((flower, idx) => (
+                    <div
+                      className="p-2 font-sans hover:bg-font3"
+                      onClick={() => addFlowerTag(flower)}
+                      key={idx}
+                    >
+                      {flower.subjectName}
+                    </div>
+                  ))}
+                </div>
               </div>
             </div>
           </div>
           {/* 게시글 내용 */}
-          <label htmlFor="articleContent" className="pl-2 text-sm">
-            내용
-          </label>
-          <textarea
-            id="articleContent"
-            rows="5"
-            className="shadow-sm rounded-md focus:shadow-sub1 color-delay w-full text-sm focus:outline-none p-3"
-            placeholder="내용을 입력하세요"
-            onFocus={() => setDropDownOpen(false)}
-            value={content}
-            onChange={handleContentChange}
-          ></textarea>
-          <div className="flex flex-row-reverse">
-            <div
-              className="px-3 py-2 bg-font3 rounded-lg mx-4"
-              onClick={handleCancleClick}
+          <div>
+            <label
+              htmlFor="articleContent"
+              className="pl-2 text-[16px] text-black"
             >
-              취소
+              내용
+            </label>
+            <textarea
+              id="articleContent"
+              rows="5"
+              className="shadow-sm rounded-md focus:shadow-sub1 color-delay w-full text-sm focus:outline-none p-3"
+              placeholder="내용을 입력하세요"
+              onFocus={() => setDropDownOpen(false)}
+              value={content}
+              onChange={handleContentChange}
+            ></textarea>
+          </div>
+          <div className="btns-box px-5 mt-10 flex justify-end font-sans text-white text-sm">
+            <div className="save-box">
+              <button
+                className="mr-2 bg-main w-full h-full px-5 py-2 rounded-md hover:bg-sub1 cursor-pointer"
+                onClick={handleArticleSubmit}
+              >
+                {router.query.mode == "write" ? "등록" : "수정"}
+              </button>
             </div>
-            <div
-              className="bg-main text-font3 px-3 py-2 leading-normal rounded-lg hover:bg-sub1"
-              onClick={handleArticleSubmit}
-            >
-              {router.query.mode == "write" ? "등록하기" : "수정하기"}
+            <div className="cancel-box">
+              <button
+                className="ml-2 bg-font2 w-full h-full px-5 py-2 rounded-md hover:bg-sub1 cursor-pointer"
+                onClick={handleCancleClick}
+              >
+                취소
+              </button>
             </div>
           </div>
         </form>

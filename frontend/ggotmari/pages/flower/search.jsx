@@ -4,12 +4,11 @@ import Head from "next/head";
 
 import Header from "../../components/atoms/common/Header";
 import SearchBar from "../../components/atoms/common/SearchBar";
+import FlowerCard from "../../components/molecules/flower/FlowerCard";
 
 import defaultImage from "../../assets/profile/collection/noFlowerImg.jpg";
 
 import { getSearchFlower } from "../../api/flower";
-import FlowerCard from "../../components/molecules/flower/FlowerCard";
-import EasterEgg from "./easterEgg";
 
 function SearchFlowerList() {
   const [searchKeyword, setSearchKeyword] = useState("");
@@ -57,7 +56,6 @@ function SearchFlowerList() {
         {flowerList.map((flower, idx) => (
           <FlowerCard flower={flower} key={idx} />
         ))}
-        <EasterEgg keyword={keyword} />
       </div>
       {!flowerList.length && !keyword.length && (
         <div className="font-gangwon">
