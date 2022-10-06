@@ -84,28 +84,9 @@ function WriteLetter() {
     );
   };
 
-  // const languageArr = subjectLanguage.split("/");
-  // console.log(languageArr);
-  const SplitText = ({ text }) => {
-    return (
-      <p>
-        {text.split("/").map((txt) => (
-          <p key={`${subjectName} : ` + txt}>
-            {txt}
-            <br />
-          </p>
-        ))}
-      </p>
-    );
-  };
-
   console.log(subjectLanguage.replaceAll("/", "\n"));
 
   const replacedText = subjectLanguage.replaceAll("/", "\n");
-
-  // const replacedText = () => {
-  //   subjectLanguage.replaceAll
-  // }
 
   return (
     <div className="flex flex-col mb-40">
@@ -120,11 +101,6 @@ function WriteLetter() {
       {!clickBtn ? (
         <div>
           <div className="h-28">
-            {/* <img
-          className="opacity-80 h-full w-full object-cover object-bottom"
-          src="https://images.unsplash.com/photo-1594320207823-405209d4a92b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1025&q=80"
-          alt=""
-        /> */}
             <Image
               src="https://images.unsplash.com/photo-1594320207823-405209d4a92b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1025&q=80"
               alt=""
@@ -185,7 +161,7 @@ function WriteLetter() {
             </div>
             <div className="flex justify-center mt-8">
               <button
-                // onClick={handleClickBtn}
+                // onClick={handleSubmitBtn}
                 type="submit"
                 // className="mt-7 font-gangwon bg-sub1 rounded-md w-52 py-2 pt-2.5 pb-1.5 text-font3"
                 className="bg-sub1 text-font3 w-52 py-2 pt-2.5 rounded-md"
@@ -208,7 +184,7 @@ function WriteLetter() {
                 objectFit="cover"
                 priority
               />
-              <div className="text-lg text-center mt-6 font-gangwon">
+              <div className="text-lg text-center mt-8 font-gangwon">
                 잠시만 기다려 주세요
               </div>
             </div>
@@ -253,23 +229,23 @@ function WriteLetter() {
                   전달하는 건 어떨까요?
                 </div>
               </div>
+              <div className="flex justify-center mt-6 font-sans">
+                <button
+                  onClick={() => {
+                    setClickBtn(false);
+                    router.push("/recommend/");
+                  }}
+                  type="submit"
+                  // className="mt-7 font-gangwon bg-sub1 rounded-md w-52 py-2 pt-2.5 pb-1.5 text-font3"
+                  className="text-font2 w-52 py-2 pt-2.5 rounded-md text-sm"
+                >
+                  <p className="underline underline-offset-4 hover:text-font1">
+                    다시 추천 받기
+                  </p>
+                </button>
+              </div>
             </div>
           )}
-          <div className="flex justify-center mt-6 font-sans">
-            <button
-              onClick={() => {
-                setClickBtn(false);
-                router.push("/recommend/");
-              }}
-              type="submit"
-              // className="mt-7 font-gangwon bg-sub1 rounded-md w-52 py-2 pt-2.5 pb-1.5 text-font3"
-              className="text-font2 w-52 py-2 pt-2.5 rounded-md text-sm"
-            >
-              <p className="underline underline-offset-4 hover:text-font1">
-                다시 추천 받기
-              </p>
-            </button>
-          </div>
         </div>
       )}
     </div>
