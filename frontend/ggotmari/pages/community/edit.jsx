@@ -310,7 +310,7 @@ function EditArticle() {
               <label htmlFor="flowerTags" className="pl-2 text-sm">
                 꽃 태그
               </label>
-              <p className="px-1" onClick={handleOnTooltip}>
+              <p className="px-2" onClick={handleOnTooltip}>
                 <AiOutlineExclamationCircle size={14} />
               </p>
             </div>
