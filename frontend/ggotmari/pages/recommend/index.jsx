@@ -34,8 +34,6 @@ function RecommendMain() {
     });
   };
 
-  console.log(ocrText);
-
   const fail = (error) => {
     console.log(error);
   };
@@ -43,12 +41,10 @@ function RecommendMain() {
   const handleImageUpload = (e) => {
     setIsLetterBtn((current) => !current);
     const letterImage = e.target.files[0];
-    console.log(letterImage);
     const recommendOcrInfo = {
       format: letterImage.name.split(".")[1],
       name: letterImage.name.split(".")[0],
     };
-    console.log(recommendOcrInfo);
     const formdata = new FormData();
     const json = JSON.stringify(recommendOcrInfo);
     formdata.append(
@@ -105,10 +101,6 @@ function RecommendMain() {
           </div>
 
           <div className="flex justify-center my-6">
-            {/* <div
-          onClick={() => router.push("/recommend/letter")}
-          className="text-center font-gangwon bg-sub2 rounded-md w-52 py-2 pt-2.5 pb-1.5 text-font3"
-        > */}
             <div
               onClick={() => router.push("/recommend/letter")}
               className="text-center font-gangwon bg-sub2 rounded-md w-52 py-2 pt-2.5 pb-1.5 text-font3"
@@ -116,10 +108,7 @@ function RecommendMain() {
               편지 작성하기
             </div>
           </div>
-          <div
-            className="flex justify-center text-center"
-            // onClick={handleLetterBtn}
-          >
+          <div className="flex justify-center text-center">
             <label
               className="font-gangwon bg-sub2 rounded-md w-52 py-2 pt-2.5 pb-1.5 text-font3"
               htmlFor="handLetter"
@@ -151,12 +140,6 @@ function RecommendMain() {
           </div>
         </div>
       )}
-      {/* <img
-          className="opacity-80 h-full w-full object-cover object-bottom"
-          src="https://images.unsplash.com/photo-1597705790378-e30f4c18e427?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1229&q=80"
-          alt=""
-        /> */}
-      {/* 편지 작성하기 버튼이 눌렸다면, writeLetter 보여주기 */}
     </div>
   );
 }

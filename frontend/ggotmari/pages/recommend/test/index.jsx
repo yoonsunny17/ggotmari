@@ -16,12 +16,10 @@ function RecommendMain() {
 
   const handleImageUpload = (e) => {
     const letterImage = e.target.files[0];
-    console.log(letterImage);
     const recommendOcrInfo = {
       format: letterImage.name.split(".")[1],
       name: letterImage.name.split(".")[0],
     };
-    console.log(recommendOcrInfo);
     const formdata = new FormData();
     const json = JSON.stringify(recommendOcrInfo);
     formdata.append(

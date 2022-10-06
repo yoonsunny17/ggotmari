@@ -12,10 +12,8 @@ import flowerLoading from "../../assets/flower/flower.gif";
 
 function WriteLetter() {
   const router = useRouter();
-  // console.log(router.query.ocrLetter);
 
   const ocrLetter = router.query.ocrLetter;
-  // console.log(ocrLetter);
 
   const [letter, setLetter] = useState("");
   const [from, setFrom] = useState("");
@@ -31,22 +29,18 @@ function WriteLetter() {
   }, []);
   const handleWrite = (e) => {
     setLetter(e.target.value);
-    console.log(letter);
   };
 
   const handleFrom = (e) => {
     setFrom(e.target.value);
-    console.log(from);
   };
 
   const handleTo = (e) => {
     setTo(e.target.value);
-    console.log(to);
   };
 
   const handleSelect = (e) => {
     setSelected(e.target.value);
-    console.log(selected);
   };
 
   const [clickBtn, setClickBtn] = useState(false);
@@ -65,17 +59,15 @@ function WriteLetter() {
     const json = JSON.stringify(content);
     formData.append("content", json);
 
-    console.log(formData), console.log(json);
+    // console.log(formData), console.log(json);
     postLetterRecomm(
       // formData,
       json,
       (res) => {
-        console.log(res);
-        // console.log(content);
+        // console.log(res);
         setSubjectName(res.data.subjectName);
         setSubjectLanguage(res.data.subjectLanguage);
         setKindImage(res.data.kindImage);
-        // router.push(`/recommend/letter`);
       },
       (err) => {
         console.log(err);
@@ -84,7 +76,7 @@ function WriteLetter() {
     );
   };
 
-  console.log(subjectLanguage.replaceAll("/", "\n"));
+  // console.log(subjectLanguage.replaceAll("/", "\n"));
 
   const replacedText = subjectLanguage.replaceAll("/", "\n");
 
@@ -132,7 +124,6 @@ function WriteLetter() {
                   onChange={handleWrite}
                   maxLength="180"
                   value={letter}
-                  // value={ocrLetter === undefined ? undefined : ocrLetter}
                 ></textarea>
               </div>
               <div className="mt-4 ml-8">
@@ -161,9 +152,7 @@ function WriteLetter() {
             </div>
             <div className="flex justify-center mt-8">
               <button
-                // onClick={handleSubmitBtn}
                 type="submit"
-                // className="mt-7 font-gangwon bg-sub1 rounded-md w-52 py-2 pt-2.5 pb-1.5 text-font3"
                 className="bg-sub1 text-font3 w-52 py-2 pt-2.5 rounded-md"
               >
                 꽃 추천 받기
@@ -236,7 +225,6 @@ function WriteLetter() {
                     router.push("/recommend/");
                   }}
                   type="submit"
-                  // className="mt-7 font-gangwon bg-sub1 rounded-md w-52 py-2 pt-2.5 pb-1.5 text-font3"
                   className="text-font2 w-52 py-2 pt-2.5 rounded-md text-sm"
                 >
                   <p className="underline underline-offset-4 hover:text-font1">

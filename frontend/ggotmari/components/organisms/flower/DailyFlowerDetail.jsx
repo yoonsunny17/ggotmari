@@ -11,7 +11,6 @@ function DailyFlowerDetail({}) {
   useEffect(() => {
     getDailyFlower(
       (res) => {
-        console.log(res.data);
         setDailyFlower(res.data);
       },
       (error) => {
@@ -20,14 +19,8 @@ function DailyFlowerDetail({}) {
     );
   }, []);
 
-  console.log(dailyFlower);
   return (
     <div>
-      {/* <img
-        className="w-full h-full aspect-square object-cover"
-        src={dailyFlower.dailyFlowerImage}
-        alt="flower luck"
-      /> */}
       <Image
         src={
           dailyFlower.dailyFlowerImage
