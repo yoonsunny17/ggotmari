@@ -4,7 +4,6 @@ import Image from "next/image";
 
 import noImg from "../../../assets/flower/square.png";
 
-// import { getFlowerDetail } from "../../../api/flower";
 import { postDislikeRecomm } from "../../../api/recommend";
 
 import Swal from "sweetalert2";
@@ -22,8 +21,6 @@ function LongClickFlowerCard(props) {
     const kindId = {
       kindId: props.info.kindId,
     };
-
-    // console.log(`kindId: ${props.info.kindId}`);
 
     postDislikeRecomm(
       kindId,
@@ -81,37 +78,30 @@ function LongClickFlowerCard(props) {
   }
 
   function handleOnClick(e) {
-    console.log("handleOnClick");
     if (isLongPress.current) {
-      console.log("Is long press - not continuing.");
       return;
     }
     setAction("click");
   }
 
   function handleOnMouseDown() {
-    console.log("handleOnMouseDown");
     startPressTimer();
   }
 
   function handleOnMouseUp() {
-    console.log("handleOnMouseUp");
     clearTimeout(timerRef.current);
   }
 
   function handleOnTouchStart() {
-    console.log("handleOnTouchStart");
     startPressTimer();
   }
 
   function handleOnTouchEnd() {
     if (action === "longpress") return;
-    console.log("handleOnTouchEnd");
     clearTimeout(timerRef.current);
   }
 
   const successLongClick = () => {
-    console.log("successful long click");
     openSwal();
     setAction(undefined);
   };

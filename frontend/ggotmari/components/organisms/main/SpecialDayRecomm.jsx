@@ -7,6 +7,7 @@ import { getSituationTag } from "../../../api/recommend";
 
 function SpecialDayRecomm() {
   // TODO: tab index button
+  const router = useRouter();
   const [activeIndex, setActiveIndex] = useState(1);
   const [isRecommended, setIsRecommended] = useState({
     tags: [
@@ -21,28 +22,13 @@ function SpecialDayRecomm() {
 
   const tabClickHandler = (index) => {
     setActiveIndex(index);
-    // getSituationTag(
-    //   index,
-    //   (res) => {
-    //     console.log(res.data);
-    //     setIsRecommended(res.data);
-    //     // setIsRecommended(res);
-    //     // console.log(isRecommended);
-    //   },
-    //   (err) => {
-    //     console.log(err);
-    //   }
-    // );
   };
 
   useEffect(() => {
     getSituationTag(
       activeIndex,
       (res) => {
-        console.log(res.data);
         setIsRecommended(res.data);
-        // setIsRecommended(res);
-        // console.log(isRecommended);
       },
       (err) => {
         console.log(err);
@@ -54,22 +40,6 @@ function SpecialDayRecomm() {
   const limit = 9;
   const [page, setPage] = useState(1);
   const offset = (page - 1) * limit;
-
-  const router = useRouter();
-
-  // useEffect(() => {
-  //   getSituationTag(
-  //     1,
-  //     (res) => {
-  //       console.log(res);
-  //       // console.log(res.data.message);
-  //       setIsRecommended(res.data);
-  //     },
-  //     (err) => {
-  //       console.log(err);
-  //     }
-  //   ); // default value
-  // }, []);
 
   return (
     <div>
