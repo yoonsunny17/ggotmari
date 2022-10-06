@@ -1,16 +1,15 @@
 import { useState, useEffect } from "react";
+import { useRouter } from "next/router";
 import Image from "next/image";
 import Head from "next/head";
 
 import Header from "../../components/atoms/common/Header";
 import SearchBar from "../../components/atoms/common/SearchBar";
+import FlowerCard from "../../components/molecules/flower/FlowerCard";
 
 import defaultImage from "../../assets/profile/collection/noFlowerImg.jpg";
 
 import { getSearchFlower } from "../../api/flower";
-import FlowerCard from "../../components/molecules/flower/FlowerCard";
-import EasterEgg from "./easterEgg";
-import { useRouter } from "next/router";
 
 function SearchFlowerList() {
   const router = useRouter();
@@ -64,7 +63,6 @@ function SearchFlowerList() {
         {flowerList.map((flower, idx) => (
           <FlowerCard flower={flower} key={idx} />
         ))}
-        <EasterEgg keyword={keyword} />
       </div>
       {!flowerList.length && !keyword.length && (
         <div className="font-gangwon">

@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import Image from "next/image";
+import Head from "next/head";
 import Swal from "sweetalert2/dist/sweetalert2.js";
 
 import ProfileImg from "../../components/atoms/common/ProfileImg";
@@ -13,12 +14,7 @@ import {
   deleteArticle,
 } from "../../api/community";
 
-import {
-  AiOutlineMore,
-  AiOutlineHeart,
-  AiFillHeart,
-  AiOutlineComment,
-} from "react-icons/ai";
+import { AiOutlineMore, AiOutlineHeart, AiFillHeart } from "react-icons/ai";
 import { BsChatDots } from "react-icons/bs";
 import { IoIosArrowUp } from "react-icons/io";
 
@@ -163,6 +159,11 @@ function ArticleDetail() {
 
   return (
     <div className="flex flex-col">
+      <Head>
+        <title>STORY | GGOTMARI</title>
+        <meta property="og:title" content="Article Detail" key="edit" />
+        <meta name="description" content="User can read article." />
+      </Head>
       <div className="flex flex-row justify-between items-center h-20 px-4">
         <div
           className="flex flex-row h-2/3 items-center grow hover:bg-font3"
