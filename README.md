@@ -164,15 +164,6 @@
 </div>
 </details>
 
-<details>
-<summary>QA</summary>
-<div markdown="1">
-
-![image.png](./output/QA.jpg)
-
-</div>
-</details>
-
 ### 디자인 산출물
 
 <details>
@@ -283,6 +274,19 @@
     - [데이터 수집, 정제, 크롤링](/exec/외부 서비스 정보/데이터_수집_정제_크롤링.md)
 -   [DB 덤프 파일](/exec/꽃마리_DB_dump.sql)
 -   [시연 시나리오](/exec/시연 시나리오.pdf)
+
+<br/>
+
+## ✔ 테스팅
+
+<details>
+<summary>QA</summary>
+<div markdown="1">
+
+![image.png](./output/QA.jpg)
+
+</div>
+</details>
 
 <br/>
 
