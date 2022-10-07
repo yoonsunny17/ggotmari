@@ -5,7 +5,7 @@ import { useState } from "react";
 import { getOcrRecommend } from "../../api/recommend";
 import Head from "next/head";
 
-import chunsik from "../../assets/flower/chunsik.gif";
+import chunsik from "../../assets/flower/chunsik_run.gif";
 
 import WriteLetter from "./letter";
 import NotFound from "./notFound";
