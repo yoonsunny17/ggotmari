@@ -257,7 +257,7 @@
 
 -   [꽃마리 URL](https://ggotmari.com/)
 -   [서비스 이용 가이드](https://a303-princess.notion.site/690dcc0e597b4a7886754f98b493371d)
--   [UCC]()
+-   [UCC](https://www.youtube.com/watch?v=F-DhYVAxK2E)
 
 <br/>
 
