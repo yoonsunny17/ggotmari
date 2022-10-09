@@ -176,12 +176,12 @@ public class UserService {
             follower.setUserName(follow.getFollowUser().getName());
 
             follower.setFollowing(false);
+            if(follow.getFollowUser().getId() == loginUser.getId()){
+                follower.setMe(true);
+            }
             for(Follow login : loginFollowings){
-                if(follow.getFollowUser().getId() == login.getFollowingUser().getId()){
+                if(follow.getFollowUser().getId() == login.getFollowingUser().getId()) {
                     follower.setFollowing(true);
-                }
-                if(follow.getFollowUser().getId() == loginUser.getId()){
-                    follower.setMe(true);
                 }
             }
             followers.add(follower);
@@ -205,12 +205,12 @@ public class UserService {
             following.setUserName(follow.getFollowingUser().getName());
 
             following.setFollowing(false);
+            if(follow.getFollowingUser().getId() == loginUser.getId()){
+                following.setMe(true);
+            }
             for(Follow login : loginFollowings){
                 if(follow.getFollowingUser().getId() == login.getFollowingUser().getId()){
                     following.setFollowing(true);
-                }
-                if(follow.getFollowingUser().getId() == loginUser.getId()){
-                    following.setMe(true);
                 }
             }
             followings.add(following);
