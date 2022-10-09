@@ -5,6 +5,8 @@ import Image from "next/image";
 function FollowUser({ item, followInfo, setFollowInfo }) {
   const router = useRouter();
 
+  console.log(item);
+
   const success = (userName) => {
     const newFollowInfo = { ...followInfo };
 
