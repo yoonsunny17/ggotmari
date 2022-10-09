@@ -5,7 +5,7 @@ import Image from "next/image";
 function LikeImage({ articleId, articleImage, userName, likes, articleTitle }) {
   const router = useRouter();
   return (
-    <div className="aspect-square col-span-1 px-1 py-0.5 flex flex-col">
+    <div className="aspect-square col-span-1 flex flex-col">
       <div className="article-img cursor-pointer w-full h-full relative">
         {/* <img
           src={articleImage}
