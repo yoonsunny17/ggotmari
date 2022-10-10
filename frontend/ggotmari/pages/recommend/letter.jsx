@@ -77,7 +77,6 @@ function WriteLetter() {
   };
 
   // console.log(subjectLanguage.replaceAll("/", "\n"));
-
   const replacedText = subjectLanguage.replaceAll("/", "\n");
 
   return (
@@ -187,7 +186,8 @@ function WriteLetter() {
                     {to ? "To. 나의 " + selected + ", " + to : to}
                   </span>
                   <br />
-                  <span className="">{letter}</span>
+                  {/* <span className="">{letter}</span> */}
+                  <p className="whitespace-pre-line">{letter}</p>
                   <br />
                   {/* From. {from} */}
                   <span className="">{from ? "From." + " " + from : from}</span>
