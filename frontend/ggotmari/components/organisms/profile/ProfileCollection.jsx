@@ -55,7 +55,7 @@ function ProfileCollection({ likeFlowers }) {
   return (
     <>
       {/* 탭들 */}
-      <div className="tabs grid grid-cols-4 mx-4">
+      <div className="tabs grid grid-cols-4 mx-3">
         {tabs.map((tab, index) => {
           // console.log(tab);
           return (
@@ -74,11 +74,11 @@ function ProfileCollection({ likeFlowers }) {
         })}
       </div>
       {/* 사진 및 내용들 */}
-      <div className="colletion-items grid grid-cols-3 mt-3 mb-14 mx-4">
+      <div className="colletion-items grid grid-cols-3 gap-x-2 gap-y-2 mt-3 mb-14 mx-3">
         {collectionItems.length > 0 ? (
           collectionItems.map((item, index) => {
             return (
-              <div className="collection-item px-1 py-0.5 text-xs" key={index}>
+              <div className="collection-item text-xs" key={index}>
                 <CollectionImage
                   flowerImage={item.flowerImage}
                   kindId={item.kindId}

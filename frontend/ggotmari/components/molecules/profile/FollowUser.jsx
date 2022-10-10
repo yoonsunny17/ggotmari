@@ -5,6 +5,8 @@ import Image from "next/image";
 function FollowUser({ item, followInfo, setFollowInfo }) {
   const router = useRouter();
 
+  console.log(item);
+
   const success = (userName) => {
     const newFollowInfo = { ...followInfo };
 
@@ -36,14 +38,6 @@ function FollowUser({ item, followInfo, setFollowInfo }) {
     <>
       <div className="follow-user mx-10 grid grid-cols-6 my-3">
         <div className="image-box aspect-square col-span-1 relative">
-          {/* <img
-            src={item.userImage}
-            alt={`${item.userName}님의 프로필 사진입니다.`}
-            className="w-full h-full object-cover rounded-full cursor-pointer"
-            onClick={() => {
-              router.push(`/profile/${item.userName}`);
-            }}
-          /> */}
           <Image
             src={item.userImage}
             alt={`${item.userName}님의 프로필 사진입니다.`}

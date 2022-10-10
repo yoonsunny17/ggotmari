@@ -83,7 +83,7 @@ function CommentDrawer({
       articleId,
       commentId,
       (res) => {
-        console.log(res);
+        // console.log(res);
       },
       (err) => {
         console.log(err);

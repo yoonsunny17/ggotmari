@@ -30,7 +30,7 @@ function Home() {
 
   const success = (res) => {
     setUsername(res.data.userName);
-    console.log(res);
+    // console.log(res);
   };
   const fail = (err) => console.log(err);
 
