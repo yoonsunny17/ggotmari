@@ -101,13 +101,27 @@ function ProfileFollowList() {
         setShowList(followInfo.followings);
       }
     } else {
-      let arr = [];
-      for (let show of showList) {
-        if (show.userName.includes(searchTerm)) {
-          arr.push(show);
+      if (toShow) {
+        let arr = [];
+        // console.log(showList);
+        // console.log(searchTerm);
+        for (let show of followInfo.followers) {
+          if (show.userName.includes(searchTerm)) {
+            arr.push(show);
+          }
         }
+        setShowList(arr);
+      } else {
+        let arr = [];
+        // console.log(showList);
+        // console.log(searchTerm);
+        for (let show of followInfo.followings) {
+          if (show.userName.includes(searchTerm)) {
+            arr.push(show);
+          }
+        }
+        setShowList(arr);
       }
-      setShowList(arr);
     }
   }, [searchTerm]);
 
@@ -156,6 +170,7 @@ function ProfileFollowList() {
             setSearchTerm(event.target.value);
           }}
           searchTerm={searchTerm}
+          handleEnterEvent={() => {}}
         />
       </div>
       <div className="follow-list mt-3 mb-14">

@@ -25,7 +25,7 @@ function LongClickFlowerCard(props) {
     postDislikeRecomm(
       kindId,
       (res) => {
-        console.log(res);
+        // console.log(res);
         router.push(`/`);
         window.location.reload();
       },

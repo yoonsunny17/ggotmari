@@ -23,7 +23,7 @@ function RecommendMain() {
   const [isSuccess, setIsSuccess] = useState(false);
 
   const success = (res) => {
-    console.log(res);
+    // console.log(res);
     setIsSuccess((current) => !current);
     // router.push("/recommend/letter");
     router.push({
