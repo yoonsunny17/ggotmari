@@ -225,6 +225,11 @@ function ArticleDetail() {
                   layout="fill"
                   priority
                 />
+                {article.articleImages.length >= 2 ? (
+                  <div className="absolute right-3 bottom-3 font-sanslight text-xs text-white bg-font4/40 rounded-md px-2 py-0.5">
+                    {idx + 1} / {article.articleImages.length}
+                  </div>
+                ) : null}
               </div>
             );
           })}
