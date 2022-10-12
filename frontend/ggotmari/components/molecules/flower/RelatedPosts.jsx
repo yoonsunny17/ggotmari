@@ -23,7 +23,10 @@ function RelatedPosts({
           <Image
             src={articleImage}
             alt={articleId}
-            layout="fill"
+            // layout="fill"
+            layout="responsive"
+            width={300}
+            height={300}
             objectFit="cover"
             priority
           />
