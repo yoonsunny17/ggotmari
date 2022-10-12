@@ -204,14 +204,15 @@ def article(request):
     result = []
     cnt = 0
 
-    my_article = Article.objects.filter(user_id=user_pk)
-    my_article_serializer = ArticleSerializer(my_article, many=True).data
-    my_article_lst = []
-    for article in my_article_serializer:
-        my_article_lst.append(article['article_id'])
+    # my_article = Article.objects.filter(user_id=user_pk)
+    # my_article_serializer = ArticleSerializer(my_article, many=True).data
+    # my_article_lst = []
+    # for article in my_article_serializer:
+    #     my_article_lst.append(article['article_id'])
 
     for article in sorted_article_dic:
-        if article[0] in like_lst or article[0] in my_article_lst:  # 좋아요에 이미 있으면 제외, 내가 쓴 글 제외
+        # if article[0] in like_lst or article[0] in my_article_lst:  # 좋아요에 이미 있으면 제외, 내가 쓴 글 제외
+        if article[0] in like_lst:  # 좋아요에 이미 있으면 제외
             continue
         else:
             result.append(article[0])
