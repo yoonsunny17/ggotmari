@@ -3,7 +3,7 @@ from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework import status
 from .models import Kind, User, FlowerLike, FlowerDislike, ArticleLike, Article, Subject, Popular
-from .serializers import UserSerializer, FlowerLikeSerializer, FlowerDislikeSerializer, ArticleLikeSerializer
+from .serializers import UserSerializer, FlowerLikeSerializer, FlowerDislikeSerializer, ArticleLikeSerializer, ArticleSerializer
 import numpy as np
 from dateutil.relativedelta import *
 from datetime import *
@@ -109,9 +109,10 @@ def situation(request):
     # 추천 결과 result에 담기
     result = []
     cnt = 0
+    ggotmari = [3356, 3357, 3358, 3359, 3360, 3361]
 
     for flower in sorted_flower_dic:
-        if flower[0] in like_lst or flower[0] in dislike_lst:  # 좋아요에 이미 있으면 제외, 싫어요에 있으면 제외
+        if flower[0] in like_lst or flower[0] in dislike_lst or flower[0] in ggotmari:  # 좋아요에 이미 있으면 제외, 싫어요에 있으면 제외, 꽃마리 제외
             continue
         else:
             result.append(flower[0])
@@ -203,8 +204,14 @@ def article(request):
     result = []
     cnt = 0
 
+    my_article = Article.objects.filter(user_id=user_pk)
+    my_article_serializer = ArticleSerializer(my_article, many=True).data
+    my_article_lst = []
+    for article in my_article_serializer:
+        my_article_lst.append(article['article_id'])
+
     for article in sorted_article_dic:
-        if article[0] in like_lst:  # 좋아요에 이미 있으면 제외
+        if article[0] in like_lst or article[0] in my_article_lst:  # 좋아요에 이미 있으면 제외, 내가 쓴 글 제외
             continue
         else:
             result.append(article[0])
@@ -253,6 +260,9 @@ def letter(request):
 
     result = lst[1][0]  # 유사도가 가장 높은 꽃품종id
     if lst[1][1] == 0:  # 유사도가 0이면 -1 리턴
+        result = -1
+    
+    if lst[1][0] == 278:  # 꽃마리 제외
         result = -1
 
     return Response({'result': result})
