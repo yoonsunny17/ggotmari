@@ -70,7 +70,7 @@ function WriteLetter() {
         setKindImage(res.data.kindImage);
       },
       (err) => {
-        console.log(err);
+        // console.log(err);
         router.push(`/recommend/notFound`);
       }
     );
