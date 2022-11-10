@@ -274,7 +274,7 @@
     - [Redis](https://github.com/yoonsunny17/ggotmari/blob/a46566f523828c5330c708ca093fa5340adda25b/exec/%EC%99%B8%EB%B6%80%20%EC%84%9C%EB%B9%84%EC%8A%A4%20%EC%A0%95%EB%B3%B4/Redis.md)
     - [데이터 수집, 정제, 크롤링](https://github.com/yoonsunny17/ggotmari/blob/a46566f523828c5330c708ca093fa5340adda25b/exec/%EC%99%B8%EB%B6%80%20%EC%84%9C%EB%B9%84%EC%8A%A4%20%EC%A0%95%EB%B3%B4/%EB%8D%B0%EC%9D%B4%ED%84%B0_%EC%88%98%EC%A7%91_%EC%A0%95%EC%A0%9C_%ED%81%AC%EB%A1%A4%EB%A7%81.md)
 -   [DB 덤프 파일](/exec/꽃마리_DB_dump.sql)
--   [시연 시나리오]([/exec/시연 시나리오.pdf](https://github.com/yoonsunny17/ggotmari/blob/2a473593c26e455a78e0d2ffc9b585d4369b34b3/exec/%EC%8B%9C%EC%97%B0%20%EC%8B%9C%EB%82%98%EB%A6%AC%EC%98%A4.pdf))
+-   [시연 시나리오](https://github.com/yoonsunny17/ggotmari/blob/2a473593c26e455a78e0d2ffc9b585d4369b34b3/exec/%EC%8B%9C%EC%97%B0%20%EC%8B%9C%EB%82%98%EB%A6%AC%EC%98%A4.pdf)
 
 <br/>
 
