@@ -265,14 +265,14 @@
 ## 🔌포팅 매뉴얼
 
 -   빌드 및 배포
-    - [Jenkind + Docker](/exec/빌드 및 배포/Jenkins_Docker/Jenkins_Docker.md)
-    - [기술 스택 버전 정보](/exec/빌드 및 배포/기술 스택 버전.md)
-    - [빌드 매뉴얼](/exec/빌드 및 배포/빌드 매뉴얼.md)
+    - [Jenkind + Docker](https://github.com/yoonsunny17/ggotmari/blob/a46566f523828c5330c708ca093fa5340adda25b/exec/%EB%B9%8C%EB%93%9C%20%EB%B0%8F%20%EB%B0%B0%ED%8F%AC/Jenkins_Docker/Jenkins_Docker.md)
+    - [기술 스택 버전 정보](https://github.com/yoonsunny17/ggotmari/blob/a46566f523828c5330c708ca093fa5340adda25b/exec/%EB%B9%8C%EB%93%9C%20%EB%B0%8F%20%EB%B0%B0%ED%8F%AC/%EA%B8%B0%EC%88%A0%20%EC%8A%A4%ED%83%9D%20%EB%B2%84%EC%A0%84.md)
+    - [빌드 매뉴얼](https://github.com/yoonsunny17/ggotmari/blob/a46566f523828c5330c708ca093fa5340adda25b/exec/%EB%B9%8C%EB%93%9C%20%EB%B0%8F%20%EB%B0%B0%ED%8F%AC/%EB%B9%8C%EB%93%9C%20%EB%A7%A4%EB%89%B4%EC%96%BC.md)
 -   외부 서비스
-    - [네이버 OCR](/exec/외부 서비스 정보/네이버_OCR/네이버 OCR.md)
-    - [카카오 API](/exec/외부 서비스 정보/카카오_API/카카오 API.md)
-    - [Redis](/exec/외부 서비스 정보/Redis.md)
-    - [데이터 수집, 정제, 크롤링](/exec/외부 서비스 정보/데이터_수집_정제_크롤링.md)
+    - [네이버 OCR](https://github.com/yoonsunny17/ggotmari/blob/a46566f523828c5330c708ca093fa5340adda25b/exec/%EC%99%B8%EB%B6%80%20%EC%84%9C%EB%B9%84%EC%8A%A4%20%EC%A0%95%EB%B3%B4/%EB%84%A4%EC%9D%B4%EB%B2%84_OCR/%EB%84%A4%EC%9D%B4%EB%B2%84%20OCR.md)
+    - [카카오 API](https://github.com/yoonsunny17/ggotmari/blob/a46566f523828c5330c708ca093fa5340adda25b/exec/%EC%99%B8%EB%B6%80%20%EC%84%9C%EB%B9%84%EC%8A%A4%20%EC%A0%95%EB%B3%B4/%EC%B9%B4%EC%B9%B4%EC%98%A4_API/%EC%B9%B4%EC%B9%B4%EC%98%A4%20API.md)
+    - [Redis](https://github.com/yoonsunny17/ggotmari/blob/a46566f523828c5330c708ca093fa5340adda25b/exec/%EC%99%B8%EB%B6%80%20%EC%84%9C%EB%B9%84%EC%8A%A4%20%EC%A0%95%EB%B3%B4/Redis.md)
+    - [데이터 수집, 정제, 크롤링](https://github.com/yoonsunny17/ggotmari/blob/a46566f523828c5330c708ca093fa5340adda25b/exec/%EC%99%B8%EB%B6%80%20%EC%84%9C%EB%B9%84%EC%8A%A4%20%EC%A0%95%EB%B3%B4/%EB%8D%B0%EC%9D%B4%ED%84%B0_%EC%88%98%EC%A7%91_%EC%A0%95%EC%A0%9C_%ED%81%AC%EB%A1%A4%EB%A7%81.md)
 -   [DB 덤프 파일](/exec/꽃마리_DB_dump.sql)
 -   [시연 시나리오](/exec/시연 시나리오.pdf)
 
